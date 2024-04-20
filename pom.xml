@@ -1,0 +1,22 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.lahiru</groupId>
+	<artifactId>dilhara</artifactId>
+	<version>1.0.0</version>
+
+	<packaging>war</packaging>
+	<name>firstApp</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<defaultGoal>clean package</defaultGoal>
+		<finalName>myapp</finalName>
+	</build>
+</project>
