@@ -1,11 +1,3 @@
 <web-app>
 	<display-name>Lahiru Dilhara</display-name>
-	<servlet>
-		<servlet-name>addServlet</servlet-name>
-		<servlet-class>com.lahiru.addServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>addServlet</servlet-name>
-		<url-pattern>/servlet/add</url-pattern>
-	</servlet-mapping>
 </web-app>
