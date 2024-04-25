@@ -1,0 +1,10 @@
+[2024/04/22 18:55] GALDilhara		: Starts the documentation
+[2024/04/22 22:05] GALDilhara		: Divide the roles and starts the UI/UX design
+[2024/04/23 08:04] GALDilhara		: There is a lack of collaboration in some team members. Identified it as a risk of the web pages belongs to them.
+[2024/04/23 09:17] GALDilhara		: Planed a meeting to discuss about this risk
+[2024/04/23 22:05] GALDilhara		: Completed the meeting and palned for the risk. distributed the risk web pages among other team members.
+[2024/04/24 11:09] GALDilhara		: The UI/UX design was continued, but there is no development of the risk web pages.
+[2024/04/24 20:25] GALDilhara		: Create a github repository named getPosted.
+[2024/04/24 20:40] GALDilhara		: Add the team members as collaborators for the project.
+[2024/04/24 21:10] GALDilhara		: Give an introduction to the github issues and git.
+[2024/04/24 22:10] GALDilhara		: End the meeting. Still the risk is there because of some team members.
