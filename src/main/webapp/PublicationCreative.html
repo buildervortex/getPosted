@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publication Creative View</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" />
+  <link rel="stylesheet" href="css/PublicationCreative.css" />
+  <script src="js/PublicationCreative.js" ></script>
+</head>
+<body>
+  <div class="content">
+    <input id="image" type="file" accept="image/*" style="display: none;" onchange="previewImage(event)" />
+    <label for="image">
+      <img id="thumbnail" src="C:\Users\User\Pictures\image.png" alt="Thumbnail" />
+    </label><br><br>
+    <input id="title" class="title" type="text" placeholder="Title" /><br><br>
+    <input id="pdf" class="pdf" type="file" accept=".pdf" placeholder="Choose PDF" onchange="displayFileName(event)" /><br><br>
+    <textarea id="description" class="description" placeholder="Description"></textarea><br><br>
+    <input class="soft-copy-price" type="text" placeholder="Soft Copy Price" id="soft-copy-price" required><br><br>
+    <input class="soft-copy-discount" type="text" placeholder="Soft Copy Discount" id="soft-copy-discount" required><br><br>   
+    <input class="date" type="date" placeholder="Written Date" id="date" required><br><br>
+    <select id="language" name="language" class="language" placeholder="Select Language" required>
+      <option value="">Language</option>
+      <option value="English">English</option>
+      <option value="Sinhala">Sinhala</option>
+      <option value="Spanish">Spanish</option>
+      <option value="French">French</option>
+    </select><br><br>
+    <select id="category" class="category" placeholder="Select category">
+      <option value="">Select category</option>
+      <option value="Essay">Essay</option>
+      <option value="Education">Education</option>
+      <option value="Art">Art</option>
+      <option value="Business">Business</option>
+      <option value="Biography">Biography</option>
+    </select><br><br>
+    <button class="create" type="button" onclick="validateForm()">Create</button>
+  </div>
+</body>
+</html>
