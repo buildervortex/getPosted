@@ -1,0 +1,131 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: 
+      linear-gradient(to right, #90a2f1, #d3ddf3); 
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 10px rgba(3, 27, 99, 0.993);
+  max-width: 400px;
+  width: 100%;
+}
+
+.sign-up {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #315ce7;
+}
+
+.input-label {
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 5px; 
+  color: rgba(51, 20, 187, 0.993);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder,
+.phone-number::placeholder,
+.date-of-birth::placeholder,
+select::placeholder {
+  color: #315ce7;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+.phone-number,
+.date-of-birth,
+select {
+  width: 100%;
+  padding: 10px; 
+  margin-bottom: 1px; 
+  border: 2px solid #5b8cf7; 
+  color: rgb(24, 101, 190);
+  border-radius: 20px; 
+  box-sizing:border-box;
+  font-size: 14px; 
+  background-color: rgb(201, 224, 253);
+}
+
+.phone-number {
+  width: 100%;
+  padding: 10px; 
+  margin-bottom: 1px; 
+  border: 2px solid #5b8cf7; 
+  color: rgb(31, 98, 175);
+  border-radius: 20px; 
+  box-sizing: border-box;
+  font-size: 14px; 
+  background-color: rgb(201, 224, 253);
+}
+
+.date-of-birth {
+  width: 100%;
+  padding: 10px; 
+  margin-bottom: 1px; 
+  border: 2px solid #5b8cf7; 
+  color: rgb(31, 98, 175);
+  border-radius: 20px; 
+  box-sizing: border-box;
+  font-size: 14px; 
+  background-color: rgb(201, 224, 253);
+}
+
+select {
+  appearance: none;
+  color: rgb(31, 98, 175);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+button {
+    background-color: #2f50c9;
+    border: none;
+    width: 200px;
+    height: 30px;
+    font-size: 19px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 110px;
+    color: #d9d9d9;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-weight: bold;
+  
+}
+
+button:hover {
+      border:3px solid rgb(44, 44, 231);
+      color:#000000;
+      background-color:rgb(215, 225, 236);
+}
+
+button.sign-up-a {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Roboto, var(--default-font-family);
+}
+#phone-number-validation {
+  color: red;
+  font-size: 12px;
+  font-weight: normal; 
+}
