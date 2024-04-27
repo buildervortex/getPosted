@@ -1,3 +1,59 @@
+nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #b2b0b0;
+  position: fixed; /* Change position to fixed */
+  width: 100%; /* Ensure it spans the entire width of the viewport */
+  top: 0;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Rest of your CSS styles for the nav */
+
+
+li {
+  float: left;
+  border-right: 1px #4CAF50;
+}
+
+li a {
+  display: block;
+  color: rgb(67, 67, 67);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #0069a2;
+  color: beige;
+}
+
+.img1 {
+  align-items: center;
+  height: 50px;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.active1 {
+  background-color: #9effa1;
+  color:rgb(0, 0, 0);
+}
+
+.active2 {
+  background-color: #85bcff;
+  color:rgb(0, 0, 0);
+}
+
+.center{
+  text-align: center;
+}
+
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -15,7 +71,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   
-  margin-top: 10px;
+  margin-top: 80px;
   margin-bottom: 10px;
   box-shadow: 0 8px 10px rgba(3, 27, 99, 0.993);
   max-width: 400px;
