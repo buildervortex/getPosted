@@ -1,81 +1,80 @@
-body .container{
-  display: grid;
-  gap: 3vh;
-  background-color: #2196F3;
-  padding: 6vh;
-  height: 54.4vh;
-
-  overflow: scroll;
-  overflow-x: hidden;
-  border-radius:10vh;
-   
-}
-
-
-
-.grid-item {
-    background-color:rgb(247, 241, 241);
-    text-align: center;
-    padding: 8vh;
+body{
+    display:grid;
+    grid-template-columns:3fr 1fr;
+    grid-template-rows:1fr 10fr;
+    grid-gap: 2cqw;
+    max-height: 95cqh;
 
 }
 
-.header{
-   display: flex;
-    place-items: center;
-   justify-content: center;
-   
 
-}
 
-.cart{
-    display: flex;
-    text-align: center;
-    background-color: blueviolet;
-    border-radius: 50vh;
-    width: 100vh;
-    align-items: center;
-    justify-content: center;
-    color: chartreuse;
-  
+
+.cardContainer{
+    display:grid;
+    justify-items: center;
+    overflow:scroll;
+    grid-gap: 5cqw;
+    max-height: 100%;
 }
 
 
-
-
-  
-
-
-
-
-.footer{
-    display:flex;
-   background-color: aquamarine;
-   
-   
-}
-
-.shop{
+.book{
     display: grid;
-    justify-content: left;
-    align-items: left;
-}
-
-.shop button {
-    width: 50vh;
-    border-radius: 5vh;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: crimson;
-    justify-content: left;
-    align-items: left;
-}
-
-.shop button:hover {
-    background-color: blue;
+    background-color: brown;
+    grid-auto-flow: column;
+    gap: 10vh;
+   
 }
 
 
 
 
+.card{
+    display:grid;
+    grid-auto-flow: column;
+    align-content: center;
+    background-color: aqua;
+    width: 100%;
+    border-radius: 20px;
+}
 
+.card img{
+    
+  
+    max-width: 20cqh;
+    max-height: 50cqh;
+  
+ 
+}
+
+
+input[type="checkbox"] {
+    display: grid;
+
+    max-width: 8cqh;
+    max-height: 8cqh;
+
+}
+
+
+.card > *{
+    display:block;
+}
+.price{
+
+    display:grid;
+    justify-items:center;
+    align-items: center;
+    background-color: darkblue;
+}
+.priceContainer{
+    display:grid;
+    justify-items:center;
+    align-items: center;
+    width: 100%;
+    background-color: aqua;
+}
+.card > button {
+    max-height: 40px;
+}
