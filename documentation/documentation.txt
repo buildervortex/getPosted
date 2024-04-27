@@ -8,3 +8,8 @@
 [2024/04/24 20:40] GALDilhara		: Add the team members as collaborators for the project.
 [2024/04/24 21:10] GALDilhara		: Give an introduction to the github issues and git.
 [2024/04/24 22:10] GALDilhara		: End the meeting. Still the risk is there because of some team members.
+[2024/04/25 11:10] DGNuwan              : Start the design cart page.
+[2024/04/25 09:30] DGNuwan              : contribution issue checking in github repository.
+[2024/04/27 12:11] DGNuwan              : resolving github contribution issue.
+
+
