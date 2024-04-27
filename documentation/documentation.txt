@@ -11,7 +11,14 @@
 [2024/04/25 11:10] DGNuwan              : Start the design cart page.
 [2024/04/25 09:30] DGNuwan              : contribution issue checking in github repository.
 [2024/04/27 12:11] DGNuwan              : resolving github contribution issue.
+<<<<<<< HEAD
 [2024/04/27 18:35] DGNuwan              : start new cart desing.
 [2024/04/27 23:06] DGNuwan              : cart new design development first test end.
 
 
+=======
+[2024/04/26 11.15] KDKapuge             : Add author sign up page to the github.
+[2024/04/26 11.45] KDKapuge             : Add publication creative page to github.
+[2024/04/27 12.40] KDKapuge             : Updated author sign up page adding navbar.
+[2024/04/27 12.55] KDKapuge             : Updated publication creative page adding navbar.
+>>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
