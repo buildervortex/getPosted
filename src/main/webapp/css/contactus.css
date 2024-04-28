@@ -1,6 +1,23 @@
-bodt.container{
+.container{
     display:grid;
-    grid-template-columns: auto;
-    background-color: aqua;
+    grid-template-columns: 1fr 1fr;
+    
+    grid-higth;
+    width:50%;
+    
+    padding:0%;
+    margin:0%;
+    align-items: center;
 
 }
+.item1{
+    display: grid;
+    grid
+    
+    
+}
+body{
+    
+    background:linear-gradient(to right, #5EDFFF 50%, white 50%);
+}
+ s
