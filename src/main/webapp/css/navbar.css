@@ -1,12 +1,13 @@
 nav {
   list-style-type: none;
+  font-size: 3cqh;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #b2b0b0;
   position:-webkit-sticky; 
+  font-family: cursive;
   position: sticky;
-  
   top: 0;
 }
 
@@ -47,7 +48,39 @@ li a:hover {
   background-color: #85bcff;
   color:rgb(0, 0, 0);
 }
+.active3 {
+  background-color: #dca7e7;
+  color:rgb(0, 0, 0);
+}
+
+.disabled3 {
+  background-color: #dca7e7;
+  color:rgb(0, 0, 0);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled3:hover {
+  background-color: #b2b0b0;
+  color: beige;  
+}
 
 .center{
   text-align: center;
 }
+
+.hide3 {
+  display: none;
+  position:inherit;
+  float:right;
+  font-size: 3cqh;
+  padding-top: 2cqh;
+  font-family: cursive;
+  text-shadow: 1px 1px  rgb(255, 0, 0);
+}
+
+.popup:hover + .hide3 {
+  display: block;
+  color: rgb(219, 45, 45);
+}
+
