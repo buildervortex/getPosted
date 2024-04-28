@@ -1,0 +1,6 @@
+bodt.container{
+    display:grid;
+    grid-template-columns: auto;
+    background-color: aqua;
+
+}
