@@ -14,7 +14,7 @@
 [2024/04/27 18:35] DGNuwan              : start new cart desing.
 [2024/04/27 23:06] DGNuwan              : cart new design development first test end.
 [2024/04/28 03:40] DGNuwan              : create cart grid responsiveness.
-[2024/04/28 09:53] DGNuwan              : github issue discus.
+[2024/04/28 09:53] DGNuwan              : github issue discuss.
 
 
 
@@ -23,8 +23,12 @@
 [2024/04/26 11.45] KDKapuge             : Add publication creative page to github.
 [2024/04/27 12.40] KDKapuge             : Updated author sign up page adding navbar.
 [2024/04/27 12.55] KDKapuge             : Updated publication creative page adding navbar.
-[2024/04/28 02.05] KDKapuge             : Add books(category) page to github.
+[2024/04/27 14.05] KDKapuge             : Add books(category) page to github.
+[2024/04/27 23.40] KDKapuge             : Add two cards to books page.
+[2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page,books page.
+[2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
 
 >>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
 
-[2024/04/28 09.45] ravindusenanayake    : Add hard copy request page to the github.
+[2024/04/28 10.29] GSUdeshika           : github issues discuss
+[2024/04/28 10.46] GSUdeshika           : create a author profile
