@@ -14,7 +14,7 @@
 [2024/04/27 18:35] DGNuwan              : start new cart desing.
 [2024/04/27 23:06] DGNuwan              : cart new design development first test end.
 [2024/04/28 03:40] DGNuwan              : create cart grid responsiveness.
-[2024/04/28 09:53] DGNuwan              : github issue discus.
+[2024/04/28 09:53] DGNuwan              : github issue discuss.
 
 
 
@@ -27,4 +27,5 @@
 
 >>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
 
-[2024/04/26 10.29] GSUdeshika           : github issues discuss
+[2024/04/28 10.29] GSUdeshika           : github issues discuss
+[2024/04/28 10.46] GSUdeshika           : create a author profile
