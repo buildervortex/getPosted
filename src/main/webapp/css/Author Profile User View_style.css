@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --blue_1: #3e64ff;
+    --blue_2: #5edfff;
+    --blue_3: #b2fcff;
+    --blue_4: #ecfcff;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* height: auto; */
+}
+
+.navigation {
+    width: auto;
+    height: 8vh;
+    background-color: var(--blue_1);
+    margin-bottom: 50px;
+}
+
+.autherProfileDetails {
+    width: auto;
+    height: auto;
+    /* background-color: #5edfff; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-bottom: 50px;
+}
+
+.profilePicture {
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: bisque; */
+}
+
+.picture {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.picture img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.profileDetails {
+    width: 40vw;
+    /* height: 200px; */
+    /* background-color: rgb(255, 196, 243); */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profileDetails h2 {
+    font-size: 60px;
+    color: var(--blue_1);
+    font-weight: bolder;
+}
+
+.profileDetails h3 {
+    font-size: 35px;
+    color: var(--blue_2);
+}
+
+.profileDetails p {
+    font-size: 35px;
+    color: var(--blue_1);
+}
+
+
+
+/* .info_box{
+    width: auto;
+    height: auto;
+    background-color: #3e64ff;
+} */
+
+.authorInformation {
+    width: auto;
+    height: auto;
+    /* background-color: var(--blue_4); */
+    margin: 40px;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.info_topic h1 {
+    color: var(--blue_2);
+    font-weight: bolder;
+    font-size: 50px;
+    margin-bottom: 25px;
+}
+
+.information {
+    margin-left: 80px;
+    margin-top: 20px;
+    color: black;
+    font-size: 35px;
+    padding-bottom: 20px;
+}
+
+.information>tr {
+    padding-bottom: 5000px;
+}
+
+td {
+    margin-bottom: 50px;
+}
+
+.info_name {
+    color: var(--blue_1);
+    font-weight: bolder;
+    margin-bottom: 50px;
+}
+
+.info_details {
+    color: var(--blue_2);
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.authorPublication {
+    /* background-color:antiquewhite; */
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.pubCards {}
+
+.pubCard {
+    width: 300px;
+    height: 400px;
+    padding: 20px;
+    background-color: rgb(111, 255, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.pubImg img {
+    width: 150px;
+    height: 180px;
+    margin: 10px;
+}
+
+
+
+/* Style for the container div */
+.pubCards {
+    width: 90vw;
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 10px;
+    background-color: var(--blue_3);
+    margin-bottom: 50px;
+    border-radius: 20px;
+    box-shadow: rgba(232, 232, 237, 0.25) 0px 50px 100px -20px, rgba(245, 239, 239, 0.3) 0px 30px 60px -30px;
+
+}
+
+/* Style for the content inside the container */
+.pubCard {
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    border: 2px solid var(--blue_4);
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    background-color: var(--blue_2);
+    margin: 50px;
+    border-radius: 20px;
+}
+
+.pubCard:hover {
+    transform: scale(1.1) translateZ(0);
+}
+
+
+/* Style for the buttons */
+.button {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #3e64ff;
+    margin: 10px;
+    color: var(--blue_4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #ecfcff solid 3px;
+
+}
+
+.button:hover {
+    scale: 1.2;
+}
+
+.button img {
+    width: 30px;
+    height: 30px;
+}
+
+.pubName {
+    overflow: hidden;
+}
+
+.pubName h3 {
+    color: #000;
+    font-size: 30px;
+}
+
+.pubIcon {
+    width: 100%;
+    height: auto;
+    /* background-color:aliceblue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.pubIcon img {
+    width: 40px;
+    height: 40px;
+}
+
+.pubPrice {
+    font-size: 30px;
+    color: #ffff;
+    background-color: var(--blue_1);
+    border-radius: 30px;
+}
