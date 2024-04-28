@@ -24,3 +24,5 @@
 [2024/04/28 02.05] KDKapuge             : Add books(category) page to github.
 
 >>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
+
+[2024/04/28 09.45] ravindusenanayake    : Add hard copy request page to the github.
