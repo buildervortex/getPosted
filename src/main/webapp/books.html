@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <link rel="stylesheet" href="css/books.css" />
+  <script src="js/books.js" ></script>
+
+  
+  <nav>
+    <li><a href="#Overview">Overview</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#Products">Products</a></li>
+    <li><a href="#Insights">Insights</a></li>
+    <li><a href="#Contacts">Contacts</a></li>
+    <li><a href="#About">About</a></li>
+    <li style="float:right"><a class="active1" href="Log in">Log in</a></li>
+    <li style="float:right"><a class="active2" href="Sign in">Sign in</a></li>
+  </nav>
+
+</head>
+
+<body>
+
+  <div class="content">
+    <div class="background">
+        <div class="title"><h1>Unlock New Worlds: Dive into Our Library of Knowledge!</h1>
+    
+    <div class="description">
+      <p>Dive into worlds of wonder. Explore, dream, and discover your next
+      escape in the pages of possibility. Welcome to our literary
+      sanctuary.</p>
+      </div>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <select id="filter-select">
+          <option value="filter">Filter</option>
+          <option value="like">like</option>
+          <option value="comment">comment</option>
+          <option value="rating">rating</option>
+        </select>
+        <button id="search-btn">Search</button>
+
+      </div>
+    </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <img class="book" src="img/books/science book.jpg" alt="Product Image">
+        <h3>Science</h3>
+        <p class="price">$19.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+
+      <div class="card">
+        <img class="book" src="img/books/maths book.jpg"Product Image">
+        <h3>Mathematics</h3>
+        <p class="price">$24.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+
+      <div class="card">
+        <img class="book"  src="img/books/history book.jpg" alt="Product Image">
+        <h3>History</h3>
+        <p class="price">$29.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+
+      <div class="card">
+        <img class="book"  src="img/books/java.jpg" alt="Product Image">
+        <h3>Java</h3>
+        <p class="price">$30.45</p>
+         <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+
+      <div class="card">
+        <img class="book" src="img/books/python book.jpg" alt="Product Image">
+        <h3>Python</h3>
+        <p class="price">$19.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+      
+
+      <div class="card">
+        <img class="book" src="img/books/english book.jpg"alt="Product Image">
+        <h3>English</h3>
+        <p class="price">$24.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+      
+
+      <div class="card">
+        <img class="book" src="img/books/dbms book.jpg" alt="Product Image">
+        <h3>DBMS</h3>
+        <p class="price">$19.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+      
+
+      <div class="card">
+        <img class="book" src="img/books/html book.jpg" alt="Product Image">
+        <h3>HTML</h3>
+        <p class="price">$24.99</p>
+        <div class="rating">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+          <img src="img/books/star-removebg-preview.png" alt="star">
+        </div>
+        <button class="button" type="submit" onclick="submitOrder()"> <img class="cart" src="img/books/add_to_cart-removebg-preview.png" alt="Add to Cart Button"></button>
+      </div>
+
+    </div>
+  </div>
+  </body>
+  </html>
