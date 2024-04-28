@@ -3,7 +3,7 @@ body{
     grid-template-columns:3fr 1fr;
     grid-template-rows:1fr 10fr;
     grid-gap: 2cqw;
-    max-height: 95cqh;
+    max-height: 80cqh;
 
 }
 
@@ -14,20 +14,9 @@ body{
     display:grid;
     justify-items: center;
     overflow:scroll;
-    grid-gap: 5cqw;
-    max-height: 100%;
+    grid-gap: 2cqw;
+    max-height: 88.5cqh;
 }
-
-
-.book{
-    display: grid;
-    background-color: brown;
-    grid-auto-flow: column;
-    gap: 10vh;
-   
-}
-
-
 
 
 .card{
@@ -35,46 +24,127 @@ body{
     grid-auto-flow: column;
     align-content: center;
     background-color: aqua;
-    width: 100%;
+    width:100%;
     border-radius: 20px;
+    align-items: center;
 }
 
-.card img{
-    
-  
-    max-width: 20cqh;
-    max-height: 50cqh;
-  
- 
+.card > button {
+    max-height: 40px;
+   
 }
 
+.card > img{
+ max-width :40cqi;
+ max-height:30cqi;
+ gap: 2vh;
 
-input[type="checkbox"] {
+}
+ .card >h3{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2vh;
+ }
+
+ .card button {
+
+    width: 40%;
+    height:80%;
+    border-radius: 100%;
+ }
+
+
+
+ .cartItems .book{
+    background-color: brown;
+    grid-auto-flow: row;
+ }
+.book h1{
     display: grid;
+    color: aqua;
+    grid-auto-flow: column;
+   
+ }
 
-    max-width: 8cqh;
-    max-height: 8cqh;
 
-}
-
-
-.card > *{
-    display:block;
-}
-.price{
-
+ .price{
+ 
     display:grid;
     justify-items:center;
     align-items: center;
-    background-color: darkblue;
+    background-color: aqua;
+    
 }
 .priceContainer{
     display:grid;
     justify-items:center;
     align-items: center;
-    width: 100%;
-    background-color: aqua;
+    background-color: blue;
+    height: 50cqh;
+    max-width: 100cqh;
+   
 }
 .card > button {
     max-height: 40px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+
+.price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.priceContainer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8vh;
+    box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400vh;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 15vh;
+}
+
+table td {
+    padding: 5vh;
+    border-bottom: 1vh solid #ddd;
+    font-size: 4cqi;
+}
+
+button {
+    padding: 1cqi 2cqi;
+    font-size: 3vh;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4cqi;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 600px) {
+    .priceContainer {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 5vh;
+    }
 }
