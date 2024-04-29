@@ -3,6 +3,7 @@
 [2024/04/23 08:04] GALDilhara		: There is a lack of collaboration in some team members. Identified it as a risk of the web pages belongs to them.
 [2024/04/23 09:17] GALDilhara		: Planed a meeting to discuss about this risk
 [2024/04/23 22:05] GALDilhara		: Completed the meeting and palned for the risk. distributed the risk web pages among other team members.
+[2024/04/23 xx:xx] GKJPW		: addded css & html files for navbar.
 [2024/04/24 11:09] GALDilhara		: The UI/UX design was continued, but there is no development of the risk web pages.
 [2024/04/24 20:25] GALDilhara		: Create a github repository named getPosted.
 [2024/04/24 20:40] GALDilhara		: Add the team members as collaborators for the project.
@@ -10,42 +11,52 @@
 [2024/04/24 22:10] GALDilhara		: End the meeting. Still the risk is there because of some team members.
 [2024/04/25 11:10] DGNuwan              : Start the design cart page.
 [2024/04/25 09:30] DGNuwan              : contribution issue checking in github repository.
+[2024/04/26 xx:xx] GKJPW		: added PublicationAuthorView & Homepage. Basic implementation.
+[2024/04/26 11.15] KDKapuge             : Add author sign up page to the github.
+[2024/04/26 11.45] KDKapuge             : Add publication creative page to github.
 [2024/04/27 12:11] DGNuwan              : resolving github contribution issue.
+[2024/04/27 12.40] KDKapuge             : Updated author sign up page adding navbar.
+[2024/04/27 12.55] KDKapuge             : Updated publication creative page adding navbar.
+[2024/04/27 14.05] KDKapuge             : Add books(category) page to github.
 [2024/04/27 18:35] DGNuwan              : start new cart desing.
 [2024/04/27 23:06] DGNuwan              : cart new design development first test end.
+[2024/04/27 23.40] KDKapuge             : Add two cards to books page.
+[2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 03:40] DGNuwan              : create cart grid responsiveness.
 [2024/04/28 09:53] DGNuwan              : github issue discuss.
 [2024/04/28 09:53] DGNuwan              : start develop checkout page.
-[2024/04/23 xx:xx] GKJPW		: addded css & html files for navbar.
-[2024/04/26 xx:xx] GKJPW		: added PublicationAuthorView & Homepage. Basic implementation.
 [2024/04/28 xx:xx] GKJPW		: redesigned the above pages with suggested changes.
 [2024/04/29 xx:xx] GKJPW		: finished implementing PublicationAuthorView & Homepage.
 [2024/04/29 19:06] GKJPW		: added AddToCart function under booklist in homepage.
 [2024/04/29 19:50] GKJPW		: fixed few issues & updated the project documentation.
-
-
-=======
-[2024/04/26 11.15] KDKapuge             : Add author sign up page to the github.
-[2024/04/26 11.45] KDKapuge             : Add publication creative page to github.
-[2024/04/27 12.40] KDKapuge             : Updated author sign up page adding navbar.
-[2024/04/27 12.55] KDKapuge             : Updated publication creative page adding navbar.
-<<<<<<< HEAD
-[2024/04/27 14.05] KDKapuge             : Add books(category) page to github.
-[2024/04/27 23.40] KDKapuge             : Add two cards to books page.
-[2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
-
-=======
-
->>>>>>> 4e9403cbc621e1c275a2cc3567de0e4b57cee19e
-
->>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
-
 [2024/04/28 10.29] GSUdeshika           : github issues discuss
 [2024/04/28 10.46] GSUdeshika           : create a author profile
+<<<<<<< HEAD
+
+++++++++++++++++++++++
+[2024/04/29] JSHHansaka                 : add template for contactus page
+
+=======
 [2024/04/28 10.46] GSUdeshika           : add author profile update view page
 [2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
 [2024/04/29 05.23] GSUdeshika           : Add author profile author view page
+[2024/04/29 17:53] GALDilhara		: Add the .gitignore to the project and starts to create model part of the mvc architecture.
+[2024/04/29 17:53] GALDilhara		: Starts to develop the database connectivity with JDBC in DAO architecture.
+[2024/04/29 18:57] GALDilhara		: Before the Database connectivity there is a need of a logger to log the messages. Start the developing of a loggin library.
+[2024/04/29 18:57] GALDilhara		: Starts using JUIT as testing library for the project.
+[2024/04/29 20:59] GALDilhara		: Finished the logger package for the project. wrote all the test in JUNIT and fully tested the logger.
+[2024/04/29 21:00] GALDilhara		: Start the development of Database connection handler.
 [2024/04/29 21.00] GOKawya              : Git test
+<<<<<<< HEAD
 [2024/04/29 00.47] GOKawya              : Add modification to user view page.
+=======
+[2024/04/28 23:32] DGNuwan              : create checkout page.
+<<<<<<< HEAD
+>>>>>>> 73b7115c3b40e6a2c3f74db411db4622e7c4a90d
+=======
+[2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
+[2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
+>>>>>>> 28bf6d9acd23fb9e4b8680b7ef1a18588dc91fda
 
+>>>>>>> dc337d341203e453e18e7c6c79912d4a83fd2b58
