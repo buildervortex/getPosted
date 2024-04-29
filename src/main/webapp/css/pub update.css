@@ -1,7 +1,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            margin: 200px;
+            margin: 0px;
             padding: 0;
             box-sizing: border-box;
         }
@@ -11,12 +11,13 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
+            width: 66vw;
             grid-template-areas: 
-                    "a"
-                    "b"
-                    "c"
-                    "d"
-                    "e";
+                    "h a k"
+                    "h b k"
+                    "h c k"
+                    "h d k"
+                    "h e k";
         .item1{
             grid-area: a;
             background-color: #f0f0f0;
@@ -59,6 +60,15 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        .item6{
+            grid-area: h;
+            
+        }
+        .item7{
+            grid-area: k;
+            
+        }
             
         }
             
