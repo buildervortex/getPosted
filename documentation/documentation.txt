@@ -16,8 +16,12 @@
 [2024/04/28 03:40] DGNuwan              : create cart grid responsiveness.
 [2024/04/28 09:53] DGNuwan              : github issue discuss.
 [2024/04/28 09:53] DGNuwan              : start develop checkout page.
-
-
+[2024/04/23 xx:xx] GKJPW		: addded css & html files for navbar.
+[2024/04/26 xx:xx] GKJPW		: added PublicationAuthorView & Homepage. Basic implementation.
+[2024/04/28 xx:xx] GKJPW		: redesigned the above pages with suggested changes.
+[2024/04/29 xx:xx] GKJPW		: finished implementing PublicationAuthorView & Homepage.
+[2024/04/29 19:06] GKJPW		: added AddToCart function under booklist in homepage.
+[2024/04/29 19:50] GKJPW		: fixed few issues & updated the project documentation.
 
 
 =======
