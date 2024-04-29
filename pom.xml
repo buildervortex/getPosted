@@ -1,11 +1,10 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.lahiru</groupId>
-	<artifactId>dilhara</artifactId>
+	<groupId>com.dataDive</groupId>
+	<artifactId>getPosted</artifactId>
 	<version>1.0.0</version>
-
 	<packaging>war</packaging>
-	<name>firstApp</name>
+	<name>getPosted</name>
 
 	<dependencies>
 		<dependency>
@@ -20,10 +19,16 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
 		<defaultGoal>clean package</defaultGoal>
-		<finalName>myapp</finalName>
+		<finalName>getPosted</finalName>
 	</build>
 </project>
