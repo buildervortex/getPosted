@@ -43,3 +43,6 @@
 [2024/04/29 21:00] GALDilhara		: Start the development of Database connection handler.
 [2024/04/29 21.00] GOKawya              : Git test
 [2024/04/28 23:32] DGNuwan              : create checkout page.
+[2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
+[2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
+

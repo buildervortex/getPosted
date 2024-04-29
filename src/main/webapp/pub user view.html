@@ -2,23 +2,26 @@
 
 <head>
     <title>pub user view</title>
-    <link rel="style sheet" href="css/pub user view.css">
+    <link rel="stylesheet" href="css/pub user view.css">
+    <link rel="stylesheet" href="/css/navbar.css" />
+  
+  <link rel="stylesheet" href="css/footer.css">
 
 </head>
-<style>
+<!-- <style>
     .container {
         display: grid;
         grid-template-columns: 1fr 1fr ;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows:  1fr;
         gap: 20px 20px;
         align-items: center;
         justify-items: center;
         grid-template-areas: 
-                "a a"
+            
                 "b c"
                 "d e";
             }
-    .card1{
+    /* .card1{
         grid-area: a;
         display: grid;
         justify-items: center;
@@ -29,7 +32,7 @@
         border-radius: 20px;
         position: relative;
         }
-     
+      */
 
     .card2 {
         display: grid;
@@ -121,11 +124,24 @@
     .card:nth-child(2) {
         grid-row: 2/4;
     } */
-</style>
+</style> -->
 
 <body>
+    <nav>
+        <li><a href="#Overview">Overview</a></li>
+        <li><a href="#Products">Products</a></li>
+        <li><a href="#News">News</a></li>
+        <li><a href="#Contacts">Contacts</a></li>
+        <li><a href="#About">About</a></li>
+        <li style="float:right"><a class="active1" href="Log in">Log in</a></li>
+        <li style="float:right"><a class="active2" href="Sign in">Sign in</a></li>
+        <li style="float:right" class="popup"><a class="disabled3" href="Profile"> View Profile</a></li>
+        <div class="hide3">Login / Sign In First &nbsp;</div>
+    
+      </nav>
 <br><br><br><br>
-    <div class="container">
+
+    <div class="container1">
 
         <!-- <div class="card1">
             <div>
@@ -152,6 +168,7 @@
             </div>
             </div>
         </div>
+        
         <!-- <div class="card4">
             <div>
                 <button class="button4b" style="vertical-align:middle"><span>Add to cart </span></button>
@@ -164,57 +181,21 @@
                     <p>discription</p>
                     <img alt="this an image" src="./nullImage.png">
             </div>
-        </div>
-        <div class="card6">
-            <div>
-                <h1>sixth 6</h1>
-                <h2>price</h1>
-                    <p>discription</p>
-                    <img alt="this an image" src="./nullImage.png">
-            </div>
-        </div> -->
-        <!-- <div class="card">
-            <div>
-                <h1>seventh 7</h1>
-                <h2>price</h1>
-                    <p>discription</p>
-                    <img alt="this an image" src="./nullImage.png">
-            </div>
-        </div>
-        <div class="card">
-            <div>
-                <h1>eighth 8</h1>
-                <h2>price</h1>
-                    <p>discription</p>
-                    <img alt="this an image" src="./nullImage.png">
-            </div>
-        </div>
-        <div class="card">
-            <div>
-                <h1>nineth 9</h1>
-                <h2>price</h1>
-                    <p>discription</p>
-                    <img alt="this an image" src="./nullImage.png">
-            </div>
-        </div>
-        <div class="card">
-            <div>
-                <h1>tenth 10</h1>
-                <h2>price</h1>
-                    <p>discription</p>
-                    <img alt="this an image" src="./nullImage.png">
-            </div>
-        </div>
-        <div class="card">
-            <div>
-                <h1>leventh 11</h1>
-                <h2>price</h1>
-                    <p>discription</p>
-                    <img alt="this an image" src="./nullImage.png">
-            </div>
-        </div> -->
+        </div>-->
 
-    </div>
+      
+<!-- <footer class="containerSP"> 
+
+        <span> 
+
+          <h3 class ="font6">© 2024 Copyright getpostedpublications.com | All Rights Reserved | <b>Get:<sup><sub>··</sub></sup><sub>/</sub>>osted<sup>ᵀᴹ</sup></b></h3>
+
+          <p class="font4 center">#BinaryBuilderVortex #TeamEffort2024</p>
+
+          </span>
+
+        </footer> -->
+
 </body>
 
 </html>
