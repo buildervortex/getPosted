@@ -1,13 +1,12 @@
 .container{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    
     grid-higth;
-    width:50%;
-    
+    width:100%;
     padding:0%;
     margin:0%;
     align-items: center;
+    
 
 }
 .item1{
@@ -20,4 +19,16 @@ body{
     
     background:linear-gradient(to right, #5EDFFF 50%, white 50%);
 }
- s
+.container1{
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr 2fr 1fr  1fr ;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    gap: 10% 10%;
+    margin-top: 10cqb;
+    font-family: i;
+
+}
+
