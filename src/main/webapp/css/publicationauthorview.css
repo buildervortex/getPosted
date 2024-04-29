@@ -55,7 +55,7 @@ footer {
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgb(144, 255, 255);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
     border-radius: 0px;
@@ -94,7 +94,7 @@ footer {
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgb(144, 255, 255);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
     border-radius: 0px;
@@ -124,8 +124,10 @@ footer {
 
   .container4{
     display:grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+			/* grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
 			gap: 5px;
 			align-items:center;
 			justify-items: center;
@@ -137,49 +139,13 @@ footer {
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgb(125, 253, 255);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
     border-radius: 0px;
   }
 
-  .card4:nth-child(2){
-    justify-items: center;
-    background-color: rgb(88, 199, 255);
-    grid-column: 2/4;
-    grid-row:2/6;
-    align-items: start;
-    overflow:hidden;
-  }
 
-  .card4:nth-child(5){
-    background-color: #ffffff;
-    color:rgb(0, 0, 0);
-  }
-
-  .card4:nth-child(6){
-    background-color: rgb(157, 248, 255);
-    color:rgb(0, 0, 0);
-  }
-
-  .card4:nth-child(7){
-    background-color: rgb(157, 248, 255);
-    color:rgb(0, 0, 0);
-
-  }
-
-  .card4:nth-child(8){
-    background-color: rgb(157, 248, 255);
-    color:rgb(0, 0, 0);
-
-  }
-
-  /* .card4:nth-child(5){
-    grid-row:2/7;
-    align-items: start;
-    position:initial;
-    overflow-y: hidden;
-  } */
 
   .container5{
     display:grid;
@@ -197,7 +163,7 @@ footer {
     display: grid;
     justify-items: left;
     align-items: center;
-    background-color: rgb(173, 212, 212);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
     border-radius: 0px;
@@ -209,11 +175,11 @@ footer {
     background-color: #04AA6D; /* Green */
     border: none;
     color: white;
-    padding: 4px 8px;
+    padding: 4px 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 2.9vh;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -297,17 +263,17 @@ footer {
   .button4b {
     display: inline-block;
     border-radius: 50px;
-    background: linear-gradient(to right, rgb(0, 195, 255), rgb(0, 106, 92) );
+    background: linear-gradient(to right, rgb(63, 132, 153), rgb(0, 106, 92) );
     border: none;
     color: #FFFFFF;
     text-align: center;
-    font-size: 5vh;
     padding: 2vh;
-    width: 30vw;
-    height:15vh;
+    width: 30cqw;
+    height:10vh;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
+    font-size: 3cqh;
   }
   
   .button4b span {
