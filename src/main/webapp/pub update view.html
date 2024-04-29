@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="css/pub update.css">
+</head>
+<body>
+    <h1 class="page-heading">Update your publication</h1>
+    <div class="container">
+        <div class="item1">
+            <h2>Title</h2>
+            <input type="text" id="title" placeholder="Enter title...">
+        </div>
+        <div class="item2">
+            <h2>Description</h2>
+            <input type="text" id="description" placeholder="Enter description...">
+        </div>
+        <div class="item3">
+            <h2>Language</h2>
+            <select id="language">
+                <option value="english">English</option>
+                <option value="spanish">Sinhala</option>
+                <option value="french">Tamil</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="item4">
+            <h2>Category</h2>
+            <input type="text" id="category" placeholder="Enter category...">
+        </div>
+        <div class="item5">
+            <h2>Thumbnail</h2>
+            <input type="file" id="thumbnail">
+            <img id="thumbnail-preview" src="#" alt="Thumbnail Preview">
+        </div>
+    </div>
+
+    <script>
+        const thumbnailInput = document.getElementById('thumbnail');
+        const thumbnailPreview = document.getElementById('thumbnail-preview');
+
+        thumbnailInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    thumbnailPreview.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

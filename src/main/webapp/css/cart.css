@@ -3,7 +3,7 @@ body{
     grid-template-columns:3fr 1fr;
     grid-template-rows:1fr 10fr;
     grid-gap: 2cqw;
-    max-height: 80cqh;
+    max-height: 40cqh;
 
 }
 
@@ -15,7 +15,7 @@ body{
     justify-items: center;
     overflow:scroll;
     grid-gap: 2cqw;
-    max-height: 88.5cqh;
+    max-height: 90cqh;
 }
 
 
@@ -27,43 +27,104 @@ body{
     width:100%;
     border-radius: 20px;
     align-items: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+ 
 }
 
-.card > button {
-    max-height: 40px;
-   
+
+
+
+
+input[type="checkbox"] {
+
+    width: 20%;
+    height:250%;
+
 }
+
+
+
 
 .card > img{
- max-width :40cqi;
- max-height:30cqi;
+ max-width :10cqi;
+ max-height:20cqi;
  gap: 2vh;
 
+
 }
+
+
+
+
+
+
+
+
+
+
  .card >h3{
 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2vh;
+    max-width: 10vw;
+    gap: 2vh;
  }
+
+
+ @media (max-width: 600px) {
+    .card > h3 {
+      font-size: 1vh; 
+      max-width: 90vw; 
+    }
+ }
+
+
+ @media (max-width: 600px) {
+    .card > h4 {
+      font-size: 1vh; 
+      max-width: 90vw; 
+    }
+}
+
+
+
+
+
+  
 
  .card button {
 
-    width: 40%;
-    height:80%;
-    border-radius: 100%;
+    width: 25%;
+    height:25%;
+    border-radius: 50%;
+    gap: 4vh;
+
  }
+ .card > button >img{
+
+    max-width :1cqi;
+    max-height:3cqi;
+   
+   }
+   
 
 
 
  .cartItems .book{
     background-color: brown;
     grid-auto-flow: row;
+
+
+
  }
 .book h1{
     display: grid;
-    color: aqua;
+    color: rgb(46, 33, 224);
     grid-auto-flow: column;
-   
+    background-color: black;
+    grid-template-rows:1fr 1fr;
+    width: 100%;
  }
 
 
@@ -85,8 +146,10 @@ body{
    
 }
 .card > button {
-    max-height: 40px;
+   
+    border-radius: 50%;
 }
+
 
 body {
     font-family: Arial, sans-serif;
@@ -99,7 +162,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+
+    
+
 }
 
 .priceContainer {
@@ -123,7 +188,7 @@ table td {
     font-size: 4cqi;
 }
 
-button {
+.price button {
     padding: 1cqi 2cqi;
     font-size: 3vh;
     background-color: #007bff;
@@ -148,3 +213,6 @@ button:hover {
         font-size: 5vh;
     }
 }
+
+
+
