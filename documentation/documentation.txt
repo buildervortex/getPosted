@@ -29,3 +29,7 @@
 
 [2024/04/28 10.29] GSUdeshika           : github issues discuss
 [2024/04/28 10.46] GSUdeshika           : create a author profile
+[2024/04/28 10.46] GSUdeshika           : add author profile update view page
+[2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
+
+
