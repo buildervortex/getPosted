@@ -47,4 +47,5 @@
 [2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
 [2024/04/29 05.23] GSUdeshika           : Add author profile author view page
 [2024/04/29 21.00] GOKawya              : Git test
+[2024/04/29 00.47] GOKawya              : Add modification to user view page.
 
