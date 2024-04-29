@@ -10,14 +10,22 @@
 
 }
 .item1{
+
     display: grid;
-    grid
+    margin-top: 0.1cqb;
+    background-color: transparent;
+    justify-content: center;
+    margin-right: 1cqb;
+    border-radius: 5cqb;
+    text-align: center;
+    
+    
     
     
 }
 body{
     
-    background:linear-gradient(to right, #5EDFFF 50%, white 50%);
+    background: linear-gradient(to right, #5EDFFF 50%, white 50%);
 }
 .container1{
     display: grid;
@@ -30,5 +38,8 @@ body{
     margin-top: 10cqb;
     font-family: i;
 
+}
+.submit{
+    
 }
 
