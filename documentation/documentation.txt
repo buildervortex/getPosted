@@ -42,3 +42,5 @@
 [2024/04/29 20:59] GALDilhara		: Finished the logger package for the project. wrote all the test in JUNIT and fully tested the logger.
 [2024/04/29 21:00] GALDilhara		: Start the development of Database connection handler.
 [2024/04/29 21.00] GOKawya              : Git test
+[2024/04/29 22:56] GALDilhara		: Finished the database handler class. Wrote the test for database handler class and fully tested.
+[2024/04/29 22:56] GALDilhara		: Start the development of DAO classes for each table in the database.
