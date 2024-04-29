@@ -1,0 +1,97 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 200px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: grid;
+            color: #701010;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            grid-template-areas: 
+                    "a"
+                    "b"
+                    "c"
+                    "d"
+                    "e";
+        .item1{
+            grid-area: a;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .item2{
+            grid-area: b;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .item3{
+            grid-area: c;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .item4{
+            grid-area: d;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .item5{
+            grid-area: e;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+            
+        }
+        .item {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], select {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: -1px solid #ccc;
+            border-radius: 5px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .page-heading {
+            text-align: center; /* Center-align the heading */
+            margin-top: 20px; /* Add some space above the heading */
+            color: #080c40; /* Dark text color */
+            font-size: 30px; /* Adjust font size */
+            font-weight: bold; /* Make the text bold */
+            position: relative; /* Enable positioning */
+            top: -30px; /* Move the heading 50px down from its normal position */
+        }
+
+        
+
+    
