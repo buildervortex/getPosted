@@ -25,7 +25,7 @@
 [2024/04/27 12.55] KDKapuge             : Updated publication creative page adding navbar.
 [2024/04/27 14.05] KDKapuge             : Add books(category) page to github.
 [2024/04/27 23.40] KDKapuge             : Add two cards to books page.
-[2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page,books page.
+[2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
 
 >>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
