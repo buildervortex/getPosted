@@ -1,22 +1,33 @@
 
 
-  footer {
-    font-size: 3vh;
-    position:relative;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: rgb(169, 169, 169);
-    color: rgb(0, 0, 0);
-    text-align: center;
-    max-height:max-content;
-    line-height:50%;
-  }
-  
-  .gray{
-    /* padding-top: 0%; */
-    position:relative;
-    opacity:100%;
-    font-size: small;
-    text-align:center;
-    font-family: monospace;
-    background-color: rgb(169, 169, 169);
-  }
+.containerSP {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  background: linear-gradient(to top, #5fcaf5 , rgb(213, 246, 255) , rgb(179, 234, 239) );
+
+}
+
+.cardSP {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+
+}
+
+.font4{
+  font-size: smaller;
+  font-family:sans-serif;
+  letter-spacing: 0.4vw;
+  opacity: 50%;
+  text-align: center;
+}
+.font6{
+  font-size: medium;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  opacity: 60%;
+}
