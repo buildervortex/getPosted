@@ -116,7 +116,6 @@ footer {
     display: grid;
     justify-items: center;
     align-items: center;
-    /* background-color: rgb(255, 255, 255); */
     height: 100%;
     width: 100%;
     border-radius: 0px;
@@ -124,8 +123,6 @@ footer {
 
   .container4{
     display:grid;
-			/* grid-template-columns: 1fr 1fr 1fr;
-			grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr;
 			gap: 5px;
@@ -168,6 +165,30 @@ footer {
     width: 100%;
     border-radius: 0px;
   
+  }
+
+  .container6{
+    display:grid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+			gap: 5px;
+			align-items:center;
+			justify-items: center;
+      max-height: fit-content;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .card6{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+   
   }
 
   /* :::::::::::::::::::::::::::: */

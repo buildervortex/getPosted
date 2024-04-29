@@ -36,6 +36,21 @@ body {
     background-color: #0069a2;
     color: beige;
   }
+
+  .atag{
+    justify-items: center;
+    text-decoration: none;
+  }
+
+  .ahide {
+    display: none;
+  }
+      
+  .amsg:hover + .ahide {
+    display: block;
+    color: rgb(221, 46, 46);
+    /* float: inline-end; */
+  }
   
   .img1 {
     align-items: center;
