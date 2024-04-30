@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 import com.getposted.logger.Logging;
 import java.util.logging.Logger;
+import com.getposted.system.Sysenv;
 
 import java.sql.SQLException;
 import java.sql.SQLInvalidAuthorizationSpecException;
@@ -12,10 +13,10 @@ import java.lang.ClassNotFoundException;
 
 public class Database {
 
-	private static String url = "jdbc:mariadb://localhost:3306/";
-	private static String database = "getPosted";
-	private static String userName = "root";
-	private static String password = "Lahiru";
+	private static String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
+	private static String database = Sysenv.getEnv("DATABASENAME");	// "getPosted"
+	private static String userName = Sysenv.getEnv("DATABASEUSERNAME");
+	private static String password = Sysenv.getEnv("DATABASEPASSWORD");
 	private static String driver = "org.mariadb.jdbc.Driver";
 
 	private Database() {
