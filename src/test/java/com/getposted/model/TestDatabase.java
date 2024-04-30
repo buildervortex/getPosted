@@ -2,16 +2,23 @@ package com.getposted.model;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
+import org.junit.AfterClass;
 
 import com.getposted.model.Database;
+import com.getposted.system.Sysenv;
 import java.sql.Connection;
 
 import java.sql.SQLException;
-import java.lang.ClassNotFoundException;
 
 public class TestDatabase{
 
 	private static Connection con;
+
+	@BeforeClass
+	public static void initializeDatabase() throws SQLException{
+		TestDataBase.createDatabase();
+	}
 
 	@Test
 	public void testConnectionNullability() throws Exception {
@@ -31,4 +38,9 @@ public class TestDatabase{
 		assertFalse(con.isClosed());
 	}
 
+
+	@AfterClass
+	public static void destroyDatabase() throws SQLException{
+		TestDataBase.deleteDatabase();
+	}
 }
