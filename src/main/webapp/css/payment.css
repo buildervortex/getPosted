@@ -46,11 +46,28 @@ body{
     justify-content: space-between;
 }
 .card_iteam{
-    width: 48%;
+    width: 45%;
 }
 .space{
     margin-bottom: 20px;
 }
 .icon-relative{
     position: relative;
+}
+.icon-relative .fa-solid{
+    position: absolute;
+    bottom: 12px;
+    left: 15px;
+    font-size: 20px;
+    color: #555555;
+}
+.button{
+    margin-top: 40px;
+    background: #3e64ff;
+    padding: 12px;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+
 }

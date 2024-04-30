@@ -1,5 +1,5 @@
-  // JavaScript function for searching products
-  const search = () => {
+// JavaScript function for searching products
+const search = () => {
     // Get the search input value and convert it to uppercase for case-insensitive search
     const searchbox = document.getElementById("search-item").value.toUpperCase();
     // Get the container for product items
@@ -34,7 +34,7 @@
 const searchAuthor = () => {
     // Get the search input value and convert it to uppercase for case-insensitive search
     const searchbox = document.getElementById("search-Author").value.toUpperCase();
-    
+
     // Get all rows in the table's body
     const rows = document.querySelectorAll(".table tbody tr");
 
@@ -59,3 +59,30 @@ const searchAuthor = () => {
         }
     });
 };
+
+
+
+// Bar Chart
+
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        //Get the labels in database
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July' , 'August' , 'September ' , 'October' , 'November ' , 'December'],
+        datasets: [{
+            label: 'This Year Profit',
+            data: [42, 59, 36, 52, 26, 38, 50,56,78,34,12,45],//Get the data in database
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
