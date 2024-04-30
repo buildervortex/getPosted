@@ -55,8 +55,12 @@
 <<<<<<< HEAD
 >>>>>>> 73b7115c3b40e6a2c3f74db411db4622e7c4a90d
 =======
+[2024/04/27 22:44] ravindusenanayake    : add pub user view page.
+[2024/04/27 23:15] ravindusenanayake    : add hard copy request page.
+[2024/04/27 23:45] ravindusenanayake    : add publication update page.
 [2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
 [2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
+[2024/04/30 10:00] ravindusenanayake    : upadate footer pages.
 >>>>>>> 28bf6d9acd23fb9e4b8680b7ef1a18588dc91fda
 
 >>>>>>> dc337d341203e453e18e7c6c79912d4a83fd2b58
