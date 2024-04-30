@@ -55,3 +55,6 @@
 [2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
 [2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
 [2024/04/30 10:00] ravindusenanayake    : upadate footer pages.
+[2024/04/30 11:51] GALDilhara		: Created Sysenv class to make the code modular. The sysenv class can set parameters to java system properties and it can get parameters from java systemproperties or from environment vairables
+[2024/04/30 11:51] GALDilhara		: finalized the Sysenv class. Wrote all the tests and finished the test
+
