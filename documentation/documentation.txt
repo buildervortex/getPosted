@@ -50,6 +50,7 @@
 [2024/04/29 21.00] GOKawya              : Git test
 <<<<<<< HEAD
 [2024/04/29 00.47] GOKawya              : Add modification to user view page.
+
 =======
 [2024/04/28 23:32] DGNuwan              : create checkout page.
 <<<<<<< HEAD
@@ -60,3 +61,4 @@
 >>>>>>> 28bf6d9acd23fb9e4b8680b7ef1a18588dc91fda
 
 >>>>>>> dc337d341203e453e18e7c6c79912d4a83fd2b58
+[2024/04/29 00.47] GOKawya              : Resolving issues in my github account
