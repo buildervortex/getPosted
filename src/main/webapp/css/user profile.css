@@ -35,14 +35,15 @@ body {
   
   .profile-container {
     width:100%;
-    height: auto;
+    height: 60;
+    
     
     border: 2px solid #fff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #d6f8fa;
+    
     align-items: center;
     
   }
@@ -54,8 +55,8 @@ body {
   
    img {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     align-items: center;
     object-fit: cover;
     border:#007bff 2px;
@@ -104,7 +105,7 @@ body {
     border-radius: 6px;
     align-items: center;
     width: 600px;
-    height: 400px;
+    height: 560px;
     font-size: large;
     align-content: center;
     padding: 10px;
