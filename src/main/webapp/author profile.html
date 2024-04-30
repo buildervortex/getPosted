@@ -20,7 +20,8 @@
         <h1>Update Profile</h1>
         <div class="profile">
             <div class="profile-image">
-                <img src="/img/img/download.jpg" alt="Profile Picture">
+                <img src="img/img/download.jpg" alt="Profile Picture">
+                <button class="edit-button">Change photo</button>
             </div>
             <div class="profile-details">
                 <label for="username">Username:</label>
@@ -36,19 +37,25 @@
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" placeholder="0763212001">
                 <label for="country">Country:</label>
-                <select><option>United States</option></select>
+                <select>
+                    <option>United States</option>
+                    <option>Australia</option>
+                    <option>Sri Lanka</option>
+                </select>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter the Current Password">
                 <label for="retype-password">Retype Password:</label>
                 <input type="password" id="retype-password" name="retype-password" placeholder="Enter the New Password">
                 <label for="skills">Skills:</label>
-                <textarea id="skills" name="skills" placeholder="Technical Writing, Research, Communication"></textarea>
+                <select>
+                    <option>Technical Writing</option>
+                    <option>Research</option>
+                    <option>Communication</option>
+                </select>
                 <label for="bio">Bio:</label>
-                <textarea id="bio" name="bio" placeholder="I am a Technical Writer, Content Writer and Copywriter"></textarea>
+                <textarea id="bio" name="bio" placeholder="I am a Technical Writer, Content Writer and Copywriter."></textarea>
+                <button class="save-button">Save</button>
             </div>
-        </div>
-        <button class="save-button">Save</button>
-    </div>
 </body>
 </html>
 

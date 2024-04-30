@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #3e64ff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    min-height: 70vh;
+}
+
+.author-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    border: 1px solid #3e64ff;
+    padding: 20px;
+    background-color: #ecfcff;
+    border-radius: 10px;
+}
+
+.profile-info{
+    color: #5edfff;
+}
+
+.profile-photo {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 10px;
+}
+
+.profile-details {
+    text-align: left;
+    color: #3e64ff;
+    line-height: 30px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.profile-details p {
+    margin: 0;
+}
+
+.author-info{
+    color: #3e64ff;
+}
+
+.profile-photo img {
+    max-width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border:1px solid #3e64ff
+}
+
+.ratings {
+    display: flex;
+    align-items: center;
+}
+
+.stars {
+    color: #3e64ff;
+}
+
+.update-button {
+    padding: 10px 20px;
+    background-color: #3e64ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-button:hover {
+    background-color: #3e64ff;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.publication {
+    border: 1px solid #3e64ff;
+    padding: 20px;
+    background-color: #ecfcff;
+    border-radius: 20px;
+}
+
+.publication img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #3e64ff;
+}
+
+.publication h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #5edfff;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.like-btn, .comment-btn, .cart-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #3e64ff;
+}
+
+.price {
+    font-weight: bold;
+    color: #3e64ff;
+}

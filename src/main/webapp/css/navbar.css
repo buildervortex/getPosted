@@ -4,7 +4,7 @@ nav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #b2b0b0;
+  background-color: #c2f4ff;
   position:-webkit-sticky; 
   font-family: cursive;
   position: sticky;
@@ -83,4 +83,3 @@ li a:hover {
   display: block;
   color: rgb(219, 45, 45);
 }
-
