@@ -30,7 +30,7 @@
 [2024/04/27 23.40] KDKapuge             : Add two cards to books page.
 [2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
-[2024/04/30 22.45] KDKapuge             : Update JavaSript code in books page.
+[2024/04/30 22.45] KDKapuge             : Update JavaScript code in books page.
 
 =======
 
