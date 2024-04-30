@@ -3,34 +3,55 @@ body{
     grid-template-columns:3fr 1fr;
     grid-template-rows:1fr 10fr;
     grid-gap: 2cqw;
-    max-height: 30vh;
+    max-height: 93vh;
 
 }
 
 .container1{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     
     align-items:center;
     justify-items: center;
+    
 }
 .card1{
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgb(20, 208, 67);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
  
 }
 
-.card1 h1{
-    color: #007bff;
-    gap: 5vh;
-   margin-left: 20vh;
 
+.card1:nth-child(1){
+
+    float: left;
+    justify-content: left;
+    color: rgb(225, 11, 11);
+    margin-left: 8vh;
 }
+
+.card1:nth-child(3){
+
+    justify-content: left;
+    color: rgb(225, 11, 11);
+    margin-left: 20vh;
+}
+
+
+.card1:nth-child(2){
+
+    justify-content: left;
+    color: rgb(225, 11, 11);
+    margin-left: 23vh;
+}
+
+
+
 
 
 
@@ -69,7 +90,7 @@ body{
     overflow:scroll;
     overflow-x: hidden;
     grid-gap: 1cqw;
-    max-height: 93vh;
+    max-height: 80vh;
 }
 
 
@@ -91,18 +112,13 @@ body{
 
 
 
-input[type="checkbox"] {
 
-    width: 20%;
-    height:250%;
-
-}
 
 
 
 
 .card > img{
- /*max-width :10cqi;*/
+margin-left: 3vh;
  max-height:10cqi;
  gap: 2vh;
 
@@ -124,6 +140,8 @@ input[type="checkbox"] {
     font-size: 2vh;
     max-width: 10vw;
     gap: 2vh;
+
+    padding-left: 16vh;
  }
 
 
@@ -217,6 +235,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height:fit-content;
 
     
 
@@ -242,7 +261,7 @@ table {
 table td {
     padding: 5vh;
     border-bottom: 1vh solid #ddd;
-    font-size: 2cqi;
+    font-size: 1cqi;
 }
 
 .price button {
@@ -267,7 +286,7 @@ button:hover {
     }
 
     button {
-        font-size: 5vh;
+        font-size: 1cqi;
     }
 }
 

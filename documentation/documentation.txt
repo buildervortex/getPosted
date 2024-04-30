@@ -44,3 +44,5 @@
 [2024/04/29 21.00] GOKawya              : Git test
 [2024/04/29 22:56] GALDilhara		: Finished the database handler class. Wrote the test for database handler class and fully tested.
 [2024/04/29 22:56] GALDilhara		: Start the development of DAO classes for each table in the database.
+[2024/04/28 23:32] DGNuwan              : create checkout page.
+[2024/04/29 22:56] GALDilhara		: Continue the development DEO classes.
