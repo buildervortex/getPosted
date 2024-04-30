@@ -92,26 +92,27 @@ public class AuthorDAOImpl implements AuthorDAO {
 	@Override
 	public int insert(Author author) throws SQLException {
 		Connection con = Database.getConnection();
-		String sqlTemplate = "INSERT INTO Author(email,phoneNumber,bio,password,dob,firstName,middleName,lastName,userName) VALUES(?,?,?,?,?,?,?,?,?)";
+		String sqlTemplate = "INSERT INTO Author(id,email,phoneNumber,bio,password,dob,firstName,middleName,lastName,userName) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sqlTemplate);
 		int result = -1;
 
-		st.setString(1, author.getEmail());
-		st.setString(2, author.getPhoneNumber());
-		st.setString(3, author.getBio());
-		st.setString(4, author.getPassword());
-		st.setDate(5, author.getDob());
-		st.setString(6, author.getFirstName());
-		st.setString(7, author.getMiddleName());
-		st.setString(8, author.getLastName());
-		st.setString(9, author.getUserName());
+		st.setInt(1, author.getId());
+		st.setString(2, author.getEmail());
+		st.setString(3, author.getPhoneNumber());
+		st.setString(4, author.getBio());
+		st.setString(5, author.getPassword());
+		st.setDate(6, author.getDob());
+		st.setString(7, author.getFirstName());
+		st.setString(8, author.getMiddleName());
+		st.setString(9, author.getLastName());
+		st.setString(10, author.getUserName());
 
 		try {
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
-					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at insert() method. The exception message is %s. The inserted Author id is %s. The inserted Author email is %s. The inserted Author phoneNumber is %s. The inserted Author bio is %s. The inserted Author dob is %s. The inserted Author firstName is %s. The inserted Author lastName is %s. The inserted Author middleName is %s. The inserted Author lastName is %s. The inserted Author username is %s. ",
-					e.getMessage(), author.getId(),author.getEmail(),author.getPhoneNumber(),author.getBio(),author.getDob(),author.getFirstName(),author.getMiddleName(),author.getLastName(),author.getUserName()));
+					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at insert() method. The exception message is %s. The inserted Author id is %d. The inserted Author email is %s. The inserted Author phoneNumber is %s. The inserted Author bio is %s. The inserted Author dob is %s. The inserted Author firstName is %s. The inserted Author middleName is %s. The inserted Author lastName is %s. The inserted Author username is %s. ",
+					e.getMessage(), author.getId(),author.getEmail(),author.getPhoneNumber(),author.getBio(),author.getDob().toString(),author.getFirstName(),author.getMiddleName(),author.getLastName(),author.getUserName()));
 			throw e;
 		}
 
@@ -139,7 +140,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
-					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at update() method. The exception message is %s. The inserted Author id is %s. The inserted Author email is %s. The inserted Author phoneNumber is %s. The inserted Author bio is %s. The inserted Author dob is %s. The inserted Author firstName is %s. The inserted Author lastName is %s. The inserted Author middleName is %s. The inserted Author lastName is %s. The inserted Author username is %s. ",
+					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at update() method. The exception message is %s. The inserted Author id is %s. The inserted Author email is %s. The inserted Author phoneNumber is %s. The inserted Author bio is %s. The inserted Author dob is %s. The inserted Author firstName is %s. The inserted Author middleName is %s. The inserted Author lastName is %s. The inserted Author username is %s. ",
 					e.getMessage(), author.getId(),author.getEmail(),author.getPhoneNumber(),author.getBio(),author.getDob(),author.getFirstName(),author.getMiddleName(),author.getLastName(),author.getUserName()));
 			throw e;
 		}

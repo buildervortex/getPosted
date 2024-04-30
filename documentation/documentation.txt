@@ -45,7 +45,7 @@
 [2024/04/30 11.28] GSUdeshika           : Modified author profile update view page adding selections.
 [2024/04/30 12.07] GSUdeshika           : Modified author profile.html link to correct image link.
 [2024/04/30 12.33] GSUdeshika           : Updated author profile author view page link to correct image link.
-[2024/04/30 09.12] GSUdeshika           : Updated author profile update view page adding edit-button.
+[2024/04/30 09.12] GSUdeshika           : Modified author profile update view page adding edit-button.
 
 
 

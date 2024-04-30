@@ -72,11 +72,12 @@ public class SkillDAOImpl implements SkillDAO{
 	@Override
 	public int insert(Skill skill) throws SQLException{
 		Connection con = Database.getConnection();
-		String sqlTemplate = "INSERT INTO Skill(skill) VALUES (?)";
+		String sqlTemplate = "INSERT INTO Skill(id,skill) VALUES (?,?)";
 		PreparedStatement st = con.prepareStatement(sqlTemplate);
 		int result = -1;
 
-		st.setString(1,skill.getSkill());
+		st.setInt(1,skill.getId());
+		st.setString(2,skill.getSkill());
 
 		try{
 			result = st.executeUpdate();
@@ -155,5 +156,33 @@ public class SkillDAOImpl implements SkillDAO{
 		}
 
 		return skillList;
+	}
+
+	@Override
+	public Skill get(String skill) throws SQLException {
+		Connection con = Database.getConnection();
+		Skill skillOb = null;
+		String sqlTemplate = "SELECT * FROM Skill WHERE skill = ?";
+		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		select.setString(1,skill);
+
+		try{
+			rs = select.executeQuery();
+		}
+		catch(SQLException e){
+			logger.warning(String.format("There is SQLException happend in the com.getposted.model.SkillDAOImpl class at getId() method the id is %s. The exception message is %s",skill,e.getMessage()));
+			throw e;
+		}
+
+		if(rs.next()){
+			int qId = rs.getInt("id");
+			String qSkill = rs.getString("skill");
+
+			skillOb = new Skill(qId, qSkill);
+		}
+
+		return skillOb;
 	}
 }
