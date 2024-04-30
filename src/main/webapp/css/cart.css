@@ -3,9 +3,62 @@ body{
     grid-template-columns:3fr 1fr;
     grid-template-rows:1fr 10fr;
     grid-gap: 2cqw;
-    max-height: 40cqh;
+    max-height: 30vh;
 
 }
+
+.container1{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    
+    align-items:center;
+    justify-items: center;
+}
+.card1{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(20, 208, 67);
+    height: 100%;
+    width: 100%;
+ 
+}
+
+.card1 h1{
+    color: #007bff;
+    gap: 5vh;
+   margin-left: 20vh;
+
+}
+
+
+
+
+
+
+.container2{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    align-items:center;
+    justify-items: center;
+    margin-bottom: 1cqi ;
+}
+.card2{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(20, 208, 67);
+    height: 100%;
+    width: 100%;
+ 
+}
+
+
+
+
 
 
 
@@ -14,8 +67,9 @@ body{
     display:grid;
     justify-items: center;
     overflow:scroll;
-    grid-gap: 2cqw;
-    max-height: 90cqh;
+    overflow-x: hidden;
+    grid-gap: 1cqw;
+    max-height: 93vh;
 }
 
 
@@ -29,6 +83,7 @@ body{
     align-items: center;
     padding-top: 2%;
     padding-bottom: 2%;
+   
  
 }
 
@@ -47,8 +102,8 @@ input[type="checkbox"] {
 
 
 .card > img{
- max-width :10cqi;
- max-height:20cqi;
+ /*max-width :10cqi;*/
+ max-height:10cqi;
  gap: 2vh;
 
 
@@ -174,18 +229,20 @@ body {
     box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400vh;
-    width: 100%;
+    width: 80%;
+    height: 40%;
 }
 
 table {
     width: 100%;
-    margin-bottom: 15vh;
+   
+
 }
 
 table td {
     padding: 5vh;
     border-bottom: 1vh solid #ddd;
-    font-size: 4cqi;
+    font-size: 2cqi;
 }
 
 .price button {
