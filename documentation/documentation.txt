@@ -32,6 +32,7 @@
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
 [2024/04/28 10.29] GSUdeshika           : github issues discuss
 [2024/04/28 10.46] GSUdeshika           : create a author profile
+[2024/04/29] JSHHansaka                 : add template for contactus page
 [2024/04/28 10.46] GSUdeshika           : add author profile update view page
 [2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
 [2024/04/29 05.23] GSUdeshika           : Add author profile author view page
@@ -42,3 +43,15 @@
 [2024/04/29 20:59] GALDilhara		: Finished the logger package for the project. wrote all the test in JUNIT and fully tested the logger.
 [2024/04/29 21:00] GALDilhara		: Start the development of Database connection handler.
 [2024/04/29 21.00] GOKawya              : Git test
+[2024/04/29 22:56] GALDilhara		: Finished the database handler class. Wrote the test for database handler class and fully tested.
+[2024/04/29 22:56] GALDilhara		: Start the development of DAO classes for each table in the database.
+[2024/04/28 23:32] DGNuwan              : create checkout page.
+[2024/04/29 22:56] GALDilhara		: Continue the development DEO classes.
+[2024/04/29 00.47] GOKawya              : Add modification to user view page.
+[2024/04/28 23:32] DGNuwan              : create checkout page.
+[2024/04/27 22:44] ravindusenanayake    : add pub user view page.
+[2024/04/27 23:15] ravindusenanayake    : add hard copy request page.
+[2024/04/27 23:45] ravindusenanayake    : add publication update page.
+[2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
+[2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
+[2024/04/30 10:00] ravindusenanayake    : upadate footer pages.

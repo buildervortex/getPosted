@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Page</title>
     <link rel="stylesheet" href="css/pub update.css">
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
+    <nav>
+        <li><a href="#Overview">Overview</a></li>
+        <li><a href="#Products">Products</a></li>
+        <li><a href="#News">News</a></li>
+        <li><a href="#Contacts">Contacts</a></li>
+        <li><a href="#About">About</a></li>
+        <li style="float:right"><a class="active1" href="Log in">Log in</a></li>
+        <li style="float:right"><a class="active2" href="Sign in">Sign in</a></li>
+        <li style="float:right" class="popup"><a class="disabled3" href="Profile"> View Profile</a></li>
+        <div class="hide3">Login / Sign In First &nbsp;</div>
+    
+      </nav>
+      <br>
     <h1 class="page-heading">Update your publication</h1>
-    <div class="container">
+    <div class="container center">
         <div class="item1">
             <h2>Title</h2>
             <input type="text" id="title" placeholder="Enter title...">
@@ -35,6 +50,12 @@
             <input type="file" id="thumbnail">
             <img id="thumbnail-preview" src="#" alt="Thumbnail Preview">
         </div>
+        <!-- <div class="item6">
+
+        </div> -->
+        <div class="item7">
+
+        </div>
     </div>
 
     <script>
@@ -52,5 +73,9 @@
             }
         });
     </script>
+    <footer class="containerSP"> 
+        <p>© 2024 Copyright getpostedpublications.com | All Rights Reserved | <b>Get:::<sub>/</sub>>osted <sup><sup>TM</sup></sup></b></p>
+        <p class="gray"><sup><sup># B i n a r y B u i l d e r V o r t e x  &nbsp; &nbsp;    # T e a m E f f o r t @ 2 0 2 4</sup></p>
+    </footer>
 </body>
 </html>
