@@ -107,6 +107,7 @@ main {
     border: 1px solid #3e64ff;
     padding: 20px;
     background-color: #ecfcff;
+    border-radius: 20px;
 }
 
 .publication img {
