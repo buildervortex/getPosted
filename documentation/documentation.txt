@@ -37,10 +37,11 @@
 
 >>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
 
-[2024/04/28 10.29] GSUdeshika           : github issues discuss
-[2024/04/28 10.46] GSUdeshika           : create a author profile
-[2024/04/28 10.46] GSUdeshika           : add author profile update view page
-[2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
-[2024/04/29 05.23] GSUdeshika           : Add author profile author view page
+[2024/04/28 10.29] GSUdeshika           : github issues discuss.
+[2024/04/28 10.46] GSUdeshika           : create a author profile.
+[2024/04/28 10.46] GSUdeshika           : add author profile update view page.
+[2024/04/29 09.55] GSUdeshika           : Start the design author profile author view.
+[2024/04/29 05.23] GSUdeshika           : Add author profile author view page.
+[2024/04/30 11.28] GSUdeshika           : Updated author profile update view page adding selections.
 
 
