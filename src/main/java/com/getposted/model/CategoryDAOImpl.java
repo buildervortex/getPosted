@@ -74,11 +74,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public int insert(Category category) throws SQLException {
 		Connection con = Database.getConnection();
-		String sqlTemplate = "INSERT INTO Category(category) VALUES (?)";
+		String sqlTemplate = "INSERT INTO Category(id,category) VALUES (?,?)";
 		PreparedStatement st = con.prepareStatement(sqlTemplate);
 		int result = -1;
 
-		st.setString(1, category.getCategory());
+		st.setInt(1, category.getId());
+		st.setString(2, category.getCategory());
 
 		try {
 			result = st.executeUpdate();
@@ -161,5 +162,34 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 
 		return categoryList;
+	}
+
+	@Override
+	public Category get(String category) throws SQLException {
+		Connection con = Database.getConnection();
+		Category categoryOb = null;
+		String sqlTemplate = "SELECT * FROM Category WHERE category = ?";
+		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		select.setString(1, category);
+
+		try {
+			rs = select.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getId() method the id is %s. The exception message is %s",
+					category, e.getMessage()));
+			throw e;
+		}
+
+		if (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCategory = rs.getString("category");
+
+			categoryOb = new Category(qId, qCategory);
+		}
+
+		return categoryOb;
 	}
 }

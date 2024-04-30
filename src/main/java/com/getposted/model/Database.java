@@ -13,16 +13,18 @@ import java.lang.ClassNotFoundException;
 
 public class Database {
 
-	private static String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
-	private static String database = Sysenv.getEnv("DATABASENAME");	// "getPosted"
-	private static String userName = Sysenv.getEnv("DATABASEUSERNAME");
-	private static String password = Sysenv.getEnv("DATABASEPASSWORD");
 	private static String driver = "org.mariadb.jdbc.Driver";
 
 	private Database() {
 	}
 
 	public static Connection getConnection() throws SQLException {
+
+		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
+		String database = Sysenv.getEnv("DATABASENAME"); // "getPosted"
+		String userName = Sysenv.getEnv("DATABASEUSERNAME");
+		String password = Sysenv.getEnv("DATABASEPASSWORD");
+
 		// create connection data type variable
 		Connection connection = null;
 
@@ -40,7 +42,7 @@ public class Database {
 
 		// get the connection object
 		try {
-			connection = DriverManager.getConnection(url + database, userName, password);
+			connection = DriverManager.getConnection((url + database), userName, password);
 		} catch (SQLInvalidAuthorizationSpecException e) {
 			logger.severe(String.format(
 					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",

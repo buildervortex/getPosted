@@ -26,7 +26,7 @@
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
 [2024/04/28 10.29] GSUdeshika           : github issues discuss
 [2024/04/28 10.46] GSUdeshika           : create a author profile
-[2024/04/29] JSHHansaka                 : add template for contactus page
+[2024/04/29 11:20] JSHHansaka                 : add template for contactus page
 [2024/04/28 10.46] GSUdeshika           : add author profile update view page
 [2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
 [2024/04/29 05.23] GSUdeshika           : Add author profile author view page
@@ -37,15 +37,9 @@
 [2024/04/29 20:59] GALDilhara		: Finished the logger package for the project. wrote all the test in JUNIT and fully tested the logger.
 [2024/04/29 21:00] GALDilhara		: Start the development of Database connection handler.
 [2024/04/29 21.00] GOKawya              : Git test
-<<<<<<< HEAD
-<<<<<<< HEAD
 [2024/04/29 00.47] GOKawya              : Add modification to user view page.
-
-=======
-=======
 [2024/04/29 22:56] GALDilhara		: Finished the database handler class. Wrote the test for database handler class and fully tested.
 [2024/04/29 22:56] GALDilhara		: Start the development of DAO classes for each table in the database.
->>>>>>> 4928980fec8101705b024e97a37bf33da63593ef
 [2024/04/28 23:32] DGNuwan              : create checkout page.
 [2024/04/29 22:56] GALDilhara		: Continue the development DEO classes.
 [2024/04/29 00.47] GOKawya              : Add modification to user view page.
@@ -55,13 +49,8 @@
 [2024/04/27 23:45] ravindusenanayake    : add publication update page.
 [2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
 [2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
-<<<<<<< HEAD
->>>>>>> 28bf6d9acd23fb9e4b8680b7ef1a18588dc91fda
-
->>>>>>> dc337d341203e453e18e7c6c79912d4a83fd2b58
 [2024/04/29 00.47] GOKawya              : Resolving issues in my github account
 [2024/04/30 14.05] GOKawya              : Create user profile update view page.
-=======
 [2024/04/30 10:00] ravindusenanayake    : upadate footer pages.
 [2024/04/30 11:51] GALDilhara		: Created Sysenv class to make the code modular. The sysenv class can set parameters to java system properties and it can get parameters from java systemproperties or from environment vairables
 [2024/04/30 11:51] GALDilhara		: finalized the Sysenv class. Wrote all the tests and finished the test
@@ -73,4 +62,3 @@
 [2024/04/30 11.28] GSUdeshika           : Modified author profile update view page adding selections.
 [2024/04/30 13:07] GALDilhara		: Created test for create database, add tables, add test data and delete database.
 [2024/04/30 13:07] GALDilhara		: Simplyfy the creation of the test database.
->>>>>>> 4928980fec8101705b024e97a37bf33da63593ef

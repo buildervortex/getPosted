@@ -16,7 +16,7 @@ public class TestDatabase{
 	private static Connection con;
 
 	@BeforeClass
-	public static void initializeDatabase() throws SQLException{
+	public static void initializeDatabase(){
 		TestDataBase.createDatabase();
 	}
 
@@ -40,7 +40,7 @@ public class TestDatabase{
 
 
 	@AfterClass
-	public static void destroyDatabase() throws SQLException{
+	public static void destroyDatabase(){
 		TestDataBase.deleteDatabase();
 	}
 }

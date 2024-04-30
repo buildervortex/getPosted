@@ -73,11 +73,12 @@ public class LanguageDAOImpl implements LanguageDAO {
 	@Override
 	public int insert(Language language) throws SQLException {
 		Connection con = Database.getConnection();
-		String sqlTemplate = "INSERT INTO Language(language) VALUES (?)";
+		String sqlTemplate = "INSERT INTO Language(id,language) VALUES (?,?)";
 		PreparedStatement st = con.prepareStatement(sqlTemplate);
 		int result = -1;
 
-		st.setString(1, language.getLanguage());
+		st.setInt(1, language.getId());
+		st.setString(2, language.getLanguage());
 
 		try {
 			result = st.executeUpdate();
@@ -160,5 +161,34 @@ public class LanguageDAOImpl implements LanguageDAO {
 		}
 
 		return languageList;
+	}
+
+	@Override
+	public Language get(String language) throws SQLException {
+		Connection con = Database.getConnection();
+		Language languageOb = null;
+		String sqlTemplate = "SELECT * FROM Language WHERE language = ?";
+		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		select.setString(1, language);
+
+		try {
+			rs = select.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at get() method the id is %s. The exception message is %s",
+					language, e.getMessage()));
+			throw e;
+		}
+
+		if (rs.next()) {
+			int qId = rs.getInt("id");
+			String qLanguage = rs.getString("language");
+
+			languageOb = new Language(qId, qLanguage);
+		}
+
+		return languageOb;
 	}
 }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -45,6 +44,34 @@ public class CountryDAOImpl implements CountryDAO {
 		return country;
 	}
 
+	
+	public Country get(String country) throws SQLException {
+		Connection con = Database.getConnection();
+		Country countryOb = null;
+		String sqlTemplate = "SELECT * FROM Country WHERE country = ?";
+		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		select.setString(1, country);
+
+		try {
+			rs = select.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getId() method the id is %s. The exception message is %s",
+					country, e.getMessage()));
+			throw e;
+		}
+
+		if (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCountry = rs.getString("country");
+
+			countryOb = new Country(qId, qCountry);
+		}
+
+		return countryOb;
+	}
 	@Override
 	public List<Country> getAll() throws SQLException {
 		Connection con = Database.getConnection();
@@ -74,11 +101,12 @@ public class CountryDAOImpl implements CountryDAO {
 	@Override
 	public int insert(Country country) throws SQLException {
 		Connection con = Database.getConnection();
-		String sqlTemplate = "INSERT INTO Country(country) VALUES (?)";
+		String sqlTemplate = "INSERT INTO Country(id,country) VALUES (?,?)";
 		PreparedStatement st = con.prepareStatement(sqlTemplate);
 		int result = -1;
 
-		st.setString(1, country.getCountry());
+		st.setInt(1, country.getId());
+		st.setString(2, country.getCountry());
 
 		try {
 			result = st.executeUpdate();
