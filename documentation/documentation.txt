@@ -43,6 +43,6 @@
 [2024/04/29 09.55] GSUdeshika           : Start the design author profile author view.
 [2024/04/29 05.23] GSUdeshika           : Add author profile author view page.
 [2024/04/30 11.28] GSUdeshika           : Modified author profile update view page adding selections.
-[2024/04/30 12.07] GSUdeshika           : Updated author profile.html link to correct image link.
+[2024/04/30 12.07] GSUdeshika           : Modified author profile.html link to correct image link.
 
 
