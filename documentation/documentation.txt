@@ -64,7 +64,15 @@
 [2024/04/30 12.33] GSUdeshika           : Updated author profile author view page link to correct image link.
 [2024/04/30 09.12] GSUdeshika           : Modified author profile update view page adding edit-button.
 [2024/05/01 11.44] GSUdeshika           : Updated author profile author view page adding new modifications.
+<<<<<<< HEAD
+[2024/05/01 12.21] GSUdeshika           : UPdate CSS code in author profile update view page.
+
+
+
+
+=======
 [2024/05/01 12.21] GSUdeshika           : UPdated CSS code in author profile update view page.
+>>>>>>> ec0db0e37f577be129a26fce10ccfc9796ec74a7
 [2024/04/22 20:05] AHGK Arochana	: Create figma account and cteate share link
 [2024/04/23 10:15] AHGK Arochana	: Select color and theam for UX desing
 [2024/04/23 13:22] AHGK Arochana	: Start admin navigation bar in figma desing
@@ -92,4 +100,8 @@
 [2024/04/30 13:07] GALDilhara		: Created test for create database, add tables, add test data and delete database.
 [2024/04/30 13:07] GALDilhara		: Simplyfy the creation of the test database.
 [2024/05/30 15:08] GALDilhara		: Add the hash functionalities to the project.
+<<<<<<< HEAD
 [2024/05/01 08:52] DGNuwan              : add color to cart and checkout page.
+=======
+[2024/05/01 07.23] GSUdeshika           : Added correct image link to author profile author view HTML page.
+>>>>>>> bce1316e3b1fcc4a24db1d46f02ecb06bec3b5a8

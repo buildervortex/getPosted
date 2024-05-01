@@ -3,6 +3,7 @@ nav {
   font-size: 3cqh;
   margin: 0;
   padding: 0;
+  display:block;
   overflow: hidden;
   background-color: #c2f4ff;
   position:-webkit-sticky; 
@@ -54,9 +55,9 @@ li a:hover {
 }
 
 .disabled3 {
-  background-color: #dca7e7;
+  background-color: #72b2ff;
   color:rgb(0, 0, 0);
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
