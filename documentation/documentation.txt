@@ -31,7 +31,9 @@
 
 ++++++++++++++++++++++
 [2024/04/29 ] JSHHansaka                 : add template for contactus page
-[2024/04/30 ]
+[2024/04/30 ] JSHHansaka                 : update contact us page
+[2024/05/01 ] JSHHansaka                 : add about us page template
+[2024/05/01 ] JSHHansaka                 : update about us page
 =======
 =======
 [2024/04/29 11:20] JSHHansaka                 : add template for contactus page

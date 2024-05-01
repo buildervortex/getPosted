@@ -8,3 +8,26 @@
 body{
     background-color: rgb(216, 131, 20);
 }
+.heading{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:center ;
+    margin:20px auto;
+}
+.heading h1{
+    font-size: 40px;
+    color: #003;
+    margin-bottom: 25px;
+    position: relative;
+}
+.heading h1 ::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    margin: 0 auto;
+    background-color: #4caf50;
+}
