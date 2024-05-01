@@ -2,7 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="css/cart.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
+  
 </head>
 
 <body>

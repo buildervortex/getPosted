@@ -19,14 +19,15 @@ body{
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgb(20, 208, 67);
+    background-color: #5edfff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
     height: 100%;
     width: 100%;
  
 }
 
 .card1 h1{
-    color: #007bff;
+    color:black;
     gap: 5vh;
    margin-left: 20vh;
 
@@ -50,7 +51,8 @@ body{
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgb(20, 208, 67);
+    background-color: #3e64ff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
     height: 100%;
     width: 100%;
  
@@ -77,7 +79,8 @@ body{
     display:grid;
     grid-auto-flow: column;
     align-content: center;
-    background-color: aqua;
+    background-color:#b2fcff;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     width:100%;
     border-radius: 20px;
     align-items: center;
@@ -85,6 +88,11 @@ body{
     padding-bottom: 2%;
    
  
+}
+
+.card:hover{
+
+    background-color: #3e64ff;
 }
 
 
@@ -102,9 +110,9 @@ input[type="checkbox"] {
 
 
 .card > img{
- /*max-width :10cqi;*/
+ 
  max-height:10cqi;
- gap: 2vh;
+ gap: 1vh;
 
 
 }
@@ -154,33 +162,26 @@ input[type="checkbox"] {
     height:25%;
     border-radius: 50%;
     gap: 4vh;
+    color: #b2fcff;
 
  }
+ .card button:hover{
+    background-color:red;
+
+}
+
+
+
  .card > button >img{
 
     max-width :1cqi;
     max-height:3cqi;
    
+   
    }
    
 
 
-
- .cartItems .book{
-    background-color: brown;
-    grid-auto-flow: row;
-
-
-
- }
-.book h1{
-    display: grid;
-    color: rgb(46, 33, 224);
-    grid-auto-flow: column;
-    background-color: black;
-    grid-template-rows:1fr 1fr;
-    width: 100%;
- }
 
 
  .price{
@@ -188,27 +189,29 @@ input[type="checkbox"] {
     display:grid;
     justify-items:center;
     align-items: center;
-    background-color: aqua;
+    background-color:#b2fcff;
     
 }
 .priceContainer{
     display:grid;
     justify-items:center;
     align-items: center;
-    background-color: blue;
+    background-color:#3e64ff;
     height: 50cqh;
     max-width: 100cqh;
+    
    
 }
-.card > button {
-   
-    border-radius: 50%;
+
+.priceContainer:hover{
+    background-color: white;
 }
+
 
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ecfcff;
     padding: 20px;
 }
 
@@ -223,10 +226,10 @@ body {
 }
 
 .priceContainer {
-    background-color: white;
+    background-color:#ecfcff;
     padding: 20px;
     border-radius: 8vh;
-    box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3vh 6vh rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400vh;
     width: 80%;
@@ -248,8 +251,8 @@ table td {
 .price button {
     padding: 1cqi 2cqi;
     font-size: 3vh;
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: #5edfff;
+    color: #ecfcff;
     border: none;
     border-radius: 4cqi;
     cursor: pointer;
@@ -257,7 +260,7 @@ table td {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #3e64ff;
 }
 
 

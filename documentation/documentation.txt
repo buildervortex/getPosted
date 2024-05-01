@@ -92,3 +92,4 @@
 [2024/04/30 13:07] GALDilhara		: Created test for create database, add tables, add test data and delete database.
 [2024/04/30 13:07] GALDilhara		: Simplyfy the creation of the test database.
 [2024/05/30 15:08] GALDilhara		: Add the hash functionalities to the project.
+[2024/05/01 08:52] DGNuwan              : add color to cart and checkout page.
