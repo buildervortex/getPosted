@@ -93,7 +93,7 @@ public class UserDAOImpl implements UserDAO {
         st.setString(2, user.getEmail());
         st.setString(3, user.getPassword());
         st.setString(4, user.getUserName());
-        st.setDate(5, new java.sql.Date(user.getDob().getTime()));
+        st.setDate(5, user.getDob());
         st.setString(6, user.getFirstName());
         st.setString(7, user.getMiddleName());
         st.setString(8, user.getLastName());
@@ -121,7 +121,7 @@ public class UserDAOImpl implements UserDAO {
         st.setString(1, user.getEmail());
         st.setString(2, user.getPassword());
         st.setString(3, user.getUserName());
-        st.setDate(4, new java.sql.Date(user.getDob().getTime()));
+        st.setDate(4, user.getDob());
         st.setString(5, user.getFirstName());
         st.setString(6, user.getMiddleName());
         st.setString(7, user.getLastName());
