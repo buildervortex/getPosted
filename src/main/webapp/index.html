@@ -2,11 +2,24 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/homepage.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
+
+  <nav>
+    <li><a href="#Overview">Overview</a></li>
+    <li><a href="#Products">Products</a></li>
+    <li><a href="#Contacts">Contacts</a></li>
+    <li><a href="#About">About</a></li>
+    <li style="float:right"><a class="active1" href="Log in">Login/SignIn</a></li>
+    <li style="float:right" class="popup"><a class="disabled3" href="Profile"> View Profile</a></li>
+    <div class="hide3">Login / Sign In First &nbsp;</div>
+
+  </nav>
 
   <div class="container1">
     <div class="card1">
@@ -22,28 +35,20 @@
     </div>
     <div class="card1">
       <div>
-        <div class="element1">
-          <img src="img/homepage/profile.png" alt="account profile photo" height="50cqh">
-      </div>
-      <div class="element2 center">
-          <h3 class="charlimitter2">&nbsp;Join Today !</h3> <!--account username here FIRSTNAME ONLY-->
+        <div class="container1b">
+          <div class="card1b">
+          <img src="img/homepage/profile.png" alt="account profile photo" height="40px">
+            </div>
+        
+      <div class="card1b">
+          <h3 class="charlimitter2">Join Today!</h3> <!--account username here FIRSTNAME ONLY-->
+        </div>
         </div>
       </div>
     </div>
   </div> 
 
-  <nav>
-    <li><a href="#Overview">Overview</a></li>
-    <li><a href="#Products">Products</a></li>
-    <li><a href="#News">News</a></li>
-    <li><a href="#Contacts">Contacts</a></li>
-    <li><a href="#About">About</a></li>
-    <li style="float:right"><a class="active1" href="Log in">Log in</a></li>
-    <li style="float:right"><a class="active2" href="Sign in">Sign in</a></li>
-    <li style="float:right" class="popup"><a class="disabled3" href="Profile"> View Profile</a></li>
-    <div class="hide3">Login / Sign In First &nbsp;</div>
 
-  </nav>
 
   <!--ᵀᴹ ·  ˙  ° © ®-->
 
@@ -52,8 +57,16 @@
 <div class="container2">
   <div class="card2 font2b">
     <div>
-      <h1>˙·.·˙˙·.·˙ Welcome! ˙·.·˙˙·.✏️</h1>
+      <h1>Search Something to GET Started...✏️</h1>
     </div>
+  </div>
+  <div class="card2">
+    <form role="search" class="formSRH">
+      <input type="search" class="inputSRH" name="q" placeholder="Search..." aria-label="Search through site content">
+      <button class="buttonSRH">
+        <svg class="svgSRH" viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+      </button>
+    </form>
   </div>
   <div class="card2">
     <div>
