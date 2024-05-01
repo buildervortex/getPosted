@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -45,13 +44,13 @@
         </div>
 
         <div class="card1">
-          <h1>Name</h1>
+          <h2>Name</h2>
         </div>
         <div class="card1">
-          <h1>Price</h1>
+          <h3>Price</h3>
         </div>
         <div class="card1">
-          
+          <h4>&nbsp;</h4>
         </div>
 
       </div>
@@ -63,31 +62,53 @@
           <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
           <h4>76$</h4>
         </div>
-        
 
         <div class="card">
-            <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
-            <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
-            <h4>276$</h4>
-          </div>
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
 
 
-          <div class="card">
-            <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
-            <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
-            <h4>76$</h4>
-          </div>
+        <div class="card">
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
+
+        <div class="card">
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
 
 
-          <div class="card">
-            <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
-            <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
-            <h4>76$</h4>
-          </div>
-    
-        
-        
 
+        <div class="card">
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
+
+        <div class="card">
+          <img src="img/chekout/English_Harry_Potter_1_Epub_9781781100219.webp" alt="image">
+          <h3> A Visual Odyssey Across the Last Himalayan Kingdom</h3>
+          <h4>76$</h4>
+        </div>
 
 
     </section>
@@ -121,4 +142,3 @@
 </body>
 
 </html>
-
