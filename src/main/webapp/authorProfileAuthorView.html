@@ -45,7 +45,7 @@
 </main>
 <div class="container">
     <div class="publication">
-        <img src="/img/img/download blue.jpg" alt="Publication 1">
+        <img src="img/img/download blue.jpg" alt="Publication 1">
         <h2>Kristan Higgins</h2>
         <div class="stats">
             <button class="like-btn"><i class="far fa-thumbs-up"> <span class="like-count">100</span></i></button>
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="publication">
-        <img src="/img/img/blue.jpg" alt="Publication 2">
+        <img src="img/img/blue.jpg" alt="Publication 2">
         <h2>Out Of The Blue</h2>
         <div class="stats">
             <button class="like-btn"><i class="far fa-thumbs-up"> <span class="like-count">75</span></i></button>
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="publication">
-        <img src="/img/img/image.jpg" alt="Publication 3">
+        <img src="img/img/image.jpg" alt="Publication 3">
         <h2>Planet Earth Is Blue </h2>
         <div class="stats">
             <button class="like-btn"><i class="far fa-thumbs-up"> <span class="like-count">120</span></i></button>
