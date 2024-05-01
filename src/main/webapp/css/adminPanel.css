@@ -155,6 +155,13 @@ body {
     color: white;
 }
 
+.title{
+    color: var(--blue_1);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
 /* search */
 
 .search {
@@ -300,4 +307,17 @@ thead th {
 
 tbody tr:hover {
     background-color: #ffffff4d;
+}
+
+.myChart{
+    /* margin: 50px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.can_myChart{
+    padding: 50px;
+    width: 1000px;
+    height: 1000px;
 }

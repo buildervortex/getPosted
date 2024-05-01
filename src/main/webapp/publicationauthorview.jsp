@@ -1,0 +1,150 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/navbar.css" />
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/publicationauthorview.css">
+</head>
+
+<nav>
+  <li><a href="#Overview">Overview</a></li>
+  <li><a href="#Products">Products</a></li>
+  <li><a href="#News">News</a></li>
+  <li><a href="#Contacts">Contacts</a></li>
+  <li><a href="#About">About</a></li>
+  <li style="float:right"><a class="active1" href="Log in">Log in</a></li>
+  <li style="float:right"><a class="active2" href="Sign in">Sign in</a></li>
+  <li style="float:right" class="popup"><a class="disabled3" href="Profile">View Profile</a></li>
+  <div class="hide3">Login / Sign In First &nbsp;</div>
+
+</nav>
+<br>
+<div class ="center">
+  <h1 class="color4">:::Publication Details:::</h1>
+  <h5 style="color:rgb(98, 98, 98);">Hint: ... to change the details of the publication, click 'Update/Edit' button..... to get a copy of the publication, click 'Download'.....  to delete publication permanently, click 'Delete' button .....</h5>
+
+<br>  
+</div>
+
+
+<body>
+
+  <div class="container3">
+    <div class="card3">
+      <div>
+        <button class="button button2">Back to List-View</button>
+      </div>
+    </div>
+    <div class="card3">
+      <div>
+        <button class="button button5">Download a Copy</button>
+      </div>
+    </div>
+    <div class="card3">
+      <div>
+        <button class="button button1">Update/Edit Publication</button>
+      </div>
+    </div>
+    <div class="card3">
+      <div>
+        <button class="button button3">Delete Permanently</button>
+      </div>
+    </div>
+    </div>
+<br>
+  <div class="container1">
+    <div class="card1">
+      <div>
+        <h2>Cover Page</h2>
+          <img alt="thumbnail img" src="img/PublicationAuthorView/samplebook.png">
+      </div>
+    </div>
+    <div class="card1">
+      <div>
+        <h2>Title:-</h2>
+        <p class="font1">title goes here...</h3>
+      </div>
+    </div>
+    <div class="card1">
+      <div>
+        <h2>Category :-</h2>
+        <p class="font1">Category shows here...</p>
+      </div>
+    </div>
+    <div class="card1">
+      <div>
+        <h2>Price :-</h2>
+        <p class="font1"><b>$ &nbsp;</b>0000.00</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container2">
+    <div class="card2">
+      <div>
+        <h2>Description</h2>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum nostrum tempora reprehenderit doloremque culpa, distinctio magnam eum excepturi repellendus, esse tempore nisi similique, rerum alias amet voluptas eligendi eveniet necessitatibus nulla voluptatem ipsa blanditiis sapiente vitae. Libero, maiores, laudantium dolore incidunt ipsum eaque, sapiente amet consequuntur fugit aperiam magnam temporibus!
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container4">
+  <div class="card4">
+    <div>
+      <h2>Published Date :-</h2>
+      <p class="font1">DD/MM/YYYY</p>
+    </div>
+  </div>
+  <div class="card4">
+    <div>
+      <h2>Language :-</h2>
+      <p class="font1">sample language</p>
+      </div>
+  </div>
+  <div class="card4">
+    <div>
+      <h2>Size :-</h2>
+      <p class="font1">00,000 <b> &nbsp;MBs</b></p>
+    </div>
+  </div>
+
+  <div class="card4">
+    <div>
+      <h2>Rating :-</h2>
+      <p class="font1">0.0</p>
+    </div>
+  </div>
+  <div class="card4">
+    <div>
+      <h2>Likes :-</h2>
+      <p class="font1">000</p>
+    </div>
+  </div>
+
+</div>
+<!-- <br> -->
+<!-- <div class="container6">
+  <div class="card6 ">
+    <div>
+      <button class="button4b" style="vertical-align:middle"><span>View Author's Profile</span></button>
+      <button class="button4c">View Author ></button>
+    </div>
+  </div>
+</div> -->
+
+</div>
+
+</body>
+
+<br>
+
+<footer class="containerSP"> 
+  <span> 
+    <h3 class ="font6">© 2024 Copyright getpostedpublications.com | All Rights Reserved | <b>Get:<sup><sub>··</sub></sup><sub>/</sub>>osted<sup>ᵀᴹ</sup></b></h3>
+    <p class="font4 center">#BinaryBuilderVortex #TeamEffort2024</p>
+    </span>
+  </footer>
+
+
+  </html>
+  

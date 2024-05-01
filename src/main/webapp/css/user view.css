@@ -42,7 +42,7 @@ nav ul li a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #bef3f7;
+  background-color: #f8fafa;
   align-items: center;
   
 }
@@ -94,6 +94,12 @@ form input {
   border: 1px solid #46c5ff;
 }
 
+div.form-details {
+   margin-left: 330px;
+   padding: 50px;
+ 
+}
+
 form button[type="submit"] {
   background-color: #0c029b;
   color: #fff;
@@ -111,10 +117,25 @@ form button[type="submit"] {
   text-align: center;
 } 
  button{
- border-radius: 10%;
+ border-radius: 5%;
  width: 100px;
- height: 60px;
+ height: 40px;
  cursor: pointer;
- background-color: #080077;
+ background-color: #3124e6;
  color: #fff;
+ 
 }
+
+ div.edit-button {
+
+   margin-left: 600px;
+   width: 100px;
+
+ }
+
+ div.pro-details {
+
+    margin-left: 300px;
+    color: #776dff;
+
+ }

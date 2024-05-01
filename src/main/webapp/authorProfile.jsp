@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="css/author profile.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Update Profile</h1>
+        <div class="profile">
+            <div class="profile-image">
+                <img src="img/img/download.jpg" alt="Profile Picture">
+                <button class="edit-button">Change photo</button>
+            </div>
+            <div class="profile-details">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="GASajithJayasinghe">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" placeholder="Sajith">
+                <label for="mname">Middle Name:</label>
+                <input type="text" id="mname" name="mname" placeholder="Enter the Middle Name">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" placeholder="Jayasinghe">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="sajithjayasinghe@gmail.com">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="0763212001">
+                <label for="country">Country:</label>
+                <select>
+                    <option>United States</option>
+                    <option>Australia</option>
+                    <option>Sri Lanka</option>
+                </select>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter the Current Password">
+                <label for="retype-password">Retype Password:</label>
+                <input type="password" id="retype-password" name="retype-password" placeholder="Enter the New Password">
+                <label for="skills">Skills:</label>
+                <select>
+                    <option>Technical Writing</option>
+                    <option>Research</option>
+                    <option>Communication</option>
+                </select>
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" placeholder="I am a Technical Writer, Content Writer and Copywriter."></textarea>
+                <button class="save-button">Save</button>
+            </div>
+</body>
+</html>
+
+        

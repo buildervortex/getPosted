@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/user view.css">
+    <title>User Profile Update</title>
+</head>
+<body>
+   
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+      <header>
+          <h1>Edit Profile</h1>
+      </header>
+      <div class="profile-container">
+            <div class="Profile Photo"></div>
+            <img src="img/user view/a0f72461-c49a-4ad3-82af-9b74711b9202.jpg " alt="profile pohoto" class="profile-photo">
+            <button class="edit-photo">Edit Photo</button>
+            </div>            
+      </div>
+      <div class="pro-details">
+        <h2>Profile Details</h2>
+      </div>
+      <div class="form-details">
+        <form id="profile-form">
+           <div class="form-group">
+             <label for="fname">First Name:</label>
+             <input type="text" id="fname" name="fname" required>
+           </div><br>
+
+           <div class="form-group">
+             <label for="mname">Middle Name:</label>
+             <input type="text" id="mname" name="mname">
+           </div><br>
+
+           <div class="form-group">
+             <label for="lname">Last Name:</label>
+             <input type="text" id="lname" name="lname" required>
+           </div><br>
+
+           <div class="form-group">
+             <label for="uname">Username:</label>
+             <input type="text" id="uname" name="uname" required>
+           </div><br>
+
+           <div class="form-group">
+             <label for="dob">Date of Birth:</label>
+             <input type="date" id="dob" name="dob" required>
+           </div><br>
+
+           <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+           </div><br>
+
+           <div class="form-group">
+            <label for="retype-password">Retype Password:</label>
+            <input type="password" id="retype-password" name="retype-password" required><br>
+           </div><br>
+          
+      </div>
+        
+      <div class="edit-button">
+         <button type="submit">Update</button>
+      </div>
+        </form>
+      </div>
+</body>
+</html>

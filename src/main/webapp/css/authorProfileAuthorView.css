@@ -43,6 +43,7 @@ main {
 
 .profile-info{
     color: #5edfff;
+    font-size: 16px;
 }
 
 .profile-photo {
@@ -57,6 +58,7 @@ main {
     line-height: 30px;
     font-weight: bold;
     margin: 20px;
+    font-size: 16px;
 }
 
 .profile-details p {
@@ -65,6 +67,7 @@ main {
 
 .author-info{
     color: #3e64ff;
+    font-size: 16px;
 }
 
 .profile-photo img {
@@ -90,6 +93,7 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .update-button:hover {
@@ -107,11 +111,12 @@ main {
     border: 1px solid #3e64ff;
     padding: 20px;
     background-color: #ecfcff;
+    border-radius: 20px;
 }
 
 .publication img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 180px;
     border: 1px solid #3e64ff;
 }
 
