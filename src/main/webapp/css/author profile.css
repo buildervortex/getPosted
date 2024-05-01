@@ -59,7 +59,7 @@ h1{
 .edit-button{
     background-color: #3e64ff;
     color: white;
-    font-size: 100%;
+    font-size: 14px;
     padding: 5px 20px;
     border: none;
 }
@@ -72,6 +72,8 @@ h1{
 
 .profile-details label {
     font-weight: bold;
+    margin-left: 100px;
+    font-size: 14px;
 }
 
 .profile-details input[type="text"],
@@ -85,8 +87,9 @@ h1{
     background-color: #ecfcff;
     border: 1px solid #3e63ff;
     border-radius: 10px;
-    font-size: 100%;
+    font-size: 14px;
     color: black;
+    margin-left: 100px;
 }
 .profile-details select{
     width: 100%;
@@ -96,6 +99,8 @@ h1{
     border: 1px solid #3e64ff;
     border-radius: 10px;
     color: black;
+    margin-left: 100px;
+    font-size: 14px;
 }
 
 .save-button {
@@ -106,7 +111,8 @@ h1{
     cursor: pointer;
     border-radius: 10px;
     float: right;
-    font-size: 100%;    
+    font-size: 14px;
+    margin-left: 100px;    
 }
 
 .save-button:hover {

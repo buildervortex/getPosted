@@ -48,6 +48,7 @@
 [2024/04/30 12.33] GSUdeshika           : Updated author profile author view page link to correct image link.
 [2024/04/30 09.12] GSUdeshika           : Modified author profile update view page adding edit-button.
 [2024/05/01 11.44] GSUdeshika           : Updated author profile author view page adding new modifications.
+[2024/05/01 12.21] GSUdeshika           : UPdated CSS code in author profile update view page.
 
 
 
