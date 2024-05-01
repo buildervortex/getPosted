@@ -15,7 +15,7 @@ public class TestLogging{
 
 	@Test
 	public void testGetLogPath(){
-		String expectedString = "%h/%ugetPosted.log";
+		String expectedString = "%h/%uTestLogging#getPosted.log";
 		String givenString = Logging.getLogPath();
 		assertEquals(expectedString,givenString);
 	}
