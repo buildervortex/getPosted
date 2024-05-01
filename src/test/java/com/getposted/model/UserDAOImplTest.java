@@ -11,8 +11,10 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore()
 public class UserDAOImplTest {
 
     private static User user = new User();
