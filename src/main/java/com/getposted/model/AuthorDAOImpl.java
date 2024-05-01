@@ -122,7 +122,8 @@ public class AuthorDAOImpl implements AuthorDAO {
 	@Override
 	public int update(Author author) throws SQLException {
 		Connection con = Database.getConnection();
-		String sqlTemplate = "UPDATE Author SET email = ?, phoneNumber = ?, bio = ?, password = ?, dob = ?, firstName = ?, middleName =  ? , lastName = ?";
+		// INSERT INTO Author (id,email, phoneNumber, bio, password, dob, firstName, middleName, lastName, userName)
+		String sqlTemplate = "UPDATE Author SET email = ?, phoneNumber = ?, bio = ?, password = ?, dob = ?, firstName = ?, middleName = ?, lastName = ?, userName = ? WHERE id = ?";
 		PreparedStatement st = con.prepareStatement(sqlTemplate);
 		int result = -1;
 
@@ -135,6 +136,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		st.setString(7, author.getMiddleName());
 		st.setString(8, author.getLastName());
 		st.setString(9, author.getUserName());
+		st.setInt(10, author.getId());
 
 		try {
 			result = st.executeUpdate();
