@@ -30,6 +30,7 @@
 [2024/04/27 23.40] KDKapuge             : Add two cards to books page.
 [2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
+[2024/04/30 22.45] KDKapuge             : Update JavaScript code in books page.
 
 =======
 
@@ -50,4 +51,29 @@
 
 
 
+
+[2024/04/22 20:05] AHGK Arochana	: Create figma account and cteate share link
+[2024/04/23 10:15] AHGK Arochana	: Select color and theam for UX desing
+[2024/04/23 13:22] AHGK Arochana	: Start admin navigation bar in figma desing
+[2024/04/23 16:05] AHGK Arochana	: End admin navigation bar in figma desing
+[2024/04/23 20:45] AHGK Arochana	: Start admin home page in figma desing
+[2024/04/24 01:32] AHGK Arochana	: End admin home in figma desing
+[2024/04/25 10:12] AHGK Arochana	: Start admin author page in figma desing
+[2024/04/25 12:22] AHGK Arochana	: Disscus figma issue
+[2024/04/25 15:06] AHGK Arochana	: End admin author page in figma desing
+[2024/04/25 20:04] AHGK Arochana	: Start admin user page in figma desing
+[2024/04/25 21:13] AHGK Arochana	: End admin user page in figma desing
+[2024/04/25 23:42] AHGK Arochana	: Create admin analyzing page in figma desing
+[2024/04/26 08:55] AHGK Arochana	: Start Author Profile User View page in figma desing
+[2024/04/26 11:02] AHGK Arochana	: End Author Profile User View page in figma desing
+[2024/04/26 18:30] AHGK Arochana	: Disscus figma issue our team
+[2024/04/27 08:20] AHGK Arochana	: Clone git-hub folders 
+[2024/04/27 09:08] AHGK Arochana	: Start coding admin navigation bar in visual studio code
+[2024/04/27 14:38] AHGK Arochana	: End coding admin navigation bar
+[2024/04/27 18:30] AHGK Arochana	: Start coding admin home page
+[2024/04/27 23:52] AHGK Arochana	: End coding admin home page
+[2024/04/28 24:12] AHGK Arochana	: Admin home and navigation bar pull in github
+[2024/04/28 09:00] AHGK Arochana	: Create admin author,user and analying page
+[2024/04/30 10:22] AHGK Arochana	: Create Author Profile User View page in visual studio code
+[2024/04/01 08:43] AHGK Arochana	: Author Profile User View page pull in github
 

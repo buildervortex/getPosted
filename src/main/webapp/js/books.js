@@ -30,14 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 const books = [
-  { title: "Science", price: "$19.99", rating: 5, imgSrc: "C:/Users/User/Pictures/science_book.jpg" },
-  { title: "Mathematics", price: "$24.99", rating: 5, imgSrc: "C:/Users/User/Pictures/maths_book.jpg" },
-  { title: "History", price: "$29.99", rating: 5, imgSrc: "C:/Users/User/Pictures/history_book.jpg" },
-  { title: "Java", price: "$30.45", rating: 5, imgSrc: "C:/Users/User/Pictures/java_book.jpg" },
-  { title: "Python", price: "$19.99", rating: 5, imgSrc: "C:/Users/User/Pictures/python_book.jpg" },
-  { title: "English", price: "$24.99", rating: 5, imgSrc: "C:/Users/User/Pictures/english_book.jpg" },
-  { title: "DBMS", price: "$19.99", rating: 5, imgSrc: "C:/Users/User/Pictures/dbms_book.jpg" },
-  { title: "HTML", price: "$24.99", rating: 5, imgSrc: "C:/Users/User/Pictures/html_book.jpg" }
+  { title: "Science", price: "$19.99", rating: 5, imgSrc: "img/books/science book.jpg" },
+  { title: "Mathematics", price: "$24.99", rating: 5, imgSrc: "img/books/maths book.jpg" },
+  { title: "History", price: "$29.99", rating: 5, imgSrc: "img/books/history book.jpg" },
+  { title: "Java", price: "$30.45", rating: 5, imgSrc: "img/books/java.jpg" },
+  { title: "Python", price: "$19.99", rating: 5, imgSrc: "img/books/python book.jpg" },
+  { title: "English", price: "$24.99", rating: 5, imgSrc: "img/books/english book.jpg" },
+  { title: "DBMS", price: "$19.99", rating: 5, imgSrc: "img/books/dbms book.jpg" },
+  { title: "HTML", price: "$24.99", rating: 5, imgSrc: "img/books/html book.jpg" },
+  { title: "MUSIC", price: "$24.99", rating: 5, imgSrc: "img/books/musicbook.jpg" },
+  { title: "ART", price: "$24.99", rating: 5, imgSrc: "img/books/art book.jpg" },
+
 ];
 
 // Function to create card elements
@@ -64,7 +67,7 @@ function createCard(book) {
   rating.classList.add("rating");
   for (let i = 0; i < book.rating; i++) {
     const star = document.createElement("img");
-    star.src = "C:/Users/User/Downloads/star-removebg-preview.png";
+    star.src = "img/books/star-removebg-preview.png";
     star.alt = "star";
     rating.appendChild(star);
   }

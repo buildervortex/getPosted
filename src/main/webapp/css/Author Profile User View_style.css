@@ -113,12 +113,9 @@
     padding-bottom: 20px;
 }
 
-.information>tr {
-    padding-bottom: 5000px;
-}
 
 td {
-    margin-bottom: 50px;
+    padding: 10px;
 }
 
 .info_name {

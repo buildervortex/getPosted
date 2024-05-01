@@ -11,7 +11,7 @@ import java.sql.Connection;
 
 import java.sql.SQLException;
 
-public class TestDatabase{
+public class DatabaseTest{
 
 	private static Connection con;
 
