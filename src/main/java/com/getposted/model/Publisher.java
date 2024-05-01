@@ -16,6 +16,8 @@ public class Publisher {
     private double softCopyCommission;
     private double hardCopyPageCommission;
 
+    public Publisher(){}
+
     public Publisher(int id, String address, String webSite, String firstName, String middleName, String lastName,
             String email, double hardCopyPageCommissionForAuthor, String password, double hardCopyDiscount,
             double hardCopyPricePerPage, double softCopyCommission, double hardCopyPageCommission) {
