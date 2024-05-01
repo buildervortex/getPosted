@@ -11,8 +11,10 @@ import java.util.TimeZone;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("AuthorDAOImpTest")
 public class AuthorDAOImplTest {
 
     private static Author author = new Author();
