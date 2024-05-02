@@ -62,11 +62,7 @@ body {
     border:#007bff 2px;
     justify-content: center;
   
-    
-    
-  }
-  
-  
+    }
   
   .info_name {
      
@@ -79,8 +75,7 @@ body {
     padding: 10px;
   }
 
- 
-  div { 
+ div { 
 
     justify-items: center;
     align-items: center;
@@ -95,9 +90,7 @@ body {
     color: #4a79fa;
     padding: 20px;
     font-size: 400px;
-
-    
-  }
+ }
 
   div.table-info {
     background-color: #deecf8;
@@ -111,23 +104,25 @@ body {
     padding: 10px;
     margin-left: 240px;
     color: #5170fc;
-    
-    
-
   }
 
-
-
- 
-  h3 {
+ h3 {
 
     color: #2148f8;
+    text-align: center;
   }
 
-  
   h2 {
 
     color: #1032ca;
+    
+  }
+
+  h1 {
+
+    color: #2447e2;
+    margin-left: 100px;
+    
   }
  
   .profile-card {
@@ -147,8 +142,6 @@ body {
     border-radius: 8px;
     margin-bottom: 10px;
     object-fit: cover;
-
-
 }
 
 .profile-card h1 {
@@ -169,12 +162,7 @@ body {
    padding: 10px;
    margin: 100px;
    gap: 30px;
-   
-
-
 }
-
-
 
 .btn {
     display: inline-block;
@@ -188,6 +176,7 @@ body {
 
 .btn:hover {
     background-color: #2980b9;
+    
 }
   
   
@@ -205,15 +194,13 @@ body {
   
 }
  
-  d.main-btn:hover {
+  .main-btn:hover {
      
     background-color: #3498db;
     align-items: center;
     text-align: center;
     
-
-
-  }
+}
   
   
    
