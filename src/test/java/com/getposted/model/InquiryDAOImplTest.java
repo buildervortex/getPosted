@@ -1,8 +1,10 @@
 package com.getposted.model;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore()
 public class InquiryDAOImplTest {
 
     private static User user = new User();

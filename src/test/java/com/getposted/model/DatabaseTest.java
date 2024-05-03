@@ -3,7 +3,9 @@ package com.getposted.model;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 
 import com.getposted.model.Database;
 import com.getposted.system.Sysenv;
@@ -18,6 +20,12 @@ public class DatabaseTest{
 	@BeforeClass
 	public static void initializeDatabase(){
 		TestDataBase.createDatabase();
+	}
+
+	@Before
+	public void testCreateTables() throws SQLException{
+		TestDataBase.createTables();
+		TestDataBase.addTestData();
 	}
 
 	@Test
@@ -37,7 +45,6 @@ public class DatabaseTest{
 		con = Database.getConnection();
 		assertFalse(con.isClosed());
 	}
-
 
 	@AfterClass
 	public static void destroyDatabase(){
