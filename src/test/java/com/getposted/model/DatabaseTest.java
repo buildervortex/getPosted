@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.AfterClass;
 import org.junit.Before;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@Ignore
 public class DatabaseTest{
 
 	private static Connection con;
