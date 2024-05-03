@@ -15,8 +15,10 @@ public class Logging {
 	private static String logDirectory = "%h/";
 	private static String logFileName = "getPosted.log";
 	private static Formatter formatter = new SimpleFormatter();
+	private static String className = "";
 
 	public static Logger getLogger(String className){
+		Logging.className = className;
 		Logger logger = null;
 		Handler handler = null;
 
@@ -46,6 +48,6 @@ public class Logging {
 	}
 
 	public static String getLogPath(){
-		return Logging.logDirectory+"%u"+logFileName;
+		return Logging.logDirectory+"%u"+Logging.className+"#"+logFileName;
 	}
 }

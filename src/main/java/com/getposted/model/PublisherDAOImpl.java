@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Date;
@@ -100,22 +99,23 @@ public class PublisherDAOImpl implements PublisherDAO {
     @Override
     public int insert(Publisher publisher) throws SQLException {
         Connection con = Database.getConnection();
-        String sqlTemplate = "INSERT INTO Publisher(address,webSite,firstName,middleName,lastName,email,hardCopyPageCommissionForAuthor,password,hardCopyDiscount,hardCopyPricePerPage,softCopyCommission,hardCopyPageCommission) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sqlTemplate = "INSERT INTO Publisher(id,address,webSite,firstName,middleName,lastName,email,hardCopyPageCommissionForAuthor,password,hardCopyDiscount,hardCopyPricePerPage,softCopyCommission,hardCopyPageCommission) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement st = con.prepareStatement(sqlTemplate);
         int result = -1;
 
-        st.setString(1, publisher.getAddress());
-        st.setString(2, publisher.getWebSite());
-        st.setString(3, publisher.getFirstName());
-        st.setString(4, publisher.getMiddleName());
-        st.setString(5, publisher.getLastName());
-        st.setString(6, publisher.getEmail());
-        st.setDouble(7, publisher.getHardCopyPageCommissionForAuthor());
-        st.setString(8, publisher.getPassword());
-        st.setDouble(9, publisher.getHardCopyDiscount());
-        st.setDouble(10, publisher.getHardCopyPricePerPage());
-        st.setDouble(11, publisher.getSoftCopyCommission());
-        st.setDouble(12, publisher.getHardCopyPageCommission());
+        st.setInt(1, publisher.getId());
+        st.setString(2, publisher.getAddress());
+        st.setString(3, publisher.getWebSite());
+        st.setString(4, publisher.getFirstName());
+        st.setString(5, publisher.getMiddleName());
+        st.setString(6, publisher.getLastName());
+        st.setString(7, publisher.getEmail());
+        st.setDouble(8, publisher.getHardCopyPageCommissionForAuthor());
+        st.setString(9, publisher.getPassword());
+        st.setDouble(10, publisher.getHardCopyDiscount());
+        st.setDouble(11, publisher.getHardCopyPricePerPage());
+        st.setDouble(12, publisher.getSoftCopyCommission());
+        st.setDouble(13, publisher.getHardCopyPageCommission());
 
         try {
             result = st.executeUpdate();

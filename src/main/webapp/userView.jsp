@@ -10,10 +10,10 @@
    
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
             </ul>
         </nav>
       <header>
@@ -23,8 +23,7 @@
             <div class="Profile Photo"></div>
             <img src="img/user view/a0f72461-c49a-4ad3-82af-9b74711b9202.jpg " alt="profile pohoto" class="profile-photo">
             <button class="edit-photo">Edit Photo</button>
-            </div>
-            
+            </div>            
       </div>
       <div class="pro-details">
         <h2>Profile Details</h2>
