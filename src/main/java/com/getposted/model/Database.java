@@ -179,6 +179,21 @@ public class Database {
 		return result;
 	}
 
+	public static boolean dropTable(String name, Connection con) throws SQLException{
+		boolean result = false;
+		String query = "DROP TABLE "+name;
+		Statement statement = con.createStatement();
+
+		try{
+			statement.executeUpdate(query);
+		}
+		catch(SQLException e){
+			logger.severe(String.format("The SQLException occoured in dropTable method of the Database.java file. The exception message is %s",e.getMessage()));
+			throw e;
+		}
+
+		return result;
+	}
 	public static void executeUpdateFile(String fileName, Connection con) throws IOException{
 		List<String> lines = ReadFile.readLines(fileName);
 		try{
