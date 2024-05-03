@@ -12,9 +12,10 @@ public class Passowrd {
     private static final String algorithm = "SHA-512";
     private static Logger logger = Logging.getLogger(Passowrd.class.getName());
 
-    public static String getHash(String password) throws NoSuchAlgorithmException{
+    public static String getHash(String password, String salt, String pepper) throws NoSuchAlgorithmException{
         String hash = null;
         MessageDigest digest = null;
+        String securePassword = salt+password+pepper;
 
         try{
             digest = MessageDigest.getInstance(algorithm);
@@ -24,7 +25,7 @@ public class Passowrd {
             throw e;
         }
 
-        digest.update(password.getBytes(StandardCharsets.UTF_8));
+        digest.update(securePassword.getBytes(StandardCharsets.UTF_8));
 
         byte[] hashedBytes = digest.digest();
 

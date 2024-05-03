@@ -8,12 +8,14 @@ import java.util.logging.FileHandler;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.SimpleFormatter;
 
+import com.getposted.system.Sysenv;
+
 import java.io.IOException;
 
 public class Logging {
 
-	private static String logDirectory = "%h/";
-	private static String logFileName = "getPosted.log";
+	private static String logDirectory = Sysenv.getEnv("LOGDIRECTORY");
+	private static String logFileName = Sysenv.getEnv("LOGFILENAME");
 	private static Formatter formatter = new SimpleFormatter();
 	private static String className = "";
 

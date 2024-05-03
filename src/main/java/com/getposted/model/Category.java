@@ -25,8 +25,8 @@ public class Category {
 		this.id = value < 0 ? this.id : value;
 	}
 
-	public void setCategory(String value) {
-		this.category = value.length() <= 1 ? this.category : value;
+	public void setCategory(String value){
+		this.category = value.length() == 0 ? this.category : value;
 	}
 
 	@Override

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -46,6 +45,34 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	@Override
+	public Category get(String category) throws SQLException {
+		Connection con = Database.getConnection();
+		Category categoryOb = null;
+		String sqlTemplate = "SELECT * FROM Category WHERE category = ?";
+		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		select.setString(1, category);
+
+		try {
+			rs = select.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getId() method the id is %s. The exception message is %s",
+					category, e.getMessage()));
+			throw e;
+		}
+
+		if (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCategory = rs.getString("category");
+
+			categoryOb = new Category(qId, qCategory);
+		}
+
+		return categoryOb;
+	}
+	@Override
 	public List<Category> getAll() throws SQLException {
 		Connection con = Database.getConnection();
 		List<Category> categoryList = new ArrayList();
@@ -70,6 +97,35 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 		return categoryList;
 	}
+
+	@Override
+	public List<Category> getList(int limit) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Category> categoryList = new ArrayList();
+		String sqlTemplate = "SELECT * FROM Category LIMIT ?";
+		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		select.setInt(1, limit);
+
+		try {
+			rs = select.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getList(). The limit is %d .The exception message is %s",
+					limit, e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCategory = rs.getString("category");
+			categoryList.add(new Category(qId, qCategory));
+		}
+
+		return categoryList;
+	}
+
 
 	@Override
 	public int insert(Category category) throws SQLException {
@@ -134,62 +190,5 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 
 		return result;
-	}
-
-	@Override
-	public List<Category> getList(int limit) throws SQLException {
-		Connection con = Database.getConnection();
-		List<Category> categoryList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Category LIMIT ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
-		ResultSet rs = null;
-
-		select.setInt(1, limit);
-
-		try {
-			rs = select.executeQuery();
-		} catch (SQLException e) {
-			logger.warning(String.format(
-					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getList(). The limit is %d .The exception message is %s",
-					limit, e.getMessage()));
-			throw e;
-		}
-
-		while (rs.next()) {
-			int qId = rs.getInt("id");
-			String qCategory = rs.getString("category");
-			categoryList.add(new Category(qId, qCategory));
-		}
-
-		return categoryList;
-	}
-
-	@Override
-	public Category get(String category) throws SQLException {
-		Connection con = Database.getConnection();
-		Category categoryOb = null;
-		String sqlTemplate = "SELECT * FROM Category WHERE category = ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
-		ResultSet rs = null;
-
-		select.setString(1, category);
-
-		try {
-			rs = select.executeQuery();
-		} catch (SQLException e) {
-			logger.warning(String.format(
-					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getId() method the id is %s. The exception message is %s",
-					category, e.getMessage()));
-			throw e;
-		}
-
-		if (rs.next()) {
-			int qId = rs.getInt("id");
-			String qCategory = rs.getString("category");
-
-			categoryOb = new Category(qId, qCategory);
-		}
-
-		return categoryOb;
 	}
 }
