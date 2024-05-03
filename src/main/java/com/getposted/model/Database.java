@@ -28,6 +28,7 @@ public class Database {
 	private Database() {
 	}
 
+	// get a connection for a database on the DBMS
 	public static Connection getConnection() throws SQLException {
 
 		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
@@ -65,7 +66,8 @@ public class Database {
 		return connection;
 	}
 
-	public static Connection getDatabaseConnection(String url, String userName, String password) throws SQLException{
+	// get connection for the DBMS
+	public static Connection getDBMSConnection(String url, String userName, String password) throws SQLException{
 
 		// create connection data type variable
 		Connection connection = null;
