@@ -16,66 +16,36 @@
 [2024/04/28 03:40] DGNuwan              : create cart grid responsiveness.
 [2024/04/28 09:53] DGNuwan              : github issue discuss.
 [2024/04/28 09:53] DGNuwan              : start develop checkout page.
+
+
+
+
+=======
+
 [2024/04/26 11.15] KDKapuge             : Add author sign up page to the github.
 [2024/04/26 11.45] KDKapuge             : Add publication creative page to github.
 [2024/04/27 12.40] KDKapuge             : Updated author sign up page adding navbar.
 [2024/04/27 12.55] KDKapuge             : Updated publication creative page adding navbar.
+<<<<<<< HEAD
 [2024/04/27 14.05] KDKapuge             : Add books(category) page to github.
 [2024/04/27 23.40] KDKapuge             : Add two cards to books page.
 [2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
-<<<<<<< HEAD
 [2024/04/30 22.45] KDKapuge             : Update JavaScript code in books page.
 [2024/05/02 21.30] KDKapuge             : Start modifie author sign up page.
 [2024/05/03 09.30] KDKapuge             : Start modifie publication creative page.
-[2024/05/03 12.05] KDKapuge             : Upload modified author sign up page to github.
-[2024/05/03 12.30] KDKapuge             : Upload modified publication creative page to github. 
+[2024/05/03 12.05] KDKapuge             : Upload  author sign up page to github.
+[2024/05/03 12.30] KDKapuge             : Upload publication creative page to github. 
+
 
 
 
 =======
-[2024/04/28 10.29] GSUdeshika           : github issues discuss
-[2024/04/28 10.46] GSUdeshika           : create a author profile
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 6eafdb9cfdf61c5c75a2965c5376957ce9211802
 
-++++++++++++++++++++++
-[2024/04/29 ] JSHHansaka                 : add template for contactus page
-[2024/04/30 ] JSHHansaka                 : update contact us page
-[2024/05/01 ] JSHHansaka                 : add about us page template
-[2024/05/01 ] JSHHansaka                 : update about us page
-=======
-=======
-[2024/04/29 11:20] JSHHansaka                 : add template for contactus page
->>>>>>> bce1316e3b1fcc4a24db1d46f02ecb06bec3b5a8
-[2024/04/28 10.46] GSUdeshika           : add author profile update view page
-[2024/04/29 09.55] GSUdeshika           : Start the design author profile author view page
-[2024/04/29 05.23] GSUdeshika           : Add author profile author view page
-[2024/04/29 17:53] GALDilhara		: Add the .gitignore to the project and starts to create model part of the mvc architecture.
-[2024/04/29 17:53] GALDilhara		: Starts to develop the database connectivity with JDBC in DAO architecture.
-[2024/04/29 18:57] GALDilhara		: Before the Database connectivity there is a need of a logger to log the messages. Start the developing of a loggin library.
-[2024/04/29 18:57] GALDilhara		: Starts using JUIT as testing library for the project.
-[2024/04/29 20:59] GALDilhara		: Finished the logger package for the project. wrote all the test in JUNIT and fully tested the logger.
-[2024/04/29 21:00] GALDilhara		: Start the development of Database connection handler.
-[2024/04/29 21.00] GOKawya              : Git test
-[2024/04/29 00.47] GOKawya              : Add modification to user view page.
-[2024/04/29 22:56] GALDilhara		: Finished the database handler class. Wrote the test for database handler class and fully tested.
-[2024/04/29 22:56] GALDilhara		: Start the development of DAO classes for each table in the database.
-[2024/04/28 23:32] DGNuwan              : create checkout page.
-[2024/04/29 22:56] GALDilhara		: Continue the development DEO classes.
-[2024/04/29 00.47] GOKawya              : Add modification to user view page.
-[2024/04/28 23:32] DGNuwan              : create checkout page.
-[2024/04/27 22:44] ravindusenanayake    : add pub user view page.
-[2024/04/27 23:15] ravindusenanayake    : add hard copy request page.
-[2024/04/27 23:45] ravindusenanayake    : add publication update page.
-[2024/04/28 23:45] ravindusenanayake    : add navbar and footer in to pages.
-[2024/04/28 23:45] ravindusenanayake    : update user view page/hardcopy page/upadate page.
-[2024/04/29 00.47] GOKawya              : Resolving issues in my github account
-[2024/04/30 14.05] GOKawya              : Create user profile update view page.
-[2024/04/30 10:00] ravindusenanayake    : upadate footer pages.
-[2024/04/30 11:51] GALDilhara		: Created Sysenv class to make the code modular. The sysenv class can set parameters to java system properties and it can get parameters from java systemproperties or from environment vairables
-[2024/04/30 11:51] GALDilhara		: finalized the Sysenv class. Wrote all the tests and finished the test
+>>>>>>> 4e9403cbc621e1c275a2cc3567de0e4b57cee19e
+
+>>>>>>> 7ae38c9fbc1561c8b7f0ad7b58aea40908c1f77d
+
 [2024/04/28 10.29] GSUdeshika           : github issues discuss.
 [2024/04/28 10.46] GSUdeshika           : create a author profile.
 [2024/04/28 10.46] GSUdeshika           : add author profile update view page.
@@ -85,16 +55,10 @@
 [2024/04/30 12.07] GSUdeshika           : Modified author profile.html link to correct image link.
 [2024/04/30 12.33] GSUdeshika           : Updated author profile author view page link to correct image link.
 [2024/04/30 09.12] GSUdeshika           : Modified author profile update view page adding edit-button.
-[2024/05/01 11.44] GSUdeshika           : Updated author profile author view page adding new modifications.
-<<<<<<< HEAD
-[2024/05/01 12.21] GSUdeshika           : UPdate CSS code in author profile update view page.
 
 
 
 
-=======
-[2024/05/01 12.21] GSUdeshika           : UPdated CSS code in author profile update view page.
->>>>>>> ec0db0e37f577be129a26fce10ccfc9796ec74a7
 [2024/04/22 20:05] AHGK Arochana	: Create figma account and cteate share link
 [2024/04/23 10:15] AHGK Arochana	: Select color and theam for UX desing
 [2024/04/23 13:22] AHGK Arochana	: Start admin navigation bar in figma desing
@@ -119,11 +83,4 @@
 [2024/04/28 09:00] AHGK Arochana	: Create admin author,user and analying page
 [2024/04/30 10:22] AHGK Arochana	: Create Author Profile User View page in visual studio code
 [2024/04/01 08:43] AHGK Arochana	: Author Profile User View page pull in github
-[2024/04/30 13:07] GALDilhara		: Created test for create database, add tables, add test data and delete database.
-[2024/04/30 13:07] GALDilhara		: Simplyfy the creation of the test database.
-[2024/05/30 15:08] GALDilhara		: Add the hash functionalities to the project.
-<<<<<<< HEAD
-[2024/05/01 08:52] DGNuwan              : add color to cart and checkout page.
-=======
-[2024/05/01 07.23] GSUdeshika           : Added correct image link to author profile author view HTML page.
->>>>>>> bce1316e3b1fcc4a24db1d46f02ecb06bec3b5a8
+
