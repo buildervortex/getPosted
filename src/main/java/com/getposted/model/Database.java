@@ -22,6 +22,10 @@ import com.getposted.fileHandler.ReadFile;
 public class Database {
 
 	private static String driver = "org.mariadb.jdbc.Driver";
+	private static String url = Sysenv.getEnv("DATABASEURL");					// "jdbc:mariadb://localhost:3306/"
+	private static String database = Sysenv.getEnv("DATABASENAME");				// getPosted
+	private static String userName = Sysenv.getEnv("DATABASEUSERNAME");
+	private static String password = Sysenv.getEnv("DATABASEPASSWORD");
 	// get the Logger object to log the messages
 	private static Logger logger = Logging.getLogger(Database.class.getName());
 
@@ -30,11 +34,6 @@ public class Database {
 
 	// get a connection for a database on the DBMS
 	public static Connection getConnection() throws SQLException {
-
-		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
-		String database = Sysenv.getEnv("DATABASENAME"); // "getPosted"
-		String userName = Sysenv.getEnv("DATABASEUSERNAME");
-		String password = Sysenv.getEnv("DATABASEPASSWORD");
 
 		// create connection data type variable
 		Connection connection = null;
@@ -66,10 +65,6 @@ public class Database {
 		return connection;
 	}
 	public static Connection getConnection(String database) throws SQLException {
-
-		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
-		String userName = Sysenv.getEnv("DATABASEUSERNAME");
-		String password = Sysenv.getEnv("DATABASEPASSWORD");
 
 		// create connection data type variable
 		Connection connection = null;
@@ -242,6 +237,14 @@ public class Database {
 		catch(SQLException e){
 			logger.severe(String.format("The SQLException occoured in the executeUpdateFile method when executing lines of %s file. the error message is %s",fileName,e.getMessage()));
 		}
+	}
+
+	public static void reload(){
+		Database.driver = "org.mariadb.jdbc.Driver";
+		Database.url = Sysenv.getEnv("DATABASEURL");
+		Database.database = Sysenv.getEnv("DATABASENAME");
+		Database.userName = Sysenv.getEnv("DATABASEUSERNAME");
+		Database.password = Sysenv.getEnv("DATABASEPASSWORD");		
 	}
 
 }
