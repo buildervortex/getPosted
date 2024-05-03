@@ -6,13 +6,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 import com.getposted.logger.Logging;
+
+import java.util.List;
 import java.util.logging.Logger;
 import com.getposted.system.Sysenv;
 
 import java.sql.SQLException;
 import java.sql.SQLInvalidAuthorizationSpecException;
 import java.sql.Statement;
+import java.io.IOException;
 import java.lang.ClassNotFoundException;
+
+import com.getposted.fileHandler.ReadFile;
 
 public class Database {
 
@@ -170,6 +175,20 @@ public class Database {
 		}
 
 		return result;
+	}
+
+	public static void executeUpdateFile(String fileName, Connection con) throws IOException{
+		List<String> lines = ReadFile.readLines(fileName);
+		try{
+			Statement statement = con.createStatement();
+
+			for(String line: lines){
+				statement.executeUpdate(line);
+			}
+		}
+		catch(SQLException e){
+			logger.severe(String.format("The SQLException occoured in the executeUpdateFile method when executing lines of %s file. the error message is %s",fileName,e.getMessage()));
+		}
 	}
 
 }
