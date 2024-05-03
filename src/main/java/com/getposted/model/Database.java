@@ -17,6 +17,7 @@ import java.lang.ClassNotFoundException;
 public class Database {
 
 	private static String driver = "org.mariadb.jdbc.Driver";
+	// get the Logger object to log the messages
 	private static Logger logger = Logging.getLogger(Database.class.getName());
 
 	private Database() {
@@ -32,9 +33,6 @@ public class Database {
 		// create connection data type variable
 		Connection connection = null;
 
-		// get the Logger object to log the messages
-		
-
 		// load the driver and register it.
 		try {
 			Class.forName(driver);
@@ -47,6 +45,38 @@ public class Database {
 		// get the connection object
 		try {
 			connection = DriverManager.getConnection((url + database), userName, password);
+		} catch (SQLInvalidAuthorizationSpecException e) {
+			logger.severe(String.format(
+					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
+					url, password, userName, driver, e.getMessage()));
+		} catch (SQLException e) {
+			logger.severe(String.format(
+					"The SQLEXception occured when tring to get the connection object using DriverManager.getConnection method. The Driver loading was successful. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
+					url, password, userName, driver, e.getMessage()));
+			throw e;
+		}
+
+		// return the connection object
+		return connection;
+	}
+
+	public static Connection getDatabaseConnection(String url, String userName, String password) throws SQLException{
+
+		// create connection data type variable
+		Connection connection = null;
+
+		// load the driver and register it.
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			logger.severe(String.format(
+					"The Driver class not found exception occured. the Driver class name is %s. The exception message is %s",
+					driver, e.getMessage()));
+		}
+
+		// get the connection object
+		try {
+			connection = DriverManager.getConnection((url), userName, password);
 		} catch (SQLInvalidAuthorizationSpecException e) {
 			logger.severe(String.format(
 					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
@@ -94,33 +124,16 @@ public class Database {
 		return result;
 	}
 
-	public static boolean checkDatabaseExists(String name, String url, String userName, String password) throws SQLException{
+	public static boolean checkDatabaseExists(String name, Connection connection) throws SQLException{
 		boolean result = false;
-		Connection connection=null;
-
-		// load the driver and register it.
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			logger.severe(String.format(
-					"The Driver class not found exception occured in checkDatabaseExists method of the Database.java file. the Driver class name is %s. The exception message is %s",
-					driver, e.getMessage()));
+		DatabaseMetaData metaData = null;
+		try{
+			metaData = connection.getMetaData();
 		}
-
-		try {
-			connection = DriverManager.getConnection(url, userName, password);
-		} catch (SQLInvalidAuthorizationSpecException e) {
-			logger.severe(String.format(
-					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
-		} catch (SQLException e) {
-			logger.severe(String.format(
-					"The SQLEXception occured when tring to get the connection object using DriverManager.getConnection method. The Driver loading was successful. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+		catch (SQLException e){
+			logger.severe(String.format("The SQLException occoured in checkDatabaseExists method of the Database.java file. The exception message is %s.",e.getMessage()));
 			throw e;
 		}
-
-		DatabaseMetaData metaData = connection.getMetaData();
 
 		// get the list of databases
 		ResultSet resultSet = metaData.getCatalogs();
@@ -138,7 +151,7 @@ public class Database {
 		return result;
 	}
 
-	public boolean checkTableExists(String tableName, Connection con) throws SQLException{
+	public static boolean checkTableExists(String tableName, Connection con) throws SQLException{
 		boolean result = false;
 		DatabaseMetaData databaseMetaData =null;
 
