@@ -12,9 +12,9 @@ public class Sysenv {
         String envValue = System.getenv(key);
         String propertyValue = System.getProperty(key);
 
-        if (envValue == null) return propertyValue;
+        if (propertyValue == null) return envValue;
 
-        return envValue;
+        return propertyValue;
     }
     
 }

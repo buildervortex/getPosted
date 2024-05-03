@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 
@@ -138,7 +137,7 @@ public class DatabaseTest{
 	}
 
 	@Test
-	public void testExecuteUpdateFile() throws SQLException, IOException{
+	public void testExecuteUpdateOnFile() throws SQLException, IOException{
 		String path = Paths.get("src/test/resources/databaseTables.txt").toAbsolutePath().toString();
 
 		// add the table names
@@ -170,7 +169,7 @@ public class DatabaseTest{
 
 
 		con = Database.getConnection(databaseName);
-		Database.executeUpdateFile(path, con);
+		Database.executeUpdateOnFile(path, con);
 		con.close();
 
 		con = Database.getConnection(databaseName);
@@ -187,6 +186,52 @@ public class DatabaseTest{
 		con.close();
 	}
 
+	@Test
+	public void testExecuteUpdateOnResource() throws SQLException, IOException{
+		List<String> tableNames = new ArrayList<String>();
+		tableNames.add("Language");
+		tableNames.add("Category");
+		tableNames.add("Skill");
+		tableNames.add("Country");
+		tableNames.add("Author");
+		tableNames.add("Publisher");
+		tableNames.add("User");
+		tableNames.add("Publication");
+		tableNames.add("SearchTag");
+		tableNames.add("Save");
+		tableNames.add("Inquiry");
+		tableNames.add("PhoneNumber");
+		tableNames.add("Purchase");
+		tableNames.add("IsInformed");
+		tableNames.add("Rates");
+		tableNames.add("Request");
+		tableNames.add("IsNotifiedBy");
+		tableNames.add("Has");
+		tableNames.add("Reviews");
+
+		String databaseName = "testExecuteUpdateFile";
+		con = Database.getDBMSConnection();
+		Database.createDatabase(databaseName, con);
+		con.close();
+
+
+		con = Database.getConnection(databaseName);
+		Database.executeUpdateOnResourceFile("databaseTables.txt", con);
+		con.close();
+
+		con = Database.getConnection(databaseName);
+		for (String tableName: tableNames){
+			assertTrue(Database.isTableExists(tableName, con));
+		}
+		assertFalse(Database.isTableExists("notexists1", con));
+		assertFalse(Database.isTableExists("notexists2", con));
+		assertFalse(Database.isTableExists("notexists4", con));
+		assertFalse(Database.isTableExists("notexists5", con));
+		
+		con = Database.getDBMSConnection();
+		Database.dropDatabase(databaseName, con);
+		con.close();		
+	}
 	@AfterClass
 	public static void destroyDatabase(){
 		TestDataBase.deleteDatabase();

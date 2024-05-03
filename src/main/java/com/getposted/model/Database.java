@@ -21,17 +21,19 @@ import com.getposted.fileHandler.ReadFile;
 
 public class Database {
 
-	private static String driver = "org.mariadb.jdbc.Driver";
+	private static String driver = Sysenv.getEnv("JDBCDRIVER");					// "org.mariadb.jdbc.Driver"
 	private static String url = Sysenv.getEnv("DATABASEURL");					// "jdbc:mariadb://localhost:3306/"
 	private static String database = Sysenv.getEnv("DATABASENAME");				// getPosted
 	private static String userName = Sysenv.getEnv("DATABASEUSERNAME");
 	private static String password = Sysenv.getEnv("DATABASEPASSWORD");
+
 	// get the Logger object to log the messages
 	private static Logger logger = Logging.getLogger(Database.class.getName());
 
 	private Database() {
 	}
 
+	// Based On ENV
 	// get a connection for a database on the DBMS
 	public static Connection getConnection() throws SQLException {
 
@@ -49,21 +51,24 @@ public class Database {
 
 		// get the connection object
 		try {
-			connection = DriverManager.getConnection((url + database), userName, password);
+			connection = DriverManager.getConnection((Database.url + Database.database), Database.userName, Database.password);
 		} catch (SQLInvalidAuthorizationSpecException e) {
 			logger.severe(String.format(
 					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+					Database.url, Database.password, Database.userName, Database.driver, e.getMessage()));
 		} catch (SQLException e) {
 			logger.severe(String.format(
 					"The SQLEXception occured when tring to get the connection object using DriverManager.getConnection method. The Driver loading was successful. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+					Database.url, Database.password, Database.userName, Database.driver, e.getMessage()));
 			throw e;
 		}
 
 		// return the connection object
 		return connection;
 	}
+
+	// Based on ENV
+	// get the connection for seperate database quickly without going through the environment variables
 	public static Connection getConnection(String database) throws SQLException {
 
 		// create connection data type variable
@@ -71,24 +76,24 @@ public class Database {
 
 		// load the driver and register it.
 		try {
-			Class.forName(driver);
+			Class.forName(Database.driver);
 		} catch (ClassNotFoundException e) {
 			logger.severe(String.format(
 					"The Driver class not found exception occured. the Driver class name is %s. The exception message is %s",
-					driver, e.getMessage()));
+					Database.driver, e.getMessage()));
 		}
 
 		// get the connection object
 		try {
-			connection = DriverManager.getConnection((url + database), userName, password);
+			connection = DriverManager.getConnection((Database.url + database), Database.userName, Database.password);
 		} catch (SQLInvalidAuthorizationSpecException e) {
 			logger.severe(String.format(
 					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+					Database.url, Database.password, Database.userName, Database.driver, e.getMessage()));
 		} catch (SQLException e) {
 			logger.severe(String.format(
 					"The SQLEXception occured when tring to get the connection object using DriverManager.getConnection method. The Driver loading was successful. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+					Database.url, Database.password, Database.userName, Database.driver, e.getMessage()));
 			throw e;
 		}
 
@@ -96,12 +101,9 @@ public class Database {
 		return connection;
 	}
 
+	// Based On ENV
 	// get connection for the DBMS
 	public static Connection getDBMSConnection() throws SQLException{
-
-		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
-		String userName = Sysenv.getEnv("DATABASEUSERNAME");
-		String password = Sysenv.getEnv("DATABASEPASSWORD");
 		// create connection data type variable
 		Connection connection = null;
 
@@ -111,20 +113,20 @@ public class Database {
 		} catch (ClassNotFoundException e) {
 			logger.severe(String.format(
 					"The Driver class not found exception occured. the Driver class name is %s. The exception message is %s",
-					driver, e.getMessage()));
+					Database.driver, e.getMessage()));
 		}
 
 		// get the connection object
 		try {
-			connection = DriverManager.getConnection((url), userName, password);
+			connection = DriverManager.getConnection(Database.url, Database.userName, Database.password);
 		} catch (SQLInvalidAuthorizationSpecException e) {
 			logger.severe(String.format(
 					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+					Database.url, Database.password, Database.userName, Database.driver, e.getMessage()));
 		} catch (SQLException e) {
 			logger.severe(String.format(
 					"The SQLEXception occured when tring to get the connection object using DriverManager.getConnection method. The Driver loading was successful. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
-					url, password, userName, driver, e.getMessage()));
+					Database.url, Database.password, Database.userName, Database.driver, e.getMessage()));
 			throw e;
 		}
 
@@ -225,18 +227,16 @@ public class Database {
 
 		return result;
 	}
-	public static void executeUpdateFile(String fileName, Connection con) throws IOException{
+	
+	public static void executeUpdateOnFile(String fileName, Connection con) throws IOException{
 		List<String> lines = ReadFile.readLines(fileName);
-		try{
-			Statement statement = con.createStatement();
+		executeLines(lines, con);
+	}
 
-			for(String line: lines){
-				statement.executeUpdate(line);
-			}
-		}
-		catch(SQLException e){
-			logger.severe(String.format("The SQLException occoured in the executeUpdateFile method when executing lines of %s file. the error message is %s",fileName,e.getMessage()));
-		}
+	public static void executeUpdateOnResourceFile(String resourceName, Connection con) throws IOException {
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		List<String> lines = ReadFile.readLines(resourceName, classLoader);
+		executeLines(lines, con);
 	}
 
 	public static void reload(){
@@ -247,4 +247,16 @@ public class Database {
 		Database.password = Sysenv.getEnv("DATABASEPASSWORD");		
 	}
 
+	public static void executeLines(List<String> lines,Connection con){
+		try{
+			Statement statement = con.createStatement();
+
+			for(String line: lines){
+				statement.executeUpdate(line);
+			}
+		}
+		catch(SQLException e){
+			logger.severe(String.format("The SQLException occoured in the executeLines method. The error message is %s",e.getMessage()));
+		}
+	}
 }
