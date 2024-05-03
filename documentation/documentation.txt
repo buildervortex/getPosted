@@ -31,6 +31,13 @@
 [2024/04/27 23.45] KDKapuge             : Update navbar in author sign up page, publication creative page and books page.
 [2024/04/28 00.10] KDKapuge             : Correct image link in publication creative HTML page.
 [2024/04/30 22.45] KDKapuge             : Update JavaScript code in books page.
+[2024/05/02 21.30] KDKapuge             : Start modifie author sign up page.
+[2024/05/03 09.30] KDKapuge             : Start modifie publication creative page.
+[2024/05/03 12.05] KDKapuge             : Upload modified author sign up page to github.
+[2024/05/03 12.30] KDKapuge             : Upload modified publication creative page to github. 
+
+
+
 
 =======
 

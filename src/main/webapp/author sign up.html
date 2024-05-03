@@ -6,112 +6,104 @@
   <title>Author Sign Up</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" />
   <link rel="stylesheet" href="css/author sign up.css" />
-  <script src="js/author sign up.js"></script>
-
-  <nav>
-    <li><a href="#Overview">Overview</a></li>
-    <li><a href="#Products">Products</a></li>
-    <li><a href="#News">News</a></li>
-    <li><a href="#Contacts">Contacts</a></li>
-    <li><a href="#About">About</a></li>
-    <li style="float:right"><a class="active1" href="Log in">Log in</a></li>
-    <li style="float:right"><a class="active2" href="Sign in">Sign in</a></li>
-    <li style="float:right" class="popup"><a class="disabled3" href="Profile"> View Profile</a></li>
-    <div class="hide3">Login / Sign In First &nbsp;</div>
-
-  </nav>
-  
 </head>
 <body>
+    <div class="container">
+        <header>Registration</header>
 
- 
+        <form action="#">
 
-  <div class="content">
-    <h2 class="sign-up">Sign up</h2><br>
+          <input id="image" type="file" accept="image/*" style="display: none;" onchange="previewImage(event)" />
+          <label for="image">
+            <img id="thumbnail" src="img/author sign up/profile.jpg" alt="Thumbnail" />
+          </label>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>First Name</label>
+                            <input type="text" placeholder="Enter your first name" required>
+                        </div>
 
-    <label for="first-name" class="input-label">First Name</label><br>
-    <input id="first-name" class="first-name" type="text" placeholder="Enter First Name" />
-    <span class="validation-message" id="first-name-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>Middle Name</label>
+                            <input type="text" placeholder="Enter your middle name" required>
+                        </div>
 
-    <label for="middle-name" class="input-label">Middle Name</label><br>
-    <input id="middle-name" class="middle-name" type="text" placeholder="Enter Middle Name" />
-    <span class="validation-message" id="middle-name-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Enter your last name" required>
+                        </div>
 
-    <label for="last-name" class="input-label">Last Name</label><br>
-    <input id="last-name" class="last-name" type="text" placeholder="Enter Last Name" />
-    <span class="validation-message" id="last-name-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" placeholder="Enter birth date" required>
+                        </div>
 
-    <label for="id" class="input-label">ID</label><br>
-    <input id="id" class="id" type="text" placeholder="Enter ID" />
-    <span class="validation-message" id="id-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
 
-    <label for="user-name" class="input-label">User Name</label><br>
-    <input id="user-name" class="user-name" type="text" placeholder="Enter User Name" />
-    <span class="validation-message" id="user-name-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="number" placeholder="Enter mobile number" required>
+                        </div>
 
-    <label for="email" class="input-label">Email</label><br>
-    <input id="email" class="email" type="email" placeholder="Enter Email" />
-    <span class="validation-message" id="email-validation"></span>
-    <br><br>
 
-    <label for="password" class="input-label">Password</label><br>
-    <input id="password" class="password" type="password" placeholder="Enter Password" />
-    <span class="validation-message" id="password-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>User Name</label>
+                            <input type="text" placeholder="Enter your user name" required>
+                        </div>
 
-    <label for="bio" class="input-label">Bio</label><br>
-    <textarea id="bio" class="bio" placeholder="Enter Bio"></textarea>
-    <span class="validation-message" id="bio-validation"></span>
-    <br><br>
+                        <div class="input-field">
+                            <label>Password</label>
+                            <input type="password" placeholder="Enter your password" required>
+                        </div>
 
-    <label for="phone-number" class="input-label">Phone Number</label><br>
-    <input id="phone-number" class="phone-number" type="tel" placeholder="Enter Phone Number" />
-    <span class="validation-message" id="phone-number-validation"></span>
-    <br><br>
+                        
+                        <div class="input-field">
+                            <label>Country</label>
+                            <select id="country" class="Country" placeholder="Select Country">
+                                <option value="">Select Country</option>
+                                <option value="Sri Lanka">Sri Lanka</option>
+                                <option value="India">India</option>
+                                <option value="UK">UK</option>
+                                <option value="US">US</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Japan">Japan</option>
+                                <option value="China">China</option>
+                              </select>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Skills</label>
+                            <select id="skills" class="skills" placeholder="Select Skills">
+                                <option value="">Select Skills</option>
+                                <option value="Spelling and Grammar">Spelling and Grammar</option>
+                                <option value="Conventions">Conventions</option>
+                                <option value="Editing">Editing</option>
+                                <option value="Research">Research</option>
+                                <option value="Revising">Revising</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Planning and Outlining">Planning and Outlining</option>
+                              </select>
+                        </div>
 
-    <label for="date-of-birth" class="input-label">Date Of Birth</label><br>
-    <input id="date-of-birth" class="date-of-birth" type="date" />
-    <span class="validation-message" id="date-of-birth-validation"></span>
-    <br><br>
+                        
+                    </div>
+                    <div class="buttons">
+                        
+                        <button class="sumbit">
+                            <span class="btnText" onclick="validateForm()">Register</span>
+                        </button>
+                    </div>
+                </div>
 
-    <label for="country" class="input-label">Country</label><br>
-    <select id="country" class="Country" placeholder="Select Country">
-      <option value="">Select Country</option>
-      <option value="Sri Lanka">Sri Lanka</option>
-      <option value="India">India</option>
-      <option value="UK">UK</option>
-      <option value="US">US</option>
-      <option value="Canada">Canada</option>
-      <option value="Australia">Australia</option>
-      <option value="Japan">Japan</option>
-      <option value="China">China</option>
-    </select>
-    <span class="validation-message" id="country-validation"></span>
-    <br><br>
+                </div> 
+            </div>
+        </form>
+    </div>
 
-    <label for="skills" class="input-label">Skills</label><br>
-    <select id="skills" class="skills" placeholder="Select Skills">
-      <option value="">Select Skills</option>
-      <option value="Spelling and Grammar">Spelling and Grammar</option>
-      <option value="Conventions">Conventions</option>
-      <option value="Editing">Editing</option>
-      <option value="Research">Research</option>
-      <option value="Revising">Revising</option>
-      <option value="Australia">Australia</option>
-      <option value="Planning and Outlining">Planning and Outlining</option>
-    </select>
-    <span class="validation-message" id="skills-validation"></span>
-    <br><br>
-    
-    <button class="sign-up-a" onclick="validateForm()">Sign Up</button>
-    <span class="validation-message" id="sign-up-validation"></span>
-  </div>
-
-  </body>
-  </html>
-   
+    <script src="js/author sign up.js"></script>
+</body>
+</html>

@@ -1,171 +1,53 @@
-
-nav {
-  list-style-type: none;
-  font-size: 16px; 
+*{
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #b2b0b0;
-  position: fixed; 
-  width: 100%; 
-  top: 0; 
-  z-index: 1000; 
-  font-family: cursive;
-}
-
-
-
-li {
-  float: left;
-  border-right: 1px #4CAF50;
-}
-
-li a {
-  display: block;
-  color: rgb(67, 67, 67);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: #0069a2;
-  color: beige;
-}
-
-.img1 {
-  align-items: center;
-  height: 50px;
-}
-
-.active {
-  background-color: #4CAF50;
-}
-
-.active1 {
-  background-color: #9effa1;
-  color:rgb(0, 0, 0);
-}
-
-.active2 {
-  background-color: #85bcff;
-  color:rgb(0, 0, 0);
-}
-.active3 {
-  background-color: #dca7e7;
-  color:rgb(0, 0, 0);
-}
-
-.disabled3 {
-  background-color: #dca7e7;
-  color:rgb(0, 0, 0);
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.disabled3:hover {
-  background-color: #b2b0b0;
-  color: beige;  
-}
-
-.center{
-  text-align: center;
-}
-
-.hide3 {
-  display: none;
-  position:inherit;
-  float:right;
-  font-size: 3cqh;
-  padding-top: 2cqh;
-  font-family: cursive;
-  text-shadow: 1px 1px  rgb(255, 0, 0);
-}
-
-.popup:hover + .hide3 {
-  display: block;
-  color: rgb(219, 45, 45);
-}
-
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background: 
-      linear-gradient(to right, #90a2f1, #d3ddf3); 
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.content {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 15px;
-  
-  margin-top: 80px;
-  margin-bottom: 10px;
-  box-shadow: 0 8px 10px rgba(3, 27, 99, 0.993);
-  max-width: 400px;
-  width: 100%;
-}
-
-
- 
-  input[type="text"]::placeholder,
-  input[type="date"]::placeholder,
-  input[type="pdf"]::placeholder,
-  textarea::placeholder {
-  color: #315ce7; 
-}
-    
-  .title,
-  .description,
-  .date,
-  .language,
-  .pdf,
-  .soft-copy-discount,
-  .soft-copy-price,
-  .category
-  {
-  width: 100%;
-  padding: 10px; 
-  margin-bottom: 1px; 
-  border: 2px solid #5b8cf7; 
-  color: rgb(31, 98, 175);
-  border-radius: 20px;
   box-sizing: border-box;
-  font-size: 14px; 
-  background-color: rgb(201, 224, 253);
-  }
-  .title{
-    margin-top: 12px;
-  }
-  
-  
-    .create {
-    background-color: #2f50c9;
-    border: none;
-    width: 200px;
-    height: 30px;
-    font-size: 19px;
-    border-radius: 20px;
-    margin-top: 10px;
-    margin-left: 110px;
-    color: #d9d9d9;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    font-weight: bold;
-  
-    }
-    
-   .create:hover{
-      border:3px solid rgb(44, 44, 231);
-      color:#000000;
-      background-color:rgb(215, 225, 236);
-    }
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #b3cff0;
+}
+.container{
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  padding: 30px;
+  margin: 0 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.container header{
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+.container header::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 27px;
+  border-radius: 8px;
+  background-color: #4070f4;
+}
+.container form{
+  position: relative;
+  margin-top: 16px;
+  min-height: 400pxpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.container form .form{
+  position: absolute;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
 
 #thumbnail {
   width: 150px;
@@ -173,27 +55,107 @@ body {
   border-radius: 50%;
   overflow: hidden;
   display: flex;
-  margin-left: 120px;
+  margin-left: 10px;
   justify-content: center;
   align-items: center;
 }
 
-
-.pdf {
-  background-color: transparent;
-  border: 2px solid #5b8cf7;
-  color: rgb(31, 98, 175);
-  border-radius: 20px;
-  box-sizing: border-box;
+.container form .title{
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px 0;
+  color: #333;
+}
+.container form .fields{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+form .fields .input-field{
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin: 4px 0;
+}
+.input-field label{
+  font-size: 12px;
+  font-weight: 500;
+  color: #2e2e2e;
+}
+.input-field input, select{
+  outline: none;
   font-size: 14px;
-  background-color: rgb(201, 224, 253);
-  padding: 10px;
-  cursor: pointer; 
+  font-weight: 400;
+  color: #333;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  padding: 0 15px;
+  height: 42px;
+  margin: 8px 0;
+}
+.input-field input :focus,
+.input-field select:focus{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.input-field select,
+.input-field input[type="date"]{
+  color: #707070;
+}
+.input-field input[type="date"]:valid{
+  color: #333;
+}
+.container form button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  margin: 25px 0;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.container form .btnText{
+  font-size: 14px;
+  font-weight: 400;
+}
+form button:hover{
+  background-color: #265df2;
 }
 
-.pdf:hover {
-  background-color: rgba(201, 224, 253, 0.5); 
+
+form .buttons{
+  display: flex;
+  align-items: center;
 }
-  
-    
- 
+form .buttons button {
+  margin-right: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 750px) {
+  .container form{
+      overflow-y: scroll;
+  }
+  .container form::-webkit-scrollbar{
+     display: none;
+  }
+  form .fields .input-field{
+      width: calc(100% / 2 - 15px);
+  }
+}
+
+@media (max-width: 550px) {
+  form .fields .input-field{
+      width: 100%;
+  }
+}
