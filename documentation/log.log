@@ -94,3 +94,4 @@
 [2024/05/02 15:08] GALDilhara		: Add the hash functionalities to the project.
 [2024/05/02 15:08] GALDilhara		: Add the hash functionalities to the project.
 [2024/05/03 12:41] GALDilhara		: Updated the database with some new columns and tables to enhanse the features.
+[2024/05/03 02:17] GALDilhara		: Upgrade the Database.java file to perform DBMS specific operations such as creating databases, deleting databases,etc.

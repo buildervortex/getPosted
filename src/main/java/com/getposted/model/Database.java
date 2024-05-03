@@ -65,10 +65,48 @@ public class Database {
 		// return the connection object
 		return connection;
 	}
+	public static Connection getConnection(String database) throws SQLException {
+
+		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
+		String userName = Sysenv.getEnv("DATABASEUSERNAME");
+		String password = Sysenv.getEnv("DATABASEPASSWORD");
+
+		// create connection data type variable
+		Connection connection = null;
+
+		// load the driver and register it.
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			logger.severe(String.format(
+					"The Driver class not found exception occured. the Driver class name is %s. The exception message is %s",
+					driver, e.getMessage()));
+		}
+
+		// get the connection object
+		try {
+			connection = DriverManager.getConnection((url + database), userName, password);
+		} catch (SQLInvalidAuthorizationSpecException e) {
+			logger.severe(String.format(
+					"The SQLInvalidAuthorizationSpecException occured (invalid username or password). The url is correct and the registration is also completed.when tring to get the connection object using DriverManager.getConnection method. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
+					url, password, userName, driver, e.getMessage()));
+		} catch (SQLException e) {
+			logger.severe(String.format(
+					"The SQLEXception occured when tring to get the connection object using DriverManager.getConnection method. The Driver loading was successful. The url is %s. The password is %s. The username is %s. The Driver was loaded successfully. The Driver name is %s. The Exception message is %s",
+					url, password, userName, driver, e.getMessage()));
+			throw e;
+		}
+
+		// return the connection object
+		return connection;
+	}
 
 	// get connection for the DBMS
-	public static Connection getDBMSConnection(String url, String userName, String password) throws SQLException{
+	public static Connection getDBMSConnection() throws SQLException{
 
+		String url = Sysenv.getEnv("DATABASEURL"); // "jdbc:mariadb://localhost:3306/"
+		String userName = Sysenv.getEnv("DATABASEUSERNAME");
+		String password = Sysenv.getEnv("DATABASEPASSWORD");
 		// create connection data type variable
 		Connection connection = null;
 
@@ -131,7 +169,7 @@ public class Database {
 		return result;
 	}
 
-	public static boolean checkDatabaseExists(String name, Connection connection) throws SQLException{
+	public static boolean isDatabaseExists(String name, Connection connection) throws SQLException{
 		boolean result = false;
 		DatabaseMetaData metaData = null;
 		try{
@@ -153,12 +191,10 @@ public class Database {
 			}
 		}
 
-		resultSet.close();
-		connection.close();
 		return result;
 	}
 
-	public static boolean checkTableExists(String tableName, Connection con) throws SQLException{
+	public static boolean isTableExists(String tableName, Connection con) throws SQLException{
 		boolean result = false;
 		DatabaseMetaData databaseMetaData =null;
 
