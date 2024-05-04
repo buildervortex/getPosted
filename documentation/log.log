@@ -96,3 +96,5 @@
 [2024/05/03 12:41] GALDilhara		: Updated the database with some new columns and tables to enhanse the features.
 [2024/05/03 02:17] GALDilhara		: Upgrade the Database.java file to perform DBMS specific operations such as creating databases, deleting databases,etc.
 [2024/05/03 22:58] GALDilhara		: Add the Random String generator to generate the salt and pepper
+[2024/05/04 00:46] GALDilhara		: update the AuthorDAOImpl file to get newest database update. Write the test and fully tested the functionalities.
+[2024/05/04 14:16] GALDilhara		: add new columns to the publisher, user for security reason.

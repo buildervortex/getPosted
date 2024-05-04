@@ -5,35 +5,35 @@ public class Publisher {
     private int id;
     private String address;
     private String webSite;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String name;
     private String email;
     private double hardCopyPageCommissionForAuthor;
+    private String salt;
     private String password;
     private double hardCopyDiscount;
+    private String pepper;
     private double hardCopyPricePerPage;
     private double softCopyCommission;
-    private double hardCopyPageCommission;
+    private double hardCopyCommission;
 
     public Publisher(){}
 
-    public Publisher(int id, String address, String webSite, String firstName, String middleName, String lastName,
-            String email, double hardCopyPageCommissionForAuthor, String password, double hardCopyDiscount,
-            double hardCopyPricePerPage, double softCopyCommission, double hardCopyPageCommission) {
+    public Publisher(int id, String address, String webSite, String name, String email,
+            double hardCopyPageCommissionForAuthor, String salt, String password, double hardCopyDiscount,
+            String pepper, double hardCopyPricePerPage, double softCopyCommission, double hardCopyCommission) {
         this.id = id;
         this.address = address;
         this.webSite = webSite;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+        this.name = name;
         this.email = email;
         this.hardCopyPageCommissionForAuthor = hardCopyPageCommissionForAuthor;
+        this.salt = salt;
         this.password = password;
         this.hardCopyDiscount = hardCopyDiscount;
+        this.pepper = pepper;
         this.hardCopyPricePerPage = hardCopyPricePerPage;
         this.softCopyCommission = softCopyCommission;
-        this.hardCopyPageCommission = hardCopyPageCommission;
+        this.hardCopyCommission = hardCopyCommission;
     }
 
     public int getId() {
@@ -60,28 +60,12 @@ public class Publisher {
         this.webSite = webSite;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -100,6 +84,14 @@ public class Publisher {
         this.hardCopyPageCommissionForAuthor = hardCopyPageCommissionForAuthor;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -114,6 +106,14 @@ public class Publisher {
 
     public void setHardCopyDiscount(double hardCopyDiscount) {
         this.hardCopyDiscount = hardCopyDiscount;
+    }
+
+    public String getPepper() {
+        return pepper;
+    }
+
+    public void setPepper(String pepper) {
+        this.pepper = pepper;
     }
 
     public double getHardCopyPricePerPage() {
@@ -132,30 +132,21 @@ public class Publisher {
         this.softCopyCommission = softCopyCommission;
     }
 
-    public double getHardCopyPageCommission() {
-        return hardCopyPageCommission;
+    public double getHardCopyCommission() {
+        return hardCopyCommission;
     }
 
-    public void setHardCopyPageCommission(double hardCopyPageCommission) {
-        this.hardCopyPageCommission = hardCopyPageCommission;
+    public void setHardCopyCommission(double hardCopyCommission) {
+        this.hardCopyCommission = hardCopyCommission;
     }
 
     @Override
     public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", address='" + address + '\'' +
-                ", webSite='" + webSite + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", hardCopyPageCommissionForAuthor=" + hardCopyPageCommissionForAuthor +
-                ", password='" + password + '\'' +
-                ", hardCopyDiscount=" + hardCopyDiscount +
-                ", hardCopyPricePerPage=" + hardCopyPricePerPage +
-                ", softCopyCommission=" + softCopyCommission +
-                ", hardCopyPageCommission=" + hardCopyPageCommission +
-                '}';
+        return "Publisher [id=" + id + ", address=" + address + ", webSite=" + webSite + ", name=" + name + ", email="
+                + email + ", hardCopyPageCommissionForAuthor=" + hardCopyPageCommissionForAuthor + ", salt=" + salt
+                + ", password=" + password + ", hardCopyDiscount=" + hardCopyDiscount + ", pepper=" + pepper
+                + ", hardCopyPricePerPage=" + hardCopyPricePerPage + ", softCopyCommission=" + softCopyCommission
+                + ", hardCopyCommission=" + hardCopyCommission + "]";
     }
+
 }

@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id "war"
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    api libs.org.mariadb.jdbc.mariadb.java.client
+    api libs.mysql.mysql.connector.java
+    api libs.org.postgresql.postgresql
+    testImplementation libs.junit.junit
+    providedCompile libs.jakarta.servlet.jakarta.servlet.api
+}
+
+group = 'com.dataDive'
+version = '1.0.0'
+description = 'getPosted'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
