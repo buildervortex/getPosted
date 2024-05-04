@@ -98,3 +98,4 @@
 [2024/05/03 22:58] GALDilhara		: Add the Random String generator to generate the salt and pepper
 [2024/05/04 00:46] GALDilhara		: update the AuthorDAOImpl file to get newest database update. Write the test and fully tested the functionalities.
 [2024/05/04 14:16] GALDilhara		: add new columns to the publisher, user for security reason.
+[2024/05/04 14:51] GALDilhara		: add gradle as the new build system for the project. group members don't have to download and install maven manually, because the gradle has the gradle wrapper file.
