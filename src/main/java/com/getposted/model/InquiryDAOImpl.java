@@ -14,7 +14,7 @@ import com.getposted.logger.Logging;
 
 public class InquiryDAOImpl implements InquiryDAO {
 
-    private static Logger logger = Logging.getLogger(UserDAOImpl.class.getName());
+    private static Logger logger = Logging.getLogger(InquiryDAOImpl.class.getName());
 
     @Override
     public Inquiry get(int id) throws SQLException {
@@ -110,7 +110,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         st.setDate(2, inquiry.getPurchasedDate());
         st.setString(3, inquiry.getShippingAddress());
         st.setString(4, inquiry.getPostalCode());
-        st.setTime(4, inquiry.getPurchasedTime());
+        st.setTime(5, inquiry.getPurchasedTime());
         st.setString(6, inquiry.getContactName());
         st.setInt(7, inquiry.getCount());
         st.setString(8, inquiry.getCountry());

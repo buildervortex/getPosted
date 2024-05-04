@@ -5,11 +5,11 @@ import java.sql.Time;
 
 public class Inquiry {
 
-    private static final String PENDING = "Pending";
-    private static final String ACCEPTED = "Accepted";
-    private static final String REJECTED = "Rejected";
-    private static final String PROCESSING = "Processing";
-    private static final String SHIPPED = "Shipped";
+    public static final String PENDING = "Pending";
+    public static final String ACCEPTED = "Accepted";
+    public static final String REJECTED = "Rejected";
+    public static final String PROCESSING = "Processing";
+    public static final String SHIPPED = "Shipped";
 
     //purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count, country, publicationId, userId, publisherId
     private int id = 0;
@@ -21,8 +21,8 @@ public class Inquiry {
     private int count = 0;
     private String country =  null;
     private Date shippedDate = null;
-    private String state = null;
-    private Double price = 0.0;
+    private String state = Inquiry.PENDING;
+    private double price = 0.0;
     private int publicationId = 0;
     private int userId = 0;
     private int publisherId = 0;
@@ -30,7 +30,7 @@ public class Inquiry {
     public Inquiry(){}
 
     public Inquiry(int id, Date purchasedDate, String shippingAddress, String postalCode, Time purchasedTime,
-            String contactName, int count, String country, Date shippedDate, String state, Double price,
+            String contactName, int count, String country, Date shippedDate, String state, double price,
             int publicationId, int userId, int publisherId) {
         this.id = id;
         this.purchasedDate = purchasedDate;
@@ -152,7 +152,7 @@ public class Inquiry {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
