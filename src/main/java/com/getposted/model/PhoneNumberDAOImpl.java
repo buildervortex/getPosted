@@ -91,5 +91,31 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO{
 
         return rowsAffected;
     }
+
+    @Override
+    public List<PhoneNumber> getList(int inquiryId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<PhoneNumber> phoneNumberList = new ArrayList();
+        String sqlTemplate = "SELECT * FROM PhoneNumber WHERE inquiryId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, inquiryId);
+
+        try{
+			rs = ps.executeQuery();
+		}
+		catch(SQLException e){
+			logger.warning(String.format("There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at getList() .The exception message is %s",e.getMessage()));
+			throw e;
+		}
+
+        while(rs.next()){
+            String phoneNumber = rs.getString("phoneNumber");
+            int qinquiryId = rs.getInt("inquiryId");
+            phoneNumberList.add(new PhoneNumber(phoneNumber, qinquiryId));
+        }
+        return phoneNumberList;
+    }
     
 }
