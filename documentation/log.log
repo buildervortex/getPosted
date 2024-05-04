@@ -100,3 +100,4 @@
 [2024/05/04 14:16] GALDilhara		: add new columns to the publisher, user for security reason.
 [2024/05/04 14:51] GALDilhara		: add gradle as the new build system for the project. group members don't have to download and install maven manually, because the gradle has the gradle wrapper file.
 [2024/05/04 18:27] GALDilhara		: finished the upgrading of existing DAO classes. Continue on building other DAO classes.
+[2024/05/04 18:45] GALDilhara		: finished the Inquiry DAO class and its all tests
