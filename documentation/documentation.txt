@@ -36,6 +36,8 @@
 [2024/05/03 09.30] KDKapuge             : Start modifie publication creative page.
 [2024/05/03 12.05] KDKapuge             : Upload  author sign up page to github.
 [2024/05/03 12.30] KDKapuge             : Upload publication creative page to github. 
+[2024/05/04 13.00] KDKapuge             : Start modifie books page.
+[2024/05/05 23.30] KDKapuge             : Finish modifie books page.
 
 
 
