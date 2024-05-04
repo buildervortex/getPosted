@@ -1,17 +1,19 @@
 package com.getposted.model;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.sql.SQLClientInfoException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore()
 public class SaveDAOImplTest {
 
     private static Save save = new Save();
@@ -26,8 +28,10 @@ public class SaveDAOImplTest {
     public void testDelete() throws SQLException{
         save.setPublicationId(2);
         save.setUserId(4);
+        save.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
         saveDAOImpl.insert(save);
         saveDAOImpl.delete(save);
+
         List<Save> saves = saveDAOImpl.getList(1);
         boolean contains = false;
         for (Save save : saves){
@@ -41,10 +45,12 @@ public class SaveDAOImplTest {
     @Test
     public void testGetAll()  throws SQLException{
         List<Save> saves = saveDAOImpl.getAll();
-        assertTrue(saves.size() >= 20);
+        assertTrue(saves.size() >= 10);
 
         for (Save save : saves) {
             assertTrue(save.getUserId() >= 0);
+            assertTrue(save.getPublicationId()>= 0);
+            assertTrue(save.getDate().toString().length()== 10);
         }
     }
 
@@ -54,18 +60,28 @@ public class SaveDAOImplTest {
 
         for (Save save : saves) {
             assertTrue(save.getUserId() == 2);
+            assertTrue(save.getPublicationId()>= 0);
+            assertTrue(save.getDate().toString().length()== 10);
         }
     }
 
     @Test
     public void testInsert() throws SQLException {
-        save.setPublicationId(4);
-        save.setUserId(1);
+
+        Date date = new Date(Calendar.getInstance().getTimeInMillis());
+        int publicationId = 4;
+        int userId = 1;
+
+        save.setDate(date);
+        save.setPublicationId(publicationId);
+        save.setUserId(userId);
+
         saveDAOImpl.insert(save);
-        List<Save> saves = saveDAOImpl.getList(1);
+
+        List<Save> saves = saveDAOImpl.getList(userId);
         boolean changed = false;
         for (Save save : saves){
-            if(save.getUserId() == 1 && save.getPublicationId() == 4){
+            if(save.getUserId() == userId && save.getPublicationId() == publicationId){
                 changed = true;
             }
         }

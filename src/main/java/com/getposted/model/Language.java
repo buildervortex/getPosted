@@ -25,8 +25,8 @@ public class Language {
 		this.id = value < 0 ? this.id : value;
 	}
 
-	public void setLanguage(String value) {
-		this.language = value.length() <= 1 ? this.language : value;
+	public void setLanguage(String value){
+		this.language = value.length() == 0 ? this.language : value;
 	}
 
 	@Override

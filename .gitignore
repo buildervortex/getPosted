@@ -1,3 +1,7 @@
 target/
 *.swp
 ./src/test/resources
+build/
+.gradle/
+.vscode
+gradle/

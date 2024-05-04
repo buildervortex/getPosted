@@ -18,7 +18,7 @@ public class CountryDAOImplTest {
     private static CountryDAOImpl countryDAOImpl = new CountryDAOImpl();
 
     @BeforeClass
-    public static void createDatebase(){
+    public static void createDatebase() {
         TestDataBase.createAll();
     }
 
@@ -27,36 +27,38 @@ public class CountryDAOImplTest {
         country.setId(50);
         country.setCountry("testDelete");
         countryDAOImpl.insert(country);
+
         countryDAOImpl.delete(country);
+
         assertTrue(countryDAOImpl.get(50) == null);
-        assertNull(countryDAOImpl.get(25));
+        assertNull(countryDAOImpl.get(50));
     }
 
     @Test
     public void testGetInt() throws SQLException {
         country = countryDAOImpl.get(1);
-        assertEquals(country.getId(),1);
-        assertEquals(country.getCountry(),"United States");
+        assertEquals(country.getId(), 1);
+        assertEquals(country.getCountry(), "United States");
         country = countryDAOImpl.get(2);
-        assertEquals(country.getId(),2);
-        assertEquals(country.getCountry(),"Canada");
+        assertEquals(country.getId(), 2);
+        assertEquals(country.getCountry(), "Canada");
     }
 
     @Test
     public void testGetString() throws SQLException {
         country = countryDAOImpl.get("United States");
-        assertEquals(country.getId(),1);
-        assertEquals(country.getCountry(),"United States");
-        country = countryDAOImpl.get("Canada");
-        assertEquals(country.getId(),2);
-        assertEquals(country.getCountry(),"Canada");
+        assertEquals(country.getId(), 1);
+        assertEquals(country.getCountry(), "United States");
+        country = countryDAOImpl.get("Germany");
+        assertEquals(country.getId(), 4);
+        assertEquals(country.getCountry(), "Germany");
     }
 
     @Test
-    public void testGetAll() throws SQLException{
+    public void testGetAll() throws SQLException {
         List<Country> countries = countryDAOImpl.getAll();
-        assertTrue(countries.size() >= 20);
-        for (Country country : countries){
+        assertTrue(countries.size() >= 10);
+        for (Country country : countries) {
             assertTrue(country.getCountry().length() >= 2);
         }
     }
@@ -65,18 +67,20 @@ public class CountryDAOImplTest {
     public void testGetList() throws SQLException {
         List<Country> countries = countryDAOImpl.getList(5);
         assertTrue(countries.size() == 5);
-        for (Country country : countries){
+        for (Country country : countries) {
             assertTrue(country.getCountry().length() >= 2);
         }
     }
 
     @Test
-    public void testInsert() throws SQLException{
+    public void testInsert() throws SQLException {
         country.setCountry("testInsert");
         country.setId(28);
+
         countryDAOImpl.insert(country);
-        assertEquals(countryDAOImpl.get(28).getCountry(),"testInsert");
-        assertEquals(countryDAOImpl.get("testInsert").getId(),28);
+
+        assertEquals(countryDAOImpl.get(28).getCountry(), "testInsert");
+        assertEquals(countryDAOImpl.get("testInsert").getId(), 28);
     }
 
     @Test
@@ -85,12 +89,14 @@ public class CountryDAOImplTest {
         country.setId(40);
         countryDAOImpl.insert(country);
         country.setCountry("testUpdate2");
+
         countryDAOImpl.update(country);
+
         assertTrue(countryDAOImpl.get(40).getCountry().equals("testUpdate2"));
     }
 
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }

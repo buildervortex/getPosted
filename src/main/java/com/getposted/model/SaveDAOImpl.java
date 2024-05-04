@@ -1,6 +1,7 @@
 package com.getposted.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,11 +36,11 @@ public class SaveDAOImpl implements SaveDAO{
 		}
 
 		while(rs.next()){
-            // userId, publicationId
+            Date date = rs.getDate("date");
             int userId = rs.getInt("userId");
             int publicationId = rs.getInt("publicationId");
 
-            saves.add(new Save(userId,publicationId));
+            saves.add(new Save(date,userId,publicationId));
 		}
 
 		return saves;
@@ -48,12 +49,13 @@ public class SaveDAOImpl implements SaveDAO{
     @Override
     public int insert(Save save) throws SQLException {
         Connection con = Database.getConnection();
-        String sqlTemplate = "INSERT INTO Save (userId, publicationId) VALUES (?,?)";
+        String sqlTemplate = "INSERT INTO Save (date,userId, publicationId) VALUES (?,?,?)";
         PreparedStatement insert = con.prepareStatement(sqlTemplate);
         int rowsAffected = 0;
     
-        insert.setInt(1, save.getUserId());
-        insert.setInt(2, save.getPublicationId());
+        insert.setDate(1, save.getDate());
+        insert.setInt(2, save.getUserId());
+        insert.setInt(3, save.getPublicationId());
     
         try {
             rowsAffected = insert.executeUpdate();
@@ -67,7 +69,7 @@ public class SaveDAOImpl implements SaveDAO{
 
     @Override
     public int update(Save save) throws SQLException {
-        int rowsAffected = 0;
+        int rowsAffected = -1;
         return rowsAffected;
     }
 
@@ -110,10 +112,11 @@ public class SaveDAOImpl implements SaveDAO{
 		}
 
 		while(rs.next()){
+            Date date = rs.getDate("date");
             int quserId = rs.getInt("userId");
             int publicationId = rs.getInt("publicationId");
 
-            saves.add(new Save(quserId,publicationId));
+            saves.add(new Save(date,quserId,publicationId));
 		}
 
 		return saves;

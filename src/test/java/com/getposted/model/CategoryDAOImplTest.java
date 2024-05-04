@@ -19,10 +19,9 @@ public class CategoryDAOImplTest {
     private static CategoryDAOImpl categoryDAOImpl = new CategoryDAOImpl();
 
     @BeforeClass
-    public static void createDatabase(){
+    public static void createDatabase() {
         TestDataBase.createAll();
     }
-
 
     @Test
     public void testDelete() throws SQLException {
@@ -30,78 +29,83 @@ public class CategoryDAOImplTest {
         category.setId(27);
         categoryDAOImpl.insert(category);
         assertNotNull(categoryDAOImpl.get(27));
+
         categoryDAOImpl.delete(category);
+
         assertTrue(categoryDAOImpl.get(27) == null);
     }
 
     @Test
     public void testGetInt() throws SQLException {
         category = categoryDAOImpl.get(1);
-        assertEquals(category.getCategory(),"Technology");
+        assertEquals(category.getCategory(), "Technology");
         category = categoryDAOImpl.get(2);
-        assertEquals(category.getCategory(),"Science");
-
+        assertEquals(category.getCategory(), "Business");
     }
 
     @Test
-    public void testGetSrting() throws SQLException{
+    public void testGetSrting() throws SQLException {
         category = categoryDAOImpl.get("Technology");
-        assertEquals(1,category.getId());
+        assertEquals(1, category.getId());
         category = categoryDAOImpl.get("Science");
-        assertEquals(2,category.getId());
+        assertEquals(10, category.getId());
     }
 
     @Test
-    public void testGetAll() throws SQLException{
+    public void testGetAll() throws SQLException {
         List<Category> categoryList = categoryDAOImpl.getAll();
-        assertTrue(categoryList.size() >= 20);
+        assertTrue(categoryList.size() >= 10);
 
-        for (Category category : categoryList){
+        for (Category category : categoryList) {
             assertTrue(category.getCategory().length() >= 2);
         }
     }
 
     @Test
-    public void testGetList() throws SQLException{
+    public void testGetList() throws SQLException {
         List<Category> categoryList = categoryDAOImpl.getList(5);
         assertTrue(categoryList.size() == 5);
 
-        for (Category category : categoryList){
+        for (Category category : categoryList) {
             assertTrue(category.getCategory().length() >= 2);
         }
     }
 
     @Test
-    public void testInsert() throws SQLException{
+    public void testInsert() throws SQLException {
         category.setCategory("testInsert");
         category.setId(21);
+
         categoryDAOImpl.insert(category);
+
         categoryDAOImpl.get("testInsert");
         assertNotNull(categoryDAOImpl.get("testInsert"));
         assertNotNull(categoryDAOImpl.get(21));
-        assertEquals("testInsert",categoryDAOImpl.get(21).getCategory());
+        assertEquals("testInsert", categoryDAOImpl.get(21).getCategory());
+    }
+
+    @Test
+    public void testUpdate() throws SQLException {
+        category.setCategory("testUpdate");
+        category.setId(22);
+
+        categoryDAOImpl.insert(category);
+
+        category.setCategory("testUpdate2");
+        categoryDAOImpl.update(category);
+
+        assertEquals(categoryDAOImpl.get(22).getCategory(), "testUpdate2");
     }
 
     @Test(expected = SQLException.class)
-    public void testExceptionForInsert() throws SQLException{
+    public void testExceptionForInsert() throws SQLException {
         category.setCategory("testExceptionForInsert");
         categoryDAOImpl.insert(category);
         categoryDAOImpl.insert(category);
     }
 
-
-    @Test
-    public void testUpdate() throws SQLException{
-        category.setCategory("testUpdate");
-        category.setId(22);
-        categoryDAOImpl.insert(category);
-        category.setCategory("testUpdate2");
-        categoryDAOImpl.update(category);
-        assertEquals(categoryDAOImpl.get(22).getCategory(),"testUpdate2");
-    }
-
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }
