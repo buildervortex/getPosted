@@ -1,5 +1,5 @@
 package com.getposted.model;
 
-public class PhoneNumberDAO {
+public interface PhoneNumberDAO extends DAO<PhoneNumber>{
     
 }
