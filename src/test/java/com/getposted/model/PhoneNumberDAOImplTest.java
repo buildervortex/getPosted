@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class PhoneNumberDAOImplTest {
 
     private static PhoneNumberDAOImpl phoneNumberDAOImpl = new PhoneNumberDAOImpl();

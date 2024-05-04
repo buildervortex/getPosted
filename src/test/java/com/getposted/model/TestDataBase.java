@@ -1,6 +1,8 @@
 package com.getposted.model;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+
 import static org.junit.Assert.fail;
 
 import com.getposted.system.Sysenv;
@@ -14,10 +16,12 @@ public class TestDataBase {
     private static final String DATABASETESTDATAFILE = "databaseTestData.txt";
 
     public static void createDatabase(){
+        
         setDatabase();
         Database.reload();
         try{
             con = Database.getDBMSConnection();
+            if (Database.isDatabaseExists(DATABASENAME, con)) Database.dropDatabase(DATABASENAME, con);
             Database.createDatabase(DATABASENAME, con);
             con.close();
         }
