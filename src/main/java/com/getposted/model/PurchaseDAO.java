@@ -1,5 +1,5 @@
 package com.getposted.model;
 
-public class PurchaseDAO {
+public interface PurchaseDAO {
     
 }
