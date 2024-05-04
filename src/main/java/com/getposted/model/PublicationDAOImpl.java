@@ -58,9 +58,6 @@ public class PublicationDAOImpl implements PublicationDAO {
 
     @Override
     public List<Publication> getAll() throws SQLException {
-        // id,description, date, size, pdfPath, softCopyPrice, pageCount,
-        // softCopyDiscount,
-        // title, publishedDate, categoryId, languageId, authorId
         Connection con = Database.getConnection();
         List<Publication> publicationList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publication";
@@ -140,19 +137,6 @@ public class PublicationDAOImpl implements PublicationDAO {
 
     @Override
     public int update(Publication publication) throws SQLException {
-        // public Publication(int id, String description, Date date, int size, String
-        // pdfPath, double softCopyPrice,String title, Date publishedDate, int
-        // categoryId, int languageId, int authorId)
-        // CREATE TABLE Publication( description VARCHAR(500), date DATE, size INT(40)
-        // NOT NULL DEFAULT 0, pdfPath VARCHAR(80) NOT NULL, softCopyPrice DECIMAL(10,2)
-        // NOT NULL DEFAULT 0.0, pageCount VARCHAR(20) NOT NULL DEFAULT 1,
-        // softCopyDiscount DECIMAL(10,2) NOT NULL DEFAULT 0.0, title VARCHAR(80) NOT
-        // NULL, publishedDate DATE, id INT(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        // categoryId INT(25), languageId INT(25), authorId INT(25), FOREIGN
-        // KEY(categoryId) REFERENCES Category(id), FOREIGN KEY(languageId) REFERENCES
-        // Language(id), FOREIGN KEY(authorId) REFERENCES Author(id) );
-        // (id,description, date, size, pdfPath, softCopyPrice, pageCount,
-        // softCopyDiscount, title, publishedDate, categoryId, languageId, authorId)
 
         Connection con = Database.getConnection();
         String sqlTemplate = "UPDATE Publication SET description =?, date =?, size =?, pdfPath =?, softCopyPrice =?, pageCount =?, softCopyDiscount =?, title =?, publishedDate =?, categoryId =?, languageId =?, authorId =? WHERE id =?";

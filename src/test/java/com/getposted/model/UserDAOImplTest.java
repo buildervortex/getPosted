@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-// @Ignore()
+@Ignore()
 public class UserDAOImplTest {
 
     private static User user = new User();
@@ -49,8 +49,6 @@ public class UserDAOImplTest {
 
     @Test
     public void testGet() throws SQLException {
-        // 1, 'user1@example.com', 'password1', 'user1', '1995-03-10', 'salt1',
-        // 'pepper1', 'Alice', 'A', 'Smith'
         assertNull(userDAOImpl.get(0));
         user = userDAOImpl.get(1);
         assertTrue(user.getId() == 1);

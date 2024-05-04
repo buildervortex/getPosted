@@ -1,16 +1,26 @@
 package com.getposted.model;
 
-// userId, publicationId
+import java.sql.Date;
 
 public class Save {
+    private Date date = null;
     private int userId = 0;
     private int publicationId = 0;
 
     public Save(){}
 
-    public Save(int userId, int publicationId) {
+    public Save(Date date, int userId, int publicationId) {
+        this.date = date;
         this.userId = userId;
         this.publicationId = publicationId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getUserId() {
@@ -31,6 +41,8 @@ public class Save {
 
     @Override
     public String toString() {
-        return "Save [userId=" + userId + ", publicationId=" + publicationId + "]";
-    }    
+        return "Save [date=" + date + ", userId=" + userId + ", publicationId=" + publicationId + "]";
+    }
+
+
 }

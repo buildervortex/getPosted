@@ -21,7 +21,8 @@ dependencies {
 
 group = 'com.dataDive'
 version = '1.0.0'
-description = 'getPosted'
+description = 'The web application for getPosted online book selling company'
+defaultTasks = ["clean", "test", "build", "war"]
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
@@ -30,4 +31,10 @@ publishing {
             from(components.java)
         }
     }
+}
+
+// configurations
+war{
+    archiveBaseName = "getPosted"
+    archiveFileName = "getPosted.war"
 }
