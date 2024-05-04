@@ -102,3 +102,5 @@
 [2024/05/04 18:27] GALDilhara		: finished the upgrading of existing DAO classes. Continue on building other DAO classes.
 [2024/05/04 18:45] GALDilhara		: finished the Inquiry DAO class and its all tests
 [2024/05/04 19:30] GALDilhara		: started to create the Purchase, PurchaseDAO and PurchaseDAOImpl.java classes.
+[2024/05/04 20:05] GALDilhara		: created the PurchaseDAOImpl class.
+[2024/05/04 20:28] GALDilhara		: fully tested the PurchaseDAOImplTest class.
