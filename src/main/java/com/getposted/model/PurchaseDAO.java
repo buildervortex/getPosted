@@ -1,5 +1,5 @@
 package com.getposted.model;
 
-public interface PurchaseDAO {
+public interface PurchaseDAO extends DAO<Purchase>{
     
 }
