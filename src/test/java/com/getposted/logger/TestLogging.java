@@ -1,13 +1,14 @@
 package com.getposted.logger;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import com.getposted.logger.Logging;
 import java.util.logging.Logger;
 import java.util.logging.Handler;
 import java.util.logging.SimpleFormatter;
 
+// @Ignore
 public class TestLogging{
 
 	private static Logger logger;

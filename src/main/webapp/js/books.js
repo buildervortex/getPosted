@@ -1,99 +1,123 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // Get references to elements
-  const searchInput = document.getElementById("search-input");
-  const filterSelect = document.getElementById("filter-select");
-  const cardContainer = document.querySelector(".card-container");
-  const cards = cardContainer.querySelectorAll(".card");
+// Function to handle search button click
+document.getElementById("search-btn").addEventListener("click", searchBooks);
 
-  // Event listener for search button
-  document.getElementById("search-btn").addEventListener("click", function() {
-      const searchText = searchInput.value.trim().toLowerCase();
-      const filter = filterSelect.value.toLowerCase();
+// Function to handle search input field change
+document.getElementById("search-input").addEventListener("input", searchBooks);
 
-      cards.forEach(function(card) {
-          const title = card.querySelector("h3").innerText.toLowerCase();
-          const price = card.querySelector(".price").innerText.toLowerCase();
-          const rating = card.querySelector(".rating").innerText.toLowerCase();
+// Search function
+function searchBooks() {
+    var searchInput = document.getElementById("search-input").value.toLowerCase();
+    var cards = document.getElementsByClassName("card");
 
-          // Check if title, price, or rating contains the search text based on the filter
-          const matchesSearch = title.includes(searchText) || price.includes(searchText) || rating.includes(searchText);
-          const matchesFilter = filter === "filter" || filter === "like" && title.includes(searchText)
-              || filter === "comment" && price.includes(searchText)
-              || filter === "rating" && rating.includes(searchText);
+    // Loop through all cards and hide those that don't match the search input
+    Array.from(cards).forEach(function(card) {
+        var title = card.getElementsByTagName("h2")[0].innerText.toLowerCase();
+        if (title.indexOf(searchInput) > -1 || searchInput === "") {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 
-          // Show or hide card based on search result and filter
-          card.style.display = matchesSearch && matchesFilter ? "block" : "none";
-      });
-  });
+// Function to handle add to cart button click
+function submitOrder() {
+    // Add your logic here to handle adding to cart
+    alert("Item added to cart!");
+}
+
+// Function to handle filter by category
+document.getElementById("category").addEventListener("change", function() {
+    var selectedCategory = this.value.toLowerCase();
+    var cards = document.getElementsByClassName("card");
+
+    // Loop through all cards and hide those that don't match the selected category
+    Array.from(cards).forEach(function(card) {
+        var category = card.getElementsByTagName("h2")[0].innerText.toLowerCase();
+        if (selectedCategory === "" || category === selectedCategory) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
 });
 
+// Function to handle filter by price
+document.getElementById("priceFilter").addEventListener("change", function() {
+    var selectedPrice = this.value;
+    var cards = document.getElementsByClassName("card");
 
+    // Loop through all cards and hide those that don't match the selected price range
+    Array.from(cards).forEach(function(card) {
+        var price = parseFloat(card.getElementsByClassName("price")[0].innerText.replace("$", ""));
+        if (selectedPrice === "all" || isPriceInRange(price, selectedPrice)) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
 
-const books = [
-  { title: "Science", price: "$19.99", rating: 5, imgSrc: "img/books/science book.jpg" },
-  { title: "Mathematics", price: "$24.99", rating: 5, imgSrc: "img/books/maths book.jpg" },
-  { title: "History", price: "$29.99", rating: 5, imgSrc: "img/books/history book.jpg" },
-  { title: "Java", price: "$30.45", rating: 5, imgSrc: "img/books/java.jpg" },
-  { title: "Python", price: "$19.99", rating: 5, imgSrc: "img/books/python book.jpg" },
-  { title: "English", price: "$24.99", rating: 5, imgSrc: "img/books/english book.jpg" },
-  { title: "DBMS", price: "$19.99", rating: 5, imgSrc: "img/books/dbms book.jpg" },
-  { title: "HTML", price: "$24.99", rating: 5, imgSrc: "img/books/html book.jpg" },
-  { title: "MUSIC", price: "$24.99", rating: 5, imgSrc: "img/books/musicbook.jpg" },
-  { title: "ART", price: "$24.99", rating: 5, imgSrc: "img/books/art book.jpg" },
-
-];
-
-// Function to create card elements
-function createCard(book) {
-  const card = document.createElement("div");
-  card.classList.add("card");
-
-  const img = document.createElement("img");
-  img.classList.add("book");
-  img.src = book.imgSrc;
-  img.alt = "Product Image";
-  card.appendChild(img);
-
-  const title = document.createElement("h3");
-  title.textContent = book.title;
-  card.appendChild(title);
-
-  const price = document.createElement("p");
-  price.classList.add("price");
-  price.textContent = book.price;
-  card.appendChild(price);
-
-  const rating = document.createElement("div");
-  rating.classList.add("rating");
-  for (let i = 0; i < book.rating; i++) {
-    const star = document.createElement("img");
-    star.src = "img/books/star-removebg-preview.png";
-    star.alt = "star";
-    rating.appendChild(star);
-  }
-  card.appendChild(rating);
-
-  const button = document.createElement("button");
-  button.classList.add("button");
-  button.type = "submit";
-  button.textContent = "Add to Cart";
-  card.appendChild(button);
-
-  return card;
+// Function to check if price is within the selected range
+function isPriceInRange(price, selectedPrice) {
+    var range = selectedPrice.split("-");
+    var minPrice = parseFloat(range[0]);
+    var maxPrice = parseFloat(range[1]);
+    return price >= minPrice && price <= maxPrice;
 }
 
-// Function to initialize the card container
-function initCardContainer() {
-  const container = document.getElementById("card-container");
-  books.forEach(book => {
-    const card = createCard(book);
-    container.appendChild(card);
-  });
+// Function to handle filter by rating
+document.querySelectorAll('input[name="rating"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        var selectedRating = this.value;
+        var cards = document.getElementsByClassName("card");
+
+        // Loop through all cards and hide those that don't match the selected rating
+        Array.from(cards).forEach(function(card) {
+            var rating = parseFloat(card.getElementsByClassName("points")[0].innerText);
+            if (rating >= selectedRating) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
+
+// Function to handle filter by date
+document.getElementById("startDate").addEventListener("change", filterByDate);
+document.getElementById("endDate").addEventListener("change", filterByDate);
+
+function filterByDate() {
+    var startDate = new Date(document.getElementById("startDate").value);
+    var endDate = new Date(document.getElementById("endDate").value);
+    var cards = document.getElementsByClassName("card");
+
+    // Loop through all cards and hide those that don't match the selected date range
+    Array.from(cards).forEach(function(card) {
+        var date = new Date(card.getElementsByClassName("date")[0].innerText);
+        if ((isNaN(startDate) || date >= startDate) && (isNaN(endDate) || date <= endDate)) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
 }
 
-// Call the initialization function
-initCardContainer();
+// Function to handle filter by size
+document.querySelectorAll('input[name="size"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        var selectedSize = this.value;
+        var cards = document.getElementsByClassName("card");
 
-function submitOrder() {
-  alert("Item added to cart!");
-}
+        // Loop through all cards and hide those that don't match the selected size
+        Array.from(cards).forEach(function(card) {
+            var size = card.getElementsByClassName("book")[0].getAttribute("alt").toLowerCase();
+            if (selectedSize === size) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
