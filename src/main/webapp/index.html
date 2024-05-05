@@ -1,505 +1,541 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" href="css/homepage.css" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/homepage.css">
 </head>
 
 <body>
+    <div class="contaner">
 
-  <div class="contaner">
 
+        <div class="navigation_bar">
 
-    <div class="navigation_bar">
+            <nav class="navbar">
+                <div class="navbar-container container">
+                    <input type="checkbox" name="" id="">
+                    <div class="hamburger-lines">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+                    <ul class="menu-items">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#"><button class="btn sing_in_btn">SING IN</button></a></li>
+                        <li><a href="#"><button class="btn sing_up_btn">SING UP</button></a></li>
+                    </ul>
 
-      <nav class="navbar">
-        <div class="navbar-container container">
-          <input type="checkbox" name="" id="">
-          <div class="hamburger-lines">
-            <span class="line line1"></span>
-            <span class="line line2"></span>
-            <span class="line line3"></span>
-          </div>
-          <ul class="menu-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#"><button class="btn sing_in_btn">SING IN</button></a></li>
-            <li><a href="#"><button class="btn sing_up_btn">SING UP</button></a></li>
-          </ul>
-
-          <div class="logo_box">
-            <h1 class="logo">Get Posted</h1>
-          </div>
+                    <div class="logo_box">
+                        <h1 class="logo">Get Posted</h1>
+                    </div>
+                    
+                </div>
 
         </div>
-    </div>
 
-    <div class="carosel-box">
+      <div class="corosel-box">
 
-      <input type="radio" name="position" id="radio1" checked />
-      <input type="radio" name="position" id="radio2" />
-      <input type="radio" name="position" id="radio3" />
-      <input type="radio" name="position" id="radio4" />
-      <input type="radio" name="position" id="radio5" />
-      <main id="carousel">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-      </main>
-    </div>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
 
-  </div>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
 
-  <div class="home-body">
-    <!-- authorPublication_1 -->
+            <div class="carousel-inner">
+              <div class="carousel-item active c-item">
+                <img src="img/homepage/images (10).jpeg" class="d-block w-100 c-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Book Shop</h5>
+                    <p>hi How are you...</p>
+                  </div>
+              </div>
 
-    <div class="authorPublication">
-      <button id="scrollLeftButton" class="button">
-        <img src="img/Home Img/Light_Aroow.svg">
-      </button>
+              <div class="carousel-item c-item">
+                <img src="img/homepage/images (8).jpeg" class="d-block w-100 c-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Book Shop</h5>
+                    <p>hi How are you...</p>
+                  </div>
+              </div>
 
-      <div class="pubCards" id="scrollContainer">
-        <h2 class="pub_Name">Trending Books</h2>
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
+              <div class="carousel-item c-item">
+                <img src="img/homepage/images (9).jpeg" class="d-block w-100 c-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Book Shop</h5>
+                    <p>hi How are you...</p>
+                  </div>
+              </div>
 
-          <div class="pubPrice">
-            <p>LKR 1850</p>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
       </div>
 
-      <button id="scrollRightButton" class="button">
-        <img src="img/Home Img/Right_Arrow.svg">
-      </button>
+            
+      
+     
+
+        <div class="home-body">
+            <!-- authorPublication_1 -->
+
+            <div class="authorPublication">
+                <button id="scrollLeftButton" class="button">
+                    <img src="img/Home Img/Light_Aroow.svg">
+                </button>
+
+                <div class="pubCards" id="scrollContainer">
+                    <h2 class="pub_Name">Trending Books</h2>
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button id="scrollRightButton" class="button">
+                    <img src="img/Home Img/Right_Arrow.svg">
+                </button>
+
+            </div>
+
+
+
+            <!-- authorPublication_2 -->
+
+            <div class="authorPublication">
+                <button id="scrollLeftButton1" class="button">
+                    <img src="img/Home Img/Light_Aroow.svg">
+                </button>
+
+                <div class="pubCards" id="scrollContainer1">
+                    <h2 class="pub_Name">Novels Books</h2>
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button id="scrollRightButton1" class="button">
+                    <img src="img/Home Img/Right_Arrow.svg">
+                </button>
+
+            </div>
+
+
+            <!-- authorPublication_3 -->
+
+            <div class="authorPublication">
+                <button id="scrollLeftButton2" class="button">
+                    <img src="img/Home Img/Light_Aroow.svg">
+                </button>
+
+                <div class="pubCards" id="scrollContainer2">
+                    <h2 class="pub_Name">Education Books</h2>
+                    <div class="pubCard card_2">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button id="scrollRightButton2" class="button">
+                    <img src="img/Home Img/Right_Arrow.svg">
+                </button>
+
+            </div>
+
+
+            <!-- authorPublication_4 -->
+
+            <div class="authorPublication">
+                <button id="scrollLeftButton3" class="button">
+                    <img src="img/Home Img/Light_Aroow.svg">
+                </button>
+
+                <div class="pubCards" id="scrollContainer3">
+                    <h2 class="pub_Name">Children Books</h2>
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                    <div class="pubCard card_1">
+                        <div class="pubName">
+                            <h3>A History of Cricket </h3>
+                        </div>
+                        <div class="pubImg">
+                            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
+                        </div>
+
+                        <div class="pubPrice">
+                            <p>LKR 1850</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button id="scrollRightButton3" class="button">
+                    <img src="img/Home Img/Right_Arrow.svg">
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
+    <script src="script.js"></script>
 
-
-    <!-- authorPublication_2 -->
-
-    <div class="authorPublication">
-      <button id="scrollLeftButton1" class="button">
-        <img src="img/Home Img/Light_Aroow.svg">
-      </button>
-
-      <div class="pubCards" id="scrollContainer1">
-        <h2 class="pub_Name">Novels Books</h2>
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-      </div>
-
-      <button id="scrollRightButton1" class="button">
-        <img src="img/Home Img/Right_Arrow.svg">
-      </button>
-
-    </div>
-
-
-    <!-- authorPublication_3 -->
-
-    <div class="authorPublication">
-      <button id="scrollLeftButton2" class="button">
-        <img src="img/Home Img/Light_Aroow.svg">
-      </button>
-
-      <div class="pubCards" id="scrollContainer2">
-        <h2 class="pub_Name">Education Books</h2>
-        <div class="pubCard card_2">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-      </div>
-
-      <button id="scrollRightButton2" class="button">
-        <img src="img/Home Img/Right_Arrow.svg">
-      </button>
-
-    </div>
-
-
-    <!-- authorPublication_4 -->
-
-    <div class="authorPublication">
-      <button id="scrollLeftButton3" class="button">
-        <img src="img/Home Img/Light_Aroow.svg">
-      </button>
-
-      <div class="pubCards" id="scrollContainer3">
-        <h2 class="pub_Name">Children Books</h2>
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-        <div class="pubCard card_1">
-          <div class="pubName">
-            <h3>A History of Cricket </h3>
-          </div>
-          <div class="pubImg">
-            <img src="img/Home Img/user.jpg" alt="Profile picture of the author">
-          </div>
-
-          <div class="pubPrice">
-            <p>LKR 1850</p>
-          </div>
-        </div>
-
-      </div>
-
-      <button id="scrollRightButton3" class="button">
-        <img src="img/Home Img/Right_Arrow.svg">
-      </button>
-
-    </div>
-
-  </div>
-  
-  <script src="js/homepage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-
-
 
 </html>
