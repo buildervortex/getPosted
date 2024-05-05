@@ -112,3 +112,4 @@
 [2024/05/04 00:18] GALDilhara		: Created the test classes for Rates DAO classes and fully tested.
 [2024/05/05 00:55] GALDilhara		: Started to create the Request DAO classes
 [2024/05/05 01:54] GALDilhara		: Finished craeting the Request DAO classes. Wrote tests and fully tests the classes.
+[2024/05/05 09:00] GALDilhara		: Starts to create the IsNotifiedBy DAO classes.
