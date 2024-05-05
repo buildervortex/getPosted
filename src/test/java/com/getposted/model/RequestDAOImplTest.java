@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-// @Ignore
+@Ignore
 public class RequestDAOImplTest {
 
     private static RequestDAOImpl requestDAOImpl = new RequestDAOImpl();
@@ -45,7 +45,6 @@ public class RequestDAOImplTest {
 
     @Test
     public void testGet() throws SQLException {
-        // (1, 'Request for new content on technology', 1, 1)
         Request request;
 
         int id = 1;

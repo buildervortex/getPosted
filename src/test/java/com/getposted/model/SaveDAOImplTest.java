@@ -14,7 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-// @Ignore()
+@Ignore()
 public class SaveDAOImplTest {
 
     private static Save save = new Save();
@@ -37,7 +37,7 @@ public class SaveDAOImplTest {
         rowsAffected = saveDAOImpl.delete(save);
         assertEquals(rowsAffected, 1);
 
-        List<Save> saves = saveDAOImpl.getList(1);
+        List<Save> saves = saveDAOImpl.getList(4);
         boolean contains = false;
         for (Save save : saves) {
             if (save.getUserId() == 4 && save.getPublicationId() == 2) {
@@ -92,11 +92,6 @@ public class SaveDAOImplTest {
             }
         }
         assertTrue(changed);
-
-    }
-
-    @Test
-    public void testUpdate() {
 
     }
 

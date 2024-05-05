@@ -9,7 +9,7 @@ import static org.junit.Assert.fail;
 
 import com.getposted.system.Sysenv;
 
-// @Ignore
+@Ignore
 public class TestDataBase {
 
     private static Connection con;

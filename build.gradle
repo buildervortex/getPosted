@@ -39,6 +39,6 @@ war{
     archiveFileName = "getPosted.war"
 }
 
-tasks.withType(Test){
+test{
 	maxParallelForks=1
 }
