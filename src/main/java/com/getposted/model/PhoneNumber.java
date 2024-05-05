@@ -5,8 +5,9 @@ public class PhoneNumber {
     private String phoneNumber = null;
     private int inquiryId = 0;
 
-    public PhoneNumber(){}
-    
+    public PhoneNumber() {
+    }
+
     public PhoneNumber(String phoneNumber, int inquiryId) {
         this.phoneNumber = phoneNumber;
         this.inquiryId = inquiryId;
@@ -33,6 +34,4 @@ public class PhoneNumber {
         return "PhoneNumber [phoneNumber=" + phoneNumber + ", inquiryId=" + inquiryId + "]";
     }
 
-    
-    
 }

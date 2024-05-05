@@ -1,5 +1,8 @@
 package com.getposted.model;
 
-public interface SearchTagDAO extends DAO<SearchTag>{
-    
+import java.sql.SQLException;
+import java.util.List;
+
+public interface SearchTagDAO extends DAO<SearchTag> {
+    List<SearchTag> getList(int publicationId) throws SQLException;
 }

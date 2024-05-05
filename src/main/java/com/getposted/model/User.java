@@ -14,7 +14,8 @@ public class User {
     private String middleName;
     private String lastName;
 
-    public User(){}
+    public User() {
+    }
 
     public User(int id, String email, String password, String userName, Date dob, String salt, String pepper,
             String firstName, String middleName, String lastName) {
@@ -116,6 +117,5 @@ public class User {
                 + dob + ", salt=" + salt + ", pepper=" + pepper + ", firstName=" + firstName + ", middleName="
                 + middleName + ", lastName=" + lastName + "]";
     }
-
 
 }

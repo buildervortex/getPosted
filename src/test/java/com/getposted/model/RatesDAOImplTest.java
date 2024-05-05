@@ -12,8 +12,10 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+// @Ignore
 public class RatesDAOImplTest {
 
     private static RatesDAOImpl ratesDAOImpl = new RatesDAOImpl();
@@ -37,12 +39,12 @@ public class RatesDAOImplTest {
 
         int rowsAffected = ratesDAOImpl.insert(rates);
         assertEquals(rowsAffected, 1);
-        assertNotNull(ratesDAOImpl.get(authorId,userId));
+        assertNotNull(ratesDAOImpl.get(authorId, userId));
 
         rowsAffected = ratesDAOImpl.delete(rates);
         assertEquals(rowsAffected, 1);
 
-        assertNull(ratesDAOImpl.get(authorId,userId));
+        assertNull(ratesDAOImpl.get(authorId, userId));
 
     }
 
@@ -128,6 +130,7 @@ public class RatesDAOImplTest {
         date = new Date(Calendar.getInstance().getTimeInMillis());
 
         rates = new Rates(value, review, date, authorId, userId);
+
         rowsAffected = ratesDAOImpl.update(rates);
         assertEquals(rowsAffected, 1);
 

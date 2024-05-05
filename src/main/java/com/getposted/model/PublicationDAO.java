@@ -1,4 +1,4 @@
 package com.getposted.model;
 
-public interface PublicationDAO extends DAO<Publication>{
+public interface PublicationDAO extends DAO<Publication> {
 }

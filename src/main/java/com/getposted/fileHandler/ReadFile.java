@@ -14,30 +14,31 @@ import com.getposted.logger.Logging;
 
 public class ReadFile {
     private static Logger logger = Logging.getLogger(ReadFile.class.getName());
-    
-    // read all lines form a file which reside in the local file system
-    public static List<String> readLines(String fileName) throws IOException{
+
+    public static List<String> readLines(String fileName) throws IOException {
         List<String> lines = new ArrayList<String>();
         String line = null;
         BufferedReader reader = null;
 
-        try{
+        try {
             reader = new BufferedReader(new FileReader(fileName));
-        }
-        catch(FileNotFoundException e){
-            logger.severe(String.format("The FileNot found Exception occoured in the readLines method of the ReadFile.java. The file name is %. The error message is %s",fileName,e.getMessage()));
+        } catch (FileNotFoundException e) {
+            logger.severe(String.format(
+                    "The FileNot found Exception occoured in the readLines method of the ReadFile.java. The file name is %. The error message is %s",
+                    fileName, e.getMessage()));
             throw e;
         }
 
-        try{
+        try {
             line = reader.readLine();
-        }
-        catch(IOException e){
-            logger.severe(String.format("The IOException occoured in the readLines method of the ReadFile.java. The file name is %s. the exception message is %s",fileName ,e.getMessage()));
+        } catch (IOException e) {
+            logger.severe(String.format(
+                    "The IOException occoured in the readLines method of the ReadFile.java. The file name is %s. the exception message is %s",
+                    fileName, e.getMessage()));
             throw e;
         }
 
-        while(line!= null){
+        while (line != null) {
             lines.add(line);
             line = reader.readLine();
         }
@@ -46,23 +47,24 @@ public class ReadFile {
         return lines;
     }
 
-    public static List<String> readLines(String fileName, ClassLoader loader) throws IOException{
+    public static List<String> readLines(String fileName, ClassLoader loader) throws IOException {
         List<String> lines = new ArrayList<String>();
-        String line =null;
+        String line = null;
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(inputStreamReader);
 
-        try{
+        try {
             line = reader.readLine();
-        }
-        catch(IOException e){
-            logger.severe(String.format("The IOException occoured in the readLines method of the ReadFile.java. The file name is %s. the exception message is %s",fileName ,e.getMessage()));
+        } catch (IOException e) {
+            logger.severe(String.format(
+                    "The IOException occoured in the readLines method of the ReadFile.java. The file name is %s. the exception message is %s",
+                    fileName, e.getMessage()));
             throw e;
         }
 
-        while(line!= null){
+        while (line != null) {
             lines.add(line);
             line = reader.readLine();
         }

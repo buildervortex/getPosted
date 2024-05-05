@@ -15,7 +15,7 @@ import org.junit.Test;
 // @Ignore("SkillDAOTest")
 public class SkillDAOImplTest {
 
-    private static Skill skill = new Skill();
+    
     private static SkillDAOImpl skillDAOImpl = new SkillDAOImpl();
 
     @BeforeClass
@@ -25,18 +25,24 @@ public class SkillDAOImplTest {
 
     @Test
     public void testDelete() throws SQLException {
+        Skill skill = new Skill();
         skill.setSkill("testDelete");
         skill.setId(27);
-        skillDAOImpl.insert(skill);
+
+        int rowsAffected = skillDAOImpl.insert(skill);
+        assertEquals(rowsAffected, 1);
 
         assertNotNull(skillDAOImpl.get(27));
 
-        skillDAOImpl.delete(skill);
+        rowsAffected = skillDAOImpl.delete(skill);
+        assertEquals(rowsAffected, 1);
+
         assertTrue(skillDAOImpl.get(27) == null);
     }
 
     @Test
     public void testGetInt() throws SQLException {
+        Skill skill = new Skill();
         skill = skillDAOImpl.get(1);
         assertEquals(skill.getSkill(), "Programming");
         skill = skillDAOImpl.get(8);
@@ -45,6 +51,7 @@ public class SkillDAOImplTest {
 
     @Test
     public void testGetString() throws SQLException {
+        Skill skill = new Skill();
         skill = skillDAOImpl.get("Programming");
         assertEquals(skill.getId(), 1);
         skill = skillDAOImpl.get("Data Analysis");
@@ -71,10 +78,12 @@ public class SkillDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
+        Skill skill = new Skill();
         skill.setSkill("testInsert");
         skill.setId(21);
 
-        skillDAOImpl.insert(skill);
+        int rowsAffected = skillDAOImpl.insert(skill);
+        assertEquals(rowsAffected, 1);
 
         assertNotNull(skillDAOImpl.get("testInsert"));
         assertNotNull(skillDAOImpl.get(21));
@@ -84,18 +93,24 @@ public class SkillDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        Skill skill = new Skill();
         skill.setSkill("testUpdate");
         skill.setId(22);
-        skillDAOImpl.insert(skill);
+
+        int rowsAffected = skillDAOImpl.insert(skill);
+        assertEquals(rowsAffected, 1);
+
         skill.setSkill("testUpdate2");
 
-        skillDAOImpl.update(skill);
+        rowsAffected = skillDAOImpl.update(skill);
+        assertEquals(rowsAffected, 1);
 
         assertEquals(skillDAOImpl.get(22).getSkill(), "testUpdate2");
     }
 
     @Test(expected = SQLException.class)
     public void testExceptionForInsert() throws SQLException {
+        Skill skill = new Skill();
         skill.setSkill("nano");
         skill.setId(40);
         skillDAOImpl.insert(skill);

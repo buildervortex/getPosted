@@ -12,7 +12,8 @@ public class IsInformed {
     private int userId = 0;
     private int publisherId = 0;
 
-    public IsInformed(){}
+    public IsInformed() {
+    }
 
     public IsInformed(int id, String notification, Date notifiedDate, Time notifiedTime, int userId, int publisherId) {
         this.id = id;
@@ -76,5 +77,5 @@ public class IsInformed {
         return "IsInformed [id=" + id + ", notification=" + notification + ", notifiedDate=" + notifiedDate
                 + ", notifiedTime=" + notifiedTime + ", userId=" + userId + ", publisherId=" + publisherId + "]";
     }
-    
+
 }

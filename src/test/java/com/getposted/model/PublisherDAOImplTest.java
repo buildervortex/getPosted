@@ -15,7 +15,6 @@ import org.junit.Test;
 // @Ignore("PublisherDAOImplTest")
 public class PublisherDAOImplTest {
 
-    private static Publisher publisher = new Publisher();
     private static PublisherDAOImpl publisherImpl = new PublisherDAOImpl();
 
     @BeforeClass
@@ -25,6 +24,7 @@ public class PublisherDAOImplTest {
 
     @Test
     public void testDelete() throws SQLException {
+        Publisher publisher = new Publisher();
 
         int id = 80;
         String address = "testDelete";
@@ -40,15 +40,20 @@ public class PublisherDAOImplTest {
         double softCopyCommission = 45.00;
         double hardCopyCommission = 12.00;
 
-        publisher = new Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password, hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission);
+        publisher = new Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password,
+                hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission);
 
-        publisherImpl.insert(publisher);
-        publisherImpl.delete(publisher);
+        int rowsAffected = publisherImpl.insert(publisher);
+        assertEquals(rowsAffected, 1);
+
+        rowsAffected = publisherImpl.delete(publisher);
+        assertEquals(rowsAffected, 1);
         assertNull(publisherImpl.get(id));
     }
 
     @Test
     public void testGet() throws SQLException {
+        Publisher publisher = new Publisher();
         publisher = publisherImpl.get(1);
         assertTrue(publisher.getId() == 1);
         assertEquals(publisher.getAddress(), "123 Main St, Anytown USA");
@@ -89,6 +94,7 @@ public class PublisherDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
+        Publisher publisher = new Publisher();
         int id = 21;
         String address = "testInsert";
         String webSite = "sampleWebsite";
@@ -117,7 +123,8 @@ public class PublisherDAOImplTest {
         publisher.setSoftCopyCommission(softCopyCommission);
         publisher.setHardCopyCommission(hardCopyCommission);
 
-        publisherImpl.insert(publisher);
+        int rowsAffected = publisherImpl.insert(publisher);
+        assertEquals(rowsAffected, 1);
 
         publisher = publisherImpl.get(21);
         assertTrue(publisher.getId() == id);
@@ -138,6 +145,7 @@ public class PublisherDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        Publisher publisher = new Publisher();
         int id = 99;
         String address = "testUpdate";
         String webSite = "sampleWebsitee";
@@ -152,8 +160,11 @@ public class PublisherDAOImplTest {
         double softCopyCommission = 8.00;
         double hardCopyCommission = 8.00;
 
-        publisher = new Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password, hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission);
-        publisherImpl.insert(publisher);
+        publisher = new Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password,
+                hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission);
+
+        int rowsAffected = publisherImpl.insert(publisher);
+        assertEquals(rowsAffected, 1);
 
         address = "testUpdatee";
         webSite = "sampleWebsiteee";
@@ -168,8 +179,11 @@ public class PublisherDAOImplTest {
         softCopyCommission = 8.08;
         hardCopyCommission = 8.08;
 
-        publisher = new Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password, hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission);
-        publisherImpl.update(publisher);
+        publisher = new Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password,
+                hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission);
+
+        rowsAffected = publisherImpl.update(publisher);
+        assertEquals(rowsAffected, 1);
 
         publisher = publisherImpl.get(id);
         assertTrue(publisher.getId() == id);

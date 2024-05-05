@@ -1,4 +1,4 @@
 package com.getposted.model;
 
-public interface UserDAO extends DAO<User>{    
+public interface UserDAO extends DAO<User> {
 }

@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class PhoneNumberDAOImpl implements PhoneNumberDAO{
+public class PhoneNumberDAOImpl implements PhoneNumberDAO {
 
     private static Logger logger = Logging.getLogger(PhoneNumberDAO.class.getName());
 
@@ -29,15 +29,16 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO{
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        try{
-			rs = ps.executeQuery();
-		}
-		catch(SQLException e){
-			logger.warning(String.format("There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at getAll() .The exception message is %s",e.getMessage()));
-			throw e;
-		}
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at getAll() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
 
-        while(rs.next()){
+        while (rs.next()) {
             String qphoneNumber = rs.getString("phoneNumber");
             int inquiryId = rs.getInt("inquiryId");
             phoneNumberList.add(new PhoneNumber(qphoneNumber, inquiryId));
@@ -49,16 +50,17 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO{
     public int insert(PhoneNumber phoneNumber) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO PhoneNumber (phoneNumber, inquiryId) VALUES (?,?)";
-        PreparedStatement insert = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         int rowsAffected = -1;
 
-        try{
-            insert.setString(1, phoneNumber.getPhoneNumber());
-            insert.setInt(2, phoneNumber.getInquiryId());
-            rowsAffected = insert.executeUpdate();
-        }
-        catch(SQLException e){
-            logger.warning(String.format("There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at insert() .The exception message is %s",e.getMessage()));
+        try {
+            ps.setString(1, phoneNumber.getPhoneNumber());
+            ps.setInt(2, phoneNumber.getInquiryId());
+            rowsAffected = ps.executeUpdate();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at insert() .The exception message is %s",
+                    e.getMessage()));
             throw e;
         }
 
@@ -77,15 +79,16 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO{
         String sqlTemplate = "DELETE FROM PhoneNumber WHERE inquiryId = ? AND phoneNumber = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         int rowsAffected = -1;
-        
+
         ps.setInt(1, phoneNumber.getInquiryId());
         ps.setString(2, phoneNumber.getPhoneNumber());
 
-        try{
+        try {
             rowsAffected = ps.executeUpdate();
-        }
-        catch(SQLException e){
-            logger.warning(String.format("There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at delete() .The exception message is %s",e.getMessage()));
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at delete() .The exception message is %s",
+                    e.getMessage()));
             throw e;
         }
 
@@ -102,20 +105,21 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO{
 
         ps.setInt(1, inquiryId);
 
-        try{
-			rs = ps.executeQuery();
-		}
-		catch(SQLException e){
-			logger.warning(String.format("There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at getList() .The exception message is %s",e.getMessage()));
-			throw e;
-		}
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PhoneNumberDAOImpl class at getList() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
 
-        while(rs.next()){
+        while (rs.next()) {
             String phoneNumber = rs.getString("phoneNumber");
             int qinquiryId = rs.getInt("inquiryId");
             phoneNumberList.add(new PhoneNumber(phoneNumber, qinquiryId));
         }
         return phoneNumberList;
     }
-    
+
 }

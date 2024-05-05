@@ -21,13 +21,13 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         Connection con = Database.getConnection();
         Purchase purchase = null;
         String sqlTemplate = "SELECT * FROM Purchase WHERE id = ?";
-        PreparedStatement select = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        select.setInt(1, id);
+        ps.setInt(1, id);
 
         try {
-            rs = select.executeQuery();
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getId() method the id is %d. The exception message is %s",
@@ -36,7 +36,6 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         }
 
         if (rs.next()) {
-            // (id, purchasedDate, price, purchasedTime, userId, publisherId, publicationId)
             int qid = rs.getInt("id");
             Date purchasedDate = rs.getDate("purchasedDate");
             double price = rs.getDouble("price");
@@ -55,11 +54,11 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         Connection con = Database.getConnection();
         List<Purchase> purchases = new ArrayList<Purchase>();
         String sqlTemplate = "SELECT * FROM Purchase ";
-        PreparedStatement select = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
         try {
-            rs = select.executeQuery();
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getAll() method . The exception message is %s",
@@ -87,7 +86,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO Purchase(id, purchasedDate, price, purchasedTime, userId, publisherId, publicationId) VALUES(?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        int rowsAffected = -1;
 
         ps.setInt(1, purchase.getId());
         ps.setDate(2, purchase.getPurchasedDate());
@@ -98,7 +97,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         ps.setInt(7, purchase.getPublicationId());
 
         try {
-            result = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at insert() method . The exception message is %s. The id is %s. The purchasedDate is %s. the price is %s. the purchasedTime is %s. The userId is %s. The publisherId is %s. The publicationId    is %s",
@@ -108,7 +107,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
             throw e;
         }
 
-        return result;
+        return rowsAffected;
     }
 
     @Override
@@ -116,7 +115,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         Connection con = Database.getConnection();
         String sqlTemplate = "UPDATE Purchase SET purchasedDate = ?, price = ?, purchasedTime = ?, userId = ?, publisherId = ?, publicationId = ? WHERE id = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        int rowsAffected = -1;
 
         ps.setDate(1, purchase.getPurchasedDate());
         ps.setDouble(2, purchase.getPrice());
@@ -127,7 +126,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         ps.setInt(7, purchase.getId());
 
         try {
-            result = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at update() method . The exception message is %s. The id is %s. The purchasedDate is %s. the price is %s. the purchasedTime is %s. The userId is %s. The publisherId is %s. The publicationId    is %s",
@@ -137,7 +136,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
             throw e;
         }
 
-        return result;
+        return rowsAffected;
     }
 
     @Override
@@ -145,12 +144,12 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         Connection con = Database.getConnection();
         String sqlTemplate = "DELETE FROM Purchase WHERE id = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        int rowsAffected = -1;
 
         ps.setInt(1, purchase.getId());
 
         try {
-            result = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at delete() method . The exception message is %s. The id is %s. The purchasedDate is %s. the price is %s. the purchasedTime is %s. The userId is %s. The publisherId is %s. The publicationId    is %s",
@@ -160,7 +159,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
             throw e;
         }
 
-        return result;
+        return rowsAffected;
     }
 
 }

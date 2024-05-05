@@ -16,7 +16,6 @@ import org.junit.Test;
 // @Ignore()
 public class PublicationDAOImplTest {
 
-    private static Publication publication = new Publication();
     private static PublicationDAOImpl publicationDAOImpl = new PublicationDAOImpl();
 
     @BeforeClass
@@ -27,26 +26,36 @@ public class PublicationDAOImplTest {
     @Test
     public void testDelete() throws SQLException {
 
-        publication = new Publication();
-        publication.setAuthorId(2);
-        publication.setSize(20);
-        publication.setPublishedDate(Date.valueOf("2023-01-15"));
-        publication.setCategoryId(8);
-        publication.setLanguageId(4);
-        publication.setPdfPath("/pdfs/publication1.pdf");
-        publication.setPageCount(200);
-        publication.setSoftCopyDiscount(0.10);
-        publication.setTitle("testDeleteTitle");
-        publication.setDate(Date.valueOf("2023-01-15"));
-        publication.setSoftCopyPrice(10.00);
-        publication.setId(40);
-        publicationDAOImpl.insert(publication);
-        publicationDAOImpl.delete(publication);
-        assertTrue(publicationDAOImpl.get(40) == null);
+        Publication publication = new Publication();
+        int id = 88;
+        String description = "testDeleteDescription";
+        Date date = Date.valueOf("2025-04-05");
+        int size = 548;
+        String pdfPath = "/pdf/asdfasdfasd";
+        double softCopyPrice = 4.55;
+        int pageCount = 204;
+        double softCopyDiscount = 20.4;
+        String title = "testUpdatetle";
+        Date publishedDate = Date.valueOf("2084-04-16");
+        int categoryId = 6;
+        int languageId = 8;
+        int authorId = 2;
+
+        publication = new Publication(id, description, date, size, pdfPath, softCopyPrice, pageCount, softCopyDiscount,
+                title, publishedDate, categoryId, languageId, authorId);
+
+        int rowsAffected = publicationDAOImpl.insert(publication);
+        assertEquals(rowsAffected, 1);
+
+        rowsAffected = publicationDAOImpl.delete(publication);
+        assertEquals(rowsAffected, 1);
+
+        assertTrue(publicationDAOImpl.get(id) == null);
     }
 
     @Test
     public void testGet() throws SQLException {
+        Publication publication = new Publication();
         publication = publicationDAOImpl.get(1);
         assertNotNull(publication);
 
@@ -89,6 +98,7 @@ public class PublicationDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
+        Publication publication = new Publication();
 
         publication.setId(21);
         publication.setDescription(
@@ -104,7 +114,10 @@ public class PublicationDAOImplTest {
         publication.setCategoryId(1);
         publication.setLanguageId(1);
         publication.setAuthorId(1);
-        publicationDAOImpl.insert(publication);
+
+        int rowsAffected = publicationDAOImpl.insert(publication);
+        assertEquals(rowsAffected, 1);
+
         publication = publicationDAOImpl.get(21);
         assertTrue(publication.getId() == 21);
         assertTrue(publication.getDescription().equals(
@@ -123,31 +136,59 @@ public class PublicationDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
-        publication = publicationDAOImpl.get(5);
-        publication.setDescription("testUpdateDescription");
-        publication.setDate(Date.valueOf("2023-01-10"));
-        publication.setSize(500);
-        publication.setPdfPath("/pdfs/publication1.pdf");
-        publication.setSoftCopyPrice(10.00);
-        publication.setPageCount(200);
-        publication.setSoftCopyDiscount(0.10);
-        publication.setTitle("testUpdateTitle");
-        publication.setPublishedDate(Date.valueOf("2023-01-15"));
-        publication.setCategoryId(1);
-        publication.setLanguageId(1);
-        publication.setAuthorId(1);
-        publicationDAOImpl.update(publication);
-        publication = publicationDAOImpl.get(5);
-        assertTrue(publication.getDescription().equals("testUpdateDescription"));
-        assertTrue(publication.getDate().toString().equals("2023-01-10"));
-        assertTrue(publication.getSize() == 500);
-        assertEquals(publication.getPdfPath(), "/pdfs/publication1.pdf");
-        assertTrue(publication.getSoftCopyDiscount() == 0.10);
-        assertEquals(publication.getTitle(), "testUpdateTitle");
-        assertEquals(publication.getPublishedDate().toString(), "2023-01-15");
-        assertTrue(publication.getCategoryId() == 1);
-        assertTrue(publication.getLanguageId() == 1);
-        assertTrue(publication.getAuthorId() == 1);
+
+        Publication publication = new Publication();
+
+        int id = 48;
+        String description = "testUpdateDescription";
+        Date date = Date.valueOf("2024-04-05");
+        int size = 540;
+        String pdfPath = "/pdf";
+        double softCopyPrice = 4.05;
+        int pageCount = 20;
+        double softCopyDiscount = 2.4;
+        String title = "testUpdateTitle";
+        Date publishedDate = Date.valueOf("2024-04-16");
+        int categoryId = 1;
+        int languageId = 2;
+        int authorId = 4;
+
+        publication = new Publication(id, description, date, size, pdfPath, softCopyPrice, pageCount, softCopyDiscount,
+                title, publishedDate, categoryId, languageId, authorId);
+
+        int rowsAffected = publicationDAOImpl.insert(publication);
+        assertEquals(rowsAffected, 1);
+
+        description = "testUpdateDescriptionn";
+        date = Date.valueOf("2024-04-25");
+        size = 545;
+        pdfPath = "/pdf/asdf";
+        softCopyPrice = 4.07;
+        pageCount = 25;
+        softCopyDiscount = 4.4;
+        title = "testUpdateTiitle";
+        publishedDate = Date.valueOf("2024-07-16");
+        categoryId = 2;
+        languageId = 4;
+        authorId = 1;
+
+        publication = new Publication(id, description, date, size, pdfPath, softCopyPrice, pageCount, softCopyDiscount,
+                title, publishedDate, categoryId, languageId, authorId);
+
+        rowsAffected = publicationDAOImpl.update(publication);
+        assertEquals(rowsAffected, 1);
+
+        publication = publicationDAOImpl.get(48);
+        assertTrue(publication.getDescription().equals(description));
+        assertTrue(publication.getDate().toString().equals(date.toString()));
+        assertTrue(publication.getSize() == size);
+        assertEquals(publication.getPdfPath(), pdfPath);
+        assertTrue(publication.getSoftCopyDiscount() == softCopyDiscount);
+        assertEquals(publication.getTitle(), title);
+        assertEquals(publication.getPublishedDate().toString(), publishedDate.toString());
+        assertTrue(publication.getCategoryId() == categoryId);
+        assertTrue(publication.getLanguageId() == languageId);
+        assertTrue(publication.getAuthorId() == authorId);
     }
 
     @AfterClass

@@ -16,6 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+// @Ignore
 public class IsNotifiedByDAOImplTest {
 
     private static IsNotifiedByDAOImpl isNotifiedDAOImpl = new IsNotifiedByDAOImpl();
@@ -38,10 +39,11 @@ public class IsNotifiedByDAOImplTest {
 
         isNotifiedBy = new IsNotifiedBy(id, notifications, notifiedDate, notifiedTime, authorId, publisherId);
 
-        int result = isNotifiedDAOImpl.insert(isNotifiedBy);
-        assertEquals(result,1);
-
-        result = isNotifiedDAOImpl.delete(isNotifiedBy);
+        int rowsAffected = isNotifiedDAOImpl.insert(isNotifiedBy);
+        assertEquals(rowsAffected,1);
+        
+        rowsAffected = isNotifiedDAOImpl.delete(isNotifiedBy);
+        assertEquals(rowsAffected,1);
 
         assertNull(isNotifiedDAOImpl.get(id));
     }
@@ -98,8 +100,8 @@ public class IsNotifiedByDAOImplTest {
         isNotifiedBy.setAuthorId(authorId);
         isNotifiedBy.setPublisherId(publisherId);
 
-        int result = isNotifiedDAOImpl.insert(isNotifiedBy);
-        assertEquals(result,1);
+        int rowsAffected = isNotifiedDAOImpl.insert(isNotifiedBy);
+        assertEquals(rowsAffected,1);
 
         isNotifiedBy = isNotifiedDAOImpl.get(id);
         assertNotNull(isNotifiedBy);
@@ -124,8 +126,8 @@ public class IsNotifiedByDAOImplTest {
         int publisherId = 4;
 
         isNotifiedBy = new IsNotifiedBy(id, notifications, notifiedDate, notifiedTime, authorId, publisherId);
-        int result = isNotifiedDAOImpl.insert(isNotifiedBy);
-        assertEquals(result,1);
+        int rowsAffected = isNotifiedDAOImpl.insert(isNotifiedBy);
+        assertEquals(rowsAffected,1);
         
         notifications = "Notification 58";
         notifiedDate = new Date(Calendar.getInstance().getTimeInMillis());
@@ -134,8 +136,8 @@ public class IsNotifiedByDAOImplTest {
         publisherId = 5;
 
         isNotifiedBy = new IsNotifiedBy(id, notifications, notifiedDate, notifiedTime, authorId, publisherId);
-        result = isNotifiedDAOImpl.update(isNotifiedBy);
-        assertEquals(result,1);
+        rowsAffected = isNotifiedDAOImpl.update(isNotifiedBy);
+        assertEquals(rowsAffected,1);
 
         isNotifiedBy = isNotifiedDAOImpl.get(id);
 

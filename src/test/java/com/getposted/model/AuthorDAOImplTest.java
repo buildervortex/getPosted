@@ -8,7 +8,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -18,7 +17,6 @@ import org.junit.Test;
 // @Ignore("AuthorDAOImpTest")
 public class AuthorDAOImplTest {
 
-    private static Author author = new Author();
     private static AuthorDAOImpl authorDAOImpl = new AuthorDAOImpl();
 
     @BeforeClass
@@ -28,6 +26,7 @@ public class AuthorDAOImplTest {
 
     @Test
     public void testDelete() throws SQLException {
+        Author author = new Author();
         author.setId(20);
         author.setEmail("testDelete@gmail.com");
         author.setPhoneNumber("8234568450");
@@ -42,13 +41,19 @@ public class AuthorDAOImplTest {
         author.setLastName("testDeletet4");
         author.setUserName("testDelete8");
         author.setCountryId(1);
-        authorDAOImpl.insert(author);
-        authorDAOImpl.delete(author);
+
+        int rowsAffected = authorDAOImpl.insert(author);
+        assertEquals(rowsAffected, 1);
+
+        rowsAffected = authorDAOImpl.delete(author);
+        assertEquals(rowsAffected, 1);
+
         assertNull(authorDAOImpl.get(20));
     }
 
     @Test
     public void testGet() throws SQLException {
+        Author author = new Author();
         author = authorDAOImpl.get(1);
         assertTrue(author.getId() == 1);
 
@@ -110,6 +115,7 @@ public class AuthorDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
+        Author author = new Author();
         int id = 25;
         String email = "testInsert@gmail.com";
         String phoneNumber = "12345458890";
@@ -137,7 +143,9 @@ public class AuthorDAOImplTest {
         author.setLastName(lastName);
         author.setUserName(userName);
         author.setCountryId(countryId);
-        authorDAOImpl.insert(author);
+
+        int rowsAffected = authorDAOImpl.insert(author);
+        assertEquals(rowsAffected, 1);
 
         author = authorDAOImpl.get(25);
         assertTrue(author.getId() == id);
@@ -157,6 +165,7 @@ public class AuthorDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        Author author = new Author();
         int id = 50;
         String email = "testUpdate@gmail.com";
         String phoneNumber = "12245458890";
@@ -184,7 +193,9 @@ public class AuthorDAOImplTest {
         author.setLastName(lastName);
         author.setUserName(userName);
         author.setCountryId(countryId);
-        authorDAOImpl.insert(author);
+
+        int rowsAffected = authorDAOImpl.insert(author);
+        assertEquals(rowsAffected, 1);
 
         email = "testUpdatee@gmail.com";
         phoneNumber = "122245458890";
@@ -211,7 +222,9 @@ public class AuthorDAOImplTest {
         author.setLastName(lastName);
         author.setUserName(userName);
         author.setCountryId(countryId);
-        authorDAOImpl.update(author);
+
+        rowsAffected = authorDAOImpl.update(author);
+        assertEquals(rowsAffected, 1);
 
         author = authorDAOImpl.get(50);
         assertTrue(author.getId() == id);
@@ -231,6 +244,7 @@ public class AuthorDAOImplTest {
 
     @Test(expected = SQLException.class)
     public void testExceptionForInsert() throws SQLException {
+        Author author = new Author();
         author.setId(70);
         author.setEmail("testExceptionForInsert@gmail.com");
         author.setPhoneNumber("1234568450");

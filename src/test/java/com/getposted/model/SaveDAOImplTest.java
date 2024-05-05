@@ -1,5 +1,6 @@
 package com.getposted.model;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -25,17 +26,21 @@ public class SaveDAOImplTest {
     }
 
     @Test
-    public void testDelete() throws SQLException{
+    public void testDelete() throws SQLException {
         save.setPublicationId(2);
         save.setUserId(4);
         save.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
-        saveDAOImpl.insert(save);
-        saveDAOImpl.delete(save);
+
+        int rowsAffected = saveDAOImpl.insert(save);
+        assertEquals(rowsAffected, 1);
+
+        rowsAffected = saveDAOImpl.delete(save);
+        assertEquals(rowsAffected, 1);
 
         List<Save> saves = saveDAOImpl.getList(1);
         boolean contains = false;
-        for (Save save : saves){
-            if(save.getUserId() == 4 && save.getPublicationId() == 2){
+        for (Save save : saves) {
+            if (save.getUserId() == 4 && save.getPublicationId() == 2) {
                 contains = true;
             }
         }
@@ -43,25 +48,25 @@ public class SaveDAOImplTest {
     }
 
     @Test
-    public void testGetAll()  throws SQLException{
+    public void testGetAll() throws SQLException {
         List<Save> saves = saveDAOImpl.getAll();
         assertTrue(saves.size() >= 10);
 
         for (Save save : saves) {
             assertTrue(save.getUserId() >= 0);
-            assertTrue(save.getPublicationId()>= 0);
-            assertTrue(save.getDate().toString().length()== 10);
+            assertTrue(save.getPublicationId() >= 0);
+            assertTrue(save.getDate().toString().length() == 10);
         }
     }
 
     @Test
-    public void testGetList() throws SQLException{
+    public void testGetList() throws SQLException {
         List<Save> saves = saveDAOImpl.getList(2);
 
         for (Save save : saves) {
             assertTrue(save.getUserId() == 2);
-            assertTrue(save.getPublicationId()>= 0);
-            assertTrue(save.getDate().toString().length()== 10);
+            assertTrue(save.getPublicationId() >= 0);
+            assertTrue(save.getDate().toString().length() == 10);
         }
     }
 
@@ -76,12 +81,13 @@ public class SaveDAOImplTest {
         save.setPublicationId(publicationId);
         save.setUserId(userId);
 
-        saveDAOImpl.insert(save);
+        int rowsAffected = saveDAOImpl.insert(save);
+        assertEquals(rowsAffected, 1);
 
         List<Save> saves = saveDAOImpl.getList(userId);
         boolean changed = false;
-        for (Save save : saves){
-            if(save.getUserId() == userId && save.getPublicationId() == publicationId){
+        for (Save save : saves) {
+            if (save.getUserId() == userId && save.getPublicationId() == publicationId) {
                 changed = true;
             }
         }

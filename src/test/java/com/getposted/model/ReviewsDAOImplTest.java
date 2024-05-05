@@ -12,8 +12,10 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+// @Ignore
 public class ReviewsDAOImplTest {
 
     private static ReviewsDAOImpl reviewsDAOImpl = new ReviewsDAOImpl();
@@ -129,6 +131,7 @@ public class ReviewsDAOImplTest {
         int userId = 4;
 
         reviews = new Reviews(id, value, review, date, publicationId, userId);
+
         int rowsAffected = reviewsDAOImpl.insert(reviews);
         assertEquals(rowsAffected, 1);
 
@@ -139,9 +142,10 @@ public class ReviewsDAOImplTest {
         userId = 2;
 
         reviews = new Reviews(id, value, review, date, publicationId, userId);
+
         rowsAffected = reviewsDAOImpl.update(reviews);
         assertEquals(rowsAffected, 1);
-        
+
         reviews = reviewsDAOImpl.get(id);
 
         assertEquals(reviews.getId(), id);

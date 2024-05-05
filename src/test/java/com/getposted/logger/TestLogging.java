@@ -9,31 +9,32 @@ import java.util.logging.Handler;
 import java.util.logging.SimpleFormatter;
 
 // @Ignore
-public class TestLogging{
+public class TestLogging {
 
 	private static Logger logger;
 
-
 	@Test
-	public void testGetLogPath(){
+	public void testGetLogPath() {
 		String expectedString = "%h/%uTestLogging#getPosted.log";
 		String givenString = Logging.getLogPath();
-		assertEquals(expectedString,givenString);
+		assertEquals(expectedString, givenString);
 	}
 
 	@Test
-	public void testGetLogger(){
+	public void testGetLogger() {
 		logger = Logging.getLogger("TestLogging");
 		assertNotNull(logger);
 	}
+
 	@Test
-	public void testGetLoggerDataIsLogger(){
+	public void testGetLoggerDataIsLogger() {
 		logger = Logging.getLogger("TestLogging");
 		assertNotNull(logger);
 		assertTrue(logger instanceof Logger);
 	}
+
 	@Test
-	public void testGetLoggerHandler(){
+	public void testGetLoggerHandler() {
 		logger = Logging.getLogger("TestLogging");
 		assertNotNull(logger);
 
@@ -42,19 +43,19 @@ public class TestLogging{
 	}
 
 	@Test
-	public void testLoggerFormatter(){
+	public void testLoggerFormatter() {
 		logger = Logging.getLogger("TestLogging");
 		assertNotNull(logger);
 
 		Handler[] handlers = logger.getHandlers();
 
-		for(Handler handler: handlers){
+		for (Handler handler : handlers) {
 			assertTrue(handler.getFormatter() instanceof SimpleFormatter);
 		}
 	}
 
 	@Test
-	public void testLogging(){
+	public void testLogging() {
 		logger = Logging.getLogger("TestLogging");
 		logger.finest("This is testing finest log");
 		logger.finer("This is testing finer log");

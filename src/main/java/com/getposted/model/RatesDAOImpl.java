@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -33,7 +32,7 @@ public class RatesDAOImpl implements RatesDAO{
 			rs = ps.executeQuery();
 		}
 		catch(SQLException e){
-			logger.warning(String.format("There is SQLException happend in the com.getposted.model.Rates class at getAll() .The exception message is %s",e.getMessage()));
+			logger.warning(String.format("There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getAll() .The exception message is %s",e.getMessage()));
 			throw e;
 		}
 
@@ -66,7 +65,7 @@ public class RatesDAOImpl implements RatesDAO{
             rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
-                    "There is SQLException happend in the com.getposted.model.Rates class at insert() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at insert() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
                     e.getMessage(),rates.getValue(),rates.getReview(),rates.getDate().toString(),rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
@@ -90,7 +89,7 @@ public class RatesDAOImpl implements RatesDAO{
             rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
-                    "There is SQLException happend in the com.getposted.model.Rates class at update() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at update() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
                     e.getMessage(),rates.getValue(),rates.getReview(),rates.getDate().toString(),rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
@@ -111,7 +110,7 @@ public class RatesDAOImpl implements RatesDAO{
             rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
-                    "There is SQLException happend in the com.getposted.model.Rates class at delete() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at delete() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
                     e.getMessage(),rates.getValue(),rates.getReview(),rates.getDate().toString(),rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
@@ -133,7 +132,7 @@ public class RatesDAOImpl implements RatesDAO{
             rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
-                    "There is SQLException happend in the com.getposted.model.Rates class at get() method. The exception message is %s. The authorId is %s. The userId is %s.",
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at get(int,int) method. The exception message is %s. The authorId is %s. The userId is %s.",
                     e.getMessage(),authorId,userId));
             throw e;
         }

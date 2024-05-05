@@ -20,16 +20,16 @@ public class CountryDAOImpl implements CountryDAO {
 		Connection con = Database.getConnection();
 		Country country = null;
 		String sqlTemplate = "SELECT * FROM Country WHERE id = ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
-		select.setInt(1, id);
+		ps.setInt(1, id);
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
-					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getId() method the id is %d. The exception message is %s",
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at get(int) method the id is %d. The exception message is %s",
 					id, e.getMessage()));
 			throw e;
 		}
@@ -44,21 +44,20 @@ public class CountryDAOImpl implements CountryDAO {
 		return country;
 	}
 
-	
 	public Country get(String country) throws SQLException {
 		Connection con = Database.getConnection();
 		Country countryOb = null;
 		String sqlTemplate = "SELECT * FROM Country WHERE country = ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
-		select.setString(1, country);
+		ps.setString(1, country);
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
-					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getId() method the id is %s. The exception message is %s",
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at get(string) method the id is %s. The exception message is %s",
 					country, e.getMessage()));
 			throw e;
 		}
@@ -72,16 +71,17 @@ public class CountryDAOImpl implements CountryDAO {
 
 		return countryOb;
 	}
+
 	@Override
 	public List<Country> getAll() throws SQLException {
 		Connection con = Database.getConnection();
 		List<Country> countryList = new ArrayList();
 		String sqlTemplate = "SELECT * FROM Country";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getAll() .The exception message is %s",
@@ -102,14 +102,14 @@ public class CountryDAOImpl implements CountryDAO {
 	public int insert(Country country) throws SQLException {
 		Connection con = Database.getConnection();
 		String sqlTemplate = "INSERT INTO Country(id,country) VALUES (?,?)";
-		PreparedStatement st = con.prepareStatement(sqlTemplate);
-		int result = -1;
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		int rowsAffected = -1;
 
-		st.setInt(1, country.getId());
-		st.setString(2, country.getCountry());
+		ps.setInt(1, country.getId());
+		ps.setString(2, country.getCountry());
 
 		try {
-			result = st.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at insert() method. The exception message is %s. The inserted Country name is %s and id is %d",
@@ -117,21 +117,21 @@ public class CountryDAOImpl implements CountryDAO {
 			throw e;
 		}
 
-		return result;
+		return rowsAffected;
 	}
 
 	@Override
 	public int update(Country country) throws SQLException {
 		Connection con = Database.getConnection();
 		String sqlTemplate = "UPDATE Country SET country = ? WHERE id = ?";
-		PreparedStatement st = con.prepareStatement(sqlTemplate);
-		int result = -1;
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		int rowsAffected = -1;
 
-		st.setString(1, country.getCountry());
-		st.setInt(2, country.getId());
+		ps.setString(1, country.getCountry());
+		ps.setInt(2, country.getId());
 
 		try {
-			result = st.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at update() method. The exception message is %s. The updated Country name is %s and id is %d",
@@ -139,20 +139,20 @@ public class CountryDAOImpl implements CountryDAO {
 			throw e;
 		}
 
-		return result;
+		return rowsAffected;
 	}
 
 	@Override
 	public int delete(Country country) throws SQLException {
 		Connection con = Database.getConnection();
 		String sqlTemplate = "DELETE FROM Country WHERE id = ?";
-		PreparedStatement st = con.prepareStatement(sqlTemplate);
-		int result = -1;
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		int rowsAffected = -1;
 
-		st.setInt(1, country.getId());
+		ps.setInt(1, country.getId());
 
 		try {
-			result = st.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at delete() method. The exception message is %s. The deleted Country name is %s and id is %d",
@@ -160,7 +160,7 @@ public class CountryDAOImpl implements CountryDAO {
 			throw e;
 		}
 
-		return result;
+		return rowsAffected;
 	}
 
 	@Override
@@ -168,13 +168,13 @@ public class CountryDAOImpl implements CountryDAO {
 		Connection con = Database.getConnection();
 		List<Country> countryList = new ArrayList();
 		String sqlTemplate = "SELECT * FROM Country LIMIT ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
-		select.setInt(1, limit);
+		ps.setInt(1, limit);
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getList(). The limit is %d .The exception message is %s",

@@ -9,7 +9,8 @@ public class Rates {
     private int authorId = 0;
     private int userId = 0;
 
-    public Rates(){}
+    public Rates() {
+    }
 
     public Rates(int value, String review, Date date, int authorId, int userId) {
         this.value = value;
@@ -63,5 +64,5 @@ public class Rates {
     public String toString() {
         return "Rates [value=" + value + ", review=" + review + ", date=" + date + ", authorId=" + authorId
                 + ", userId=" + userId + "]";
-    }   
+    }
 }
