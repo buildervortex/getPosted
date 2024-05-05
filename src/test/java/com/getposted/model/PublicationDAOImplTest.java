@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore()
+// @Ignore()
 public class PublicationDAOImplTest {
 
     private static Publication publication = new Publication();

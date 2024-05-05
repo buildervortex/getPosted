@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore("AuthorDAOImpTest")
+// @Ignore("AuthorDAOImpTest")
 public class AuthorDAOImplTest {
 
     private static Author author = new Author();

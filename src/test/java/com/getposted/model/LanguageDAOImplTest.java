@@ -13,7 +13,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 
-@Ignore("LanguageDAOImplTest")
+// @Ignore("LanguageDAOImplTest")
 public class LanguageDAOImplTest {
 
     private static Language language = new Language();

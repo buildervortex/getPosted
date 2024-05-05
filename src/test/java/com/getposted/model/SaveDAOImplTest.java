@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore()
+// @Ignore()
 public class SaveDAOImplTest {
 
     private static Save save = new Save();

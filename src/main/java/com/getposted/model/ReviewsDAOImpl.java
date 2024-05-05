@@ -13,7 +13,7 @@ import com.getposted.logger.Logging;
 
 public class ReviewsDAOImpl implements ReviewsDAO{
 
-    private static Logger logger = Logging.getLogger(RatesDAOImpl.class.getName());
+    private static Logger logger = Logging.getLogger(ReviewsDAOImpl.class.getName());
 
     @Override
     public Reviews get(int id) throws SQLException {

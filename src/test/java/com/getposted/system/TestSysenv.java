@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Ignore;
 
-@Ignore
+// @Ignore
 public class TestSysenv {
 
     /*

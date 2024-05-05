@@ -16,7 +16,7 @@ import org.junit.AfterClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore()
+// @Ignore()
 public class InquiryDAOImplTest {
 
     private static InquiryDAOImpl inquiryDAOImpl = new InquiryDAOImpl();
