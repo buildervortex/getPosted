@@ -78,7 +78,7 @@ public class RequestDAOImpl implements RequestDAO {
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO Request (id, requestedContent, authorId, publisherId) VALUES(?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int affectedRows = -1;
+        int rowsAffected = -1;
 
         ps.setInt(1, request.getId());
         ps.setString(2, request.getRequestedContent());
@@ -86,7 +86,7 @@ public class RequestDAOImpl implements RequestDAO {
         ps.setInt(4, request.getPublisherId());
 
         try {
-            affectedRows = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RequestDAOImpl class at insert() method . The exception message is %s. The id is %s. The requestedContent is %s. The authorId is %s. The publisherId is %s.",
@@ -95,7 +95,7 @@ public class RequestDAOImpl implements RequestDAO {
             throw e;
         }
 
-        return affectedRows;
+        return rowsAffected;
     }
 
     @Override
@@ -103,15 +103,15 @@ public class RequestDAOImpl implements RequestDAO {
         Connection con = Database.getConnection();
         String sqlTemplate = "UPDATE Request SET requestedContent = ?, authorId = ?, publisherId = ? WHERE id = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int affectedRows = -1;
+        int rowsAffected = -1;
 
-        ps.setString(1,request.getRequestedContent());
+        ps.setString(1, request.getRequestedContent());
         ps.setInt(2, request.getAuthorId());
-        ps.setInt(3,request.getPublisherId());
-        ps.setInt(4,request.getId());
+        ps.setInt(3, request.getPublisherId());
+        ps.setInt(4, request.getId());
 
         try {
-            affectedRows = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RequestDAOImpl class at update() method . The exception message is %s. The id is %s. The requestedContent is %s. The authorId is %s. The publisherId is %s.",
@@ -120,7 +120,7 @@ public class RequestDAOImpl implements RequestDAO {
             throw e;
         }
 
-        return affectedRows;
+        return rowsAffected;
     }
 
     @Override
@@ -128,12 +128,12 @@ public class RequestDAOImpl implements RequestDAO {
         Connection con = Database.getConnection();
         String sqlTemplate = "DELETE FROM Request WHERE id = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int affectedRows = -1;
+        int rowsAffected = -1;
 
         ps.setInt(1, request.getId());
 
         try {
-            affectedRows = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RequestDAOImpl class at delete() method . The exception message is %s. The id is %s. The requestedContent is %s. The authorId is %s. The publisherId is %s.",
@@ -142,7 +142,7 @@ public class RequestDAOImpl implements RequestDAO {
             throw e;
         }
 
-        return affectedRows;
+        return rowsAffected;
     }
 
 }

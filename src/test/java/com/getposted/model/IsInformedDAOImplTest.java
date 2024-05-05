@@ -22,9 +22,10 @@ public class IsInformedDAOImplTest {
     private static IsInformedDAOImpl isInformedDAOImpl = new IsInformedDAOImpl();
 
     @BeforeClass
-    public static void createDatabase(){
+    public static void createDatabase() {
         TestDataBase.createAll();
     }
+
     @Test
     public void testDelete() throws SQLException {
         IsInformed isInformed;
@@ -38,10 +39,11 @@ public class IsInformedDAOImplTest {
 
         isInformed = new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId);
 
-        int result = isInformedDAOImpl.insert(isInformed);
-        assertEquals(result,1);
+        int rowsAffected = isInformedDAOImpl.insert(isInformed);
+        assertEquals(rowsAffected, 1);
 
-        result = isInformedDAOImpl.delete(isInformed);
+        rowsAffected = isInformedDAOImpl.delete(isInformed);
+        assertEquals(rowsAffected,1);
 
         assertNull(isInformedDAOImpl.get(id));
     }
@@ -51,15 +53,15 @@ public class IsInformedDAOImplTest {
         IsInformed isInformed;
 
         assertNull(isInformedDAOImpl.get(0));
-        
+
         isInformed = isInformedDAOImpl.get(1);
 
-        assertEquals(isInformed.getId(),1);
-        assertEquals(isInformed.getNotification(),"Notification 1");
-        assertEquals(isInformed.getNotifiedDate().toString(),"2024-04-01");
-        assertEquals(isInformed.getNotifiedTime().toString(),"12:00:00");
-        assertEquals(isInformed.getUserId(),1);
-        assertEquals(isInformed.getPublisherId(),1);
+        assertEquals(isInformed.getId(), 1);
+        assertEquals(isInformed.getNotification(), "Notification 1");
+        assertEquals(isInformed.getNotifiedDate().toString(), "2024-04-01");
+        assertEquals(isInformed.getNotifiedTime().toString(), "12:00:00");
+        assertEquals(isInformed.getUserId(), 1);
+        assertEquals(isInformed.getPublisherId(), 1);
     }
 
     @Test
@@ -68,9 +70,9 @@ public class IsInformedDAOImplTest {
 
         assertTrue(isInformeds.size() >= 10);
 
-        for (IsInformed isInformed :isInformeds){
-            assertTrue(isInformed.getId()>=1);
-            assertTrue(isInformed.getNotification().length()>=1);
+        for (IsInformed isInformed : isInformeds) {
+            assertTrue(isInformed.getId() >= 1);
+            assertTrue(isInformed.getNotification().length() >= 1);
             assertTrue(isInformed.getNotifiedDate().toString().length() == 10);
             assertTrue(isInformed.getNotifiedTime().toString().length() == 8);
             assertTrue(isInformed.getUserId() >= 1);
@@ -88,7 +90,6 @@ public class IsInformedDAOImplTest {
         Time notifiedTime = new Time(Calendar.getInstance().getTimeInMillis());
         int userId = 2;
         int publisherId = 2;
-        
 
         isInformed.setId(id);
         isInformed.setNotification(notification);
@@ -97,18 +98,18 @@ public class IsInformedDAOImplTest {
         isInformed.setUserId(userId);
         isInformed.setPublisherId(publisherId);
 
-        int result = isInformedDAOImpl.insert(isInformed);
-        assertEquals(result,1);
+        int rowsAffected = isInformedDAOImpl.insert(isInformed);
+        assertEquals(rowsAffected, 1);
 
         isInformed = isInformedDAOImpl.get(id);
         assertNotNull(isInformed);
 
-        assertEquals(isInformed.getId(),id);
-        assertEquals(isInformed.getNotification(),notification);
-        assertEquals(isInformed.getNotifiedDate().toString(),notifiedDate.toString());
-        assertEquals(isInformed.getNotifiedTime().toString(),notifiedTime.toString());
-        assertEquals(isInformed.getUserId(),userId);
-        assertEquals(isInformed.getPublisherId(),publisherId);
+        assertEquals(isInformed.getId(), id);
+        assertEquals(isInformed.getNotification(), notification);
+        assertEquals(isInformed.getNotifiedDate().toString(), notifiedDate.toString());
+        assertEquals(isInformed.getNotifiedTime().toString(), notifiedTime.toString());
+        assertEquals(isInformed.getUserId(), userId);
+        assertEquals(isInformed.getPublisherId(), publisherId);
     }
 
     @Test
@@ -123,9 +124,10 @@ public class IsInformedDAOImplTest {
         int publisherId = 4;
 
         isInformed = new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId);
-        int result = isInformedDAOImpl.insert(isInformed);
-        assertEquals(result,1);
-        
+
+        int rowsAffected = isInformedDAOImpl.insert(isInformed);
+        assertEquals(rowsAffected, 1);
+
         notification = "Notification 58";
         notifiedDate = new Date(Calendar.getInstance().getTimeInMillis());
         notifiedTime = new Time(Calendar.getInstance().getTimeInMillis());
@@ -133,21 +135,22 @@ public class IsInformedDAOImplTest {
         publisherId = 5;
 
         isInformed = new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId);
-        result = isInformedDAOImpl.update(isInformed);
-        assertEquals(result,1);
+
+        rowsAffected = isInformedDAOImpl.update(isInformed);
+        assertEquals(rowsAffected, 1);
 
         isInformed = isInformedDAOImpl.get(id);
 
-        assertEquals(isInformed.getId(),id);
-        assertEquals(isInformed.getNotification(),notification);
-        assertEquals(isInformed.getNotifiedDate().toString(),notifiedDate.toString());
-        assertEquals(isInformed.getNotifiedTime().toString(),notifiedTime.toString());
-        assertEquals(isInformed.getUserId(),userId);
-        assertEquals(isInformed.getPublisherId(),publisherId);
+        assertEquals(isInformed.getId(), id);
+        assertEquals(isInformed.getNotification(), notification);
+        assertEquals(isInformed.getNotifiedDate().toString(), notifiedDate.toString());
+        assertEquals(isInformed.getNotifiedTime().toString(), notifiedTime.toString());
+        assertEquals(isInformed.getUserId(), userId);
+        assertEquals(isInformed.getPublisherId(), publisherId);
     }
 
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }

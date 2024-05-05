@@ -2,6 +2,7 @@ package com.getposted.model;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -16,7 +17,6 @@ import org.junit.Ignore;
 // @Ignore("LanguageDAOImplTest")
 public class LanguageDAOImplTest {
 
-    private static Language language = new Language();
     private static LanguageDAOImpl languageDAOImpl = new LanguageDAOImpl();
 
     @BeforeClass
@@ -26,6 +26,7 @@ public class LanguageDAOImplTest {
 
     @Test
     public void testGetData() throws SQLException {
+        Language language = new Language();
         language = languageDAOImpl.get(1);
         assertTrue(language.getId() == 1);
         assertTrue(language.getLanguage().equals("English"));
@@ -42,6 +43,7 @@ public class LanguageDAOImplTest {
 
     @Test
     public void testGetByLanguage() throws SQLException {
+        Language language = new Language();
         language = languageDAOImpl.get("Chinese");
         assertTrue(language.getId() == 6);
     }
@@ -50,8 +52,8 @@ public class LanguageDAOImplTest {
     public void testGetAll() throws SQLException {
         List<Language> languages = languageDAOImpl.getAll();
         assertTrue(languages.size() >= 10);
-        for (Language language : languages) {
-            assertTrue(language.getLanguage().length() >= 2);
+        for (Language qlanguage : languages) {
+            assertTrue(qlanguage.getLanguage().length() >= 2);
         }
     }
 
@@ -59,16 +61,19 @@ public class LanguageDAOImplTest {
     public void testGetList() throws SQLException {
         List<Language> languages = languageDAOImpl.getList(5);
         assertTrue(languages.size() == 5);
-        for (Language language : languages) {
-            assertTrue(language.getLanguage().length() >= 2);
+        for (Language qlanguage : languages) {
+            assertTrue(qlanguage.getLanguage().length() >= 2);
         }
     }
 
     @Test
     public void testInsert() throws SQLException {
+        Language language = new Language();
         language.setId(12);
         language.setLanguage("myLanguage");
-        languageDAOImpl.insert(language);
+
+        int rowsAffected = languageDAOImpl.insert(language);
+        assertEquals(rowsAffected, 1);
 
         assertNotNull(languageDAOImpl.get("myLanguage"));
         assertNotNull(languageDAOImpl.get(12));
@@ -78,33 +83,43 @@ public class LanguageDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        Language language = new Language();
+
         language.setId(24);
         language.setLanguage("testUpdate");
-        languageDAOImpl.insert(language);
+
+        int rowsAffected = languageDAOImpl.insert(language);
+        assertEquals(rowsAffected, 1);
 
         language.setLanguage("hello");
-        languageDAOImpl.update(language);
+        rowsAffected = languageDAOImpl.update(language);
+        assertEquals(rowsAffected, 1);
 
         assertTrue(languageDAOImpl.get(24).getLanguage().equals("hello"));
     }
 
     @Test
     public void testDelete() throws SQLException {
+        Language language = new Language();
         language.setId(25);
         language.setLanguage("testDelete");
-        languageDAOImpl.insert(language);
+
+        int rowsAffected = languageDAOImpl.insert(language);
+        assertEquals(rowsAffected, 1);
 
         languageDAOImpl.delete(language);
+        assertEquals(rowsAffected, 1);
 
         assertTrue(languageDAOImpl.get(25) == null);
         assertNull(languageDAOImpl.get(25));
     }
 
     @Test(expected = SQLException.class)
-    public void testForException() throws SQLException{
+    public void testForException() throws SQLException {
+        Language language = new Language();
         language.setId(25);
         language.setLanguage("myLanguage");
-        
+
         languageDAOImpl.insert(language);
         languageDAOImpl.insert(language);
     }

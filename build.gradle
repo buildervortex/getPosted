@@ -38,3 +38,7 @@ war{
     archiveBaseName = "getPosted"
     archiveFileName = "getPosted.war"
 }
+
+tasks.withType(Test){
+	maxParallelForks=1
+}

@@ -19,19 +19,18 @@ public class Logging {
 	private static Formatter formatter = new SimpleFormatter();
 	private static String className = "";
 
-	public static Logger getLogger(String className){
+	public static Logger getLogger(String className) {
 		Logging.className = className;
 		Logger logger = null;
 		Handler handler = null;
 
 		// create the handler and config the handler
-		try{
-			FileHandler fileHandler = new FileHandler(Logging.getLogPath(),true);
+		try {
+			FileHandler fileHandler = new FileHandler(Logging.getLogPath(), true);
 			fileHandler.setLevel(Level.ALL);
 			fileHandler.setFormatter(Logging.formatter);
 			handler = fileHandler;
-		}
-		catch(IOException e){
+		} catch (IOException e) {
 			ConsoleHandler consoleHandler = new ConsoleHandler();
 			consoleHandler.setFormatter(new SimpleFormatter());
 			consoleHandler.setLevel(Level.ALL);
@@ -49,7 +48,7 @@ public class Logging {
 		return logger;
 	}
 
-	public static String getLogPath(){
-		return Logging.logDirectory+"%u"+Logging.className+"#"+logFileName;
+	public static String getLogPath() {
+		return Logging.logDirectory + "%u" + Logging.className + "#" + logFileName;
 	}
 }

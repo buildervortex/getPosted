@@ -15,7 +15,6 @@ import org.junit.Test;
 // @Ignore("Skipped CategoryDAOImpTest")
 public class CategoryDAOImplTest {
 
-    private static Category category = new Category();
     private static CategoryDAOImpl categoryDAOImpl = new CategoryDAOImpl();
 
     @BeforeClass
@@ -25,18 +24,24 @@ public class CategoryDAOImplTest {
 
     @Test
     public void testDelete() throws SQLException {
+        Category category = new Category();
         category.setCategory("testDelete");
         category.setId(27);
-        categoryDAOImpl.insert(category);
+
+        int rowsAffected = categoryDAOImpl.insert(category);
+        assertEquals(rowsAffected, 1);
+
         assertNotNull(categoryDAOImpl.get(27));
 
-        categoryDAOImpl.delete(category);
+        rowsAffected = categoryDAOImpl.delete(category);
+        assertEquals(rowsAffected, 1);
 
         assertTrue(categoryDAOImpl.get(27) == null);
     }
 
     @Test
     public void testGetInt() throws SQLException {
+        Category category = new Category();
         category = categoryDAOImpl.get(1);
         assertEquals(category.getCategory(), "Technology");
         category = categoryDAOImpl.get(2);
@@ -45,6 +50,7 @@ public class CategoryDAOImplTest {
 
     @Test
     public void testGetSrting() throws SQLException {
+        Category category = new Category();
         category = categoryDAOImpl.get("Technology");
         assertEquals(1, category.getId());
         category = categoryDAOImpl.get("Science");
@@ -73,10 +79,12 @@ public class CategoryDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
+        Category category = new Category();
         category.setCategory("testInsert");
         category.setId(21);
 
-        categoryDAOImpl.insert(category);
+        int rowsAffected = categoryDAOImpl.insert(category);
+        assertEquals(rowsAffected, 1);
 
         categoryDAOImpl.get("testInsert");
         assertNotNull(categoryDAOImpl.get("testInsert"));
@@ -86,19 +94,23 @@ public class CategoryDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        Category category = new Category();
         category.setCategory("testUpdate");
         category.setId(22);
 
-        categoryDAOImpl.insert(category);
+        int rowsAffected = categoryDAOImpl.insert(category);
+        assertEquals(rowsAffected, 1);
 
         category.setCategory("testUpdate2");
-        categoryDAOImpl.update(category);
+        rowsAffected = categoryDAOImpl.update(category);
+        assertEquals(rowsAffected, 1);
 
         assertEquals(categoryDAOImpl.get(22).getCategory(), "testUpdate2");
     }
 
     @Test(expected = SQLException.class)
     public void testExceptionForInsert() throws SQLException {
+        Category category = new Category();
         category.setCategory("testExceptionForInsert");
         categoryDAOImpl.insert(category);
         categoryDAOImpl.insert(category);

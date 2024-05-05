@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import com.getposted.logger.Logging;
 
-public class IsInformedDAOImpl implements IsInformedDAO{
+public class IsInformedDAOImpl implements IsInformedDAO {
 
     private static Logger logger = Logging.getLogger(IsInformedDAOImpl.class.getName());
 
@@ -65,7 +65,7 @@ public class IsInformedDAOImpl implements IsInformedDAO{
             throw e;
         }
 
-        while(rs.next()){
+        while (rs.next()) {
             int id = rs.getInt("id");
             String notification = rs.getString("notification");
             Date notifiedDate = rs.getDate("notifiedDate");
@@ -97,7 +97,8 @@ public class IsInformedDAOImpl implements IsInformedDAO{
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at insert() method . The exception message is %s. The id is %s. The notification is %s. The notifiedDate is %s. The notifiedTime is %s. The userId is %s. The publisherId is %s",
-                    e.getMessage(),isInformed.getId(),isInformed.getNotification(),isInformed.getNotifiedDate(),isInformed.getNotifiedTime(),isInformed.getUserId(),isInformed.getPublisherId()));
+                    e.getMessage(), isInformed.getId(), isInformed.getNotification(), isInformed.getNotifiedDate(),
+                    isInformed.getNotifiedTime(), isInformed.getUserId(), isInformed.getPublisherId()));
             throw e;
         }
 
@@ -123,7 +124,8 @@ public class IsInformedDAOImpl implements IsInformedDAO{
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at update() method . The exception message is %s. The id is %s. The notification is %s. The notifiedDate is %s. The notifiedTime is %s. The userId is %s. The publisherId is %s",
-                    e.getMessage(),isInformed.getId(),isInformed.getNotification(),isInformed.getNotifiedDate(),isInformed.getNotifiedTime(),isInformed.getUserId(),isInformed.getPublisherId()));
+                    e.getMessage(), isInformed.getId(), isInformed.getNotification(), isInformed.getNotifiedDate(),
+                    isInformed.getNotifiedTime(), isInformed.getUserId(), isInformed.getPublisherId()));
             throw e;
         }
 
@@ -144,10 +146,11 @@ public class IsInformedDAOImpl implements IsInformedDAO{
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at delete() method . The exception message is %s. The id is %s. The notification is %s. The notifiedDate is %s. The notifiedTime is %s. The userId is %s. The publisherId is %s",
-                    e.getMessage(),isInformed.getId(),isInformed.getNotification(),isInformed.getNotifiedDate(),isInformed.getNotifiedTime(),isInformed.getUserId(),isInformed.getPublisherId()));
+                    e.getMessage(), isInformed.getId(), isInformed.getNotification(), isInformed.getNotifiedDate(),
+                    isInformed.getNotifiedTime(), isInformed.getUserId(), isInformed.getPublisherId()));
             throw e;
         }
         return result;
     }
-    
+
 }

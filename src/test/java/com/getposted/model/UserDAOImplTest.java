@@ -7,9 +7,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.List;
 
+import java.util.List;
+import java.util.Calendar;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -18,7 +18,6 @@ import org.junit.Test;
 // @Ignore()
 public class UserDAOImplTest {
 
-    private static User user = new User();
     private static UserDAOImpl userDAOImpl = new UserDAOImpl();
 
     @BeforeClass
@@ -28,11 +27,12 @@ public class UserDAOImplTest {
 
     @Test
     public void testDelete() throws SQLException {
+        User user = new User();
         int id = 40;
         String email = "testDelete@example.com";
         String password = "testDeletepassword";
-        String userName = "usernamedelete";
         Date dob = new Date(Calendar.getInstance().getTimeInMillis());
+        String userName = "usernamedelete";
         String salt = "saltdelete";
         String pepper = "pepperdelete";
         String firstName = "deletefirstname";
@@ -40,15 +40,21 @@ public class UserDAOImplTest {
         String lastname = "deleteLastName";
 
         user = new User(id, email, password, userName, dob, salt, pepper, firstName, middleName, lastname);
-        userDAOImpl.insert(user);
+
+        int rowsAffected = userDAOImpl.insert(user);
+        assertEquals(rowsAffected, 1);
 
         user = userDAOImpl.get(id);
-        userDAOImpl.delete(user);
+
+        rowsAffected = userDAOImpl.delete(user);
+        assertEquals(rowsAffected, 1);
+
         assertNull(userDAOImpl.get(id));
     }
 
     @Test
     public void testGet() throws SQLException {
+        User user = new User();
         assertNull(userDAOImpl.get(0));
         user = userDAOImpl.get(1);
         assertTrue(user.getId() == 1);
@@ -83,8 +89,7 @@ public class UserDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
-        // id,email, password, userName, dob, salt, pepper firstName, middleName,
-        // lastName
+        User user = new User();
         int id = 25;
         String email = "testInsert@example.com";
         String password = "testinsertpassword";
@@ -106,7 +111,9 @@ public class UserDAOImplTest {
         user.setFirstName(firstName);
         user.setMiddleName(middleName);
         user.setLastName(lastname);
-        userDAOImpl.insert(user);
+
+        int rowsAffected = userDAOImpl.insert(user);
+        assertEquals(rowsAffected, 1);
 
         user = userDAOImpl.get(id);
         assertTrue(user.getId() == id);
@@ -124,6 +131,7 @@ public class UserDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        User user = new User();
         int id = 28;
         String email = "testUpdate@example.com";
         String password = "testupdatepassword";
@@ -136,7 +144,9 @@ public class UserDAOImplTest {
         String lastname = "updateLastName";
 
         user = new User(id, email, password, userName, dob, salt, pepper, firstName, middleName, lastname);
-        userDAOImpl.insert(user);
+
+        int rowsAffected = userDAOImpl.insert(user);
+        assertEquals(rowsAffected, 1);
 
         email = "testUpdatee@example.com";
         password = "testupdateepassword";
@@ -149,7 +159,8 @@ public class UserDAOImplTest {
         lastname = "updateLastNamee";
 
         user = new User(id, email, password, userName, dob, salt, pepper, firstName, middleName, lastname);
-        userDAOImpl.update(user);
+        rowsAffected = userDAOImpl.update(user);
+        assertEquals(rowsAffected, 1);
 
         user = userDAOImpl.get(id);
         assertTrue(user.getId() == id);

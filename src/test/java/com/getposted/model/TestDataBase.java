@@ -3,10 +3,13 @@ package com.getposted.model;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
+
 import static org.junit.Assert.fail;
 
 import com.getposted.system.Sysenv;
 
+// @Ignore
 public class TestDataBase {
 
     private static Connection con;

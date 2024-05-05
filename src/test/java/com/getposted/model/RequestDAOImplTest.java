@@ -19,7 +19,7 @@ public class RequestDAOImplTest {
     private static RequestDAOImpl requestDAOImpl = new RequestDAOImpl();
 
     @BeforeClass
-    public static void createDatabase(){
+    public static void createDatabase() {
         TestDataBase.createAll();
     }
 
@@ -35,7 +35,7 @@ public class RequestDAOImplTest {
         request = new Request(id, requestedContent, authorId, publisherId);
 
         int affectedRows = requestDAOImpl.insert(request);
-        assertEquals(affectedRows,1);
+        assertEquals(affectedRows, 1);
 
         assertNotNull(requestDAOImpl.get(id));
 
@@ -58,7 +58,7 @@ public class RequestDAOImplTest {
         assertEquals(request.getId(), id);
         assertEquals(request.getRequestedContent(), requestedContent);
         assertEquals(request.getAuthorId(), authorId);
-        assertEquals(request.getPublisherId(),publisherId);
+        assertEquals(request.getPublisherId(), publisherId);
     }
 
     @Test
@@ -66,11 +66,11 @@ public class RequestDAOImplTest {
         List<Request> requests = requestDAOImpl.getAll();
         assertTrue(requests.size() >= 10);
 
-        for (Request request : requests){
-            assertTrue(request.getId()>=1);
-            assertTrue(request.getRequestedContent().length()>=1);
-            assertTrue(request.getAuthorId()>=1);
-            assertTrue(request.getPublisherId()>=1);
+        for (Request request : requests) {
+            assertTrue(request.getId() >= 1);
+            assertTrue(request.getRequestedContent().length() >= 1);
+            assertTrue(request.getAuthorId() >= 1);
+            assertTrue(request.getPublisherId() >= 1);
         }
     }
 
@@ -91,14 +91,14 @@ public class RequestDAOImplTest {
         request.setPublisherId(publisherId);
 
         int affectedRows = requestDAOImpl.insert(request);
-        assertEquals(affectedRows,1);
+        assertEquals(affectedRows, 1);
 
         request = requestDAOImpl.get(id);
 
         assertEquals(request.getId(), id);
         assertEquals(request.getRequestedContent(), requestedContent);
         assertEquals(request.getAuthorId(), authorId);
-        assertEquals(request.getPublisherId(),publisherId);
+        assertEquals(request.getPublisherId(), publisherId);
     }
 
     @Test
@@ -113,8 +113,7 @@ public class RequestDAOImplTest {
         request = new Request(id, requestedContent, authorId, publisherId);
 
         int affectedRows = requestDAOImpl.insert(request);
-        assertEquals(affectedRows,1);
-
+        assertEquals(affectedRows, 1);
 
         requestedContent = "Requests new content on technology";
         authorId = 8;
@@ -123,18 +122,18 @@ public class RequestDAOImplTest {
         request = new Request(id, requestedContent, authorId, publisherId);
 
         affectedRows = requestDAOImpl.update(request);
-        assertEquals(affectedRows,1);
+        assertEquals(affectedRows, 1);
 
         request = requestDAOImpl.get(id);
 
         assertEquals(request.getId(), id);
         assertEquals(request.getRequestedContent(), requestedContent);
         assertEquals(request.getAuthorId(), authorId);
-        assertEquals(request.getPublisherId(),publisherId);
+        assertEquals(request.getPublisherId(), publisherId);
     }
 
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }

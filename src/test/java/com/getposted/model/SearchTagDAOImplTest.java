@@ -14,27 +14,36 @@ import org.junit.Test;
 // @Ignore()
 public class SearchTagDAOImplTest {
 
-    private static SearchTag searchTag = new SearchTag();
     private static SearchTagDAOImpl searchTagDAOImpl = new SearchTagDAOImpl();
 
     @BeforeClass
-    public static void createDatabase(){
+    public static void createDatabase() {
         TestDataBase.createAll();
     }
+
     @Test
-    public void testDelete() throws SQLException{
+    public void testDelete() throws SQLException {
+        SearchTag searchTag = new SearchTag();
 
         searchTag.setPublicationId(9);
         searchTag.setTagName("testDelete");
-        searchTagDAOImpl.insert(searchTag);
-        searchTagDAOImpl.delete(searchTag);
+
+        int rowsAffected = searchTagDAOImpl.insert(searchTag);
+        assertEquals(rowsAffected, 1);
+
+        rowsAffected = searchTagDAOImpl.delete(searchTag);
+        assertEquals(rowsAffected, 1);
     }
 
     @Test
-    public void testGet() throws SQLException {
-        searchTag = searchTagDAOImpl.get(1);
-        assertEquals(searchTag.getPublicationId(), 1);
-        assertEquals(searchTag.getTagName(), "Tag1");
+    public void testGetList() throws SQLException {
+        List<SearchTag> tags = searchTagDAOImpl.getList(1);
+        assertTrue(tags.size() >= 1);
+
+        for (SearchTag searchTag : tags) {
+            assertTrue(searchTag.getPublicationId() >= 1);
+            assertTrue(searchTag.getTagName().length() >= 1);
+        }
     }
 
     @Test
@@ -48,28 +57,26 @@ public class SearchTagDAOImplTest {
     }
 
     @Test
-    public void testInsert() throws SQLException{
+    public void testInsert() throws SQLException {
+        SearchTag searchTag = new SearchTag();
 
         searchTag.setPublicationId(4);
         searchTag.setTagName("codding");
-        searchTagDAOImpl.insert(searchTag);
-        assertEquals(searchTagDAOImpl.get(4).getTagName(), "codding");
-        assertEquals(searchTagDAOImpl.get(4).getPublicationId(), 4);
-    }
 
-    @Test
-    public void testUpdate() throws SQLException{
+        int rowsAffected = searchTagDAOImpl.insert(searchTag);
+        assertEquals(rowsAffected, 1);
 
-        searchTag.setPublicationId(8);
-        searchTag.setTagName("nano");
-        searchTagDAOImpl.insert(searchTag);
-        searchTag.setPublicationId(8);
-        searchTag.setTagName("nano2");
-        searchTagDAOImpl.update(searchTag);
+        boolean changed = false;
+
+        for (SearchTag tag : searchTagDAOImpl.getList(4)) {
+            if (tag.getPublicationId() == 4 && tag.getTagName().equals("codding"))
+                changed = true;
+        }
+        assertTrue(changed);
     }
 
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }

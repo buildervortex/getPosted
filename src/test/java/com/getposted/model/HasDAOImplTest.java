@@ -4,9 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -20,7 +18,7 @@ public class HasDAOImplTest {
     private static HasDAOImpl hasDAOImpl = new HasDAOImpl();
 
     @BeforeClass
-    public static void createDatabase(){
+    public static void createDatabase() {
         TestDataBase.createAll();
     }
 
@@ -33,13 +31,14 @@ public class HasDAOImplTest {
 
         int rowsAffected = hasDAOImpl.insert(has);
         assertEquals(rowsAffected, 1);
+
         rowsAffected = hasDAOImpl.delete(has);
         assertEquals(rowsAffected, 1);
 
         List<Has> have = hasDAOImpl.getList(1);
         boolean contains = false;
-        for (Has qhas : have){
-            if(qhas.getAuthorId() == 2 && qhas.getSkillId() == 4){
+        for (Has qhas : have) {
+            if (qhas.getAuthorId() == 2 && qhas.getSkillId() == 4) {
                 contains = true;
             }
         }
@@ -54,7 +53,7 @@ public class HasDAOImplTest {
 
         for (Has has : have) {
             assertTrue(has.getAuthorId() >= 0);
-            assertTrue(has.getSkillId()>= 0);
+            assertTrue(has.getSkillId() >= 0);
         }
     }
 
@@ -64,7 +63,7 @@ public class HasDAOImplTest {
 
         for (Has has : have) {
             assertTrue(has.getAuthorId() == 2);
-            assertTrue(has.getSkillId()>= 0);
+            assertTrue(has.getSkillId() >= 0);
         }
     }
 
@@ -82,8 +81,8 @@ public class HasDAOImplTest {
 
         List<Has> have = hasDAOImpl.getList(authorId);
         boolean changed = false;
-        for (Has qhas : have){
-            if(qhas.getAuthorId() == authorId && has.getSkillId() == skillId){
+        for (Has qhas : have) {
+            if (qhas.getAuthorId() == authorId && has.getSkillId() == skillId) {
                 changed = true;
             }
         }
@@ -91,7 +90,7 @@ public class HasDAOImplTest {
     }
 
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }

@@ -14,7 +14,6 @@ import org.junit.Test;
 
 // @Ignore("CountryDAOImplTest")
 public class CountryDAOImplTest {
-    private static Country country = new Country();
     private static CountryDAOImpl countryDAOImpl = new CountryDAOImpl();
 
     @BeforeClass
@@ -24,11 +23,15 @@ public class CountryDAOImplTest {
 
     @Test
     public void testDelete() throws SQLException {
+        Country country = new Country();
         country.setId(50);
         country.setCountry("testDelete");
-        countryDAOImpl.insert(country);
 
-        countryDAOImpl.delete(country);
+        int rowsAffected = countryDAOImpl.insert(country);
+        assertEquals(rowsAffected, 1);
+
+        rowsAffected = countryDAOImpl.delete(country);
+        assertEquals(rowsAffected, 1);
 
         assertTrue(countryDAOImpl.get(50) == null);
         assertNull(countryDAOImpl.get(50));
@@ -36,6 +39,7 @@ public class CountryDAOImplTest {
 
     @Test
     public void testGetInt() throws SQLException {
+        Country country = new Country();
         country = countryDAOImpl.get(1);
         assertEquals(country.getId(), 1);
         assertEquals(country.getCountry(), "United States");
@@ -46,6 +50,7 @@ public class CountryDAOImplTest {
 
     @Test
     public void testGetString() throws SQLException {
+        Country country = new Country();
         country = countryDAOImpl.get("United States");
         assertEquals(country.getId(), 1);
         assertEquals(country.getCountry(), "United States");
@@ -74,10 +79,12 @@ public class CountryDAOImplTest {
 
     @Test
     public void testInsert() throws SQLException {
+        Country country = new Country();
         country.setCountry("testInsert");
         country.setId(28);
 
-        countryDAOImpl.insert(country);
+        int rowsAffected = countryDAOImpl.insert(country);
+        assertEquals(rowsAffected, 1);
 
         assertEquals(countryDAOImpl.get(28).getCountry(), "testInsert");
         assertEquals(countryDAOImpl.get("testInsert").getId(), 28);
@@ -85,12 +92,17 @@ public class CountryDAOImplTest {
 
     @Test
     public void testUpdate() throws SQLException {
+        Country country = new Country();
         country.setCountry("testUpdate");
         country.setId(40);
-        countryDAOImpl.insert(country);
+
+        int rowsAffected = countryDAOImpl.insert(country);
+        assertEquals(rowsAffected, 1);
+
         country.setCountry("testUpdate2");
 
-        countryDAOImpl.update(country);
+        rowsAffected = countryDAOImpl.update(country);
+        assertEquals(rowsAffected, 1);
 
         assertTrue(countryDAOImpl.get(40).getCountry().equals("testUpdate2"));
     }

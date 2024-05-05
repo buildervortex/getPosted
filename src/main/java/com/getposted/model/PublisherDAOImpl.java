@@ -20,13 +20,13 @@ public class PublisherDAOImpl implements PublisherDAO {
         Connection con = Database.getConnection();
         Publisher publisher = null;
         String sqlTemplate = "SELECT * FROM Publisher WHERE id =?";
-        PreparedStatement select = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        select.setInt(1, id);
+        ps.setInt(1, id);
 
         try {
-            rs = select.executeQuery();
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublisherDAOImpl class at getId() method the id is %d. The exception message is %s",
@@ -61,11 +61,11 @@ public class PublisherDAOImpl implements PublisherDAO {
         Connection con = Database.getConnection();
         List<Publisher> publisherList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publisher";
-        PreparedStatement select = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
         try {
-            rs = select.executeQuery();
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublisherDAOImpl class at getAll().The exception message is %s",
@@ -99,25 +99,25 @@ public class PublisherDAOImpl implements PublisherDAO {
     public int insert(Publisher publisher) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO Publisher(id, address, webSite, name, email, hardCopyPageCommissionForAuthor, salt, password, hardCopyDiscount, pepper, hardCopyPricePerPage, softCopyCommission, hardCopyCommission) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        PreparedStatement st = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        int rowsAffected = -1;
 
-        st.setInt(1, publisher.getId());
-        st.setString(2, publisher.getAddress());
-        st.setString(3, publisher.getWebSite());
-        st.setString(4, publisher.getName());
-        st.setString(5, publisher.getEmail());
-        st.setDouble(6, publisher.getHardCopyPageCommissionForAuthor());
-        st.setString(7, publisher.getSalt());
-        st.setString(8, publisher.getPassword());
-        st.setDouble(9, publisher.getHardCopyDiscount());
-        st.setString(10, publisher.getPepper());
-        st.setDouble(11, publisher.getHardCopyPricePerPage());
-        st.setDouble(12, publisher.getSoftCopyCommission());
-        st.setDouble(13, publisher.getHardCopyCommission());
+        ps.setInt(1, publisher.getId());
+        ps.setString(2, publisher.getAddress());
+        ps.setString(3, publisher.getWebSite());
+        ps.setString(4, publisher.getName());
+        ps.setString(5, publisher.getEmail());
+        ps.setDouble(6, publisher.getHardCopyPageCommissionForAuthor());
+        ps.setString(7, publisher.getSalt());
+        ps.setString(8, publisher.getPassword());
+        ps.setDouble(9, publisher.getHardCopyDiscount());
+        ps.setString(10, publisher.getPepper());
+        ps.setDouble(11, publisher.getHardCopyPricePerPage());
+        ps.setDouble(12, publisher.getSoftCopyCommission());
+        ps.setDouble(13, publisher.getHardCopyCommission());
 
         try {
-            result = st.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublisherDAOImpl class at insert() method. The exception message is %s. The inserted Publisher id is %s. The inserted Publisher address is %s. The inserted Publisher webSite is %s. The inserted Publisher name is %s. The inserted Publisher email is %s. The inserted Publisher hardCopyPageCommissionForAuthor is %s. The inserted Publisher salt is %s. The inserted Publisher password is %s. The inserted Publisher hardCopyDiscount is %s. The inserted publisher pepper is %s. The inserted Publisher hardCopyPricePerPage is %s. The inserted Publisher softCopyCommission is %s. The inserted Publisher hardCopyCommission is %s. ",
@@ -129,32 +129,32 @@ public class PublisherDAOImpl implements PublisherDAO {
             throw e;
         }
 
-        return result;
+        return rowsAffected;
     }
 
     @Override
     public int update(Publisher publisher) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "UPDATE Publisher SET address =?, webSite =?, name =?, email =?, hardCopyPageCommissionForAuthor =?, salt =?, password =?, hardCopyDiscount =?, pepper =?, hardCopyPricePerPage =?, softCopyCommission =?, hardCopyCommission =? WHERE id =?";
-        PreparedStatement st = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        int rowsAffected = -1;
 
-        st.setString(1, publisher.getAddress());
-        st.setString(2, publisher.getWebSite());
-        st.setString(3, publisher.getName());
-        st.setString(4, publisher.getEmail());
-        st.setDouble(5, publisher.getHardCopyPageCommissionForAuthor());
-        st.setString(6, publisher.getSalt());
-        st.setString(7, publisher.getPassword());
-        st.setDouble(8, publisher.getHardCopyDiscount());
-        st.setString(9, publisher.getPepper());
-        st.setDouble(10, publisher.getHardCopyPricePerPage());
-        st.setDouble(11, publisher.getSoftCopyCommission());
-        st.setDouble(12, publisher.getHardCopyCommission());
-        st.setInt(13, publisher.getId());
+        ps.setString(1, publisher.getAddress());
+        ps.setString(2, publisher.getWebSite());
+        ps.setString(3, publisher.getName());
+        ps.setString(4, publisher.getEmail());
+        ps.setDouble(5, publisher.getHardCopyPageCommissionForAuthor());
+        ps.setString(6, publisher.getSalt());
+        ps.setString(7, publisher.getPassword());
+        ps.setDouble(8, publisher.getHardCopyDiscount());
+        ps.setString(9, publisher.getPepper());
+        ps.setDouble(10, publisher.getHardCopyPricePerPage());
+        ps.setDouble(11, publisher.getSoftCopyCommission());
+        ps.setDouble(12, publisher.getHardCopyCommission());
+        ps.setInt(13, publisher.getId());
 
         try {
-            result = st.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublisherDAOImpl class at update() method. The exception message is %s. The inserted Publisher id is %s. The inserted Publisher address is %s. The inserted Publisher webSite is %s. The inserted Publisher name is %s. The inserted Publisher email is %s. The inserted Publisher hardCopyPageCommissionForAuthor is %s. The inserted Publisher salt is %s. The inserted Publisher password is %s. The inserted Publisher hardCopyDiscount is %s. The inserted publisher pepper is %s. The inserted Publisher hardCopyPricePerPage is %s. The inserted Publisher softCopyCommission is %s. The inserted Publisher hardCopyCommission is %s. ",
@@ -165,19 +165,19 @@ public class PublisherDAOImpl implements PublisherDAO {
                     publisher.getSoftCopyCommission(), publisher.getHardCopyCommission()));
             throw e;
         }
-        return result;
+        return rowsAffected;
     }
 
     @Override
     public int delete(Publisher publisher) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "DELETE FROM Publisher WHERE id =?";
-        PreparedStatement st = con.prepareStatement(sqlTemplate);
-        int result = -1;
-        st.setInt(1, publisher.getId());
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        int rowsAffected = -1;
+        ps.setInt(1, publisher.getId());
 
         try {
-            result = st.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublisherDAOImpl class at delete() method. The exception message is %s. The inserted Publisher id is %s. The inserted Publisher address is %s. The inserted Publisher webSite is %s. The inserted Publisher name is %s. The inserted Publisher email is %s. The inserted Publisher hardCopyPageCommissionForAuthor is %s. The inserted Publisher salt is %s. The inserted Publisher password is %s. The inserted Publisher hardCopyDiscount is %s. The inserted publisher pepper is %s. The inserted Publisher hardCopyPricePerPage is %s. The inserted Publisher softCopyCommission is %s. The inserted Publisher hardCopyCommission is %s. ",
@@ -188,6 +188,6 @@ public class PublisherDAOImpl implements PublisherDAO {
                     publisher.getSoftCopyCommission(), publisher.getHardCopyCommission()));
             throw e;
         }
-        return result;
+        return rowsAffected;
     }
 }

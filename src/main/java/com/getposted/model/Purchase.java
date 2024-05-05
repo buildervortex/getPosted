@@ -13,7 +13,8 @@ public class Purchase {
     private int publisherId = 0;
     private int publicationId = 0;
 
-    public Purchase(){}
+    public Purchase() {
+    }
 
     public Purchase(int id, Date purchasedDate, double price, Time purchasedTime, int userId, int publisherId,
             int publicationId) {
@@ -87,5 +88,5 @@ public class Purchase {
         return "Purchase [id=" + id + ", purchasedDate=" + purchasedDate + ", price=" + price + ", purchasedTime="
                 + purchasedTime + ", userId=" + userId + ", publisherId=" + publisherId + ", publicationId="
                 + publicationId + "]";
-    }    
+    }
 }

@@ -11,7 +11,8 @@ public class IsNotifiedBy {
     private int authorId = 0;
     private int publisherId = 0;
 
-    public IsNotifiedBy(){}
+    public IsNotifiedBy() {
+    }
 
     public IsNotifiedBy(int id, String notification, Date notifiedDate, Time notifiedTime, int authorId,
             int publisherId) {
@@ -76,6 +77,5 @@ public class IsNotifiedBy {
         return "IsNotifiedBy [id=" + id + ", notification=" + notification + ", notifiedDate=" + notifiedDate
                 + ", notifiedTime=" + notifiedTime + ", authorId=" + authorId + ", publisherId=" + publisherId + "]";
     }
-
 
 }

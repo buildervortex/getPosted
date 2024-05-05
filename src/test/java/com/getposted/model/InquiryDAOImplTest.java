@@ -22,9 +22,10 @@ public class InquiryDAOImplTest {
     private static InquiryDAOImpl inquiryDAOImpl = new InquiryDAOImpl();
 
     @BeforeClass
-    public static void createDatabase(){
+    public static void createDatabase() {
         TestDataBase.createAll();
     }
+
     @Test
     public void testDelete() throws SQLException {
         Inquiry inquiry = new Inquiry();
@@ -44,11 +45,15 @@ public class InquiryDAOImplTest {
         int userId = 8;
         int publisherId = 8;
 
-        inquiry = new Inquiry(id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count, country, shippedDate, state, price, publicationId, userId, publisherId);
+        inquiry = new Inquiry(id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count,
+                country, shippedDate, state, price, publicationId, userId, publisherId);
 
-        inquiryDAOImpl.insert(inquiry);
+        int rowsAffected = inquiryDAOImpl.insert(inquiry);
+        assertEquals(rowsAffected, 1);
 
-        inquiryDAOImpl.delete(inquiry);
+        rowsAffected = inquiryDAOImpl.delete(inquiry);
+        assertEquals(rowsAffected, 1);
+
         assertNull(inquiryDAOImpl.get(id));
     }
 
@@ -71,37 +76,33 @@ public class InquiryDAOImplTest {
         int userId = 1;
         int publisherId = 1;
 
-
-
         inquiry = inquiryDAOImpl.get(1);
         assertNull(inquiryDAOImpl.get(0));
         assertNotNull(inquiry);
-        assertEquals(inquiry.getId(),id);
-        assertEquals(inquiry.getPurchasedDate().toString(),purchasedDate);
-        assertEquals(inquiry.getShippingAddress(),shippingAddress);
-        assertEquals(inquiry.getPostalCode(),postalCode);
-        assertEquals(inquiry.getPurchasedTime().toString(),purchasedTime);
-        assertEquals(inquiry.getContactName(),contactName);
-        assertEquals(inquiry.getCount(),count);
-        assertEquals(inquiry.getCountry(),country);
-        assertEquals(inquiry.getShippedDate().toString(),shippedDate);
-        assertEquals(inquiry.getState(),state);
+        assertEquals(inquiry.getId(), id);
+        assertEquals(inquiry.getPurchasedDate().toString(), purchasedDate);
+        assertEquals(inquiry.getShippingAddress(), shippingAddress);
+        assertEquals(inquiry.getPostalCode(), postalCode);
+        assertEquals(inquiry.getPurchasedTime().toString(), purchasedTime);
+        assertEquals(inquiry.getContactName(), contactName);
+        assertEquals(inquiry.getCount(), count);
+        assertEquals(inquiry.getCountry(), country);
+        assertEquals(inquiry.getShippedDate().toString(), shippedDate);
+        assertEquals(inquiry.getState(), state);
         assertTrue(inquiry.getPrice() == price);
-        assertEquals(inquiry.getPublicationId(),publicationId);
-        assertEquals(inquiry.getUserId(),userId);
-        assertEquals(inquiry.getPublisherId(),publisherId);
+        assertEquals(inquiry.getPublicationId(), publicationId);
+        assertEquals(inquiry.getUserId(), userId);
+        assertEquals(inquiry.getPublisherId(), publisherId);
     }
 
     @Test
-    public void testGetAll() throws SQLException{
-        Inquiry inquiry = new Inquiry();
+    public void testGetAll() throws SQLException {
 
-// (1, '2024-04-01', '123 Main St, Anytown USA', '12345', '12:00:00', 'John Doe', 1, 'USA', '2024-04-05', 'Accepted', 19.99, 1, 1, 1)
         List<Inquiry> inquiries = inquiryDAOImpl.getAll();
         assertTrue(inquiries.size() >= 10);
 
-        for(Inquiry i: inquiries){
-            assertTrue(i.getId()>=1);
+        for (Inquiry i : inquiries) {
+            assertTrue(i.getId() >= 1);
             assertTrue(i.getPurchasedDate().toString().length() == 10);
             assertTrue(i.getShippingAddress().length() >= 1);
             assertTrue(i.getPostalCode().length() >= 1);
@@ -110,9 +111,11 @@ public class InquiryDAOImplTest {
             assertTrue(i.getCount() >= 1);
             assertTrue(i.getCountry().length() >= 1);
             assertTrue(i.getShippedDate().toString().length() == 10);
-            assertTrue(i.getState().equals(Inquiry.ACCEPTED) || i.getState().equals( Inquiry.PENDING) || i.getState().equals(Inquiry.PROCESSING) || i.getState().equals(Inquiry.REJECTED) || i.getState().equals(Inquiry.SHIPPED) );
+            assertTrue(i.getState().equals(Inquiry.ACCEPTED) || i.getState().equals(Inquiry.PENDING)
+                    || i.getState().equals(Inquiry.PROCESSING) || i.getState().equals(Inquiry.REJECTED)
+                    || i.getState().equals(Inquiry.SHIPPED));
             assertTrue(i.getPrice() >= 0);
-            assertTrue(i.getPublicationId()>=1);
+            assertTrue(i.getPublicationId() >= 1);
             assertTrue(i.getUserId() >= 1);
             assertTrue(i.getPublisherId() >= 1);
         }
@@ -121,7 +124,6 @@ public class InquiryDAOImplTest {
     @Test
     public void testInsert() throws SQLException {
         Inquiry inquiry = new Inquiry();
-    // (id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count, country, shippedDate, state, price, publicationId, userId, publisherId)
         int id = 24;
         Date purchasedDate = new Date(Calendar.getInstance().getTimeInMillis());
         String shippingAddress = "123 Mainn St, Anytown USA";
@@ -152,25 +154,25 @@ public class InquiryDAOImplTest {
         inquiry.setUserId(userId);
         inquiry.setPublisherId(publisherId);
 
-        inquiryDAOImpl.insert(inquiry);
-
+        int rowsAffected = inquiryDAOImpl.insert(inquiry);
+        assertEquals(rowsAffected, 1);
 
         inquiry = inquiryDAOImpl.get(id);
         assertNotNull(inquiry);
-        assertEquals(inquiry.getId(),id);
-        assertEquals(inquiry.getPurchasedDate().toString(),purchasedDate.toString());
-        assertEquals(inquiry.getShippingAddress(),shippingAddress);
-        assertEquals(inquiry.getPostalCode(),postalCode);
-        assertEquals(inquiry.getPurchasedTime().toString(),purchasedTime.toString());
-        assertEquals(inquiry.getContactName(),contactName);
-        assertEquals(inquiry.getCount(),count);
-        assertEquals(inquiry.getCountry(),country);
-        assertEquals(inquiry.getShippedDate().toString(),shippedDate.toString());
-        assertEquals(inquiry.getState(),state);
+        assertEquals(inquiry.getId(), id);
+        assertEquals(inquiry.getPurchasedDate().toString(), purchasedDate.toString());
+        assertEquals(inquiry.getShippingAddress(), shippingAddress);
+        assertEquals(inquiry.getPostalCode(), postalCode);
+        assertEquals(inquiry.getPurchasedTime().toString(), purchasedTime.toString());
+        assertEquals(inquiry.getContactName(), contactName);
+        assertEquals(inquiry.getCount(), count);
+        assertEquals(inquiry.getCountry(), country);
+        assertEquals(inquiry.getShippedDate().toString(), shippedDate.toString());
+        assertEquals(inquiry.getState(), state);
         assertTrue(inquiry.getPrice() == price);
-        assertEquals(inquiry.getPublicationId(),publicationId);
-        assertEquals(inquiry.getUserId(),userId);
-        assertEquals(inquiry.getPublisherId(),publisherId);
+        assertEquals(inquiry.getPublicationId(), publicationId);
+        assertEquals(inquiry.getUserId(), userId);
+        assertEquals(inquiry.getPublisherId(), publisherId);
 
     }
 
@@ -193,10 +195,12 @@ public class InquiryDAOImplTest {
         int userId = 1;
         int publisherId = 5;
 
-        inquiry = new Inquiry(id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count, country, shippedDate, state, price, publicationId, userId, publisherId);
+        inquiry = new Inquiry(id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count,
+                country, shippedDate, state, price, publicationId, userId, publisherId);
 
-        inquiryDAOImpl.insert(inquiry);
-        
+        int rowsAffected = inquiryDAOImpl.insert(inquiry);
+        assertEquals(rowsAffected, 1);
+
         purchasedDate = new Date(Calendar.getInstance().getTimeInMillis());
         shippingAddress = "123 Mainn St, Anytown USAAa";
         postalCode = "12342";
@@ -211,30 +215,32 @@ public class InquiryDAOImplTest {
         userId = 4;
         publisherId = 2;
 
-        inquiry = new Inquiry(id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count, country, shippedDate, state, price, publicationId, userId, publisherId);
+        inquiry = new Inquiry(id, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count,
+                country, shippedDate, state, price, publicationId, userId, publisherId);
 
-        inquiryDAOImpl.update(inquiry);
+        rowsAffected = inquiryDAOImpl.update(inquiry);
+        assertEquals(rowsAffected, 1);
 
         inquiry = inquiryDAOImpl.get(id);
         assertNotNull(inquiry);
-        assertEquals(inquiry.getId(),id);
-        assertEquals(inquiry.getPurchasedDate().toString(),purchasedDate.toString());
-        assertEquals(inquiry.getShippingAddress(),shippingAddress);
-        assertEquals(inquiry.getPostalCode(),postalCode);
-        assertEquals(inquiry.getPurchasedTime().toString(),purchasedTime.toString());
-        assertEquals(inquiry.getContactName(),contactName);
-        assertEquals(inquiry.getCount(),count);
-        assertEquals(inquiry.getCountry(),country);
-        assertEquals(inquiry.getShippedDate().toString(),shippedDate.toString());
-        assertEquals(inquiry.getState(),state);
+        assertEquals(inquiry.getId(), id);
+        assertEquals(inquiry.getPurchasedDate().toString(), purchasedDate.toString());
+        assertEquals(inquiry.getShippingAddress(), shippingAddress);
+        assertEquals(inquiry.getPostalCode(), postalCode);
+        assertEquals(inquiry.getPurchasedTime().toString(), purchasedTime.toString());
+        assertEquals(inquiry.getContactName(), contactName);
+        assertEquals(inquiry.getCount(), count);
+        assertEquals(inquiry.getCountry(), country);
+        assertEquals(inquiry.getShippedDate().toString(), shippedDate.toString());
+        assertEquals(inquiry.getState(), state);
         assertTrue(inquiry.getPrice() == price);
-        assertEquals(inquiry.getPublicationId(),publicationId);
-        assertEquals(inquiry.getUserId(),userId);
-        assertEquals(inquiry.getPublisherId(),publisherId);
+        assertEquals(inquiry.getPublicationId(), publicationId);
+        assertEquals(inquiry.getUserId(), userId);
+        assertEquals(inquiry.getPublisherId(), publisherId);
     }
 
     @AfterClass
-    public static void deleteDatabase(){
+    public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
 }

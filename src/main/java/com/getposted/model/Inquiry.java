@@ -11,7 +11,8 @@ public class Inquiry {
     public static final String PROCESSING = "Processing";
     public static final String SHIPPED = "Shipped";
 
-    //purchasedDate, shippingAddress, postalCode, purchasedTime, contactName, count, country, publicationId, userId, publisherId
+    // purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
+    // count, country, publicationId, userId, publisherId
     private int id = 0;
     private Date purchasedDate = null;
     private String shippingAddress = null;
@@ -19,7 +20,7 @@ public class Inquiry {
     private Time purchasedTime = null;
     private String contactName = null;
     private int count = 0;
-    private String country =  null;
+    private String country = null;
     private Date shippedDate = null;
     private String state = Inquiry.PENDING;
     private double price = 0.0;
@@ -27,7 +28,8 @@ public class Inquiry {
     private int userId = 0;
     private int publisherId = 0;
 
-    public Inquiry(){}
+    public Inquiry() {
+    }
 
     public Inquiry(int id, Date purchasedDate, String shippingAddress, String postalCode, Time purchasedTime,
             String contactName, int count, String country, Date shippedDate, String state, double price,
@@ -188,5 +190,5 @@ public class Inquiry {
                 + ", price=" + price + ", publicationId=" + publicationId + ", userId=" + userId + ", publisherId="
                 + publisherId + "]";
     }
-    
+
 }

@@ -20,13 +20,13 @@ public class LanguageDAOImpl implements LanguageDAO {
 		Connection con = Database.getConnection();
 		Language language = null;
 		String sqlTemplate = "SELECT * FROM Language WHERE id = ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
-		select.setInt(1, id);
+		ps.setInt(1, id);
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getId() method the id is %d. The exception message is %s",
@@ -50,13 +50,13 @@ public class LanguageDAOImpl implements LanguageDAO {
 		Connection con = Database.getConnection();
 		Language languageOb = null;
 		String sqlTemplate = "SELECT * FROM Language WHERE language = ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
-		select.setString(1, language);
+		ps.setString(1, language);
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at get() method the id is %s. The exception message is %s",
@@ -80,11 +80,11 @@ public class LanguageDAOImpl implements LanguageDAO {
 		Connection con = Database.getConnection();
 		List<Language> languageList = new ArrayList();
 		String sqlTemplate = "SELECT * FROM Language";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getAll() .The exception message is %s",
@@ -107,13 +107,13 @@ public class LanguageDAOImpl implements LanguageDAO {
 		Connection con = Database.getConnection();
 		List<Language> languageList = new ArrayList();
 		String sqlTemplate = "SELECT * FROM Language LIMIT ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
-		select.setInt(1, limit);
+		ps.setInt(1, limit);
 
 		try {
-			rs = select.executeQuery();
+			rs = ps.executeQuery();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getList(). The limit is %d .The exception message is %s",
@@ -135,14 +135,14 @@ public class LanguageDAOImpl implements LanguageDAO {
 	public int insert(Language language) throws SQLException {
 		Connection con = Database.getConnection();
 		String sqlTemplate = "INSERT INTO Language(id,language) VALUES (?,?)";
-		PreparedStatement st = con.prepareStatement(sqlTemplate);
-		int result = -1;
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		int rowsAffected = -1;
 
-		st.setInt(1, language.getId());
-		st.setString(2, language.getLanguage());
+		ps.setInt(1, language.getId());
+		ps.setString(2, language.getLanguage());
 
 		try {
-			result = st.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at insert() method. The exception message is %s. The inserted Language name is %s and id is %d",
@@ -151,21 +151,21 @@ public class LanguageDAOImpl implements LanguageDAO {
 		}
 
 		con.close();
-		return result;
+		return rowsAffected;
 	}
 
 	@Override
 	public int update(Language language) throws SQLException {
 		Connection con = Database.getConnection();
 		String sqlTemplate = "UPDATE Language SET language = ? WHERE id = ?";
-		PreparedStatement st = con.prepareStatement(sqlTemplate);
-		int result = -1;
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		int rowsAffected = -1;
 
-		st.setString(1, language.getLanguage());
-		st.setInt(2, language.getId());
+		ps.setString(1, language.getLanguage());
+		ps.setInt(2, language.getId());
 
 		try {
-			result = st.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at update() method. The exception message is %s. The updated Language name is %s and id is %d",
@@ -174,20 +174,20 @@ public class LanguageDAOImpl implements LanguageDAO {
 		}
 
 		con.close();
-		return result;
+		return rowsAffected;
 	}
 
 	@Override
 	public int delete(Language language) throws SQLException {
 		Connection con = Database.getConnection();
 		String sqlTemplate = "DELETE FROM Language WHERE id = ?";
-		PreparedStatement st = con.prepareStatement(sqlTemplate);
-		int result = -1;
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		int rowsAffected = -1;
 
-		st.setInt(1, language.getId());
+		ps.setInt(1, language.getId());
 
 		try {
-			result = st.executeUpdate();
+			rowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at delete() method. The exception message is %s. The deleted Language name is %s and id is %d",
@@ -196,7 +196,6 @@ public class LanguageDAOImpl implements LanguageDAO {
 		}
 
 		con.close();
-		return result;
+		return rowsAffected;
 	}
-
 }

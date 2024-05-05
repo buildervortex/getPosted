@@ -20,13 +20,13 @@ public class PublicationDAOImpl implements PublicationDAO {
         Connection con = Database.getConnection();
         Publication publication = null;
         String sqlTemplate = "SELECT * FROM Publication WHERE id =?";
-        PreparedStatement select = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        select.setInt(1, id);
+        ps.setInt(1, id);
 
         try {
-            rs = select.executeQuery();
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublicationImpl class at getId() method the id is %d. The exception message is %s",
@@ -61,11 +61,11 @@ public class PublicationDAOImpl implements PublicationDAO {
         Connection con = Database.getConnection();
         List<Publication> publicationList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publication";
-        PreparedStatement select = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
         try {
-            rs = select.executeQuery();
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at getAll().The exception message is %s",
@@ -99,29 +99,28 @@ public class PublicationDAOImpl implements PublicationDAO {
 
     @Override
     public int insert(Publication publication) throws SQLException {
-     
 
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO Publication (id,description, date, size, pdfPath, softCopyPrice, pageCount, softCopyDiscount, title, publishedDate, categoryId, languageId, authorId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        PreparedStatement st = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        int rowsAffected = -1;
 
-        st.setInt(1, publication.getId());
-        st.setString(2, publication.getDescription());
-        st.setDate(3, publication.getDate());
-        st.setInt(4, publication.getSize());
-        st.setString(5, publication.getPdfPath());
-        st.setDouble(6, publication.getSoftCopyPrice());
-        st.setInt(7, publication.getPageCount());
-        st.setDouble(8, publication.getSoftCopyDiscount());
-        st.setString(9, publication.getTitle());
-        st.setDate(10, publication.getPublishedDate());
-        st.setInt(11, publication.getCategoryId());
-        st.setInt(12, publication.getLanguageId());
-        st.setInt(13, publication.getAuthorId());
+        ps.setInt(1, publication.getId());
+        ps.setString(2, publication.getDescription());
+        ps.setDate(3, publication.getDate());
+        ps.setInt(4, publication.getSize());
+        ps.setString(5, publication.getPdfPath());
+        ps.setDouble(6, publication.getSoftCopyPrice());
+        ps.setInt(7, publication.getPageCount());
+        ps.setDouble(8, publication.getSoftCopyDiscount());
+        ps.setString(9, publication.getTitle());
+        ps.setDate(10, publication.getPublishedDate());
+        ps.setInt(11, publication.getCategoryId());
+        ps.setInt(12, publication.getLanguageId());
+        ps.setInt(13, publication.getAuthorId());
         try {
             // Your code here
-            result = st.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at insert() method. The exception message is %s. The inserted Publication details are: id=%d, description=%s, date=%s, size=%d, pdfPath=%s, softCopyPrice=%f, pageCount=%d, softCopyDiscount=%f, title=%s, publishedDate=%s, categoryId=%d, languageId=%d, authorId=%d",
@@ -132,7 +131,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     publication.getAuthorId()));
             throw e;
         }
-        return result;
+        return rowsAffected;
     }
 
     @Override
@@ -140,55 +139,55 @@ public class PublicationDAOImpl implements PublicationDAO {
 
         Connection con = Database.getConnection();
         String sqlTemplate = "UPDATE Publication SET description =?, date =?, size =?, pdfPath =?, softCopyPrice =?, pageCount =?, softCopyDiscount =?, title =?, publishedDate =?, categoryId =?, languageId =?, authorId =? WHERE id =?";
-        PreparedStatement st = con.prepareStatement(sqlTemplate);
-        int result = -1;
-        
-        st.setString(1, publication.getDescription());
-        st.setDate(2, publication.getDate());
-        st.setInt(3, publication.getSize());
-        st.setString(4, publication.getPdfPath());
-        st.setDouble(5, publication.getSoftCopyPrice());
-        st.setInt(6, publication.getPageCount());
-        st.setDouble(7, publication.getSoftCopyDiscount());
-        st.setString(8, publication.getTitle());
-        st.setDate(9, publication.getPublishedDate());
-        st.setInt(10, publication.getCategoryId());
-        st.setInt(11, publication.getLanguageId());
-        st.setInt(12, publication.getAuthorId());
-        st.setInt(13, publication.getId());
-        
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        int rowsAffected = -1;
+
+        ps.setString(1, publication.getDescription());
+        ps.setDate(2, publication.getDate());
+        ps.setInt(3, publication.getSize());
+        ps.setString(4, publication.getPdfPath());
+        ps.setDouble(5, publication.getSoftCopyPrice());
+        ps.setInt(6, publication.getPageCount());
+        ps.setDouble(7, publication.getSoftCopyDiscount());
+        ps.setString(8, publication.getTitle());
+        ps.setDate(9, publication.getPublishedDate());
+        ps.setInt(10, publication.getCategoryId());
+        ps.setInt(11, publication.getLanguageId());
+        ps.setInt(12, publication.getAuthorId());
+        ps.setInt(13, publication.getId());
+
         try {
-            result = st.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
-                "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at update() method. The exception message is %s. The updated Publication details are: id=%d, description=%s, date=%s, size=%d, pdfPath=%s, softCopyPrice=%f, pageCount=%d, softCopyDiscount=%f, title=%s, publishedDate=%s, categoryId=%d, languageId=%d, authorId=%d",
-                e.getMessage(), publication.getId(), publication.getDescription(), publication.getDate(),
-                publication.getSize(), publication.getPdfPath(), publication.getSoftCopyPrice(),
-                publication.getPageCount(), publication.getSoftCopyDiscount(), publication.getTitle(),
-                publication.getPublishedDate(), publication.getCategoryId(), publication.getLanguageId(),
-                publication.getAuthorId()));
+                    "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at update() method. The exception message is %s. The updated Publication details are: id=%d, description=%s, date=%s, size=%d, pdfPath=%s, softCopyPrice=%f, pageCount=%d, softCopyDiscount=%f, title=%s, publishedDate=%s, categoryId=%d, languageId=%d, authorId=%d",
+                    e.getMessage(), publication.getId(), publication.getDescription(), publication.getDate(),
+                    publication.getSize(), publication.getPdfPath(), publication.getSoftCopyPrice(),
+                    publication.getPageCount(), publication.getSoftCopyDiscount(), publication.getTitle(),
+                    publication.getPublishedDate(), publication.getCategoryId(), publication.getLanguageId(),
+                    publication.getAuthorId()));
             throw e;
         }
-        return result;
+        return rowsAffected;
     }
 
     @Override
     public int delete(Publication publication) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "DELETE FROM Publication WHERE id =?";
-        PreparedStatement st = con.prepareStatement(sqlTemplate);
-        int result = -1;
-    
-        st.setInt(1, publication.getId());
-    
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        int rowsAffected = -1;
+
+        ps.setInt(1, publication.getId());
+
         try {
-            result = st.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
-                "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at delete() method. The exception message is %s. The deleted Publication id is %d.",
-                e.getMessage(), publication.getId()));
+                    "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at delete() method. The exception message is %s. The deleted Publication id is %d.",
+                    e.getMessage(), publication.getId()));
             throw e;
         }
-        return result;
+        return rowsAffected;
     }
 }

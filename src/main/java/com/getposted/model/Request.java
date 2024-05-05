@@ -1,14 +1,14 @@
 package com.getposted.model;
 
 public class Request {
-    // (id, requestedContent, authorId, publisherId)
 
     private int id = 0;
     private String requestedContent = null;
     private int authorId = 0;
     private int publisherId = 0;
 
-    public Request(){}
+    public Request() {
+    }
 
     public Request(int id, String requestedContent, int authorId, int publisherId) {
         this.id = id;
@@ -54,6 +54,5 @@ public class Request {
         return "Request [id=" + id + ", requestedContent=" + requestedContent + ", authorId=" + authorId
                 + ", publisherId=" + publisherId + "]";
     }
-    
-    
+
 }

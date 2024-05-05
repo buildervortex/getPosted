@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 import com.getposted.logger.Logging;
 
-public class HasDAOImpl implements HasDAO{
+public class HasDAOImpl implements HasDAO {
 
     private static Logger logger = Logging.getLogger(HasDAOImpl.class.getName());
 
@@ -22,46 +22,49 @@ public class HasDAOImpl implements HasDAO{
     @Override
     public List<Has> getAll() throws SQLException {
         Connection con = Database.getConnection();
-		List<Has> has = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Has";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
-		ResultSet rs = null;
+        List<Has> has = new ArrayList();
+        String sqlTemplate = "SELECT * FROM Has";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
 
-		try{
-			rs = select.executeQuery();
-		}
-		catch(SQLException e){
-			logger.warning(String.format("There is SQLException happend in the com.getposted.model.HasDAOImpl class at getAll() .The exception message is %s",e.getMessage()));
-			throw e;
-		}
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getAll() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
 
-		while(rs.next()){
+        while (rs.next()) {
             int authorId = rs.getInt("authorId");
             int skillId = rs.getInt("skillId");
 
-            has.add(new Has(authorId,skillId));
-		}
+            has.add(new Has(authorId, skillId));
+        }
 
-		return has;
+        return has;
     }
 
     @Override
     public int insert(Has has) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO Has (authorId, skillId) VALUES (?,?)";
-        PreparedStatement insert = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         int rowsAffected = 0;
-    
-        insert.setInt(1, has.getAuthorId());
-        insert.setInt(2, has.getSkillId());
-    
+
+        ps.setInt(1, has.getAuthorId());
+        ps.setInt(2, has.getSkillId());
+
         try {
-            rowsAffected = insert.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
-            logger.warning(String.format("There is SQLException happend in the com.getposted.model.HasDAOImpl class at insert() method. The exception message is %s", e.getMessage()));
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at insert() method. The exception message is %s",
+                    e.getMessage()));
             throw e;
         }
-    
+
         return rowsAffected;
     }
 
@@ -75,47 +78,50 @@ public class HasDAOImpl implements HasDAO{
     public int delete(Has has) throws SQLException {
         Connection con = Database.getConnection();
         String sqlTemplate = "DELETE FROM Has WHERE authorId =? AND skillId =?";
-        PreparedStatement delete = con.prepareStatement(sqlTemplate);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
         int rowsAffected = 0;
-    
-        delete.setInt(1, has.getAuthorId());
-        delete.setInt(2, has.getSkillId());
-    
+
+        ps.setInt(1, has.getAuthorId());
+        ps.setInt(2, has.getSkillId());
+
         try {
-            rowsAffected = delete.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
-            logger.warning(String.format("There is SQLException happend in the com.getposted.model.HasDAOImpl class at delete() method. The exception message is %s", e.getMessage()));
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at delete() method. The exception message is %s",
+                    e.getMessage()));
             throw e;
         }
-    
+
         return rowsAffected;
     }
 
     @Override
     public List<Has> getList(int authorId) throws SQLException {
         Connection con = Database.getConnection();
-		List<Has> has = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Has WHERE authorId = ?";
-		PreparedStatement select = con.prepareStatement(sqlTemplate);
-		ResultSet rs = null;
+        List<Has> has = new ArrayList();
+        String sqlTemplate = "SELECT * FROM Has WHERE authorId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
 
-        select.setInt(1, authorId);
+        ps.setInt(1, authorId);
 
-		try{
-			rs = select.executeQuery();
-		}
-		catch(SQLException e){
-			logger.warning(String.format("There is SQLException happend in the com.getposted.model.HasDAOImpl class at getList() .The exception message is %s",e.getMessage()));
-			throw e;
-		}
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getList() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
 
-		while(rs.next()){
+        while (rs.next()) {
             int qauthorId = rs.getInt("authorId");
             int skillId = rs.getInt("skillId");
 
-            has.add(new Has(qauthorId,skillId));
-		}
+            has.add(new Has(qauthorId, skillId));
+        }
 
-		return has;
+        return has;
     }
 }

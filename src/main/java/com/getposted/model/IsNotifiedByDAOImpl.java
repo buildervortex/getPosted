@@ -12,9 +12,9 @@ import java.util.logging.Logger;
 
 import com.getposted.logger.Logging;
 
-public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
+public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
 
-        private static Logger logger = Logging.getLogger(IsNotifiedByDAOImpl.class.getName());
+    private static Logger logger = Logging.getLogger(IsNotifiedByDAOImpl.class.getName());
 
     @Override
     public IsNotifiedBy get(int id) throws SQLException {
@@ -65,7 +65,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
             throw e;
         }
 
-        while(rs.next()){
+        while (rs.next()) {
             int id = rs.getInt("id");
             String notification = rs.getString("notification");
             Date notifiedDate = rs.getDate("notifiedDate");
@@ -83,7 +83,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
         Connection con = Database.getConnection();
         String sqlTemplate = "INSERT INTO IsNotifiedBy(id, notification, notifiedDate, notifiedTime, authorId, publisherId) VALUES(?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        int rowsAffected = -1;
 
         ps.setInt(1, isNotifiedBy.getId());
         ps.setString(2, isNotifiedBy.getNotification());
@@ -93,15 +93,17 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
         ps.setInt(6, isNotifiedBy.getPublisherId());
 
         try {
-            result = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at insert() method . The exception message is %s. The id is %s. The notification is %s. The notifiedDate is %s. The notifiedTime is %s. The authorId is %s. The publisherId is %s",
-                    e.getMessage(),isNotifiedBy.getId(),isNotifiedBy.getNotification(),isNotifiedBy.getNotifiedDate(),isNotifiedBy.getNotifiedTime(),isNotifiedBy.getAuthorId(),isNotifiedBy.getPublisherId()));
+                    e.getMessage(), isNotifiedBy.getId(), isNotifiedBy.getNotification(),
+                    isNotifiedBy.getNotifiedDate(), isNotifiedBy.getNotifiedTime(), isNotifiedBy.getAuthorId(),
+                    isNotifiedBy.getPublisherId()));
             throw e;
         }
 
-        return result;
+        return rowsAffected;
     }
 
     @Override
@@ -109,7 +111,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
         Connection con = Database.getConnection();
         String sqlTemplate = "UPDATE IsNotifiedBy SET notification = ?, notifiedDate = ?, notifiedTime = ?, authorId = ?, publisherId = ? WHERE id = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        int rowsAffected = -1;
 
         ps.setString(1, isNotifiedBy.getNotification());
         ps.setDate(2, isNotifiedBy.getNotifiedDate());
@@ -119,15 +121,17 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
         ps.setInt(6, isNotifiedBy.getId());
 
         try {
-            result = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at update() method . The exception message is %s. The id is %s. The notification is %s. The notifiedDate is %s. The notifiedTime is %s. The authorId is %s. The publisherId is %s",
-                    e.getMessage(),isNotifiedBy.getId(),isNotifiedBy.getNotification(),isNotifiedBy.getNotifiedDate(),isNotifiedBy.getNotifiedTime(),isNotifiedBy.getAuthorId(),isNotifiedBy.getPublisherId()));
+                    e.getMessage(), isNotifiedBy.getId(), isNotifiedBy.getNotification(),
+                    isNotifiedBy.getNotifiedDate(), isNotifiedBy.getNotifiedTime(), isNotifiedBy.getAuthorId(),
+                    isNotifiedBy.getPublisherId()));
             throw e;
         }
 
-        return result;
+        return rowsAffected;
     }
 
     @Override
@@ -135,19 +139,20 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO{
         Connection con = Database.getConnection();
         String sqlTemplate = "DELETE FROM IsNotifiedBy WHERE id = ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
-        int result = -1;
+        int rowsAffected = -1;
 
         ps.setInt(1, isNotifiedBy.getId());
 
         try {
-            result = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at delete() method . The exception message is %s. The id is %s. The notification is %s. The notifiedDate is %s. The notifiedTime is %s. The authorId is %s. The publisherId is %s",
-                    e.getMessage(),isNotifiedBy.getId(),isNotifiedBy.getNotification(),isNotifiedBy.getNotifiedDate(),isNotifiedBy.getNotifiedTime(),isNotifiedBy.getAuthorId(),isNotifiedBy.getPublisherId()));
+                    e.getMessage(), isNotifiedBy.getId(), isNotifiedBy.getNotification(),
+                    isNotifiedBy.getNotifiedDate(), isNotifiedBy.getNotifiedTime(), isNotifiedBy.getAuthorId(),
+                    isNotifiedBy.getPublisherId()));
             throw e;
         }
-        return result;
+        return rowsAffected;
     }
-    
 }

@@ -7,7 +7,8 @@ public class Save {
     private int userId = 0;
     private int publicationId = 0;
 
-    public Save(){}
+    public Save() {
+    }
 
     public Save(Date date, int userId, int publicationId) {
         this.date = date;
@@ -43,6 +44,5 @@ public class Save {
     public String toString() {
         return "Save [date=" + date + ", userId=" + userId + ", publicationId=" + publicationId + "]";
     }
-
 
 }

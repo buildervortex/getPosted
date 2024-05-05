@@ -11,7 +11,8 @@ public class Reviews {
     private int publicationId = 0;
     private int userId = 0;
 
-    public Reviews(){}
+    public Reviews() {
+    }
 
     public Reviews(int id, int value, String review, Date date, int publicationId, int userId) {
         this.id = id;
@@ -76,6 +77,4 @@ public class Reviews {
                 + publicationId + ", userId=" + userId + "]";
     }
 
-    
-    
 }

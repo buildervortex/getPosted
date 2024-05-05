@@ -1,10 +1,11 @@
 package com.getposted.model;
 
 public class Has {
-    private int authorId=0;
-    private int skillId=0;
+    private int authorId = 0;
+    private int skillId = 0;
 
-    public Has(){}
+    public Has() {
+    }
 
     public Has(int authorId, int skillId) {
         this.authorId = authorId;
@@ -32,5 +33,4 @@ public class Has {
         return "Has [authorId=" + authorId + ", skillId=" + skillId + "]";
     }
 
-    
 }
