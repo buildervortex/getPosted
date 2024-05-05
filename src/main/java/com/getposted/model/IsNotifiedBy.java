@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class IsNotifiedBy {
     private int id = 0;
-    private String notifications = null;
+    private String notification = null;
     private Date notifiedDate = null;
     private Time notifiedTime = null;
     private int authorId = 0;
@@ -13,10 +13,10 @@ public class IsNotifiedBy {
 
     public IsNotifiedBy(){}
 
-    public IsNotifiedBy(int id, String notifications, Date notifiedDate, Time notifiedTime, int authorId,
+    public IsNotifiedBy(int id, String notification, Date notifiedDate, Time notifiedTime, int authorId,
             int publisherId) {
         this.id = id;
-        this.notifications = notifications;
+        this.notification = notification;
         this.notifiedDate = notifiedDate;
         this.notifiedTime = notifiedTime;
         this.authorId = authorId;
@@ -31,12 +31,12 @@ public class IsNotifiedBy {
         this.id = id;
     }
 
-    public String getNotifications() {
-        return notifications;
+    public String getNotification() {
+        return notification;
     }
 
-    public void setNotifications(String notifications) {
-        this.notifications = notifications;
+    public void setNotification(String notification) {
+        this.notification = notification;
     }
 
     public Date getNotifiedDate() {
@@ -73,7 +73,9 @@ public class IsNotifiedBy {
 
     @Override
     public String toString() {
-        return "IsNotifiedBy [id=" + id + ", notifications=" + notifications + ", notifiedDate=" + notifiedDate
+        return "IsNotifiedBy [id=" + id + ", notification=" + notification + ", notifiedDate=" + notifiedDate
                 + ", notifiedTime=" + notifiedTime + ", authorId=" + authorId + ", publisherId=" + publisherId + "]";
     }
+
+
 }
