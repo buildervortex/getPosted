@@ -17,11 +17,10 @@ import com.getposted.system.Sysenv;
 public class FileManager {
 
     private static Logger logger = Logging.getLogger(FileManager.class.getName());
-
     private static String fileSystemLocation = FileManager.getAbsPath(Sysenv.getEnv("FILESYSTEMLOCATION"));
 
-    public static long storeFile(String storingFileName, InputStream inputStream, Stored type ) throws IOException{
-        String pathToStore = fileSystemLocation+type;
+    public static long storeFile(String storingFileName, InputStream inputStream, String authorprofilepicture ) throws IOException{
+        String pathToStore = fileSystemLocation+authorprofilepicture;
         FileManager.createDirectory(pathToStore);
 
         String absoluteFilePath = pathToStore+storingFileName;
@@ -33,23 +32,23 @@ public class FileManager {
             storedSize = FileManager.writeToFile(inputStream, absoluteFilePath);
         }
         catch(IOException e){
-            logger.severe(String.format("There is an IOException occoured in the com.getposted.fileHandler.FileManager class at storeFile method. The error message is %s. The file name is %s, the file type is %s",e.getMessage(),storingFileName,type));
+            logger.severe(String.format("There is an IOException occoured in the com.getposted.fileHandler.FileManager class at storeFile method. The error message is %s. The file name is %s, the file type is %s",e.getMessage(),storingFileName,authorprofilepicture));
             throw e;
         }
         return storedSize;
     }
 
-    public static long retriveFile(String retrivingFileName, OutputStream outputStream, Stored type) throws IOException{
+    public static long retriveFile(String retrivingFileName, OutputStream outputStream, String authorprofilepicture) throws IOException{
         long retrivedSize = 0;
 
-        String absoluteFilePath = fileSystemLocation+type+retrivingFileName;
+        String absoluteFilePath = fileSystemLocation+authorprofilepicture+retrivingFileName;
         if(! FileManager.isExists(absoluteFilePath)) return retrivedSize;
 
         try{
-            FileManager.readFromFile(outputStream, absoluteFilePath);
+            retrivedSize = FileManager.readFromFile(outputStream, absoluteFilePath);
         }
         catch(IOException e){
-            logger.severe(String.format("There is an IOException occoured in the com.getposted.fileHandler.FileManager class at retriveFile method. The error message is %s. The file name is %s, the file type is %s",e.getMessage(),retrivingFileName,type));
+            logger.severe(String.format("There is an IOException occoured in the com.getposted.fileHandler.FileManager class at retriveFile method. The error message is %s. The file name is %s, the file type is %s",e.getMessage(),retrivingFileName,authorprofilepicture));
             throw e;
         }
 
@@ -120,7 +119,7 @@ public class FileManager {
         return readByteCount;
     }
 
-    private static String getAbsPath(String path){
+    public static String getAbsPath(String path){
         String absPath = null;
 
         Path relativePath = Paths.get(path);
@@ -134,5 +133,15 @@ public class FileManager {
 
     public static void reload(){
         FileManager.fileSystemLocation = FileManager.getAbsPath(Sysenv.getEnv("FILESYSTEMLOCATION"));
+    }
+
+    public static void deleteRecursively(String path){
+        File file = new File(path);
+        if(file.isDirectory()){
+            for( File f: file.listFiles()){
+                FileManager.deleteRecursively(f.toPath().toString());
+            }
+        }
+        file.delete();
     }
 }

@@ -17,4 +17,7 @@ public class Sysenv {
         return propertyValue;
     }
     
+    public static void deleteEnv(String key){
+        System.clearProperty(key);
+    }
 }

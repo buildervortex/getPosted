@@ -2,8 +2,8 @@ package com.getposted.enums;
 
 public class Stored {
 
-    private static final String PUBLICATIONPDF = "/publicationPdf/";
-    private static final String PUBLICATIONTHUMBNAIL = "/pulicationThumbnail/";
-    private static final String AUTHORPROFILEPICTURE = "/authorProfilePicture/";
+    public static final String PUBLICATIONPDF = "/publicationPdf/";
+    public static final String PUBLICATIONTHUMBNAIL = "/pulicationThumbnail/";
+    public static final String AUTHORPROFILEPICTURE = "/authorProfilePicture/";
     
 }

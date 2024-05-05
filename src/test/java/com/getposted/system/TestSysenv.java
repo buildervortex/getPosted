@@ -33,4 +33,14 @@ public class TestSysenv {
         Sysenv.setEnv(key2,value4);
         assertTrue(value4.equals(Sysenv.getEnv(key2)));
     }
+
+    @Test
+    public void testDeleteProperty(){
+        Sysenv.setEnv("mykey50", "myvalue50");
+        assertEquals(Sysenv.getEnv("mykey50"),"myvalue50");
+
+        Sysenv.deleteEnv("mykey50");
+
+        assertNull(Sysenv.getEnv("mykey50"));
+    }
 }
