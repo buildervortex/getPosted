@@ -76,6 +76,4 @@ public class IsNotifiedBy {
         return "IsNotifiedBy [id=" + id + ", notifications=" + notifications + ", notifiedDate=" + notifiedDate
                 + ", notifiedTime=" + notifiedTime + ", authorId=" + authorId + ", publisherId=" + publisherId + "]";
     }
-
-    
 }
