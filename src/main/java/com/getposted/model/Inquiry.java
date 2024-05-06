@@ -11,8 +11,6 @@ public class Inquiry {
     public static final String PROCESSING = "Processing";
     public static final String SHIPPED = "Shipped";
 
-    // purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
-    // count, country, publicationId, userId, publisherId
     private int id = 0;
     private Date purchasedDate = null;
     private String shippingAddress = null;

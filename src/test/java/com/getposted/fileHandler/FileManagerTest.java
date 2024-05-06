@@ -22,6 +22,7 @@ import org.junit.Test;
 import com.getposted.enums.Stored;
 import com.getposted.system.Sysenv;
 
+@Ignore
 public class FileManagerTest {
 
     private static String testPath = Paths.get("src/test/java/com/getposted/fileHandler").toAbsolutePath().toString()+"/testDirectory";

@@ -153,4 +153,151 @@ public class IsInformedDAOImpl implements IsInformedDAO {
         return result;
     }
 
+    @Override
+    public List<IsInformed> getAllInformedsFilterByDate(boolean desc) throws SQLException {
+        String order = "ASC";
+        if(desc) order = "DESC";
+
+        Connection con = Database.getConnection();
+        List<IsInformed> isInformeds = new ArrayList<IsInformed>();
+        String sqlTemplate = String.format("SELECT * FROM IsInformed ORDER BY notifiedDate %s, notifiedTime",order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at getAllInformedsFilterByDate() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String notification = rs.getString("notification");
+            Date notifiedDate = rs.getDate("notifiedDate");
+            Time notifiedTime = rs.getTime("notifiedTime");
+            int userId = rs.getInt("userId");
+            int publisherId = rs.getInt("publisherId");
+
+            isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId));
+        }
+        return isInformeds;
+    }
+
+    @Override
+    public List<IsInformed> getAllInformedsInADate(Date date) throws SQLException {
+        Connection con = Database.getConnection();
+        List<IsInformed> isInformeds = new ArrayList<IsInformed>();
+        String sqlTemplate = "SELECT * FROM IsInformed WHERE notifiedDate = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setDate(1, date);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at getAllInformedsInADate() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String notification = rs.getString("notification");
+            Date notifiedDate = rs.getDate("notifiedDate");
+            Time notifiedTime = rs.getTime("notifiedTime");
+            int userId = rs.getInt("userId");
+            int publisherId = rs.getInt("publisherId");
+
+            isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId));
+        }
+        return isInformeds;
+    }
+
+    @Override
+    public int getTotalInformedUsersCount() throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(userId) AS count FROM (SELECT userId FROM IsInformed GROUP BY userId) AS userId";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at getTotalInformedUsersCount() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+
+        return count;
+    }
+
+    @Override
+    public List<IsInformed> getAllInformaInformedsForAUser(int userId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<IsInformed> isInformeds = new ArrayList<IsInformed>();
+        String sqlTemplate = "SELECT * FROM IsInformed WHERE userId = ? ORDER BY notifiedDate";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, userId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model. class at getAllInformaInformedsForAUser() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String notification = rs.getString("notification");
+            Date notifiedDate = rs.getDate("notifiedDate");
+            Time notifiedTime = rs.getTime("notifiedTime");
+            int quserId = rs.getInt("userId");
+            int publisherId = rs.getInt("publisherId");
+
+            isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, quserId, publisherId));
+        }
+        return isInformeds;        
+    }
+
+    @Override
+    public int getTotalInformationCountForAUser(int userId) throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(id) as count FROM IsInformed WHERE userId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, userId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsInformedDAOImpl class at getTotalInformationCountForAUser() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+
+        return count;        
+    }
+
 }

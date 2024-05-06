@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -147,6 +148,71 @@ public class IsInformedDAOImplTest {
         assertEquals(isInformed.getNotifiedTime().toString(), notifiedTime.toString());
         assertEquals(isInformed.getUserId(), userId);
         assertEquals(isInformed.getPublisherId(), publisherId);
+    }
+
+
+    @Test
+    public void testGetAllInformedsFilterByDate() throws SQLException{
+        List<IsInformed> isInformeds = isInformedDAOImpl.getAllInformedsFilterByDate(false);
+
+        assertTrue(isInformeds.size() >= 10);
+
+        for (IsInformed isInformed : isInformeds) {
+            assertTrue(isInformed.getId() >= 1);
+            assertTrue(isInformed.getNotification().length() >= 1);
+            assertTrue(isInformed.getNotifiedDate().toString().length() == 10);
+            assertTrue(isInformed.getNotifiedTime().toString().length() == 8);
+            assertTrue(isInformed.getUserId() >= 1);
+            assertTrue(isInformed.getPublisherId() >= 1);
+        }
+        assertEquals(isInformeds.get(0).getNotifiedDate().toString(),"2024-04-01");
+    }
+
+    @Test
+    public void testGetAllInformedsInADate() throws SQLException{
+        List<IsInformed> isInformeds = isInformedDAOImpl.getAllInformedsInADate(Date.valueOf("2024-04-02"));
+
+        assertNotNull(isInformeds);
+
+        for (IsInformed isInformed : isInformeds) {
+            assertTrue(isInformed.getId() >= 1);
+            assertTrue(isInformed.getNotification().length() >= 1);
+            assertTrue(isInformed.getNotifiedDate().toString().length() == 10);
+            assertTrue(isInformed.getNotifiedTime().toString().length() == 8);
+            assertTrue(isInformed.getUserId() >= 1);
+            assertTrue(isInformed.getPublisherId() >= 1);
+        }
+
+        assertEquals(isInformeds.get(0).getNotifiedDate().toString(),"2024-04-02");
+    }
+
+    @Test
+    public void testGetTotalInformedUsersCount() throws SQLException{
+        int count = isInformedDAOImpl.getTotalInformedUsersCount();
+        assertEquals(count,10);
+    }
+
+    @Test
+    public void testGetAllInformaInformedsForAUser() throws SQLException{
+        List<IsInformed> isInformeds = isInformedDAOImpl.getAllInformaInformedsForAUser(1);
+        assertNotNull(isInformeds);
+
+        assertEquals(isInformeds.size(), 4-1);
+        for (IsInformed isInformed : isInformeds) {
+            assertTrue(isInformed.getId() >= 1);
+            assertTrue(isInformed.getNotification().length() >= 1);
+            assertTrue(isInformed.getNotifiedDate().toString().length() == 10);
+            assertTrue(isInformed.getNotifiedTime().toString().length() == 8);
+            assertTrue(isInformed.getUserId() == 1);
+            assertTrue(isInformed.getPublisherId() >= 1);
+
+        }
+    }
+
+    @Test
+    public void testGetTotalInformationCountForAUser() throws SQLException{
+        int count = isInformedDAOImpl.getTotalInformationCountForAUser(1);
+        assertEquals(count,4-1);
     }
 
     @AfterClass
