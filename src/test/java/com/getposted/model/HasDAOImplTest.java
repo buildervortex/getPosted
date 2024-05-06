@@ -3,6 +3,7 @@ package com.getposted.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+// @Ignore
 public class HasDAOImplTest {
 
     private static HasDAOImpl hasDAOImpl = new HasDAOImpl();
@@ -87,6 +88,25 @@ public class HasDAOImplTest {
             }
         }
         assertTrue(changed);
+    }
+
+    @Test
+    public void testGetListOfSkills() throws SQLException{
+        List<String> listOfSkills = hasDAOImpl.getListOfSkills(1);
+
+        boolean changed = false;
+        for(String skill : listOfSkills){
+            if(skill.equals("Programming")) changed = true;
+        }
+
+        assertTrue(changed);
+    }
+
+    @Test
+    public void testGetListOfAuthorsForASkill() throws SQLException{
+        List<Integer> listOfAuthorIds = hasDAOImpl.getListOfAuthorsForASkill(1);
+        assertTrue(listOfAuthorIds.contains(1));
+        assertTrue(listOfAuthorIds.contains(2));
     }
 
     @AfterClass

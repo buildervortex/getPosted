@@ -124,4 +124,58 @@ public class HasDAOImpl implements HasDAO {
 
         return has;
     }
+
+    @Override
+    public List<String> getListOfSkills(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<String> listOfSkills = new ArrayList();
+        String sqlTemplate = "SELECT Skill.skill FROM Has LEFT JOIN Skill ON Has.skillId = Skill.id WHERE authorId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getListOfSkills() .The exception message is %s. The author id is %s.",
+                    e.getMessage(),authorId));
+            throw e;
+        }
+
+        while (rs.next()) {
+            String skillName = rs.getString("skill");
+            listOfSkills.add(skillName);
+        }
+
+        return listOfSkills;
+    }
+
+    @Override
+    public List<Integer> getListOfAuthorsForASkill(int skillId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Integer> listOfAuthorIds = new ArrayList();
+        String sqlTemplate = "SELECT Has.authorId FROM Has RIGHT JOIN Skill ON Has.skillId = Skill.id WHERE Skill.id = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, skillId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getListOfAuthorsForASkill() .The exception message is %s. The skill id is %s.",
+                    e.getMessage(),skillId));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int authorId = rs.getInt("authorId");
+            listOfAuthorIds.add(authorId);
+        }
+
+        return listOfAuthorIds;
+    }
 }
