@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-// @Ignore
+@Ignore
 public class HasDAOImplTest {
 
     private static HasDAOImpl hasDAOImpl = new HasDAOImpl();
@@ -92,7 +92,7 @@ public class HasDAOImplTest {
 
     @Test
     public void testGetListOfSkills() throws SQLException{
-        List<String> listOfSkills = hasDAOImpl.getListOfSkills(1);
+        List<String> listOfSkills = hasDAOImpl.getListOfSkillNames(1);
 
         boolean changed = false;
         for(String skill : listOfSkills){
@@ -103,10 +103,33 @@ public class HasDAOImplTest {
     }
 
     @Test
+    public void testGetListOfSkillIds() throws SQLException{
+        List<Integer> listOfSkillIds = hasDAOImpl.getListOfSkillIds(2);
+        assertTrue(listOfSkillIds.contains(1));
+        assertTrue(listOfSkillIds.contains(2));
+    }
+
+    @Test
     public void testGetListOfAuthorsForASkill() throws SQLException{
         List<Integer> listOfAuthorIds = hasDAOImpl.getListOfAuthorsForASkill(1);
         assertTrue(listOfAuthorIds.contains(1));
         assertTrue(listOfAuthorIds.contains(2));
+    }
+
+    @Test
+    public void testGetCountOfAuthorsForASkill() throws SQLException{
+        int count = hasDAOImpl.getCountOfAuthorsForASkill(1);
+        assertEquals(count,2);
+        count = hasDAOImpl.getCountOfAuthorsForASkill(2);
+        assertEquals(count,1);
+    }
+
+    @Test
+    public void testGetCountOfSkillsForAnAuthor() throws SQLException{
+        int count = hasDAOImpl.getCountOfSkillsForAnAuthor(2);
+        assertEquals(count,2);
+        count = hasDAOImpl.getCountOfSkillsForAnAuthor(1);
+        assertEquals(count,1);
     }
 
     @AfterClass

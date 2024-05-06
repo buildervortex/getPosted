@@ -126,7 +126,7 @@ public class HasDAOImpl implements HasDAO {
     }
 
     @Override
-    public List<String> getListOfSkills(int authorId) throws SQLException {
+    public List<String> getListOfSkillNames(int authorId) throws SQLException {
         Connection con = Database.getConnection();
         List<String> listOfSkills = new ArrayList();
         String sqlTemplate = "SELECT Skill.skill FROM Has LEFT JOIN Skill ON Has.skillId = Skill.id WHERE authorId = ?";
@@ -139,7 +139,7 @@ public class HasDAOImpl implements HasDAO {
             rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
-                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getListOfSkills() .The exception message is %s. The author id is %s.",
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getListOfSkillNames() .The exception message is %s. The author id is %s.",
                     e.getMessage(),authorId));
             throw e;
         }
@@ -147,6 +147,34 @@ public class HasDAOImpl implements HasDAO {
         while (rs.next()) {
             String skillName = rs.getString("skill");
             listOfSkills.add(skillName);
+        }
+
+        return listOfSkills;
+    }
+
+
+    @Override
+    public List<Integer> getListOfSkillIds(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Integer> listOfSkills = new ArrayList();
+        String sqlTemplate = "SELECT Skill.id FROM Has LEFT JOIN Skill ON Has.skillId = Skill.id WHERE authorId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getListOfSkillIds() .The exception message is %s. The author id is %s.",
+                    e.getMessage(),authorId));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int skillId = rs.getInt("id");
+            listOfSkills.add(skillId);
         }
 
         return listOfSkills;
@@ -178,4 +206,57 @@ public class HasDAOImpl implements HasDAO {
 
         return listOfAuthorIds;
     }
+
+    @Override
+    public int getCountOfAuthorsForASkill(int skillId) throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(Has.authorId) AS count FROM Has RIGHT JOIN Skill ON Has.skillId = Skill.id WHERE Skill.id = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, skillId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getCountOfAuthorsForASkill() .The exception message is %s. The skill id is %s.",
+                    e.getMessage(),skillId));
+            throw e;
+        }
+
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+        return count;
+    }
+
+    @Override
+    public int getCountOfSkillsForAnAuthor(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(Skill.id) count FROM Has LEFT JOIN Skill ON Has.skillId = Skill.id WHERE authorId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.HasDAOImpl class at getCountOfSkillsForAnAuthor() .The exception message is %s. The author id is %s.",
+                    e.getMessage(),authorId));
+            throw e;
+        }
+
+        while (rs.next()) {
+            count = rs.getInt("count");
+        }
+
+        return count;
+    }
+
 }
