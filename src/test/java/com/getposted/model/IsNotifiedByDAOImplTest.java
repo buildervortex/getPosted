@@ -149,6 +149,64 @@ public class IsNotifiedByDAOImplTest {
         assertEquals(isNotifiedBy.getPublisherId(),publisherId);
     }
 
+
+    @Test
+    public void testGetAllNotificationsFilterByDate() throws SQLException{
+        List<IsNotifiedBy> isInformeds = isNotifiedDAOImpl.getAllNotificationsFilterByDate(false);
+
+        assertTrue(isInformeds.size() >= 10);
+
+        for (IsNotifiedBy isNotifiedBy :isInformeds){
+            assertTrue(isNotifiedBy.getId()>=1);
+            assertTrue(isNotifiedBy.getNotification().length()>=1);
+            assertTrue(isNotifiedBy.getNotifiedDate().toString().length() == 10);
+            assertTrue(isNotifiedBy.getNotifiedTime().toString().length() == 8);
+            assertTrue(isNotifiedBy.getAuthorId() >= 1);
+            assertTrue(isNotifiedBy.getPublisherId() >= 1);
+        }        
+    }
+
+    @Test
+    public void testGetAllNotificationsInADate() throws SQLException{
+        List<IsNotifiedBy> isInformeds = isNotifiedDAOImpl.getAllNotificationsInADate(Date.valueOf("2024-04-01"));
+
+        for (IsNotifiedBy isNotifiedBy :isInformeds){
+            assertTrue(isNotifiedBy.getId()>=1);
+            assertTrue(isNotifiedBy.getNotification().length()>=1);
+            assertEquals(isNotifiedBy.getNotifiedDate().toString(), "2024-04-01");
+            assertTrue(isNotifiedBy.getNotifiedTime().toString().length() == 8);
+            assertTrue(isNotifiedBy.getAuthorId() >= 1);
+            assertTrue(isNotifiedBy.getPublisherId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetTotalInformedAuthorCount() throws SQLException{
+        int count = isNotifiedDAOImpl.getTotalInformedAuthorCount();
+        assertEquals(10, count);
+    }
+
+    @Test
+    public void testGetAllInformationsOfAuthor() throws SQLException{
+        List<IsNotifiedBy> isInformeds = isNotifiedDAOImpl.getAllInformationsOfAuthor(1);
+
+        for (IsNotifiedBy isNotifiedBy :isInformeds){
+            assertTrue(isNotifiedBy.getId()>=1);
+            assertTrue(isNotifiedBy.getNotification().length()>=1);
+            assertEquals(isNotifiedBy.getNotifiedDate().toString(), "2024-04-01");
+            assertTrue(isNotifiedBy.getNotifiedTime().toString().length() == 8);
+            assertTrue(isNotifiedBy.getAuthorId() == 1);
+            assertTrue(isNotifiedBy.getPublisherId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetTotalNotificationCountForAnAuthor() throws SQLException{
+        int count =isNotifiedDAOImpl.getTotalNotificationCountForAnAuthor(1);
+        assertEquals(1, count);
+        
+    }
+
     @AfterClass
     public static void deleteDatabase(){
         TestDataBase.deleteDatabase();

@@ -13,7 +13,7 @@ public interface IsInformedDAO extends DAO<IsInformed> {
     int getTotalInformedUsersCount() throws SQLException;
 
     // for a user
-    List<IsInformed> getAllInformaInformedsForAUser(int userId) throws SQLException;
+    List<IsInformed> getAllInformedOfAUser(int userId) throws SQLException;
     int getTotalInformationCountForAUser(int userId) throws SQLException;
 
 }

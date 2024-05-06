@@ -193,8 +193,8 @@ public class IsInformedDAOImplTest {
     }
 
     @Test
-    public void testGetAllInformaInformedsForAUser() throws SQLException{
-        List<IsInformed> isInformeds = isInformedDAOImpl.getAllInformaInformedsForAUser(1);
+    public void testGetAllInformedOfAUser() throws SQLException{
+        List<IsInformed> isInformeds = isInformedDAOImpl.getAllInformedOfAUser(1);
         assertNotNull(isInformeds);
 
         assertEquals(isInformeds.size(), 4-1);

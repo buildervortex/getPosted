@@ -155,4 +155,151 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
         }
         return rowsAffected;
     }
+
+    @Override
+    public List<IsNotifiedBy> getAllNotificationsFilterByDate(boolean desc) throws SQLException {
+        String order = "ASC";
+        if (desc) order = "DESC";
+
+        Connection con = Database.getConnection();
+        List<IsNotifiedBy> isInformeds = new ArrayList<IsNotifiedBy>();
+        String sqlTemplate = String.format("SELECT * FROM IsNotifiedBy ORDER BY notifiedDate %s",order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at getAllNotificationsFilterByDate() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String notification = rs.getString("notification");
+            Date notifiedDate = rs.getDate("notifiedDate");
+            Time notifiedTime = rs.getTime("notifiedTime");
+            int authorId = rs.getInt("authorId");
+            int publisherId = rs.getInt("publisherId");
+
+            isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, authorId, publisherId));
+        }
+        return isInformeds;
+    }
+
+    @Override
+    public List<IsNotifiedBy> getAllNotificationsInADate(Date date) throws SQLException {
+        Connection con = Database.getConnection();
+        List<IsNotifiedBy> isInformeds = new ArrayList<IsNotifiedBy>();
+        String sqlTemplate = "SELECT * FROM IsNotifiedBy WHERE notifiedDate = ? ";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setDate(1,date);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at getAllNotificationsInADate() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String notification = rs.getString("notification");
+            Date notifiedDate = rs.getDate("notifiedDate");
+            Time notifiedTime = rs.getTime("notifiedTime");
+            int authorId = rs.getInt("authorId");
+            int publisherId = rs.getInt("publisherId");
+
+            isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, authorId, publisherId));
+        }
+        return isInformeds;       
+    }
+
+    @Override
+    public int getTotalInformedAuthorCount() throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(authorId) AS count FROM (SELECT authorId FROM IsNotifiedBy GROUP BY authorId) AS authorId ";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at getTotalInformedAuthorCount() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+        return count;
+    }
+
+    @Override
+    public List<IsNotifiedBy> getAllInformationsOfAuthor(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<IsNotifiedBy> isInformeds = new ArrayList<IsNotifiedBy>();
+        String sqlTemplate = "SELECT * FROM IsNotifiedBy WHERE authorId = ? ORDER BY notifiedDate DESC, notifiedTime DESC";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at getAllInformationsOfAuthor() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String notification = rs.getString("notification");
+            Date notifiedDate = rs.getDate("notifiedDate");
+            Time notifiedTime = rs.getTime("notifiedTime");
+            int qauthorId = rs.getInt("authorId");
+            int publisherId = rs.getInt("publisherId");
+
+            isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, qauthorId, publisherId));
+        }
+        return isInformeds;       
+    }
+
+    @Override
+    public int getTotalNotificationCountForAnAuthor(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(id) AS count FROM IsNotifiedBy WHERE authorId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.IsNotifiedByDAOImpl class at getTotalInformedAuthorCount() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+        return count;
+    }
 }

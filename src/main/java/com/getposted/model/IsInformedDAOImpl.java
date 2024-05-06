@@ -243,10 +243,10 @@ public class IsInformedDAOImpl implements IsInformedDAO {
     }
 
     @Override
-    public List<IsInformed> getAllInformaInformedsForAUser(int userId) throws SQLException {
+    public List<IsInformed> getAllInformedOfAUser(int userId) throws SQLException {
         Connection con = Database.getConnection();
         List<IsInformed> isInformeds = new ArrayList<IsInformed>();
-        String sqlTemplate = "SELECT * FROM IsInformed WHERE userId = ? ORDER BY notifiedDate";
+        String sqlTemplate = "SELECT * FROM IsInformed WHERE userId = ? ORDER BY notifiedDate DESC, notifiedTime DESC";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
