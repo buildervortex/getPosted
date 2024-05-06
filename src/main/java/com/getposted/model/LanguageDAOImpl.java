@@ -79,7 +79,7 @@ public class LanguageDAOImpl implements LanguageDAO {
 	public List<Language> getAll() throws SQLException {
 		Connection con = Database.getConnection();
 		List<Language> languageList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Language";
+		String sqlTemplate = "SELECT * FROM Language ORDER BY language";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
@@ -106,7 +106,7 @@ public class LanguageDAOImpl implements LanguageDAO {
 	public List<Language> getList(int limit) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Language> languageList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Language LIMIT ?";
+		String sqlTemplate = "SELECT * FROM Language ORDER BY language LIMIT ?";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 

@@ -49,7 +49,6 @@ public class FileManagerTest {
         assertEquals(size, bytes.length);
     }
 
-    @Ignore
     @Test
     public void testRetrivingFile() throws IOException{
         String sampleString = "Sample Text For Storing";

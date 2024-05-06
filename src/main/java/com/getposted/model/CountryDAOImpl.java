@@ -76,7 +76,7 @@ public class CountryDAOImpl implements CountryDAO {
 	public List<Country> getAll() throws SQLException {
 		Connection con = Database.getConnection();
 		List<Country> countryList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Country";
+		String sqlTemplate = "SELECT * FROM Country ORDER BY country ASC";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
@@ -167,7 +167,7 @@ public class CountryDAOImpl implements CountryDAO {
 	public List<Country> getList(int limit) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Country> countryList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Country LIMIT ?";
+		String sqlTemplate = "SELECT * FROM Country ORDER BY country LIMIT ?";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 

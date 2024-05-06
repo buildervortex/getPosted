@@ -77,7 +77,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<Category> getAll() throws SQLException {
 		Connection con = Database.getConnection();
 		List<Category> categoryList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Category";
+		String sqlTemplate = "SELECT * FROM Category ORDER BY category";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
@@ -103,7 +103,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<Category> getList(int limit) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Category> categoryList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Category LIMIT ?";
+		String sqlTemplate = "SELECT * FROM Category ORDER BY category LIMIT ?";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 

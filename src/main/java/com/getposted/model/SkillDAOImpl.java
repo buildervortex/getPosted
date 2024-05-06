@@ -48,7 +48,7 @@ public class SkillDAOImpl implements SkillDAO {
 	public List<Skill> getAll() throws SQLException {
 		Connection con = Database.getConnection();
 		List<Skill> skillList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Skill";
+		String sqlTemplate = "SELECT * FROM Skill ORDER BY skill";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
@@ -139,7 +139,7 @@ public class SkillDAOImpl implements SkillDAO {
 	public List<Skill> getList(int limit) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Skill> skillList = new ArrayList();
-		String sqlTemplate = "SELECT * FROM Skill LIMIT ?";
+		String sqlTemplate = "SELECT * FROM Skill ORDER BY skill LIMIT ?";
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 

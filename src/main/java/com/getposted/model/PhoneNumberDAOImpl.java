@@ -25,7 +25,7 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
     public List<PhoneNumber> getAll() throws SQLException {
         Connection con = Database.getConnection();
         List<PhoneNumber> phoneNumberList = new ArrayList();
-        String sqlTemplate = "SELECT * FROM PhoneNumber";
+        String sqlTemplate = "SELECT * FROM PhoneNumber ORDER BY phoneNumber";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
@@ -99,7 +99,7 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
     public List<PhoneNumber> getList(int inquiryId) throws SQLException {
         Connection con = Database.getConnection();
         List<PhoneNumber> phoneNumberList = new ArrayList();
-        String sqlTemplate = "SELECT * FROM PhoneNumber WHERE inquiryId = ?";
+        String sqlTemplate = "SELECT * FROM PhoneNumber WHERE inquiryId = ? ORDER BY phoneNumber";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
