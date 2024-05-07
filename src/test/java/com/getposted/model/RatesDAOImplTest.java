@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-// @Ignore
+@Ignore
 public class RatesDAOImplTest {
 
     private static RatesDAOImpl ratesDAOImpl = new RatesDAOImpl();

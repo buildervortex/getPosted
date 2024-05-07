@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+// @Ignore
 public class RequestDAOImplTest {
 
     private static RequestDAOImpl requestDAOImpl = new RequestDAOImpl();
@@ -134,5 +134,35 @@ public class RequestDAOImplTest {
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
+    }
+
+    @Test
+    public void testGetAllRequestCountFromASpecificAuthor() throws SQLException {
+        int count = requestDAOImpl.getAllRequestCountFromASpecificAuthor(1, 1);
+        assertEquals(1, count);
+    }
+
+    @Test
+    public void testGetAllRequestForSpecificPublisher() throws SQLException {
+        List<Request> requests = requestDAOImpl.getAllRequestForSpecificPublisher(1);
+
+        for (Request request : requests) {
+            assertTrue(request.getId() >= 1);
+            assertTrue(request.getRequestedContent().length() >= 1);
+            assertTrue(request.getAuthorId() >= 1);
+            assertTrue(request.getPublisherId() == 1);
+        }
+    }
+
+    @Test
+    public void testGetAllRequestFromSpecificAuthor() throws SQLException {
+        List<Request> requests = requestDAOImpl.getAllRequestFromSpecificAuthor(1,1);
+
+        for (Request request : requests) {
+            assertTrue(request.getId() >= 1);
+            assertTrue(request.getRequestedContent().length() >= 1);
+            assertTrue(request.getAuthorId() == 1);
+            assertTrue(request.getPublisherId() == 1);
+        }
     }
 }
