@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNull;
 
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.sql.Date;
@@ -18,7 +19,7 @@ import org.junit.AfterClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore()
+// @Ignore()
 public class InquiryDAOImplTest {
 
     private static InquiryDAOImpl inquiryDAOImpl = new InquiryDAOImpl();
@@ -26,6 +27,16 @@ public class InquiryDAOImplTest {
     @BeforeClass
     public static void createDatabase() {
         TestDataBase.createAll();
+    }
+
+    @Test
+    public void testGetListRepresentation() throws SQLException {
+        String[] list = new String[2];
+        list[0] = "Accessed";
+        list[1] = "Pending";
+
+        String representation = inquiryDAOImpl.getListRepresentation(list);
+        assertEquals("( \"Accessed\",\"Pending\" )", representation);
     }
 
     @Test
@@ -242,104 +253,112 @@ public class InquiryDAOImplTest {
     }
 
     @Test
-    public void testGetAllInquiriesByPurchasedDate() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getAllInquiriesByPurchasedDate(false);
+    public void testGetAllHardCopyInquiriesByPurchasedDate() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getAllHardCopyInquiriesByPurchasedDate(false, 1);
         assertNotNull(invs);
-        assertTrue(invs.size()>=10);
-        assertEquals(invs.get(0).getPurchasedDate().toString(),"2024-04-01");
+        assertTrue(invs.size() == 3);
+        assertEquals(invs.get(0).getPurchasedDate().toString(), "2024-04-01");
     }
 
     @Test
-    public void testGetListOfInquiriesByPurchasedDate() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getListOfInquiriesByPurchasedDate(5,false);
+    public void testGetListOfHardCopyInquiriesByPurchasedDate() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getListOfHardCopyInquiriesByPurchasedDate(2, false, 1);
         assertNotNull(invs);
-        assertTrue(invs.size() == 5);
-        assertEquals(invs.get(0).getPurchasedDate().toString(),"2024-04-01");
+        assertTrue(invs.size() == 2);
+        assertEquals(invs.get(0).getPurchasedDate().toString(), "2024-04-01");
     }
 
     @Test
-    public void testGetAllInquiriesByPrice() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getAllInquiriesByPrice(true);
+    public void testGetAllHardCopyInquiriesByPrice() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getAllHardCopyInquiriesByPrice(true, 1);
         assertNotNull(invs);
-        assertTrue(invs.size()>=10);
-        assertTrue(invs.get(0).getPrice()== 74.99);
+        assertTrue(invs.size() >= 3);
+        assertTrue(invs.get(0).getPrice() == 74.99);
     }
 
     @Test
-    public void testgetListOfInquiriesByPrice() throws SQLException {
-        List<Inquiry> invs = inquiryDAOImpl.getListOfInquiriesByPurchasedDate(5,false);
+    public void testGetListOfHardCopyInquiriesByPrice() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getListOfHardCopyInquiriesByPrice(2, false, 1);
         assertNotNull(invs);
-        assertTrue(invs.size() == 5);
-        assertTrue(invs.get(0).getPrice()== 19.99);
+        assertTrue(invs.size() == 2);
+        assertTrue(invs.get(0).getPrice() == 19.99);
     }
 
     @Test
-    public void testGetAllOfInquiriesForAState() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getAllOfInquiriesForAState(Inquiry.PENDING);
-        assertNotNull(invs);
-        assertTrue(invs.size()==4-1);
-        for(Inquiry inv: invs){
-            assertEquals(inv.getState(),Inquiry.PENDING);
-        }
-    }
-
-    @Test
-    public void testGetListOfInquiriesForAState() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getListOfInquiriesForAState(Inquiry.REJECTED,1);
+    public void testGetAllOfHardCopyInquiriesForAState() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getAllOfHardCopyInquiriesForAState(Inquiry.PENDING, 1);
         assertNotNull(invs);
         assertTrue(invs.size() == 1);
-        for(Inquiry inv: invs){
-            assertEquals(inv.getState(),Inquiry.REJECTED);
+        for (Inquiry inv : invs) {
+            assertEquals(inv.getState(), Inquiry.PENDING);
         }
     }
 
     @Test
-    public void testGetCountOfInquriesInAState() throws SQLException{
-        int count = inquiryDAOImpl.getCountOfInquriesInAState(Inquiry.SHIPPED);
-        assertEquals(count,2);
-    }
-
-    @Test
-    public void testGetALLInquiriesForAPurchasedDate() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.testGetALLInquiriesForAPurchasedDate(Date.valueOf("2024-04-01"));
+    public void testGetListOfHardCopyInquiriesForAState() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getListOfHardCopyInquiriesForAState(Inquiry.PENDING, 1, 1);
         assertNotNull(invs);
         assertTrue(invs.size() == 1);
-        for(Inquiry inv: invs){
-            assertEquals(inv.getPurchasedDate().toString(),"2024-04-01");
+        for (Inquiry inv : invs) {
+            assertEquals(inv.getState(), Inquiry.PENDING);
         }
     }
 
     @Test
-    public void testGetTotalSumOfInquriesPrice() throws SQLException{
-        double sum = inquiryDAOImpl.getTotalSumOfInquriesPrice();
-        assertTrue(sum == 569.88);
+    public void testGetALLHardCopyInquiriesForAPurchasedDate() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getALLHardCopyInquiriesForAPurchasedDate(Date.valueOf("2024-04-01"), 1);
+        assertNotNull(invs);
+        assertTrue(invs.size() == 1);
+        for (Inquiry inv : invs) {
+            assertEquals(inv.getPurchasedDate().toString(), "2024-04-01");
+        }
     }
 
     @Test
-    public void testGetTotalInquiryCount() throws SQLException{
-        int count = inquiryDAOImpl.getTotalInquiryCount();
-        assertEquals(count,12);
+    public void testGetTotalSumOfHardCopyInquriesPrices() throws SQLException {
+        double sum = inquiryDAOImpl.getTotalSumOfHardCopyInquriesPrices(1);
+        assertTrue(sum == 164.97);
     }
 
     @Test
-    public void testGetTotalCopiesSold() throws SQLException{
-        int count = inquiryDAOImpl.getTotalCopiesSold();
-        assertEquals(count,29);
+    public void testGetTotalHardCopyInquiryCount() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopyInquiryCount(1);
+        assertEquals(count, 4 - 1);
     }
 
     @Test
-    public void testGetTotalPublicationPurchasedUsers() throws SQLException{
-        int count = inquiryDAOImpl.getTotalPublicationPurchasedUsers();
-        assertEquals(count,10);
+    public void testGetTotalHardCopiesSold() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopiesSold(1);
+        assertEquals(count, 16);
+    }
+
+    /* */
+    @Test
+    public void testGetTotalHardCopiesSoldInGivenStates() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopiesSoldInGivenStates(1, Inquiry.ACCEPTED, Inquiry.PENDING);
+        assertEquals(count, 16);
     }
 
     @Test
-    public void testGetALLInquiriesOfAUser() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getALLInquiriesOfAUser(1);
+    public void testGetTotalHardCopiesSoldInAllStatesExceptTheGiveStates() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopiesSoldInAllStatesExceptTheGiveStates(1, Inquiry.ACCEPTED,
+                Inquiry.PENDING);
+        assertEquals(count, 0);
+    }
+
+    @Test
+    public void TestTotalUsersWhoPerchasedPublications() throws SQLException {
+        int count = inquiryDAOImpl.TotalUsersWhoPerchasedPublications(1);
+        assertEquals(count, 4 - 1);
+    }
+
+    @Test
+    public void testGetALLHardCopyInquiriesOfAGiveUser() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getALLHardCopyInquiriesOfAGiveUser(1, 1);
         Inquiry inquiry = new Inquiry();
         assertNotNull(invs);
         assertTrue(invs.size() == 1);
-        
+
         inquiry = invs.get(0);
         int id = 1;
         String purchasedDate = "2024-04-01";
@@ -375,33 +394,32 @@ public class InquiryDAOImplTest {
         assertEquals(inquiry.getPublisherId(), publisherId);
     }
 
-
     @Test
-    public void testGetTotalInquiryCountOfAUser() throws SQLException{
-        int count = inquiryDAOImpl.getTotalInquiryCountOfAUser(2);
-        assertEquals(count,2);
+    public void testGetTotalHardCopyInquiryCountOfAGiveUser() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopyInquiryCountOfAGiveUser(2, 1);
+        assertEquals(count, 1);
     }
 
     @Test
-    public void testGetTotalInquriyPayementFromAUser() throws SQLException{
-        double sum = inquiryDAOImpl.getTotalInquriyPayementFromAUser(2);
-        assertTrue(sum == 94.98);
+    public void testGetTotalInquriyPayementFromAUser() throws SQLException {
+        double sum = inquiryDAOImpl.getTotalHardCopyInquriyPayementFromAUser(2, 1);
+        assertTrue(sum == 69.99);
     }
 
     @Test
-    public void testGetTotalPublicationCopiesPurchasedByUser() throws SQLException{
-        int count = inquiryDAOImpl.getTotalPublicationCopiesPurchasedByUser(2);
-        assertEquals(count,15);
+    public void testGetTotalPublicationsCopiesPurchasedByUser() throws SQLException {
+        int count = inquiryDAOImpl.getTotalPublicationsCopiesPurchasedByUser(2, 1);
+        assertEquals(count, 14);
     }
 
     @Test
-    public void testgetALLInquiriesOfAPublication() throws SQLException{
-        List<Inquiry> invs = inquiryDAOImpl.getALLInquiriesOfAPublication(1);
+    public void testGetALLHardCopyInquiriesForAPublication() throws SQLException {
+        List<Inquiry> invs = inquiryDAOImpl.getALLHardCopyInquiriesForAPublication(1, 1);
         Inquiry inquiry = new Inquiry();
         assertNotNull(invs);
-        assertTrue(invs.size() == 4-1);
-        
-        inquiry = invs.get(1);
+        assertTrue(invs.size() == 4 - 1);
+
+        inquiry = invs.get(2);
         int id = 1;
         String purchasedDate = "2024-04-01";
         String shippingAddress = "123 Main St, Anytown USA";
@@ -437,47 +455,45 @@ public class InquiryDAOImplTest {
     }
 
     @Test
-    public void testGetTotalInquiryCountOfAPublication() throws SQLException{
-        int count = inquiryDAOImpl.getTotalInquiryCountOfAPublication(1);
-        assertEquals(count,4-1);
+    public void testGetTotalInquiryCountOfAPublication() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopyInquiryCountForAPublication(1, 1);
+        assertEquals(count, 4 - 1);
     }
 
-
     @Test
-    public void testGetTotalInquriyPayementForAPublication() throws SQLException{
-        double sum = inquiryDAOImpl.getTotalInquriyPayementForAPublication(1);
+    public void testGetTotalHardCopyInquriyPayementsForAPublication() throws SQLException {
+        double sum = inquiryDAOImpl.getTotalHardCopyInquriyPayementsForAPublication(1, 1);
         assertTrue(sum == 164.97);
     }
 
     @Test
-    public void testGetTotalCopiesSoldFromAPublication() throws SQLException{
-        int count = inquiryDAOImpl.getTotalCopiesSoldFromAPublication(1);
-        assertEquals(count,16);
+    public void testGetTotalHardCopiesSoldFromAPublication() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopiesSoldFromAPublication(1, 1);
+        assertEquals(count, 16);
     }
 
     @Test
-    public void testGetTotalPageCountSoldFromAPublication() throws SQLException{
-        int count = inquiryDAOImpl.getTotalPageCountSoldFromAPublication(1);
-        assertEquals(count,300);
+    public void testGetTotalHardCopyPagesCountSoldFromAPublication() throws SQLException {
+        int count = inquiryDAOImpl.getTotalHardCopyPagesCountSoldFromAPublication(1, 1);
+        assertEquals(count, 1600);
     }
 
     @Test
-    public void testGetUserPurchasedAllPublicationsIds() throws SQLException{
-        List<Integer> publicatiList = inquiryDAOImpl.getUserPurchasedAllPublicationsIds(2);
+    public void testGetUserPurchasedAllHardCopyPublicationsIds() throws SQLException {
+        List<Integer> publicatiList = inquiryDAOImpl.getUserPurchasedAllHardCopyPublicationsIds(2, 1);
         assertNotNull(publicatiList);
-        assertEquals(publicatiList.size(),2);
+        assertEquals(publicatiList.size(), 1);
 
         assertTrue(publicatiList.contains(1));
-        assertTrue(publicatiList.contains(2));
         assertFalse(publicatiList.contains(4));
         assertFalse(publicatiList.contains(5));
     }
 
     @Test
-    public void testGetPublicationPurchasedAllUserIds() throws SQLException{
-        List<Integer> useridList = inquiryDAOImpl.getPublicationPurchasedAllUserIds(1);
+    public void testGetAllUserIdsWhoPurchasedHardCopiesOfTheGiveNPublication() throws SQLException {
+        List<Integer> useridList = inquiryDAOImpl.getAllUserIdsWhoPurchasedHardCopiesOfTheGiveNPublication(1, 1);
         assertNotNull(useridList);
-        assertEquals(useridList.size(),4-1);
+        assertEquals(useridList.size(), 4 - 1);
 
         assertTrue(useridList.contains(1));
         assertTrue(useridList.contains(2));
@@ -486,17 +502,217 @@ public class InquiryDAOImplTest {
     }
 
     @Test
-    public void testGetListOfInquiriesFromInquryIdList() throws SQLException{
-        List<Inquiry> inquiries = inquiryDAOImpl.getListOfInquiriesFromInquryIdList(1,2);
+    public void testGetCountOfInquriesInAState() throws SQLException {
+        int count = inquiryDAOImpl.getCountOfHardCopyInquriesInAState(Inquiry.SHIPPED, 1);
+        assertEquals(0, count);
+    }
+
+    @Test
+    public void testGetListOfHardCopyInquiriesFromGivenInquryIdList() throws SQLException {
+        List<Inquiry> inquiries = inquiryDAOImpl.getListOfHardCopyInquiriesFromGivenInquryIdList(1, 2, 1);
         assertNotNull(inquiries);
-        assertEquals(inquiries.size() , 2);
+        assertEquals(inquiries.size(), 1);
 
         boolean contains = false;
-        for(Inquiry inquiry : inquiries){
-            if(inquiry.getId() == 1 || inquiry.getId() == 2) contains = true;
+        for (Inquiry inquiry : inquiries) {
+            if (inquiry.getId() == 1)
+                contains = true;
         }
 
         assertTrue(contains);
+    }
+
+    @Test
+    public void testGetAllHardCopyInquiriesByAPublisher() throws SQLException {
+        List<Inquiry> inquiries = inquiryDAOImpl.getAllHardCopyInquiriesByAPublisher(1);
+        assertNotNull(inquiries);
+
+        for (Inquiry i : inquiries) {
+            assertTrue(i.getId() >= 1);
+            assertTrue(i.getPurchasedDate().toString().length() == 10);
+            assertTrue(i.getShippingAddress().length() >= 1);
+            assertTrue(i.getPostalCode().length() >= 1);
+            assertTrue(i.getPurchasedTime().toString().length() == 8);
+            assertTrue(i.getContactName().length() >= 1);
+            assertTrue(i.getCount() >= 1);
+            assertTrue(i.getCountry().length() >= 1);
+            assertTrue(i.getShippedDate().toString().length() == 10);
+            assertTrue(i.getState().equals(Inquiry.ACCEPTED) || i.getState().equals(Inquiry.PENDING)
+                    || i.getState().equals(Inquiry.PROCESSING) || i.getState().equals(Inquiry.REJECTED)
+                    || i.getState().equals(Inquiry.SHIPPED));
+            assertTrue(i.getPrice() >= 0);
+            assertTrue(i.getPublicationId() == 1);
+            assertTrue(i.getUserId() >= 1);
+            assertTrue(i.getPublisherId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetAllHardCopyInquiriesInEachStateExceptTheGivenState() throws SQLException {
+        List<Inquiry> inquiries = inquiryDAOImpl.getAllHardCopyInquiriesInEachStateExceptTheGivenState(1,
+                Inquiry.ACCEPTED);
+        assertNotNull(inquiries);
+
+        for (Inquiry i : inquiries) {
+            assertTrue(i.getId() >= 1);
+            assertTrue(i.getPurchasedDate().toString().length() == 10);
+            assertTrue(i.getShippingAddress().length() >= 1);
+            assertTrue(i.getPostalCode().length() >= 1);
+            assertTrue(i.getPurchasedTime().toString().length() == 8);
+            assertTrue(i.getContactName().length() >= 1);
+            assertTrue(i.getCount() >= 1);
+            assertTrue(i.getCountry().length() >= 1);
+            assertTrue(i.getShippedDate().toString().length() == 10);
+            assertFalse(i.getState().equals(Inquiry.ACCEPTED));
+            assertTrue(i.getPrice() >= 0);
+            assertTrue(i.getPublicationId() == 1);
+            assertTrue(i.getUserId() >= 1);
+            assertTrue(i.getPublisherId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetTotalCountOfHardCopyInquriesInGivenState() throws SQLException {
+        int count = inquiryDAOImpl.getTotalCountOfHardCopyInquriesInGivenState(1, Inquiry.ACCEPTED);
+        assertEquals(15, count);
+    }
+
+    @Test
+    public void testGetSumOfAllDiscountGivenForEveryHardCopyInqury() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllDiscountGivenForEveryHardCopyInqury(1);
+        assertTrue(sum == 1.60);
+    }
+
+    @Test
+    public void testGetSumOFAllDiscountGivenToEveryHardCopyInquryInGivenState() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOFAllDiscountGivenToEveryHardCopyInquryInGivenState(1, Inquiry.PENDING);
+        assertTrue(sum == 0.10);
+    }
+
+    @Test
+    public void testGetSumOfAllDiscountGivenToEveryHardCopyInquriyInAnyStateExceptGivenState() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllDiscountGivenToEveryHardCopyInquriyInAnyStateExceptGivenState(1,
+                Inquiry.PENDING);
+        assertTrue(sum == 1.50);
+    }
+
+    @Test
+    public void testGetSumOfAllDiscountGivenForEveryHardCopyInquryInAnyStateExceptGivenStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllDiscountGivenForEveryHardCopyInquryInAnyStateExceptGivenStates(1,
+                Inquiry.REJECTED, Inquiry.ACCEPTED);
+        assertTrue(sum == 0.10);
+    }
+
+    @Test
+    public void testGetSumOfAllDiscountGivenForEveryHardCopyInquryInGivenStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllDiscountGivenForEveryHardCopyInquryInGivenStates(1, Inquiry.REJECTED,
+                Inquiry.ACCEPTED);
+        assertTrue(sum == 1.50);
+    }
+
+    @Test
+    public void testGetSumOfAllCommissionGotFormEveryHardCopyInqury() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllCommissionGotFormEveryHardCopyInqury(1);
+        assertTrue(sum == 4.00);
+    }
+
+    @Test
+    public void testGetSumOfAllCommissionGotFormEveryHardCopyInquryInGivenStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllCommissionGotFormEveryHardCopyInquryInGivenStates(1, Inquiry.REJECTED,
+                Inquiry.PENDING);
+        assertTrue(sum == 0.25);
+    }
+
+    @Test
+    public void testGetSumOfAllCommissionGotFormEveryHardCopyInquryInAnyStateExceptGivenStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAllCommissionGotFormEveryHardCopyInquryInAnyStateExceptGivenStates(1,
+                Inquiry.REJECTED, Inquiry.PENDING);
+        assertTrue(sum == 3.75);
+    }
+
+    @Test
+    public void testGetSumOfTotalCostNeedPrintPagesInEachHardCopyInquryInEachState() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfTotalCostNeedPrintPagesInEachHardCopyInquryInEachState(1);
+        assertTrue(sum == 800);
+    }
+
+    @Test
+    public void testGetSumOfTotalCostNeedPrintPagesInEachHardCopyInquryInEachStateExceptGivenStates()
+            throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfTotalCostNeedPrintPagesInEachHardCopyInquryInEachStateExceptGivenStates(1,
+                Inquiry.REJECTED, Inquiry.ACCEPTED);
+        assertTrue(sum == 50);
+    }
+
+    @Test
+    public void testGetSumOfTotalCostNeedPrintPagesInEachHardCopyInquryInGivenStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfTotalCostNeedPrintPagesInEachHardCopyInquryInGivenStates(1, Inquiry.PENDING,
+                Inquiry.ACCEPTED);
+        assertTrue(sum == 800);
+    }
+
+    @Test
+    public void testGetSumOfEveryAuthorTotalInquryCommission() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfEveryAuthorTotalInquryCommission(1);
+        assertTrue(sum == 240);
+    }
+
+    @Test
+    public void testGetSumOfEveryAuthorTotalInquryCommissionInGiveStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfEveryAuthorTotalInquryCommissionInGiveStates(1, Inquiry.ACCEPTED);
+        assertTrue(sum == 225);
+    }
+
+    @Test
+    public void testGetSumOfEveryAuthorTotalInquryCommissionInAnyStateExceptGivenStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfEveryAuthorTotalInquryCommissionInAnyStateExceptGivenStates(1,
+                Inquiry.ACCEPTED, Inquiry.REJECTED);
+        assertTrue(sum == 15);
+    }
+
+    @Test
+    public void testGetSumOfAnAuthorTotalCommissionInEveryHardCopyInqury() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAnAuthorTotalCommissionInEveryHardCopyInqury(1, 1);
+        assertTrue(sum == 240);
+    }
+
+    @Test
+    public void testGetSumOfAnAuthorTotalCommissionInGivenStatesHardCopyInquries() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAnAuthorTotalCommissionInGivenStatesHardCopyInquries(1, 1,
+                Inquiry.ACCEPTED);
+        assertTrue(sum == 225);
+    }
+
+    @Test
+    public void testGetSumOfAnAuthorTotalCommissionInAnyStateExceptGivenStatesHardCopyInquries() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAnAuthorTotalCommissionInAnyStateExceptGivenStatesHardCopyInquries(1, 1,
+                Inquiry.ACCEPTED,Inquiry.REJECTED);
+        assertTrue(sum == 15);
+    }
+    @Test
+    public void testGetSumOfAuthorHardCopyCommissionInAllInquryInAllStates() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAuthorHardCopyCommissionInAllInquryInAllStates(1, 1);
+        assertTrue(sum == 240);
+    }
+
+    @Test
+    public void testGetSumOfAuthorHardCopyCommissionInGivenStatesInquries() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAuthorHardCopyCommissionInGivenStatesInquries(1, 1,
+                Inquiry.ACCEPTED,Inquiry.REJECTED);
+        assertTrue(sum == 225);
+    }
+
+    @Test
+    public void testGetSumOfAuthorHardCopyCommissionInAnyStateExceptGivenStatesInquries() throws SQLException {
+        double sum = inquiryDAOImpl.getSumOfAuthorHardCopyCommissionInAnyStateExceptGivenStatesInquries(1, 1,
+                Inquiry.ACCEPTED,Inquiry.REJECTED);
+        assertTrue(sum == 15);
+    }
+
+    @Test
+    public void testGetAuthorIdsWhosPublicationsWasSoldAsHardCopies() throws SQLException{
+        List<Integer> authorIds = inquiryDAOImpl.getAuthorIdsWhosPublicationsWasSoldAsHardCopies(1);
+        assertTrue(authorIds.size()==1);
     }
 
     @AfterClass
