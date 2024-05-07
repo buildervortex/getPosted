@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 import com.getposted.logger.Logging;
 
-public class RatesDAOImpl implements RatesDAO{
+public class RatesDAOImpl implements RatesDAO {
 
     private static Logger logger = Logging.getLogger(RatesDAOImpl.class.getName());
 
@@ -28,15 +28,16 @@ public class RatesDAOImpl implements RatesDAO{
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        try{
-			rs = ps.executeQuery();
-		}
-		catch(SQLException e){
-			logger.warning(String.format("There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getAll() .The exception message is %s",e.getMessage()));
-			throw e;
-		}
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getAll() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
 
-        while(rs.next()){
+        while (rs.next()) {
             int value = rs.getInt("value");
             String review = rs.getString("review");
             Date date = rs.getDate("date");
@@ -58,15 +59,16 @@ public class RatesDAOImpl implements RatesDAO{
         ps.setInt(1, rates.getValue());
         ps.setString(2, rates.getReview());
         ps.setDate(3, rates.getDate());
-        ps.setInt(4,rates.getAuthorId());
-        ps.setInt(5,rates.getUserId());
+        ps.setInt(4, rates.getAuthorId());
+        ps.setInt(5, rates.getUserId());
 
         try {
             rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at insert() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
-                    e.getMessage(),rates.getValue(),rates.getReview(),rates.getDate().toString(),rates.getAuthorId(), rates.getUserId()));
+                    e.getMessage(), rates.getValue(), rates.getReview(), rates.getDate().toString(),
+                    rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
         return rowsAffected;
@@ -90,7 +92,8 @@ public class RatesDAOImpl implements RatesDAO{
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at update() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
-                    e.getMessage(),rates.getValue(),rates.getReview(),rates.getDate().toString(),rates.getAuthorId(), rates.getUserId()));
+                    e.getMessage(), rates.getValue(), rates.getReview(), rates.getDate().toString(),
+                    rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
         return rowsAffected;
@@ -104,14 +107,15 @@ public class RatesDAOImpl implements RatesDAO{
         int rowsAffected = -1;
 
         ps.setInt(1, rates.getAuthorId());
-        ps.setInt(2,rates.getUserId());
+        ps.setInt(2, rates.getUserId());
 
         try {
             rowsAffected = ps.executeUpdate();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at delete() method . The exception message is %s. The value is %s. The review is %s. The date is %s. The authorId is %s. The userId is %s.",
-                    e.getMessage(),rates.getValue(),rates.getReview(),rates.getDate().toString(),rates.getAuthorId(), rates.getUserId()));
+                    e.getMessage(), rates.getValue(), rates.getReview(), rates.getDate().toString(),
+                    rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
         return rowsAffected;
@@ -125,7 +129,7 @@ public class RatesDAOImpl implements RatesDAO{
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setInt(1,authorId);
+        ps.setInt(1, authorId);
         ps.setInt(2, userId);
 
         try {
@@ -133,7 +137,7 @@ public class RatesDAOImpl implements RatesDAO{
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at get(int,int) method. The exception message is %s. The authorId is %s. The userId is %s.",
-                    e.getMessage(),authorId,userId));
+                    e.getMessage(), authorId, userId));
             throw e;
         }
 
@@ -147,5 +151,205 @@ public class RatesDAOImpl implements RatesDAO{
             rates = new Rates(value, review, date, qauthorId, quserId);
         }
         return rates;
-    }   
+    }
+
+    @Override
+    public double getRate(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        double rate = 0;
+        String sqlTemplate = "SELECT SUM(value)/COUNT(value) AS rate FROM Rates WHERE authorId = ? GROUP BY authorId";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getRate method. The exception message is %s. The authorId is %s.",
+                    e.getMessage(), authorId));
+            throw e;
+        }
+
+        if (rs.next()) {
+            rate = rs.getDouble("rate");
+        }
+
+        return rate;
+    }
+
+    @Override
+    public List<Integer> getRatedUserIds(int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Integer> userIds = new ArrayList<Integer>();
+        String sqlTemplate = "SELECT userId FROM Rates WHERE authorId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getRatedUserIds method. The exception message is %s. The authorId is %s.",
+                    e.getMessage(), authorId));
+            throw e;
+        }
+
+        while (rs.next()) {
+            userIds.add(rs.getInt("userId"));
+        }
+
+        return userIds;
+    }
+
+    @Override
+    public List<Rates> getOrderedByDate(int authorId, boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Rates> rates = new ArrayList();
+        String sqlTemplate = String.format("SELECT * FROM Rates WHERE authorId = ? ORDER BY date %s", order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getOrderedByDate() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int value = rs.getInt("value");
+            String review = rs.getString("review");
+            Date date = rs.getDate("date");
+            int qauthorId = rs.getInt("authorId");
+            int userId = rs.getInt("userId");
+
+            rates.add(new Rates(value, review, date, qauthorId, userId));
+        }
+        return rates;
+    }
+
+    @Override
+    public List<Rates> getOrderByValue(int authorId, boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Rates> rates = new ArrayList();
+        String sqlTemplate = String.format("SELECT * FROM Rates WHERE authorId = ? ORDER BY value %s", order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getOrderByValue() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int value = rs.getInt("value");
+            String review = rs.getString("review");
+            Date date = rs.getDate("date");
+            int qauthorId = rs.getInt("authorId");
+            int userId = rs.getInt("userId");
+
+            rates.add(new Rates(value, review, date, qauthorId, userId));
+        }
+        return rates;
+    }
+
+    @Override
+    public List<Rates> getRatesByValue(int authorId, int value) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Rates> rates = new ArrayList();
+        String sqlTemplate = "SELECT * FROM Rates WHERE authorId = ? AND value = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, authorId);
+        ps.setInt(2, value);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getRatesByValue() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qvalue = rs.getInt("value");
+            String review = rs.getString("review");
+            Date date = rs.getDate("date");
+            int qauthorId = rs.getInt("authorId");
+            int userId = rs.getInt("userId");
+
+            rates.add(new Rates(qvalue, review, date, qauthorId, userId));
+        }
+        return rates;
+    }
+
+    @Override
+    public List<Integer> getAllAuthorsOrderByThereRateValue(boolean desc) throws SQLException {
+        String order = desc ?"DESC":"ASC";
+        Connection con = Database.getConnection();
+        List<Integer> authorIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format("SELECT id FROM (SELECT A.id,SUM(value) AS sum FROM Author AS A LEFT JOIN Rates AS R ON R.authorId = A.id GROUP BY A.id ORDER BY sum %s) AS table1",order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getRatedUserIds method. The exception message is %s.",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            authorIds.add(rs.getInt("id"));
+        }
+
+        return authorIds;
+    }
+
+    @Override
+    public List<Integer> getListOfAuthorsOrderByThereRateValue(boolean desc, int limit) throws SQLException {
+        String order = desc ?"DESC":"ASC";
+        Connection con = Database.getConnection();
+        List<Integer> authorIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format("SELECT id FROM (SELECT A.id,SUM(value) AS sum FROM Author AS A LEFT JOIN Rates AS R ON R.authorId = A.id GROUP BY A.id ORDER BY sum %s) AS table1 LIMIT ?",order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1,limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RatesDAOImpl class at getRatedUserIds method. The exception message is %s.",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            authorIds.add(rs.getInt("id"));
+        }
+
+        return authorIds;
+    }
 }

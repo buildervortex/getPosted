@@ -9,8 +9,8 @@ public interface PurchaseDAO extends DAO<Purchase> {
      ? all purchases count // SELECT COUNT(id) AS count FROM Purchase WHERE publisherId = 1
      ? sum of all soft copy purchase prices // SELECT SUM(price) AS sum FROM Purchase WHERE publisherId = 1
      ? total users purchased soft copies ( can get the percentage how many users purchases publications from who logged in ) // SELECT COUNT(userId) AS count FROM (SELECT userId FROM Purchase WHERE publisherId = 1 GROUP BY userId) AS table1
-     * 
-     * 
+     ? 
+     ? 
      ? get all pruchases // SELECT * FROM Purchase WHERE publisherId = 1 ORDER BY purchasedDate DESC, purchasedTime DESC
      ? get all purchases filter by price asc,desc // SELECT * FROM Purchase WHERE publisherId = 1 ORDER BY price ASC
      ? get all purchases on a specific date  // SELECT * FROM Purchase WHERE publisherId = 1 AND purchasedDate = "2024-04-01" ORDER BY purchasedTime DESC
@@ -40,9 +40,9 @@ public interface PurchaseDAO extends DAO<Purchase> {
      ? total soft copy commission from a publication id // SELECT SUM(softCopyCommission) AS sum FROM Purchase AS PU LEFT JOIN Publisher  AS P ON PU.publisherId = P.id WHERE PU.publicationId = 1 AND publisherId = 1
      ? total soft copy commission from a user id // SELECT SUM(softCopyCommission) AS sum FROM Purchase AS PU LEFT JOIN Publisher  AS P ON PU.publisherId = P.id WHERE publisherId =1 AND userId = 1
      ? total soft copy commission from an author id // SELECT SUM(softCopyCommission) AS sum FROM Purchase AS PU LEFT JOIN Publisher  AS P ON PU.publisherId =P.id LEFT JOIN Publication AS Pb ON PU.publicationId = Pb.id LEFT JOIN Author AS A ON A.id = Pb.authorId = P.id WHERE publisherId = 1 AND authorId =1
-     * 
-     * All authors ordered by top selling // SELECT authorId FROM (SELECT COUNT(PU.authorId) AS authorCount,PU.authorId FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId LEFT JOIN Author AS A ON A.id = PU.authorId WHERE publisherId = 1 GROUP BY PU.authorId ORDER BY authorCount DESC) AS table1
-     * List of authors ordered by top selling // SELECT authorId FROM (SELECT COUNT(PU.authorId) AS authorCount,PU.authorId FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId LEFT JOIN Author AS A ON A.id = PU.authorId WHERE publisherId = 1 GROUP BY PU.authorId ORDER BY authorCount DESC) AS table1 LIMIT 1
+     ? 
+     ? All authors ordered by top selling // SELECT authorId FROM (SELECT COUNT(PU.authorId) AS authorCount,PU.authorId FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId LEFT JOIN Author AS A ON A.id = PU.authorId WHERE publisherId = 1 GROUP BY PU.authorId ORDER BY authorCount DESC) AS table1
+     ? List of authors ordered by top selling // SELECT authorId FROM (SELECT COUNT(PU.authorId) AS authorCount,PU.authorId FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId LEFT JOIN Author AS A ON A.id = PU.authorId WHERE publisherId = 1 GROUP BY PU.authorId ORDER BY authorCount DESC) AS table1 LIMIT 1
      * 
      */
 
