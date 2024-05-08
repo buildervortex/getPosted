@@ -282,8 +282,8 @@ public class AuthorDAOImplTest {
     }
 
     @Test
-    public void testGetAuthorsByName() throws SQLException {
-        List<Author> authors = authorDAOImpl.getAuthorsByName("john");
+    public void testGetAllAuthorsByName() throws SQLException {
+        List<Author> authors = authorDAOImpl.getAllAuthorsByName("john");
         assertTrue(authors.size() >= 2);
         for (Author author : authors) {
             assertTrue(author.getEmail().length() >= 1);
@@ -324,8 +324,8 @@ public class AuthorDAOImplTest {
     }
 
     @Test
-    public void testGetAuthorsByUserName() throws SQLException {
-        List<Author> authors = authorDAOImpl.getAuthorsByUserName("john");
+    public void testGetAllAuthorsByUserName() throws SQLException {
+        List<Author> authors = authorDAOImpl.getAllAuthorsByUserName("john");
         assertTrue(authors.size() >= 2);
         for (Author author : authors) {
             assertTrue(author.getEmail().length() >= 1);
@@ -366,16 +366,16 @@ public class AuthorDAOImplTest {
     }
 
     @Test
-    public void testGetAuthorsIdByName() throws SQLException {
-        List<Integer> ids = authorDAOImpl.getAuthorsIdByName("john");
+    public void testAllGetAuthorsIdByName() throws SQLException {
+        List<Integer> ids = authorDAOImpl.getAllAuthorsIdByName("john");
         assertTrue(ids.size()>=2);
         assertTrue(ids.contains(1));
         assertTrue(ids.contains(4-1));
     }
     
     @Test
-    public void testGetAuthorsIdByUserName() throws SQLException {
-        List<Integer> ids = authorDAOImpl.getAuthorsIdByUserName("john");
+    public void testGetAllAuthorsIdByUserName() throws SQLException {
+        List<Integer> ids = authorDAOImpl.getAllAuthorsIdByUserName("john");
         assertTrue(ids.size()>=2);
         assertTrue(ids.contains(1));
         assertTrue(ids.contains(4-1));
@@ -383,8 +383,8 @@ public class AuthorDAOImplTest {
     }
 
     @Test
-    public void testGetAuthorsInSpecificCountry() throws SQLException {
-        List<Author> authors = authorDAOImpl.getAuthorsInSpecificCountry(1);
+    public void testGetAllAuthorsInSpecificCountry() throws SQLException {
+        List<Author> authors = authorDAOImpl.getAllAuthorsInSpecificCountry(1);
         assertTrue(authors.size() >= 2);
         for (Author author : authors) {
             assertTrue(author.getEmail().length() >= 1);
@@ -517,6 +517,174 @@ public class AuthorDAOImplTest {
         }
         for (Author author : authors) {
             assertTrue(author.getId() == 1 || author.getId() == 2);
-        }       
+        }
+    }
+
+    @Test
+    public void testGetAllAuthorsByEmail() throws SQLException {
+        List<Author> authors = authorDAOImpl.getAllAuthorsByEmail("@");
+        assertTrue(authors.size() >= 10);
+        for (Author author : authors) {
+            assertTrue(author.getEmail().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPhoneNumber().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getSalt().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getBio().length() >= 1 || author.getBio() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPepper().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPassword().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getDob().toString().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getFirstName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getMiddleName().length() >= 1 || author.getMiddleName() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getLastName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getUserName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getCountryId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfAuthorsByEmail() throws SQLException {
+        List<Author> authors = authorDAOImpl.getListOfAuthorsByEmail("@",1);
+        assertTrue(authors.size() == 1);
+        for (Author author : authors) {
+            assertTrue(author.getEmail().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPhoneNumber().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getSalt().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getBio().length() >= 1 || author.getBio() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPepper().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPassword().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getDob().toString().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getFirstName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getMiddleName().length() >= 1 || author.getMiddleName() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getLastName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getUserName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getCountryId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfAuthorsByName() throws SQLException {
+        List<Author> authors = authorDAOImpl.getListOfAuthorsByName("john",1);
+        assertTrue(authors.size() == 1);
+        for (Author author : authors) {
+            assertTrue(author.getEmail().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPhoneNumber().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getSalt().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getBio().length() >= 1 || author.getBio() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPepper().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPassword().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getDob().toString().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getFirstName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getMiddleName().length() >= 1 || author.getMiddleName() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getLastName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getUserName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getCountryId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfAuthorsByUserName() throws SQLException {
+        List<Author> authors = authorDAOImpl.getListOfAuthorsByUserName("john",1);
+        assertTrue(authors.size() == 1);
+        for (Author author : authors) {
+            assertTrue(author.getEmail().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPhoneNumber().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getSalt().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getBio().length() >= 1 || author.getBio() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPepper().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getPassword().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getDob().toString().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getFirstName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getMiddleName().length() >= 1 || author.getMiddleName() == null);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getLastName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getUserName().length() >= 1);
+        }
+        for (Author author : authors) {
+            assertTrue(author.getCountryId() >= 1);
+        }        
     }
 }

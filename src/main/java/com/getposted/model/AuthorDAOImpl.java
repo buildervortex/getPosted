@@ -17,16 +17,17 @@ public class AuthorDAOImpl implements AuthorDAO {
 	private static Logger logger = Logging.getLogger(AuthorDAOImpl.class.getName());
 
 	private static String getListRepresentation(int[] ids) {
-        String listRepresentation = "";
-        listRepresentation += "( ";
-        for (int i = 0; i < ids.length; i++) {
-            listRepresentation += ids[i];
-            if (i != ids.length - 1)
-                listRepresentation += ",";
-        }
-        listRepresentation += " )";
-        return listRepresentation;
-    }
+		String listRepresentation = "";
+		listRepresentation += "( ";
+		for (int i = 0; i < ids.length; i++) {
+			listRepresentation += ids[i];
+			if (i != ids.length - 1)
+				listRepresentation += ",";
+		}
+		listRepresentation += " )";
+		return listRepresentation;
+	}
+
 	@Override
 	public Author get(int id) throws SQLException {
 		Connection con = Database.getConnection();
@@ -225,7 +226,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 	}
 
 	@Override
-	public List<Integer> getAuthorsIdByName(String name) throws SQLException {
+	public List<Integer> getAllAuthorsIdByName(String name) throws SQLException {
 		name = "%" + name + "%";
 		Connection con = Database.getConnection();
 		List<Integer> authorIds = new ArrayList<Integer>();
@@ -252,7 +253,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 	}
 
 	@Override
-	public List<Integer> getAuthorsIdByUserName(String userName) throws SQLException {
+	public List<Integer> getAllAuthorsIdByUserName(String userName) throws SQLException {
 		userName = "%" + userName + "%";
 		Connection con = Database.getConnection();
 		List<Integer> authorIds = new ArrayList<Integer>();
@@ -279,7 +280,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 	}
 
 	@Override
-	public List<Author> getAuthorsByName(String name) throws SQLException {
+	public List<Author> getAllAuthorsByName(String name) throws SQLException {
 		name = "%" + name + "%";
 		Connection con = Database.getConnection();
 		List<Author> authorList = new ArrayList<Author>();
@@ -321,7 +322,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 	}
 
 	@Override
-	public List<Author> getAuthorsByUserName(String userName) throws SQLException {
+	public List<Author> getAllAuthorsByUserName(String userName) throws SQLException {
 		userName = "%" + userName + "%";
 		Connection con = Database.getConnection();
 		List<Author> authorList = new ArrayList<Author>();
@@ -387,7 +388,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 	}
 
 	@Override
-	public List<Author> getAuthorsInSpecificCountry(int countryId) throws SQLException {
+	public List<Author> getAllAuthorsInSpecificCountry(int countryId) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Author> authorList = new ArrayList<Author>();
 		String sqlTemplate = "SELECT * FROM Author WHERE countryId = ?";
@@ -451,11 +452,12 @@ public class AuthorDAOImpl implements AuthorDAO {
 
 		return authorCount;
 	}
+
 	@Override
 	public List<Author> getAuthorsByGivenAuthorIds(int... ids) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Author> authorList = new ArrayList<Author>();
-		String sqlTemplate = String.format("SELECT * FROM Author WHERE id IN %s",getListRepresentation(ids));
+		String sqlTemplate = String.format("SELECT * FROM Author WHERE id IN %s", getListRepresentation(ids));
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
@@ -489,11 +491,12 @@ public class AuthorDAOImpl implements AuthorDAO {
 
 		return authorList;
 	}
+
 	@Override
 	public List<Author> getAllAuthorsExceptGivenAuthorIds(int... ids) throws SQLException {
 		Connection con = Database.getConnection();
 		List<Author> authorList = new ArrayList<Author>();
-		String sqlTemplate = String.format("SELECT * FROM Author WHERE id NOT IN %s",getListRepresentation(ids));
+		String sqlTemplate = String.format("SELECT * FROM Author WHERE id NOT IN %s", getListRepresentation(ids));
 		PreparedStatement ps = con.prepareStatement(sqlTemplate);
 		ResultSet rs = null;
 
@@ -502,6 +505,177 @@ public class AuthorDAOImpl implements AuthorDAO {
 		} catch (SQLException e) {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at getAuthorsByGivenAuthorIds() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String email = rs.getString("email");
+			String phoneNumber = rs.getString("phoneNumber");
+			String salt = rs.getString("salt");
+			String bio = rs.getString("bio");
+			String pepper = rs.getString("pepper");
+			String password = rs.getString("password");
+			Date dob = rs.getDate("dob");
+			String firstName = rs.getString("firstName");
+			String middleName = rs.getString("middleName");
+			String lastName = rs.getString("lastName");
+			String quserName = rs.getString("userName");
+			int qcountryId = rs.getInt("countryId");
+			authorList.add(new Author(qId, email, phoneNumber, salt, bio, pepper, password, dob, firstName, middleName,
+					lastName,
+					quserName, qcountryId));
+		}
+
+		return authorList;
+	}
+
+	@Override
+	public List<Author> getAllAuthorsByEmail(String pattern) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Author> authorList = new ArrayList<Author>();
+		String sqlTemplate = "SELECT * FROM Author WHERE LOWER(email) LIKE (?)";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at getAllAuthorsByEmail() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String email = rs.getString("email");
+			String phoneNumber = rs.getString("phoneNumber");
+			String salt = rs.getString("salt");
+			String bio = rs.getString("bio");
+			String pepper = rs.getString("pepper");
+			String password = rs.getString("password");
+			Date dob = rs.getDate("dob");
+			String firstName = rs.getString("firstName");
+			String middleName = rs.getString("middleName");
+			String lastName = rs.getString("lastName");
+			String quserName = rs.getString("userName");
+			int qcountryId = rs.getInt("countryId");
+			authorList.add(new Author(qId, email, phoneNumber, salt, bio, pepper, password, dob, firstName, middleName,
+					lastName,
+					quserName, qcountryId));
+		}
+
+		return authorList;
+	}
+
+	@Override
+	public List<Author> getListOfAuthorsByEmail(String pattern, int limit) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Author> authorList = new ArrayList<Author>();
+		String sqlTemplate = "SELECT * FROM Author WHERE LOWER(email) LIKE (?) LIMIT ?";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+		ps.setInt(2,limit);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at getListOfAuthorsByEmail() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String email = rs.getString("email");
+			String phoneNumber = rs.getString("phoneNumber");
+			String salt = rs.getString("salt");
+			String bio = rs.getString("bio");
+			String pepper = rs.getString("pepper");
+			String password = rs.getString("password");
+			Date dob = rs.getDate("dob");
+			String firstName = rs.getString("firstName");
+			String middleName = rs.getString("middleName");
+			String lastName = rs.getString("lastName");
+			String quserName = rs.getString("userName");
+			int qcountryId = rs.getInt("countryId");
+			authorList.add(new Author(qId, email, phoneNumber, salt, bio, pepper, password, dob, firstName, middleName,
+					lastName,
+					quserName, qcountryId));
+		}
+
+		return authorList;
+	}
+
+	@Override
+	public List<Author> getListOfAuthorsByName(String pattern, int limit) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Author> authorList = new ArrayList<Author>();
+		String sqlTemplate = "SELECT * FROM Author WHERE LOWER(CONCAT(firstName,middleName,lastName)) LIKE (?) LIMIT ?";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+		ps.setInt(2,limit);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at getListOfAuthorsByName() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String email = rs.getString("email");
+			String phoneNumber = rs.getString("phoneNumber");
+			String salt = rs.getString("salt");
+			String bio = rs.getString("bio");
+			String pepper = rs.getString("pepper");
+			String password = rs.getString("password");
+			Date dob = rs.getDate("dob");
+			String firstName = rs.getString("firstName");
+			String middleName = rs.getString("middleName");
+			String lastName = rs.getString("lastName");
+			String quserName = rs.getString("userName");
+			int qcountryId = rs.getInt("countryId");
+			authorList.add(new Author(qId, email, phoneNumber, salt, bio, pepper, password, dob, firstName, middleName,
+					lastName,
+					quserName, qcountryId));
+		}
+
+		return authorList;
+	}
+
+	@Override
+	public List<Author> getListOfAuthorsByUserName(String pattern, int limit) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Author> authorList = new ArrayList<Author>();
+		String sqlTemplate = "SELECT * FROM Author WHERE LOWER(userName) LIKE (?) LIMIT ?";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+		ps.setInt(2,limit);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.AuthorDAOImpl class at getListOfAuthorsByUserName() .The exception message is %s",
 					e.getMessage()));
 			throw e;
 		}
