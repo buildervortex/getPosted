@@ -28,5 +28,9 @@ public interface PublicationDAO extends DAO<Publication> {
     List<Publication> getListOfPublicationsForGivenPublishedDate(Date date, int limit)throws SQLException;                  // SELECT * FROM Publication WHERE publishedDate = "2024-04-15" LIMIT 1
     List<Publication> getListOfPublicationsForGivenPriceRange(double startPrice, double endPrice, int limit)throws SQLException;      // SELECT * FROM Publication WHERE softCopyPrice BETWEEN 0 AND 20 LIMIT 1
     List<Publication> getAllPublicationsForGivenPriceRange(double startPrice, double endPrice)throws SQLException; // SELECT * FROM Publication WHERE softCopyPrice BETWEEN 0 AND 20
+    List<Publication> getAllPublicationsForAGivenDate(Date date) throws SQLException;                              // SELECT * FROM Publication WHERE date = "2024-04-01"
+    List<Publication> getListOfPublicationsForAGivenDate(Date date, int limit) throws SQLException;                // SELECT * FROM Publication WHERE date = "2024-04-01" LIMIT 1
+    List<Publication> getAllPublicationsForAGivenDateRange(Date startDate, Date endDate) throws SQLException;      //  SELECT * FROM Publication WHERE date BETWEEN "2020-01-01" AND "2028-01-01"
+    List<Publication> getListOfPublicationsForAGivenDateRange(Date startDate, Date endDate, int limit) throws SQLException; // SELECT * FROM Publication WHERE date BETWEEN "2020-01-01" AND "2028-01-01" LIMIT 2
 
 }

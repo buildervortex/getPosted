@@ -831,7 +831,7 @@ public class PublicationDAOImpl implements PublicationDAO {
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setDate(1,date);
+        ps.setDate(1, date);
 
         try {
             rs = ps.executeQuery();
@@ -867,15 +867,16 @@ public class PublicationDAOImpl implements PublicationDAO {
     }
 
     @Override
-    public List<Publication> getAllPublicationsForGivenPublishedDateRange(Date startDate, Date endDate) throws SQLException {
+    public List<Publication> getAllPublicationsForGivenPublishedDateRange(Date startDate, Date endDate)
+            throws SQLException {
         Connection con = Database.getConnection();
         List<Publication> publicationList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publication WHERE publishedDate BETWEEN ? AND ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setDate(1,startDate);
-        ps.setDate(2,endDate);
+        ps.setDate(1, startDate);
+        ps.setDate(2, endDate);
 
         try {
             rs = ps.executeQuery();
@@ -911,16 +912,17 @@ public class PublicationDAOImpl implements PublicationDAO {
     }
 
     @Override
-    public List<Publication> getListOfPublicationsForGivenPublishedDateRange(Date startDate, Date endDate, int limit) throws SQLException {
+    public List<Publication> getListOfPublicationsForGivenPublishedDateRange(Date startDate, Date endDate, int limit)
+            throws SQLException {
         Connection con = Database.getConnection();
         List<Publication> publicationList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publication WHERE publishedDate BETWEEN ? AND ? LIMIT ?";
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setDate(1,startDate);
-        ps.setDate(2,endDate);
-        ps.setInt(4-1,limit);
+        ps.setDate(1, startDate);
+        ps.setDate(2, endDate);
+        ps.setInt(4 - 1, limit);
 
         try {
             rs = ps.executeQuery();
@@ -963,7 +965,7 @@ public class PublicationDAOImpl implements PublicationDAO {
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setDate(1,date);
+        ps.setDate(1, date);
         ps.setInt(2, limit);
 
         try {
@@ -1000,7 +1002,8 @@ public class PublicationDAOImpl implements PublicationDAO {
     }
 
     @Override
-    public List<Publication> getListOfPublicationsForGivenPriceRange(double startPrice, double endPrice, int limit) throws SQLException {
+    public List<Publication> getListOfPublicationsForGivenPriceRange(double startPrice, double endPrice, int limit)
+            throws SQLException {
         Connection con = Database.getConnection();
         List<Publication> publicationList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publication WHERE softCopyPrice BETWEEN ? AND ? LIMIT ?";
@@ -1008,8 +1011,8 @@ public class PublicationDAOImpl implements PublicationDAO {
         ResultSet rs = null;
 
         ps.setDouble(1, startPrice);
-        ps.setDouble(2,endPrice);
-        ps.setInt(3,limit);
+        ps.setDouble(2, endPrice);
+        ps.setInt(3, limit);
 
         try {
             rs = ps.executeQuery();
@@ -1045,7 +1048,8 @@ public class PublicationDAOImpl implements PublicationDAO {
     }
 
     @Override
-    public List<Publication> getAllPublicationsForGivenPriceRange(double startPrice, double endPrice) throws SQLException {
+    public List<Publication> getAllPublicationsForGivenPriceRange(double startPrice, double endPrice)
+            throws SQLException {
         Connection con = Database.getConnection();
         List<Publication> publicationList = new ArrayList<>();
         String sqlTemplate = "SELECT * FROM Publication WHERE softCopyPrice BETWEEN ? AND ?";
@@ -1053,13 +1057,190 @@ public class PublicationDAOImpl implements PublicationDAO {
         ResultSet rs = null;
 
         ps.setDouble(1, startPrice);
-        ps.setDouble(2,endPrice);
+        ps.setDouble(2, endPrice);
 
         try {
             rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
                     "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at getAllPublicationsForGivenPriceRange().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+
+            int Id = rs.getInt("id");
+            String description = rs.getString("description");
+            Date qdate = rs.getDate("date");
+            int size = rs.getInt("size");
+            String pdfPath = rs.getString("pdfPath");
+            double softCopyPrice = rs.getDouble("softCopyPrice");
+            int pageCount = rs.getInt("pageCount");
+            double softCopyDiscount = rs.getDouble("softCopyDiscount");
+            String title = rs.getString("title");
+            Date publishedDate = rs.getDate("publishedDate");
+            int qcategoryId = rs.getInt("categoryId");
+            int qlanguageId = rs.getInt("languageId");
+            int qauthorId = rs.getInt("authorId");
+            Publication publication = new Publication(Id, description, qdate, size, pdfPath, softCopyPrice, pageCount,
+                    softCopyDiscount, title, publishedDate,
+                    qcategoryId, qlanguageId, qauthorId);
+            publicationList.add(publication);
+        }
+
+        return publicationList;
+    }
+
+    @Override
+    public List<Publication> getAllPublicationsForAGivenDate(Date date) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Publication> publicationList = new ArrayList<>();
+        String sqlTemplate = "SELECT * FROM Publication WHERE date = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setDate(1, date);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at getAllPublicationsForAGivenDate().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+
+            int Id = rs.getInt("id");
+            String description = rs.getString("description");
+            Date qdate = rs.getDate("date");
+            int size = rs.getInt("size");
+            String pdfPath = rs.getString("pdfPath");
+            double softCopyPrice = rs.getDouble("softCopyPrice");
+            int pageCount = rs.getInt("pageCount");
+            double softCopyDiscount = rs.getDouble("softCopyDiscount");
+            String title = rs.getString("title");
+            Date publishedDate = rs.getDate("publishedDate");
+            int qcategoryId = rs.getInt("categoryId");
+            int qlanguageId = rs.getInt("languageId");
+            int qauthorId = rs.getInt("authorId");
+            Publication publication = new Publication(Id, description, qdate, size, pdfPath, softCopyPrice, pageCount,
+                    softCopyDiscount, title, publishedDate,
+                    qcategoryId, qlanguageId, qauthorId);
+            publicationList.add(publication);
+        }
+
+        return publicationList;
+    }
+
+    @Override
+    public List<Publication> getListOfPublicationsForAGivenDate(Date date, int limit) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Publication> publicationList = new ArrayList<>();
+        String sqlTemplate = "SELECT * FROM Publication WHERE date = ? LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setDate(1, date);
+        ps.setInt(2, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at getListOfPublicationsForAGivenDate().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+
+            int Id = rs.getInt("id");
+            String description = rs.getString("description");
+            Date qdate = rs.getDate("date");
+            int size = rs.getInt("size");
+            String pdfPath = rs.getString("pdfPath");
+            double softCopyPrice = rs.getDouble("softCopyPrice");
+            int pageCount = rs.getInt("pageCount");
+            double softCopyDiscount = rs.getDouble("softCopyDiscount");
+            String title = rs.getString("title");
+            Date publishedDate = rs.getDate("publishedDate");
+            int qcategoryId = rs.getInt("categoryId");
+            int qlanguageId = rs.getInt("languageId");
+            int qauthorId = rs.getInt("authorId");
+            Publication publication = new Publication(Id, description, qdate, size, pdfPath, softCopyPrice, pageCount,
+                    softCopyDiscount, title, publishedDate,
+                    qcategoryId, qlanguageId, qauthorId);
+            publicationList.add(publication);
+        }
+
+        return publicationList;
+    }
+
+    @Override
+    public List<Publication> getAllPublicationsForAGivenDateRange(Date startDate, Date endDate) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Publication> publicationList = new ArrayList<>();
+        String sqlTemplate = "SELECT * FROM Publication WHERE date BETWEEN ? AND ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setDate(1, startDate);
+        ps.setDate(2, endDate);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at getAllPublicationsForAGivenDateRange().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+
+            int Id = rs.getInt("id");
+            String description = rs.getString("description");
+            Date qdate = rs.getDate("date");
+            int size = rs.getInt("size");
+            String pdfPath = rs.getString("pdfPath");
+            double softCopyPrice = rs.getDouble("softCopyPrice");
+            int pageCount = rs.getInt("pageCount");
+            double softCopyDiscount = rs.getDouble("softCopyDiscount");
+            String title = rs.getString("title");
+            Date publishedDate = rs.getDate("publishedDate");
+            int qcategoryId = rs.getInt("categoryId");
+            int qlanguageId = rs.getInt("languageId");
+            int qauthorId = rs.getInt("authorId");
+            Publication publication = new Publication(Id, description, qdate, size, pdfPath, softCopyPrice, pageCount,
+                    softCopyDiscount, title, publishedDate,
+                    qcategoryId, qlanguageId, qauthorId);
+            publicationList.add(publication);
+        }
+
+        return publicationList;
+    }
+
+    @Override
+    public List<Publication> getListOfPublicationsForAGivenDateRange(Date startDate, Date endDate, int limit)
+            throws SQLException {
+        Connection con = Database.getConnection();
+        List<Publication> publicationList = new ArrayList<>();
+        String sqlTemplate = "SELECT * FROM Publication WHERE date BETWEEN ? AND ? LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setDate(1, startDate);
+        ps.setDate(2, endDate);
+        ps.setInt(3, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PublicationDAOImpl class at getListOfPublicationsForAGivenDateRange().The exception message is %s",
                     e.getMessage()));
             throw e;
         }

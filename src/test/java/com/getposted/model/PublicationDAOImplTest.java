@@ -607,4 +607,88 @@ public class PublicationDAOImplTest {
         int count = publicationDAOImpl.getTotalPublicationCountForGivenLanguageId(1);
         assertTrue(count >= 1);
     }
+
+    @Test
+    public void testGetAllPublicationsForAGivenDate() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsForAGivenDate(Date.valueOf("2024-04-01"));
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getPublishedDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getDate().toString().equals("2024-04-01"));
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsForAGivenDateRange() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsForAGivenDateRange(Date.valueOf("2020-01-01"),Date.valueOf("2028-01-01"));
+        assertTrue(publications.size() >= 4);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getPublishedDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getDate().toString().length()== 10);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsForAGivenDate() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsForAGivenDate(Date.valueOf("2024-04-01"),1);
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getPublishedDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getDate().toString().equals("2024-04-01"));
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsForAGivenDateRange() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsForAGivenDateRange(Date.valueOf("2020-01-01"),Date.valueOf("2028-01-01"),1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getPublishedDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getDate().toString().length()== 10);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
 }
