@@ -15,6 +15,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	private static Logger logger = Logging.getLogger(CategoryDAOImpl.class.getName());
 
+	private static String getListRepresentation(int[] ids) {
+        String listRepresentation = "";
+        listRepresentation += "( ";
+        for (int i = 0; i < ids.length; i++) {
+            listRepresentation += ids[i];
+            if (i != ids.length - 1)
+                listRepresentation += ",";
+        }
+        listRepresentation += " )";
+        return listRepresentation;
+    }
 	@Override
 	public Category get(int id) throws SQLException {
 		Connection con = Database.getConnection();
@@ -190,5 +201,109 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 
 		return rowsAffected;
+	}
+
+	@Override
+	public List<Category> getCategoriesOnAPattern(String pattern) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Category> categoryList = new ArrayList();
+		String sqlTemplate = "SELECT * FROM Category WHERE LOWER(category) LIKE LOWER(?)";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getCategoriesOnAPattern() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCategory = rs.getString("category");
+			categoryList.add(new Category(qId, qCategory));
+		}
+
+		return categoryList;
+	}
+
+	@Override
+	public int getCategoryCount() throws SQLException {
+		Connection con = Database.getConnection();
+		int count = 0;
+		String sqlTemplate = "SELECT COUNT(id) AS count FROM Category";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getCategoryCount() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		if(rs.next()){
+			count = rs.getInt("count");
+		}
+		return count;
+	}
+
+	@Override
+	public List<Category> getCategoriesByGivenIds(int... ids) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Category> categoryList = new ArrayList();
+		String sqlTemplate = String.format("SELECT * FROM Category WHERE id IN %s",getListRepresentation(ids));
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getCategoriesOnAPattern() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCategory = rs.getString("category");
+			categoryList.add(new Category(qId, qCategory));
+		}
+
+		return categoryList;
+	}
+
+	@Override
+	public List<Category> getAllCategoriesExceptGivenIds(int... ids) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Category> categoryList = new ArrayList();
+		String sqlTemplate = String.format("SELECT * FROM Category WHERE id NOT IN %s",getListRepresentation(ids));
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CategoryDAOImpl class at getCategoriesOnAPattern() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCategory = rs.getString("category");
+			categoryList.add(new Category(qId, qCategory));
+		}
+
+		return categoryList;
 	}
 }

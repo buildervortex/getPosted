@@ -1,6 +1,7 @@
 package com.getposted.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -13,7 +14,9 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore()
+import com.getposted.enums.*;
+
+// @Ignore()
 public class PublicationDAOImplTest {
 
     private static PublicationDAOImpl publicationDAOImpl = new PublicationDAOImpl();
@@ -194,5 +197,414 @@ public class PublicationDAOImplTest {
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
+    }
+
+    @Test
+    public void testGetAllPublicationsBelongsToACategory() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsBelongsToACategory(1);
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() == 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsBelongsToALanguage() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsBelongsToALanguage(1);
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() == 1);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsBelongsToAnAuthor() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsBelongsToAnAuthor(1);
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() == 1);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsExceptGivenIdPublications() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsExceptGivenIdPublications(1, 2);
+        assertTrue(publications.size() >= 2);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+            assertFalse(publication.getId() == 1 || publication.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsFilterBy() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsFilterBy(PublicationFilter.DATE, true);
+        assertTrue(publications.size() >= 10);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsForGivenPublishedDate() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsForGivenPublishedDate(Date.valueOf("2024-04-15"));
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().equals("2024-04-15"));
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsForGivenPublishedDateRange() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsForGivenPublishedDateRange(Date.valueOf("2020-01-01"), Date.valueOf("2028-01-01"));
+        assertTrue(publications.size() >= 5);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() == 10);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsForGivenPriceRange() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsForGivenPriceRange(20, 25);
+        assertTrue(publications.size() >= 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 20.0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() >= 0);
+            assertTrue(publication.getId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetAllPublicationsForGivenTitlePattern() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getAllPublicationsForGivenTitlePattern("1");
+        assertTrue(publications.size() == 2);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() >= 0);
+            assertTrue(publication.getId() == 1 || publication.getId() == 10);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsBelongsToACategory() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsBelongsToACategory(1, 1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() == 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsBelongsToALanguage() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsBelongsToALanguage(1, 1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() == 1);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsBelongsToAnAuthor() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsBelongsToAnAuthor(1, 1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() == 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsFilterBy() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsFilterBy(PublicationFilter.DISCOUNT,
+                true, 1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsForGivenPublishedDate() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsForGivenPublishedDate(Date.valueOf("2024-04-15"),1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().equals("2024-04-15"));
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsForGivenPublishedDateRange() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsForGivenPublishedDateRange(Date.valueOf("2020-01-01"), Date.valueOf("2028-01-01"),1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() == 10);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsForGivenPriceRange() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsForGivenPriceRange(20, 25, 1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 20.0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() >= 0);
+            assertTrue(publication.getId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfPublicationsForGivenTitlePattern() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getListOfPublicationsForGivenTitlePattern("1",1);
+        assertTrue(publications.size() == 1);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 1);
+            assertTrue(publication.getLanguageId() >= 1);
+            assertTrue(publication.getAuthorId() >= 0);
+            assertTrue(publication.getId() == 1);
+        }
+    }
+
+    @Test
+    public void testGetPublicationsByGivenPublicationIds() throws SQLException {
+        List<Publication> publications = publicationDAOImpl.getPublicationsByGivenPublicationIds(1, 2);
+        assertTrue(publications.size() == 2);
+
+        for (Publication publication : publications) {
+            assertTrue(publication.getDescription().length() >= 1);
+            assertTrue(publication.getDate().toString().length() >= 1);
+            assertTrue(publication.getSize() >= 0);
+            assertTrue(publication.getPdfPath().length() >= 1);
+            assertTrue(publication.getSoftCopyPrice() >= 0);
+            assertTrue(publication.getPageCount() >= 0);
+            assertTrue(publication.getSoftCopyDiscount() >= 0);
+            assertTrue(publication.getTitle().length() >= 2);
+            assertTrue(publication.getPublishedDate().toString().length() >= 2);
+            assertTrue(publication.getCategoryId() >= 0);
+            assertTrue(publication.getLanguageId() >= 0);
+            assertTrue(publication.getAuthorId() >= 0);
+            assertTrue(publication.getId() == 1 || publication.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetTotalPublicationCount() throws SQLException {
+        int count = publicationDAOImpl.getTotalPublicationCount();
+        assertTrue(count >= 10);
+    }
+
+    @Test
+    public void testGetTotalPublicationCountForGivenAuthorId() throws SQLException {
+        int count = publicationDAOImpl.getTotalPublicationCountForGivenAuthorId(1);
+        assertTrue(count >= 1);
+    }
+
+    @Test
+    public void testGetTotalPublicationCountForGivenCategoryId() throws SQLException {
+        int count = publicationDAOImpl.getTotalPublicationCountForGivenCategoryId(1);
+        assertTrue(count >= 1);
+    }
+
+    @Test
+    public void testGetTotalPublicationCountForGivenLanguageId() throws SQLException {
+        int count = publicationDAOImpl.getTotalPublicationCountForGivenLanguageId(1);
+        assertTrue(count >= 1);
     }
 }

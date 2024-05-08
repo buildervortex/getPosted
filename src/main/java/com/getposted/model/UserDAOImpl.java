@@ -16,6 +16,18 @@ public class UserDAOImpl implements UserDAO {
 
     private static Logger logger = Logging.getLogger(UserDAOImpl.class.getName());
 
+    private static String getListRepresentation(int[] ids) {
+        String listRepresentation = "";
+        listRepresentation += "( ";
+        for (int i = 0; i < ids.length; i++) {
+            listRepresentation += ids[i];
+            if (i != ids.length - 1)
+                listRepresentation += ",";
+        }
+        listRepresentation += " )";
+        return listRepresentation;
+    }
+    
     @Override
     public User get(int id) throws SQLException {
         Connection con = Database.getConnection();
