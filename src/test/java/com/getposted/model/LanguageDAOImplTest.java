@@ -3,6 +3,7 @@ package com.getposted.model;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -127,5 +128,40 @@ public class LanguageDAOImplTest {
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
+    }
+
+    @Test
+    public void testGetAllLanguagesExceptGivenIds() throws SQLException {
+        List<Language> languages = languageDAOImpl.getAllLanguagesExceptGivenIds(1,2);
+        for (Language qlanguage : languages) {
+            assertTrue(qlanguage.getLanguage().length() >= 2);
+            assertFalse(qlanguage.getId() == 1 || qlanguage.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetLanguagesByGivenIds() throws SQLException {
+        List<Language> languages = languageDAOImpl.getLanguagesByGivenIds(1,2);
+        assertTrue(languages.size() == 2);
+        for (Language qlanguage : languages) {
+            assertTrue(qlanguage.getLanguage().length() >= 2);
+            assertTrue(qlanguage.getId() == 1 || qlanguage.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetLanguagesCount() throws SQLException {
+        int count = languageDAOImpl.getLanguagesCount();
+        assertTrue(count >= 10);
+
+    }
+
+    @Test
+    public void testGetLangugaesOnAPattern() throws SQLException {
+        List<Language> languages = languageDAOImpl.getLangugaesOnAPattern("ar");
+        assertTrue(languages.size() >= 1);
+        for (Language qlanguage : languages) {
+            assertTrue(qlanguage.getLanguage().length() >= 2);
+        }
     }
 }

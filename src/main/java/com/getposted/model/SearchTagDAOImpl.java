@@ -96,7 +96,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
     }
 
     @Override
-    public List<SearchTag> getList(int publicationId) throws SQLException {
+    public List<SearchTag> getAll(int publicationId) throws SQLException {
         Connection con = Database.getConnection();
         List<SearchTag> searchTags = new ArrayList<SearchTag>();
         String sqlTemplate = "SELECT * FROM SearchTag WHERE publicationId = ?";
@@ -109,7 +109,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
             rs = ps.executeQuery();
         } catch (SQLException e) {
             logger.warning(String.format(
-                    "There is SQLException happend in the com.getposted.model.SearchTagImpl class at getId() method the id is %d. The exception message is %s",
+                    "There is SQLException happend in the com.getposted.model.SearchTagImpl class at getAll() method the id is %d. The exception message is %s",
                     publicationId, e.getMessage()));
             throw e;
         }
@@ -122,6 +122,178 @@ public class SearchTagDAOImpl implements SearchTagDAO {
         }
 
         return searchTags;
+    }
+
+    @Override
+    public List<Integer> getAllPublicationsIdWithGivenTagPattern(String tagPattern) throws SQLException {
+        tagPattern = "%" + tagPattern + "%";
+        Connection con = Database.getConnection();
+        List<Integer> publicationIds = new ArrayList<Integer>();
+        String sqlTemplate = "SELECT publicationId FROM SearchTag WHERE LOWER(tagName) LIKE LOWER(?)";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, tagPattern);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SearchTagImpl class at getAllPublicationsIdWithGivenTagPattern(). The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            publicationIds.add(rs.getInt("publicationId"));
+        }
+
+        return publicationIds;
+    }
+
+    @Override
+    public List<Integer> getListOfPublicationsIdWithGivenTagPattern(String tagPattern, int limit) throws SQLException {
+        tagPattern = "%" + tagPattern + "%";
+        Connection con = Database.getConnection();
+        List<Integer> publicationIds = new ArrayList<Integer>();
+        String sqlTemplate = "SELECT publicationId FROM SearchTag WHERE LOWER(tagName) LIKE LOWER(?) LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, tagPattern);
+        ps.setInt(2, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SearchTagImpl class at getListOfPublicationsIdWithGivenTagPattern(). The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            publicationIds.add(rs.getInt("publicationId"));
+        }
+
+        return publicationIds;
+    }
+
+    @Override
+    public List<SearchTag> getAllSearchTagsWithGivenTagPattern(String tagPattern) throws SQLException {
+        tagPattern = "%" + tagPattern + "%";
+        Connection con = Database.getConnection();
+        List<SearchTag> searchTags = new ArrayList();
+        String sqlTemplate = "SELECT * FROM SearchTag WHERE LOWER(tagName) LIKE LOWER(?)";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, tagPattern);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SearchTag class at getAllSearchTagsWithGivenTagPattern() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            String tagName = rs.getString("tagName");
+            int qpublicationId = rs.getInt("publicationId");
+
+            searchTags.add(new SearchTag(tagName, qpublicationId));
+        }
+
+        return searchTags;
+    }
+
+    @Override
+    public List<SearchTag> getListOfSearchTagsWithGivenTagPattern(String tagPattern, int limit) throws SQLException {
+        tagPattern = "%" + tagPattern + "%";
+        Connection con = Database.getConnection();
+        List<SearchTag> searchTags = new ArrayList();
+        String sqlTemplate = "SELECT * FROM SearchTag WHERE LOWER(tagName) LIKE LOWER(?) LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, tagPattern);
+        ps.setInt(2,limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SearchTag class at getListOfSearchTagsWithGivenTagPattern() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            String tagName = rs.getString("tagName");
+            int qpublicationId = rs.getInt("publicationId");
+
+            searchTags.add(new SearchTag(tagName, qpublicationId));
+        }
+
+        return searchTags;
+    }
+
+    @Override
+    public List<SearchTag> getList(int publicationId, int limit) throws SQLException {
+        Connection con = Database.getConnection();
+        List<SearchTag> searchTags = new ArrayList();
+        String sqlTemplate = "SELECT * FROM SearchTag WHERE publicationId = ? LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, publicationId);
+        ps.setInt(2, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SearchTag class at getList() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            String tagName = rs.getString("tagName");
+            int qpublicationId = rs.getInt("publicationId");
+
+            searchTags.add(new SearchTag(tagName, qpublicationId));
+        }
+
+        return searchTags;
+    }
+
+    @Override
+    public int getNumberOfSearchTagsWithGivenPublication(int publicationId) throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(publicationId) AS count FROM SearchTag WHERE publicationId = ? GROUP BY publicationId";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, publicationId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SearchTag class at getList() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+        return count;
     }
 
 }

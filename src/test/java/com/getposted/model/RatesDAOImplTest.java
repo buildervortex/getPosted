@@ -1,6 +1,7 @@
 package com.getposted.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -143,8 +144,82 @@ public class RatesDAOImplTest {
         assertEquals(rates.getUserId(), userId);
     }
 
+    @Test
+    public void testGetRate() throws SQLException {
+        double rate = ratesDAOImpl.getRate(2);
+        assertTrue(rate == 4.3333);
+    }
+
+    @Test
+    public void testGetAllAuthorsOrderByThereRateValue() throws SQLException {
+        List<Integer> authorList = ratesDAOImpl.getAllAuthorsOrderByThereRateValue(true);
+        assertTrue(authorList.size() >= 10);
+        assertTrue(authorList.get(0) == 2);
+    }
+
+    @Test
+    public void testGetListOfAuthorsOrderByThereRateValue() throws SQLException {
+        List<Integer> authorList = ratesDAOImpl.getListOfAuthorsOrderByThereRateValue(true,2);
+        assertEquals(2,authorList.size());
+        assertTrue(authorList.get(0) == 2);
+    }
+
+    @Test
+    public void testGetOrderByValue() throws SQLException {
+        List<Rates> rates = ratesDAOImpl.getOrderByValue(2, false);
+        assertTrue(rates.size() >= 3);
+
+        for (Rates rate : rates) {
+            assertTrue(rate.getValue() >= 0 && rate.getValue() <= 5);
+            assertTrue(rate.getReview().length() >= 1 || rate.getReview() == null);
+            assertTrue(rate.getDate().toString().length() == 10);
+            assertTrue(rate.getAuthorId() >= 1);
+            assertTrue(rate.getUserId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetOrderedByDate() throws SQLException {
+        List<Rates> rates = ratesDAOImpl.getOrderedByDate(2, false);
+        assertTrue(rates.size() >= 3);
+
+        assertEquals(rates.get(0).getDate().toString(), Date.valueOf("2024-04-02").toString());
+
+        for (Rates rate : rates) {
+            assertTrue(rate.getValue() >= 0 && rate.getValue() <= 5);
+            assertTrue(rate.getReview().length() >= 1 || rate.getReview() == null);
+            assertTrue(rate.getDate().toString().length() == 10);
+            assertTrue(rate.getAuthorId() >= 1);
+            assertTrue(rate.getUserId() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetRatedUserIds() throws SQLException {
+        List<Integer> userIds = ratesDAOImpl.getRatedUserIds(2);
+        assertTrue(userIds.contains(1));
+        assertTrue(userIds.contains(2));
+        assertTrue(userIds.contains(3 - 1));
+        assertFalse(userIds.contains(4));
+    }
+
+    @Test
+    public void testGetRatesByValue() throws SQLException {
+        List<Rates> rates = ratesDAOImpl.getRatesByValue(2,4);
+        assertTrue(rates.size() >= 2);
+
+        for (Rates rate : rates) {
+            assertTrue(rate.getValue() == 4);
+            assertTrue(rate.getReview().length() >= 1 || rate.getReview() == null);
+            assertTrue(rate.getDate().toString().length() == 10);
+            assertTrue(rate.getAuthorId() >= 1);
+            assertTrue(rate.getUserId() >= 1);
+        }
+    }
+
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
+
 }

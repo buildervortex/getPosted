@@ -128,4 +128,67 @@ public class SaveDAOImpl implements SaveDAO {
 
         return saves;
     }
+
+    @Override
+    public List<Save> getAllSavesOrderByDate(int userId, boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Save> saves = new ArrayList();
+        String sqlTemplate = String.format("SELECT * FROM Save WHERE userId = ? ORDER BY date %s", order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, userId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SaveDAOImpl class at getAllSavesOrderByDate() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            Date date = rs.getDate("date");
+            int quserId = rs.getInt("userId");
+            int publicationId = rs.getInt("publicationId");
+
+            saves.add(new Save(date, quserId, publicationId));
+        }
+
+        return saves;
+    }
+
+    @Override
+    public List<Save> getListOfSavesOrderByDate(int userId, int limit, boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Save> saves = new ArrayList();
+        String sqlTemplate = String.format("SELECT * FROM Save WHERE userId = ? ORDER BY date %s LIMIT ?", order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, userId);
+        ps.setInt(2,limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.SaveDAOImpl class at getListOfSavesOrderByDate() .The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            Date date = rs.getDate("date");
+            int quserId = rs.getInt("userId");
+            int publicationId = rs.getInt("publicationId");
+
+            saves.add(new Save(date, quserId, publicationId));
+        }
+
+        return saves;
+    }
 }

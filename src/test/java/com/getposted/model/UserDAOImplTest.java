@@ -1,6 +1,7 @@
 package com.getposted.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -15,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore()
+// @Ignore()
 public class UserDAOImplTest {
 
     private static UserDAOImpl userDAOImpl = new UserDAOImpl();
@@ -179,4 +180,158 @@ public class UserDAOImplTest {
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
+
+    @Test
+    public void testGetAllUsersByGivenEmailPattern() throws SQLException {
+        List<User> users = userDAOImpl.getAllUsersByGivenEmailPattern("@");
+        assertTrue(users.size() >= 4);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetAllUsersByGivenUserNamePattern() throws SQLException {
+        List<User> users = userDAOImpl.getAllUsersByGivenUserNamePattern("1");
+        assertTrue(users.size() >= 2);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetAllUsersExceptGivenUsersIds() throws SQLException {
+        List<User> users = userDAOImpl.getAllUsersExceptGivenUsersIds(1, 2);
+        assertTrue(users.size() >= 2);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+            assertFalse(user.getId() == 1 || user.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetAllUsersForGivenNamePattern() throws SQLException {
+        List<User> users = userDAOImpl.getAllUsersForGivenNamePattern("al");
+        assertTrue(users.size() >= 1);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfUsersByGivenEmailPattern() throws SQLException {
+        List<User> users = userDAOImpl.getListOfUsersByGivenEmailPattern("@",1);
+        assertTrue(users.size() == 1);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfUsersByGivenUserNamePattern() throws SQLException {
+        List<User> users = userDAOImpl.getListOfUsersByGivenUserNamePattern("1", 1);
+        assertTrue(users.size() == 1);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetListOfUsersForGivenNamePattern() throws SQLException {
+        List<User> users = userDAOImpl.getListOfUsersForGivenNamePattern("al", 1);
+        assertTrue(users.size() == 1);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+        }
+    }
+
+    @Test
+    public void testGetUserFullName() throws SQLException {
+        String fullName = userDAOImpl.getUserFullName(1);
+        assertEquals("Alice A Smith", fullName);
+    }
+
+    @Test
+    public void testGetUsersForGivenUserIds() throws SQLException {
+        List<User> users = userDAOImpl.getUsersForGivenUserIds(1, 2);
+        assertTrue(users.size() == 2);
+
+        for (User user : users) {
+            assertTrue(user.getEmail().length() >= 1);
+            assertTrue(user.getPassword().length() >= 1);
+            assertTrue(user.getUserName().length() >= 1);
+            assertNotNull(user.getDob());
+            assertTrue(user.getSalt().length() >= 1);
+            assertTrue(user.getPepper().length() >= 1);
+            assertTrue(user.getFirstName().length() >= 1);
+            assertTrue(user.getMiddleName().length() >= 1 || user.getMiddleName() == null);
+            assertTrue(user.getLastName().length() >= 1);
+            assertTrue(user.getId() == 1 || user.getId() == 2);
+
+        }
+    }
+
 }

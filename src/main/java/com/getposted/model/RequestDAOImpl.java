@@ -145,4 +145,92 @@ public class RequestDAOImpl implements RequestDAO {
         return rowsAffected;
     }
 
+    @Override
+    public List<Request> getAllRequestFromSpecificAuthor(int publisherId, int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Request> requests = new ArrayList<Request>();
+        String sqlTemplate = "SELECT * FROM Request WHERE authorId = ? AND publisherId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1,authorId);
+        ps.setInt(2,publisherId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RequestDAOImpl class at getAllRequestFromSpecificAuthor() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String requestedContent = rs.getString("requestedContent");
+            int qauthorId = rs.getInt("authorId");
+            int qpublisherId = rs.getInt("publisherId");
+
+            requests.add(new Request(id, requestedContent, qauthorId, qpublisherId));
+        }
+        return requests;
+    }
+
+    @Override
+    public List<Request> getAllRequestForSpecificPublisher(int publisherId) throws SQLException {
+        Connection con = Database.getConnection();
+        List<Request> requests = new ArrayList<Request>();
+        String sqlTemplate = "SELECT * FROM Request WHERE  publisherId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1,publisherId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RequestDAOImpl class at getAllRequestFromSpecificAuthor() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String requestedContent = rs.getString("requestedContent");
+            int qauthorId = rs.getInt("authorId");
+            int qpublisherId = rs.getInt("publisherId");
+
+            requests.add(new Request(id, requestedContent, qauthorId, qpublisherId));
+        }
+        return requests;
+    }
+
+    @Override
+    public int getAllRequestCountFromASpecificAuthor(int publisherId, int authorId) throws SQLException {
+        Connection con = Database.getConnection();
+        int count = 0;
+        String sqlTemplate = "SELECT COUNT(id) AS count FROM Request WHERE authorId = ? AND publisherId = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1,authorId);
+        ps.setInt(2,publisherId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.RequestDAOImpl class at getAllRequestFromSpecificAuthor() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        if(rs.next()){
+            count = rs.getInt("count");
+        }
+
+        return count;
+    }
+
 }

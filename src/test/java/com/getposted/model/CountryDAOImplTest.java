@@ -1,6 +1,7 @@
 package com.getposted.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -110,5 +111,40 @@ public class CountryDAOImplTest {
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
+    }
+
+    @Test
+    public void testGetAllCountriesExceptGivenIds() throws SQLException {
+        List<Country> countries = countryDAOImpl.getAllCountriesExceptGivenIds(1, 2);
+        assertTrue(countries.size() >= 1);
+        for (Country country : countries) {
+            assertTrue(country.getCountry().length() >= 2);
+            assertFalse(country.getId() == 1 || country.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetCountriesByGivenIds() throws SQLException {
+        List<Country> countries = countryDAOImpl.getCountriesByGivenIds(1, 2);
+        assertTrue(countries.size() >= 1);
+        for (Country country : countries) {
+            assertTrue(country.getCountry().length() >= 2);
+            assertTrue(country.getId() == 1 || country.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetCountriesOnAPattern() throws SQLException {
+        List<Country> countries = countryDAOImpl.getCountriesOnAPattern("au");
+        assertTrue(countries.size() >= 1);
+        for (Country country : countries) {
+            assertTrue(country.getCountry().length() >= 2);
+        }
+    }
+
+    @Test
+    public void testGetCountryCount() throws SQLException {
+        int count = countryDAOImpl.getCountryCount();
+        assertTrue(count >= 10);
     }
 }

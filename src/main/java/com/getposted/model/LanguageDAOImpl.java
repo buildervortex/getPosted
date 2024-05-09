@@ -15,6 +15,18 @@ public class LanguageDAOImpl implements LanguageDAO {
 
 	private static Logger logger = Logging.getLogger(LanguageDAOImpl.class.getName());
 
+	private static String getListRepresentation(int[] ids) {
+		String listRepresentation = "";
+		listRepresentation += "( ";
+		for (int i = 0; i < ids.length; i++) {
+			listRepresentation += ids[i];
+			if (i != ids.length - 1)
+				listRepresentation += ",";
+		}
+		listRepresentation += " )";
+		return listRepresentation;
+	}
+
 	@Override
 	public Language get(int id) throws SQLException {
 		Connection con = Database.getConnection();
@@ -197,5 +209,112 @@ public class LanguageDAOImpl implements LanguageDAO {
 
 		con.close();
 		return rowsAffected;
+	}
+
+	@Override
+	public List<Language> getLangugaesOnAPattern(String pattern) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Language> languageList = new ArrayList();
+		String sqlTemplate = "SELECT * FROM Language WHERE LOWER(language) LIKE LOWER(?)";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getLangugaesOnAPattern() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qLanguage = rs.getString("language");
+			languageList.add(new Language(qId, qLanguage));
+		}
+
+		con.close();
+		return languageList;
+	}
+
+	@Override
+	public int getLanguagesCount() throws SQLException {
+		Connection con = Database.getConnection();
+		int count = 0;
+		String sqlTemplate = "SELECT COUNT(id) AS count FROM Language";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getLanguagesCount() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		if (rs.next()) {
+			count = rs.getInt("count");
+		}
+		return count;
+	}
+
+	@Override
+	public List<Language> getLanguagesByGivenIds(int... ids) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Language> languageList = new ArrayList();
+		String sqlTemplate = String.format("SELECT * FROM Language WHERE id IN %s",getListRepresentation(ids));
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getLanguagesByGivenIds() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qLanguage = rs.getString("language");
+			languageList.add(new Language(qId, qLanguage));
+		}
+
+		con.close();
+		return languageList;
+	}
+
+	@Override
+	public List<Language> getAllLanguagesExceptGivenIds(int... ids) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Language> languageList = new ArrayList();
+		String sqlTemplate = String.format("SELECT * FROM Language WHERE id NOT IN %s",getListRepresentation(ids));
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.LanguageDAOImpl class at getAllLanguagesExceptGivenIds() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qLanguage = rs.getString("language");
+			languageList.add(new Language(qId, qLanguage));
+		}
+
+		con.close();
+		return languageList;
 	}
 }

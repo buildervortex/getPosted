@@ -15,6 +15,18 @@ public class CountryDAOImpl implements CountryDAO {
 
 	private static Logger logger = Logging.getLogger(CountryDAOImpl.class.getName());
 
+	private static String getListRepresentation(int[] ids) {
+		String listRepresentation = "";
+		listRepresentation += "( ";
+		for (int i = 0; i < ids.length; i++) {
+			listRepresentation += ids[i];
+			if (i != ids.length - 1)
+				listRepresentation += ",";
+		}
+		listRepresentation += " )";
+		return listRepresentation;
+	}
+
 	@Override
 	public Country get(int id) throws SQLException {
 		Connection con = Database.getConnection();
@@ -179,6 +191,111 @@ public class CountryDAOImpl implements CountryDAO {
 			logger.warning(String.format(
 					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getList(). The limit is %d .The exception message is %s",
 					limit, e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCountry = rs.getString("country");
+			countryList.add(new Country(qId, qCountry));
+		}
+
+		return countryList;
+	}
+
+	@Override
+	public List<Country> getCountriesOnAPattern(String pattern) throws SQLException {
+		pattern = "%" + pattern + "%";
+		Connection con = Database.getConnection();
+		List<Country> countryList = new ArrayList();
+		String sqlTemplate = "SELECT * FROM Country WHERE LOWER(country) LIKE LOWER(?)";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		ps.setString(1, pattern);
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getCountriesOnAPattern() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCountry = rs.getString("country");
+			countryList.add(new Country(qId, qCountry));
+		}
+
+		return countryList;
+	}
+
+	@Override
+	public int getCountryCount() throws SQLException {
+		Connection con = Database.getConnection();
+		int count = 0;
+		String sqlTemplate = "SELECT COUNT(id) AS count FROM Country";
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getCountriesOnAPattern() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		if (rs.next()) {
+			count = rs.getInt("count");
+		}
+
+		return count;
+	}
+
+	@Override
+	public List<Country> getCountriesByGivenIds(int... ids) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Country> countryList = new ArrayList();
+		String sqlTemplate = String.format("SELECT * FROM Country WHERE id IN %s", getListRepresentation(ids));
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getCountriesByGivenIds() .The exception message is %s",
+					e.getMessage()));
+			throw e;
+		}
+
+		while (rs.next()) {
+			int qId = rs.getInt("id");
+			String qCountry = rs.getString("country");
+			countryList.add(new Country(qId, qCountry));
+		}
+
+		return countryList;
+	}
+
+	@Override
+	public List<Country> getAllCountriesExceptGivenIds(int... ids) throws SQLException {
+		Connection con = Database.getConnection();
+		List<Country> countryList = new ArrayList();
+		String sqlTemplate = String.format("SELECT * FROM Country WHERE id NOT IN %s", getListRepresentation(ids));
+		PreparedStatement ps = con.prepareStatement(sqlTemplate);
+		ResultSet rs = null;
+
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			logger.warning(String.format(
+					"There is SQLException happend in the com.getposted.model.CountryDAOImpl class at getCountriesByGivenIds() .The exception message is %s",
+					e.getMessage()));
 			throw e;
 		}
 

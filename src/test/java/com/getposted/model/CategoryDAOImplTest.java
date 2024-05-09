@@ -1,6 +1,7 @@
 package com.getposted.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -119,5 +120,43 @@ public class CategoryDAOImplTest {
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
+    }
+
+    @Test
+    public void testGetAllCategoriesExceptGivenIds() throws SQLException {
+        List<Category> categoryList = categoryDAOImpl.getAllCategoriesExceptGivenIds(1, 2);
+        assertTrue(categoryList.size() >= 2);
+
+        for (Category category : categoryList) {
+            assertTrue(category.getCategory().length() >= 2);
+            assertFalse(category.getId() == 1 || category.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetCategoriesByGivenIds() throws SQLException {
+        List<Category> categoryList = categoryDAOImpl.getCategoriesByGivenIds(1, 2);
+        assertTrue(categoryList.size() == 2);
+
+        for (Category category : categoryList) {
+            assertTrue(category.getCategory().length() >= 2);
+            assertTrue(category.getId() == 1 || category.getId() == 2);
+        }
+    }
+
+    @Test
+    public void testGetCategoriesOnAPattern() throws SQLException {
+        List<Category> categoryList = categoryDAOImpl.getCategoriesOnAPattern("ar");
+        assertTrue(categoryList.size() == 1);
+
+        for (Category category : categoryList) {
+            assertTrue(category.getCategory().length() >= 2);
+        }
+    }
+
+    @Test
+    public void testGetCategoryCount() throws SQLException {
+        int count = categoryDAOImpl.getCategoryCount();
+        assertTrue(count >= 10);
     }
 }

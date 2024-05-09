@@ -99,4 +99,28 @@ public class SaveDAOImplTest {
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
     }
+
+    @Test
+    public void testGetAllSavesOrderByDate() throws SQLException {
+        List<Save> saves = saveDAOImpl.getAllSavesOrderByDate(1, false);
+
+        for (Save save : saves) {
+            assertTrue(save.getUserId() == 1);
+            assertTrue(save.getPublicationId() >= 0);
+            assertTrue(save.getDate().toString().length() == 10);
+        }
+    }
+
+    @Test
+    public void testGetListOfSavesOrderByDate() throws SQLException {
+        List<Save> saves = saveDAOImpl.getListOfSavesOrderByDate(1, 1, false);
+
+        assertTrue(saves.size() == 0 || saves.size() == 1);
+
+        for (Save save : saves) {
+            assertTrue(save.getUserId() == 1);
+            assertTrue(save.getPublicationId() >= 0);
+            assertTrue(save.getDate().toString().length() == 10);
+        }        
+    }
 }

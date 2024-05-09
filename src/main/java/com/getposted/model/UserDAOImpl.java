@@ -16,6 +16,18 @@ public class UserDAOImpl implements UserDAO {
 
     private static Logger logger = Logging.getLogger(UserDAOImpl.class.getName());
 
+    private static String getListRepresentation(int[] ids) {
+        String listRepresentation = "";
+        listRepresentation += "( ";
+        for (int i = 0; i < ids.length; i++) {
+            listRepresentation += ids[i];
+            if (i != ids.length - 1)
+                listRepresentation += ",";
+        }
+        listRepresentation += " )";
+        return listRepresentation;
+    }
+
     @Override
     public User get(int id) throws SQLException {
         Connection con = Database.getConnection();
@@ -167,4 +179,323 @@ public class UserDAOImpl implements UserDAO {
         }
         return rowsAffected;
     }
+
+    @Override
+    public List<User> getUsersForGivenUserIds(int... ids) throws SQLException {
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = String.format("SELECT * FROM User WHERE id IN %s", getListRepresentation(ids));
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getUsersForGivenUserIds().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getAllUsersExceptGivenUsersIds(int... ids) throws SQLException {
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = String.format("SELECT * FROM User WHERE id NOT IN %s", getListRepresentation(ids));
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getAllUsersExceptGivenUsersIds().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public String getUserFullName(int userId) throws SQLException {
+        Connection con = Database.getConnection();
+        String fullName = "";
+        String sqlTemplate = "SELECT CONCAT(firstName,\" \",middleName,\" \",lastName) AS name FROM User WHERE id = ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, userId);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getUserFullName().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+        if (rs.next()) {
+            fullName = rs.getString("name");
+        }
+
+        return fullName;
+    }
+
+    @Override
+    public List<User> getAllUsersForGivenNamePattern(String pattern) throws SQLException {
+        pattern = "%" + pattern + "%";
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = "SELECT * FROM User WHERE LOWER(CONCAT(firstName,\" \",middleName,\" \",lastName)) LIKE LOWER(?)";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, pattern);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getAllUsersForGivenNamePattern().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getListOfUsersForGivenNamePattern(String pattern, int limit) throws SQLException {
+        pattern = "%" + pattern + "%";
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = "SELECT * FROM User WHERE LOWER(CONCAT(firstName,\" \",middleName,\" \",lastName)) LIKE LOWER(?) LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, pattern);
+        ps.setInt(2, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getListOfUsersForGivenNamePattern().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getAllUsersByGivenUserNamePattern(String pattern) throws SQLException {
+        pattern = "%" + pattern + "%";
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = "SELECT * FROM User WHERE LOWER(userName) LIKE LOWER(?)";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, pattern);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getAllUsersByGivenUserNamePattern().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getListOfUsersByGivenUserNamePattern(String pattern, int limit) throws SQLException {
+        pattern = "%" + pattern + "%";
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = "SELECT * FROM User WHERE LOWER(userName) LIKE LOWER(?) LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, pattern);
+        ps.setInt(2, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getListOfUsersByGivenUserNamePattern().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getAllUsersByGivenEmailPattern(String pattern) throws SQLException {
+        pattern = "%" + pattern + "%";
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = "SELECT * FROM User WHERE LOWER(email) LIKE LOWER(?)";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, pattern);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getAllUsersByGivenEmailPattern().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getListOfUsersByGivenEmailPattern(String pattern, int limit) throws SQLException {
+        pattern = "%" + pattern + "%";
+        Connection con = Database.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sqlTemplate = "SELECT * FROM User WHERE LOWER(email) LIKE LOWER(?) LIMIT ?";
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setString(1, pattern);
+        ps.setInt(2, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.UserDAOImpl class at getListOfUsersByGivenEmailPattern().The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            int qId = rs.getInt("id");
+            String email1 = rs.getString("email");
+            String password = rs.getString("password");
+            String userName = rs.getString("userName");
+            Date dob = rs.getDate("dob");
+            String salt = rs.getString("salt");
+            String pepper = rs.getString("pepper");
+            String firstName = rs.getString("firstName");
+            String middleName = rs.getString("middleName");
+            String lastName = rs.getString("lastName");
+            userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
+        }
+
+        return userList;
+    }
+
 }

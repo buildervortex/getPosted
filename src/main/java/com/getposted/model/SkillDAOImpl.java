@@ -15,6 +15,17 @@ public class SkillDAOImpl implements SkillDAO {
 
 	private static Logger logger = Logging.getLogger(SkillDAOImpl.class.getName());
 
+	private static String getListRepresentation(int[] ids) {
+        String listRepresentation = "";
+        listRepresentation += "( ";
+        for (int i = 0; i < ids.length; i++) {
+            listRepresentation += ids[i];
+            if (i != ids.length - 1)
+                listRepresentation += ",";
+        }
+        listRepresentation += " )";
+        return listRepresentation;
+    }
 	@Override
 	public Skill get(int id) throws SQLException {
 		Connection con = Database.getConnection();
