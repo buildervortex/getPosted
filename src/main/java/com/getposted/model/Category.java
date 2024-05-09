@@ -33,7 +33,6 @@ public class Category {
 	public String toString() {
 		return "Category [id=" + id + ", category=" + category + "]";
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -42,7 +41,6 @@ public class Category {
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -61,5 +59,4 @@ public class Category {
 			return false;
 		return true;
 	}
-
 }

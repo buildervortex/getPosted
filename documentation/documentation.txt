@@ -39,6 +39,7 @@
 [2024/05/03 13.00] KDKapuge             : Start modifie books page.
 [2024/05/04 23.30] KDKapuge             : Finish modifie books page.
 [2024/05/05 01.05] KDKapuge             : Upload books page to github.
+[2024/05/08 21.30] KDKapuge             : Create report cover page.
 
 
 
