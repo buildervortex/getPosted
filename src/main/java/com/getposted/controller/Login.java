@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.getposted.enums.UrlPatterns;
 import com.getposted.logger.Logging;
 import com.getposted.model.Author;
 import com.getposted.model.AuthorDAOImpl;
@@ -24,10 +25,6 @@ import jakarta.servlet.http.HttpSession;
 public class Login extends HttpServlet{
 
     private static Logger logger = Logging.getLogger(Login.class.getName());
-    // TODO: Add the redirection to the user profile user view
-    private static String userProfileUserView = "/getPosted";
-    // TODO: Add the redirectiont othe author profile author view
-    private static String authorProfileAuthorView = "/getPosted";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -67,7 +64,7 @@ public class Login extends HttpServlet{
             return;
         }
 
-        resp.sendRedirect(userProfileUserView);
+        resp.sendRedirect("/getPosted/user");
         return;
 
 
@@ -86,7 +83,7 @@ public class Login extends HttpServlet{
             return;
         }
         
-        resp.sendRedirect(authorProfileAuthorView);
+        resp.sendRedirect("/getPosted/author");
         return;
     }
 
