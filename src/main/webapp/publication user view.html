@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Title</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet"       href="css/publication user view.css" >
+  <!-- Custom CSS -->
+  <style>
+ 
+  </style>
+</head>
+<body>
+
+    <!-- nav bar -->
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+  </div>
+  
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <img src="img/publication user view/i1.jpg" alt="Book Thumbnail" class="img-fluid book-thumbnail">
+      </div>
+      <div class="col-lg-8 mb-4">
+        <div class="book-info p-4">
+          <h2 class="mb-3">Sherlock Holmes</h2>
+          <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis omnis enim culpa recusandae possimus repellat voluptas a et, facere cum tempora esse nisi architecto pariatur nihil expedita molestiae alias totam?</p>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="price"><strong>Price:</strong> $20</p>
+              <p class="Discount"><strong>Discount:</strong> 10%</p>
+              <p><strong>Written Date:</strong> January 1, 2024</p>
+              <p><strong>Published Date:</strong> January 10, 2024</p>
+              <p><strong>Size:</strong> A4</p>  
+              <p><strong>Search Tags:</strong> Fiction, Adventure</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Page Count:</strong> 300</p>
+              <p><strong>Language:</strong> English</p>
+              <p><strong>Category:</strong> Fiction</p>
+              <p><strong>Author:</strong> <a href="author_profile.html">Author Name</a></p>
+              <p><strong>Purchase Count:</strong> 100</p>
+
+            </div>
+          </div>
+          <div class="mt-4">
+            <button class="btn btn-primary mr-2">Add to Cart</button>
+            <button class="btn btn-secondary">Show Reviews</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Review Section -->
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Reviews</h3>
+      <div id="reviews"></div>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label for="rating">Rating:</label>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+  <div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+<div class="col-xl-6 col-md-12">
+                                        <div class="card user-card-full">
+                                                <div class="row m-l-0 m-r-0">
+                                                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                                                            <div class="card-block text-center text-white">
+                                                                <div class="m-b-25">
+                                                                    <img src="img/publication user view/i2.jpg" class="img-radius" alt="User-Profile-Image">
+                                                                </div>
+                                                                <h6 class="f-w-600">Hembo Tingor</h6>
+                                                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="card-block">
+                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Auther Information</h6>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Email</p>
+                                                                        <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Phone</p>
+                                                                        <h6 class="text-muted f-w-400">98979989898</h6>
+                                                                    </div>
+                                                                </div>
+                                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Other Books</h6>
+                                                                <p class="other book">juliet seasor</p>
+                                                              
+                                                              
+                                                              
+                                                                <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Bootstrap JS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+</body>
+</html>

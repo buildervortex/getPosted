@@ -123,7 +123,7 @@ public class Publication {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(int categoryId) {|
         this.categoryId = categoryId;
     }
 

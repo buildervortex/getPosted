@@ -88,3 +88,8 @@
 [2024/04/30 10:22] AHGK Arochana	: Create Author Profile User View page in visual studio code
 [2024/04/01 08:43] AHGK Arochana	: Author Profile User View page pull in github
 [2024/05/05 13:00] DGNuwan              : create new cart.
+
+[2024/05/10 20:05] KMRP senanayake	: Create a new publication user view
+[2024/05/10 20:05] KMRP senanayake	: remove old pages and add new pages
+[2024/05/10 20:05] KMRP senanayake	: make description report.
+[2024/05/10 20:05] KMRP senanayake	: Add a new hard copy request page.

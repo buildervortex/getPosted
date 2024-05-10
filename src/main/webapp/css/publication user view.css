@@ -1,0 +1,251 @@
+body {
+    background-color: #f9f9fa;
+   
+}
+
+.padding {
+    padding: 3rem !important;
+    padding-right: 100px;
+    
+}
+
+.user-card-full {
+    overflow: hidden;
+   
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    margin-bottom: 30px;
+    width: 60cqi;
+
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 5rem;
+
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+    max-width: 70px;
+}
+
+
+ 
+h6 {
+    font-size: 14px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px){
+p {
+    font-size: 14px;
+}
+}
+
+.card-block {
+    padding: 1.25rem;
+    padding-block-start: 2%;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    background-color: #f8f9fa;
+  }
+  .book-info {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .book-thumbnail {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+.price{
+    font-size: xx-large;
+}
+.Discount{
+    font-size: x-large;
+}
+/* CSS for the hover effect */
+.book-thumbnail {
+    transition: transform 0.3s ease;
+}
+
+.book-thumbnail:hover {
+    transform: scale(1.1); /* Adjust the scale factor for the desired effect */
+}
+/* CSS for the hover effect */
+/* Image hover effect */
+.book-thumbnail {
+    transition: transform 0.3s ease;
+}
+
+.book-thumbnail:hover {
+    transform: scale(1.1); /* Adjust the scale factor for the desired effect */
+}
+
+/* Text color change hover effect */
+.book-info h2,
+.book-info p,
+.book-info .price,
+.book-info .Discount {
+    transition: color 0.3s ease;
+}
+
+.book-info:hover h2,
+.book-info:hover p,
+.book-info:hover .price,
+.book-info:hover .Discount {
+    color: #ffffff; /* Change to the desired color */
+}
+
+/* Background color change hover effect */
+.book-info {
+    transition: background-color 0.3s ease;
+}
+
+.book-info:hover {
+    background-color: #060e81; /* Change to the desired background color */
+}
+./* CSS for the outer glow effect */
+.book-thumbnail {
+    box-shadow: 0 0 10px rgba(153, 48, 48, 0.5); /* Adjust the shadow color and size as needed */
+    transition: box-shadow 0.3s ease;
+}
+
+.book-thumbnail:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Adjust the shadow color and size for the hover effect */
+}
+.other books{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* Review Section Styles */
+#reviews {
+    margin-top: 20px;
+  }
+  
+  #reviews .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #reviews .card-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  #reviews .card-text {
+    font-size: 16px;
+  }
+  
+  #reviewForm {
+    margin-top: 30px;
+  }
+  
+  #reviewForm label {
+    font-weight: bold;
+  }
+  
+  #reviewForm textarea {
+    resize: vertical;
+  }
+  
+  #reviewForm button {
+    margin-top: 10px;
+  }
+  
+  .checked {
+    color: orange;
+  }

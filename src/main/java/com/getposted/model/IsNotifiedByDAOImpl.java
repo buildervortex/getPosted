@@ -182,7 +182,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
         while (rs.next()) {
             int id = rs.getInt("id");
             String notification = rs.getString("notification");
-            Date notifiedDate = rs.getDate("notifiedDate");
+            Date notifiedDate = rs.getDate("notifiedDate");D|
             Time notifiedTime = rs.getTime("notifiedTime");
             int authorId = rs.getInt("authorId");
             int publisherId = rs.getInt("publisherId");
