@@ -10,6 +10,10 @@
             width: 100px;
             height: 100px;
         }
+        body{
+            display: grid;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -28,6 +32,7 @@
         <h2>${country.country}</h2>
     </section>
     <a href="/getPosted/author/update">Update</a>
+    <a href="/getPosted/author/delete">Delete</a>
     <a href="/getPosted/author/books">View Pulications</a>
 </body>
 </html>
