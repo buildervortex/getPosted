@@ -44,7 +44,7 @@ public class SaveDAOImpl implements SaveDAO {
 
             saves.add(new Save(date, userId, publicationId));
         }
-
+        con.close();
         return saves;
     }
 
@@ -67,7 +67,7 @@ public class SaveDAOImpl implements SaveDAO {
                     e.getMessage()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -95,7 +95,7 @@ public class SaveDAOImpl implements SaveDAO {
                     e.getMessage()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -125,7 +125,7 @@ public class SaveDAOImpl implements SaveDAO {
 
             saves.add(new Save(date, quserId, publicationId));
         }
-
+        con.close();
         return saves;
     }
 
@@ -156,7 +156,7 @@ public class SaveDAOImpl implements SaveDAO {
 
             saves.add(new Save(date, quserId, publicationId));
         }
-
+        con.close();
         return saves;
     }
 
@@ -188,7 +188,7 @@ public class SaveDAOImpl implements SaveDAO {
 
             saves.add(new Save(date, quserId, publicationId));
         }
-
+        con.close();
         return saves;
     }
 }

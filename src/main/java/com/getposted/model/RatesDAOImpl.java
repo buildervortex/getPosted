@@ -46,6 +46,7 @@ public class RatesDAOImpl implements RatesDAO {
 
             rates.add(new Rates(value, review, date, authorId, userId));
         }
+        con.close();
         return rates;
     }
 
@@ -71,6 +72,7 @@ public class RatesDAOImpl implements RatesDAO {
                     rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -96,6 +98,7 @@ public class RatesDAOImpl implements RatesDAO {
                     rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -118,6 +121,7 @@ public class RatesDAOImpl implements RatesDAO {
                     rates.getAuthorId(), rates.getUserId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -150,7 +154,9 @@ public class RatesDAOImpl implements RatesDAO {
 
             rates = new Rates(value, review, date, qauthorId, quserId);
         }
+        con.close();
         return rates;
+
     }
 
     @Override
@@ -175,7 +181,7 @@ public class RatesDAOImpl implements RatesDAO {
         if (rs.next()) {
             rate = rs.getDouble("rate");
         }
-
+        con.close();
         return rate;
     }
 
@@ -201,7 +207,7 @@ public class RatesDAOImpl implements RatesDAO {
         while (rs.next()) {
             userIds.add(rs.getInt("userId"));
         }
-
+        con.close();
         return userIds;
     }
 
@@ -234,6 +240,7 @@ public class RatesDAOImpl implements RatesDAO {
 
             rates.add(new Rates(value, review, date, qauthorId, userId));
         }
+        con.close();
         return rates;
     }
 
@@ -266,6 +273,7 @@ public class RatesDAOImpl implements RatesDAO {
 
             rates.add(new Rates(value, review, date, qauthorId, userId));
         }
+        con.close();
         return rates;
     }
 
@@ -298,6 +306,7 @@ public class RatesDAOImpl implements RatesDAO {
 
             rates.add(new Rates(qvalue, review, date, qauthorId, userId));
         }
+        con.close();
         return rates;
     }
 
@@ -323,6 +332,7 @@ public class RatesDAOImpl implements RatesDAO {
             authorIds.add(rs.getInt("id"));
         }
 
+        con.close();
         return authorIds;
     }
 
@@ -350,6 +360,7 @@ public class RatesDAOImpl implements RatesDAO {
             authorIds.add(rs.getInt("id"));
         }
 
+        con.close();
         return authorIds;
     }
 }

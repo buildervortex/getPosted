@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore("PublisherDAOImplTest")
+// @Ignore("PublisherDAOImplTest")
 public class PublisherDAOImplTest {
 
     private static PublisherDAOImpl publisherImpl = new PublisherDAOImpl();

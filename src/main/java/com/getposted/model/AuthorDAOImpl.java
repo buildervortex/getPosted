@@ -66,6 +66,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					userName, countryId);
 		}
 
+		con.close();
 		return author;
 	}
 
@@ -105,6 +106,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					userName, countryId));
 		}
 
+		con.close();
 		return authorList;
 	}
 
@@ -138,7 +140,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					author.getMiddleName(), author.getLastName(), author.getUserName(), author.getCountryId()));
 			throw e;
 		}
-
+		con.close();
 		return rowsAffected;
 	}
 
@@ -173,7 +175,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					author.getMiddleName(), author.getLastName(), author.getUserName(), author.getCountryId()));
 			throw e;
 		}
-
+		con.close();
 		return rowsAffected;
 	}
 
@@ -196,7 +198,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					author.getMiddleName(), author.getLastName(), author.getUserName(), author.getCountryId()));
 			throw e;
 		}
-
+		con.close();
 		return rowsAffected;
 	}
 
@@ -222,6 +224,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		if (rs.next()) {
 			fullName = rs.getString("name");
 		}
+		con.close();
 		return fullName;
 	}
 
@@ -248,7 +251,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		while (rs.next()) {
 			authorIds.add(rs.getInt("id"));
 		}
-
+		con.close();
 		return authorIds;
 	}
 
@@ -275,7 +278,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		while (rs.next()) {
 			authorIds.add(rs.getInt("id"));
 		}
-
+		con.close();
 		return authorIds;
 	}
 
@@ -317,7 +320,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					userName, countryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -359,7 +362,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, countryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -382,7 +385,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		if (rs.next()) {
 			authorCount = rs.getInt("count");
 		}
-
+		con.close();
 		return authorCount;
 
 	}
@@ -424,7 +427,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -449,7 +452,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		if (rs.next()) {
 			authorCount = rs.getInt("count");
 		}
-
+		con.close();
 		return authorCount;
 	}
 
@@ -488,7 +491,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -527,7 +530,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -569,7 +572,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -583,7 +586,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		ResultSet rs = null;
 
 		ps.setString(1, pattern);
-		ps.setInt(2,limit);
+		ps.setInt(2, limit);
 
 		try {
 			rs = ps.executeQuery();
@@ -612,7 +615,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -626,7 +629,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		ResultSet rs = null;
 
 		ps.setString(1, pattern);
-		ps.setInt(2,limit);
+		ps.setInt(2, limit);
 
 		try {
 			rs = ps.executeQuery();
@@ -655,7 +658,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 
@@ -669,7 +672,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 		ResultSet rs = null;
 
 		ps.setString(1, pattern);
-		ps.setInt(2,limit);
+		ps.setInt(2, limit);
 
 		try {
 			rs = ps.executeQuery();
@@ -698,7 +701,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 					lastName,
 					quserName, qcountryId));
 		}
-
+		con.close();
 		return authorList;
 	}
 }

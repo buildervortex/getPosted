@@ -52,6 +52,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			category = new Category(qId, qCategory);
 		}
 
+		con.close();
 		return category;
 	}
 
@@ -81,6 +82,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			categoryOb = new Category(qId, qCategory);
 		}
 
+		con.close();
 		return categoryOb;
 	}
 
@@ -107,6 +109,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			categoryList.add(new Category(qId, qCategory));
 		}
 
+		con.close();
 		return categoryList;
 	}
 
@@ -135,6 +138,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			categoryList.add(new Category(qId, qCategory));
 		}
 
+		con.close();
 		return categoryList;
 	}
 
@@ -157,6 +161,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			throw e;
 		}
 
+		con.close();
 		return rowsAffected;
 	}
 
@@ -179,6 +184,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			throw e;
 		}
 
+		con.close();
 		return rowsAffected;
 	}
 
@@ -200,6 +206,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			throw e;
 		}
 
+		con.close();
 		return rowsAffected;
 	}
 
@@ -229,6 +236,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			categoryList.add(new Category(qId, qCategory));
 		}
 
+		con.close();
 		return categoryList;
 	}
 
@@ -252,6 +260,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		if(rs.next()){
 			count = rs.getInt("count");
 		}
+		con.close();
 		return count;
 	}
 
@@ -278,6 +287,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			categoryList.add(new Category(qId, qCategory));
 		}
 
+		con.close();
 		return categoryList;
 	}
 
@@ -304,6 +314,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 			categoryList.add(new Category(qId, qCategory));
 		}
 
+		con.close();
 		return categoryList;
 	}
 }

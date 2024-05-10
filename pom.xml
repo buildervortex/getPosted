@@ -40,5 +40,28 @@
 	<build>
 		<defaultGoal>clean package</defaultGoal>
 		<finalName>getPosted</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>delay-after-test</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<!-- Introduce a delay of 5 seconds after each test -->
+							<executable>sleep</executable>
+							<arguments>
+								<argument>1000</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

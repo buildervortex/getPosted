@@ -82,4 +82,11 @@ public interface PurchaseDAO extends DAO<Purchase> {
 
     List<Integer> getAllAuthorIdsOrderdInTopSelling(int publisherId, boolean desc) throws SQLException;
     List<Integer> getListOfAuthorIdsOrderdInTopSelling(int publisherId, boolean desc, int limit) throws SQLException;
+
+    List<Integer> getAllCategoryIdsOrderdInSelling(boolean desc) throws SQLException;   // desc == top selling, asc == least selling        // SELECT C.id AS id FROM Purchase AS P LEFT JOIN Publication AS PU ON P.publicationId = PU.id RIGHT JOIN Category AS C ON C.id = PU.categoryId GROUP BY C.id ORDER BY COUNT(C.id) DESC
+    List<Integer> getListOfCategoryIdsOrderedInSelling(boolean desc, int limit) throws SQLException;    
+    List<Integer> getAllAuthorIdsOrderedInSelling(boolean desc) throws SQLException;    // SELECT A.id FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId RIGHT JOIN Author AS A ON A.id = PU.authorId GROUP BY A.id ORDER BY COUNT(A.id) DESC
+    List<Integer> getListOfAuthorIdsOrderedInSelling(boolean desc, int limit) throws SQLException;  // SELECT A.id FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId RIGHT JOIN Author AS A ON A.id = PU.authorId GROUP BY A.id ORDER BY COUNT(A.id) DESC LIMIT 1
+    List<Integer> getAllPublicationIdsOrderedInSelling(boolean desc) throws SQLException;   // SELECT PU.id FROM Purchase AS P RIGHT JOIN Publication AS PU ON P.publicationId = PU.id GROUP BY PU.id ORDER BY COUNT(PU.id) DESC
+    List<Integer> getListOfPublicationIdsOrderedInSelling(boolean desc, int limit) throws SQLException; // SELECT PU.id FROM Purchase AS P RIGHT JOIN Publication AS PU ON P.publicationId = PU.id GROUP BY PU.id ORDER BY COUNT(PU.id) DESC LIMIT 1
 }

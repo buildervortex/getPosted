@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore("Skipped CategoryDAOImpTest")
+// @Ignore("Skipped CategoryDAOImpTest")
 public class CategoryDAOImplTest {
 
     private static CategoryDAOImpl categoryDAOImpl = new CategoryDAOImpl();

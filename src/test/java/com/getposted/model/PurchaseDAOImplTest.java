@@ -17,7 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+//  @Ignore
 public class PurchaseDAOImplTest {
 
     private static PurchaseDAOImpl purchaseDAOImpl = new PurchaseDAOImpl();
@@ -399,5 +399,50 @@ public class PurchaseDAOImplTest {
     @AfterClass
     public static void deleteDatabase() {
         TestDataBase.deleteDatabase();
+    }
+
+    @Test
+    public void testGetAllAuthorIdsOrderedInSelling() throws SQLException {
+        List<Integer> count = purchaseDAOImpl.getAllAuthorIdsOrderedInSelling(true);
+        assertNotNull(count);
+        assertTrue(count.size()>=10);
+    }
+
+    @Test
+    public void testGetAllCategoryIdsOrderdInSelling() throws SQLException {
+        List<Integer> count = purchaseDAOImpl.getAllCategoryIdsOrderdInSelling(true);
+        assertTrue(count.contains(1));
+        assertTrue(count.contains(2));
+        assertTrue(count.size()>=10);
+    }
+    
+    @Test
+    public void testGetAllPublicationIdsOrderedInSelling() throws SQLException {
+        List<Integer> count = purchaseDAOImpl.getAllPublicationIdsOrderedInSelling(true);
+        assertTrue(count.contains(1));
+        assertTrue(count.contains(2));
+        assertTrue(count.size()>=10);
+        
+    }
+
+    @Test
+    public void testGetListOfAuthorIdsOrderedInSelling() throws SQLException {
+        List<Integer> count = purchaseDAOImpl.getListOfAuthorIdsOrderedInSelling(true, 1);
+        assertNotNull(count);
+        assertTrue(count.size() == 1);
+    }
+
+    @Test
+    public void testGetListOfCategoryIdsOrderedInSelling() throws SQLException {
+        List<Integer> count = purchaseDAOImpl.getListOfCategoryIdsOrderedInSelling(true,1);
+        assertNotNull(count);
+        assertTrue(count.size() == 1);
+    }
+
+    @Test
+    public void testGetListOfPublicationIdsOrderedInSelling() throws SQLException {
+        List<Integer> count = purchaseDAOImpl.getListOfPublicationIdsOrderedInSelling(true, 1);
+        assertNotNull(count);
+        assertTrue(count.size() == 1);
     }
 }

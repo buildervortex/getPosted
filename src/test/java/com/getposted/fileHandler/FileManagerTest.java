@@ -22,7 +22,7 @@ import org.junit.Test;
 import com.getposted.enums.Stored;
 import com.getposted.system.Sysenv;
 
-@Ignore
+// @Ignore
 public class FileManagerTest {
 
     private static String testPath = Paths.get("src/test/java/com/getposted/fileHandler").toAbsolutePath().toString()+"/testDirectory";
@@ -136,6 +136,14 @@ public class FileManagerTest {
         String absolutePath = FileManager.getAbsPath(relativePath);
 
         assertEquals(absolutePath,testPath);
+    }
+
+    @Test
+    public void testRetriveFileFromResource() throws IOException{
+        String fileName = "dataBaseAll.txt";
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        long size = FileManager.retriveFileFromResource(fileName, outputStream);
+        assertTrue(size == 19285);
     }
 
     @AfterClass

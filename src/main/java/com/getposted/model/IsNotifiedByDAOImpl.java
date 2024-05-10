@@ -45,6 +45,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
 
             isNotifiedBy = new IsNotifiedBy(qid, notification, notifiedDate, notifiedTime, authorId, publisherId);
         }
+        con.close();
         return isNotifiedBy;
     }
 
@@ -75,6 +76,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
 
             isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, authorId, publisherId));
         }
+        con.close();
         return isInformeds;
     }
 
@@ -102,7 +104,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
                     isNotifiedBy.getPublisherId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -130,7 +132,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
                     isNotifiedBy.getPublisherId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -153,6 +155,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
                     isNotifiedBy.getPublisherId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -186,6 +189,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
 
             isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, authorId, publisherId));
         }
+        con.close();
         return isInformeds;
     }
 
@@ -218,6 +222,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
 
             isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, authorId, publisherId));
         }
+        con.close();
         return isInformeds;       
     }
 
@@ -242,6 +247,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 
@@ -274,6 +280,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
 
             isInformeds.add(new IsNotifiedBy(id, notification, notifiedDate, notifiedTime, qauthorId, publisherId));
         }
+        con.close();
         return isInformeds;       
     }
 
@@ -300,6 +307,7 @@ public class IsNotifiedByDAOImpl implements IsNotifiedByDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 }

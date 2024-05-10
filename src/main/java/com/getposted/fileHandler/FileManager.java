@@ -55,6 +55,26 @@ public class FileManager {
         return retrivedSize;
     }
 
+    public static long retriveFileFromResource(String fileName, OutputStream outputStream) throws IOException{
+        long readByteCount = -1;
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = loader.getResourceAsStream(fileName);
+
+        if(inputStream == null) return readByteCount;
+
+        byte[] buffer = new byte[1024];
+        int bytesRead = 0;
+
+        while((bytesRead = inputStream.read(buffer)) != -1){
+            outputStream.write(buffer, 0, bytesRead);
+            readByteCount += bytesRead;
+        }
+
+        inputStream.close();
+        outputStream.flush();
+        return readByteCount;
+    }
+
     public static boolean isExists(String path){
         boolean exists = false;
         File file = new File(path);

@@ -41,4 +41,10 @@ war{
 
 test{
 	maxParallelForks=1
+    // afterTest { desc, result ->
+        // Add delay after each test execution
+        // def delaySeconds = 10 // Adjust the delay duration as needed
+//        println "Waiting for ${delaySeconds} seconds before running the next test..."
+//        Thread.sleep(delaySeconds * 1000)
+    // }
 }

@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+// @Ignore
 public class PhoneNumberDAOImplTest {
 
     private static PhoneNumberDAOImpl phoneNumberDAOImpl = new PhoneNumberDAOImpl();
