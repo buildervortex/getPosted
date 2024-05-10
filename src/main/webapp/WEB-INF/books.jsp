@@ -44,6 +44,7 @@
                 <h2>Price is ${item.softCopyPrice}</h2>
                 <h2>Discount is ${item.softCopyDiscount}</h2>
                 <h2>Publication date is ${item.publishedDate}</h2>
+                <a href="/getPosted/books/?id=${item.id}">View Publication</a>
             </div>
         </c:forEach>
     </section>
