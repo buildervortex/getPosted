@@ -13,14 +13,21 @@
     </style>
 </head>
 <body>
+    <nav>
+        <a href="/getPosted/logout/">LogOut</a>
+    </nav>
     <section>
         <img src="/getPosted/download/authorProfile/${author.id}" alt="">
-        <h2>Title is ${author.email}</h2>
+        <h2>Id is ${author.id}</h2>
+        <h2>email is ${author.email}</h2>
         <h2>phoneNumber is ${author.phoneNumber}</h2>
+        <h2>Bio is ${author.bio}</h2>
         <h2>dob is ${author.dob}</h2>
         <h2>Name is ${author.firstName} ${author.middleName} ${author.lastName}</h2>
         <h2>userName is ${author.userName}</h2>
         <h2>${country.country}</h2>
     </section>
+    <a href="/getPosted/author/update">Update</a>
+    <a href="/getPosted/author/books">View Pulications</a>
 </body>
 </html>

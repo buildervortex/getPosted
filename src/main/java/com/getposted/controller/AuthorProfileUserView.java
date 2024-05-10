@@ -1,4 +1,4 @@
-package com.getposted;
+package com.getposted.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;

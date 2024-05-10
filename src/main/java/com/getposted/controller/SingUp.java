@@ -216,4 +216,5 @@ public class SingUp extends HttpServlet{
         return available;
     }
 
+    
 }
