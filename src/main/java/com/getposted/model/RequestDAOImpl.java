@@ -41,6 +41,7 @@ public class RequestDAOImpl implements RequestDAO {
 
             request = new Request(qid, requestedContent, authorId, publisherId);
         }
+        con.close();
         return request;
 
     }
@@ -70,6 +71,7 @@ public class RequestDAOImpl implements RequestDAO {
 
             requests.add(new Request(id, requestedContent, authorId, publisherId));
         }
+        con.close();
         return requests;
     }
 
@@ -94,7 +96,7 @@ public class RequestDAOImpl implements RequestDAO {
                     request.getPublisherId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -119,7 +121,7 @@ public class RequestDAOImpl implements RequestDAO {
                     request.getPublisherId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -141,7 +143,7 @@ public class RequestDAOImpl implements RequestDAO {
                     request.getPublisherId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -153,8 +155,8 @@ public class RequestDAOImpl implements RequestDAO {
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setInt(1,authorId);
-        ps.setInt(2,publisherId);
+        ps.setInt(1, authorId);
+        ps.setInt(2, publisherId);
 
         try {
             rs = ps.executeQuery();
@@ -173,6 +175,7 @@ public class RequestDAOImpl implements RequestDAO {
 
             requests.add(new Request(id, requestedContent, qauthorId, qpublisherId));
         }
+        con.close();
         return requests;
     }
 
@@ -184,7 +187,7 @@ public class RequestDAOImpl implements RequestDAO {
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setInt(1,publisherId);
+        ps.setInt(1, publisherId);
 
         try {
             rs = ps.executeQuery();
@@ -203,6 +206,7 @@ public class RequestDAOImpl implements RequestDAO {
 
             requests.add(new Request(id, requestedContent, qauthorId, qpublisherId));
         }
+        con.close();
         return requests;
     }
 
@@ -214,8 +218,8 @@ public class RequestDAOImpl implements RequestDAO {
         PreparedStatement ps = con.prepareStatement(sqlTemplate);
         ResultSet rs = null;
 
-        ps.setInt(1,authorId);
-        ps.setInt(2,publisherId);
+        ps.setInt(1, authorId);
+        ps.setInt(2, publisherId);
 
         try {
             rs = ps.executeQuery();
@@ -226,10 +230,10 @@ public class RequestDAOImpl implements RequestDAO {
             throw e;
         }
 
-        if(rs.next()){
+        if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 

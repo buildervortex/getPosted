@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.getposted.random.RandomString;
 
-@Ignore
+// @Ignore
 public class PasswordTest {
     
     private static String password = "samplePassword";

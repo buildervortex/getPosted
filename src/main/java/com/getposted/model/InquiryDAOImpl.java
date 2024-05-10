@@ -80,6 +80,7 @@ public class InquiryDAOImpl implements InquiryDAO {
 
         }
 
+        con.close();
         return inquiry;
     }
 
@@ -119,7 +120,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, userId, publisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -157,7 +158,7 @@ public class InquiryDAOImpl implements InquiryDAO {
                     inquiry.getPublicationId(), inquiry.getUserId(), inquiry.getPublisherId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -195,6 +196,7 @@ public class InquiryDAOImpl implements InquiryDAO {
                     inquiry.getPublicationId(), inquiry.getUserId(), inquiry.getPublisherId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -219,6 +221,7 @@ public class InquiryDAOImpl implements InquiryDAO {
                     inquiry.getPublicationId(), inquiry.getUserId(), inquiry.getPublisherId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -266,6 +269,7 @@ public class InquiryDAOImpl implements InquiryDAO {
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
 
+        con.close();
         return inquiries;
     }
 
@@ -315,7 +319,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -361,7 +365,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -410,7 +414,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -453,7 +457,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, qstate, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -498,7 +502,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, qstate, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -541,7 +545,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -567,7 +571,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -592,7 +596,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -617,7 +621,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("sum");
         }
-
+        con.close();
         return count;
     }
 
@@ -643,7 +647,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("sum");
         }
-
+        con.close();
         return count;
     }
 
@@ -670,7 +674,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("sum");
         }
-
+        con.close();
         return count;
     }
 
@@ -695,7 +699,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -738,7 +742,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, quserId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -764,7 +768,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -790,7 +794,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -816,7 +820,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("sum");
         }
-
+        con.close();
         return count;
     }
 
@@ -860,7 +864,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, qpublicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -886,7 +890,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -913,7 +917,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -939,7 +943,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("sum");
         }
-
+        con.close();
         return count;
     }
 
@@ -965,7 +969,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("sum");
         }
-
+        con.close();
         return count;
     }
 
@@ -993,7 +997,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             int publicationId = rs.getInt("publicationId");
             publicationIds.add(publicationId);
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -1022,7 +1026,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             int userId = rs.getInt("userId");
             userIds.add(userId);
         }
-
+        con.close();
         return userIds;
     }
 
@@ -1049,6 +1053,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
+        con.close();
         return count;
     }
 
@@ -1093,6 +1098,7 @@ public class InquiryDAOImpl implements InquiryDAO {
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
 
+        con.close();
         return inquiries;
     }
 
@@ -1134,7 +1140,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, state, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -1178,7 +1184,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             inquiries.add(new Inquiry(qId, purchasedDate, shippingAddress, postalCode, purchasedTime, contactName,
                     count, country, shippedDate, qstate, price, publicationId, userId, qpublisherId));
         }
-
+        con.close();
         return inquiries;
     }
 
@@ -1205,6 +1211,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
+        con.close();
         return count;
     }
 
@@ -1230,6 +1237,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1257,6 +1265,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1284,6 +1293,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1312,6 +1322,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1340,6 +1351,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1365,6 +1377,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1393,6 +1406,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1421,6 +1435,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1446,6 +1461,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1474,6 +1490,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1502,6 +1519,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1527,6 +1545,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1555,6 +1574,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1583,6 +1603,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1610,6 +1631,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1639,6 +1661,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1669,6 +1692,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1696,6 +1720,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1725,6 +1750,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1754,6 +1780,7 @@ public class InquiryDAOImpl implements InquiryDAO {
         if (rs.next()) {
             count = rs.getDouble("sum");
         }
+        con.close();
         return count;
     }
 
@@ -1780,7 +1807,7 @@ public class InquiryDAOImpl implements InquiryDAO {
             int authorId = rs.getInt("id");
             authorIds.add(authorId);
         }
-
+        con.close();
         return authorIds;  
     }
 

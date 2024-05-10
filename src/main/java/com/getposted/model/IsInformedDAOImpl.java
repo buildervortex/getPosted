@@ -45,6 +45,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
 
             isInformed = new IsInformed(qid, notification, notifiedDate, notifiedTime, userId, publisherId);
         }
+        con.close();
         return isInformed;
     }
 
@@ -75,6 +76,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
 
             isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId));
         }
+        con.close();
         return isInformeds;
     }
 
@@ -102,6 +104,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
             throw e;
         }
 
+        con.close();
         return result;
     }
 
@@ -129,6 +132,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
             throw e;
         }
 
+        con.close();
         return result;
     }
 
@@ -150,6 +154,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
                     isInformed.getNotifiedTime(), isInformed.getUserId(), isInformed.getPublisherId()));
             throw e;
         }
+        con.close();
         return result;
     }
 
@@ -183,6 +188,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
 
             isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId));
         }
+        con.close();
         return isInformeds;
     }
 
@@ -215,6 +221,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
 
             isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, userId, publisherId));
         }
+        con.close();
         return isInformeds;
     }
 
@@ -239,6 +246,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
         }
 
 
+        con.close();
         return count;
     }
 
@@ -271,6 +279,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
 
             isInformeds.add(new IsInformed(id, notification, notifiedDate, notifiedTime, quserId, publisherId));
         }
+        con.close();
         return isInformeds;        
     }
 
@@ -296,7 +305,7 @@ public class IsInformedDAOImpl implements IsInformedDAO {
             count = rs.getInt("count");
         }
 
-
+        con.close();
         return count;        
     }
 

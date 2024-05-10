@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import com.getposted.enums.*;
 
-@Ignore()
+// @Ignore()
 public class PublicationDAOImplTest {
 
     private static PublicationDAOImpl publicationDAOImpl = new PublicationDAOImpl();

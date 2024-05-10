@@ -53,6 +53,7 @@ public class CountryDAOImpl implements CountryDAO {
 			country = new Country(qId, qCountry);
 		}
 
+		con.close();
 		return country;
 	}
 
@@ -81,6 +82,7 @@ public class CountryDAOImpl implements CountryDAO {
 			countryOb = new Country(qId, qCountry);
 		}
 
+		con.close();
 		return countryOb;
 	}
 
@@ -107,6 +109,7 @@ public class CountryDAOImpl implements CountryDAO {
 			countryList.add(new Country(qId, qCountry));
 		}
 
+		con.close();
 		return countryList;
 	}
 
@@ -129,6 +132,7 @@ public class CountryDAOImpl implements CountryDAO {
 			throw e;
 		}
 
+		con.close();
 		return rowsAffected;
 	}
 
@@ -151,6 +155,7 @@ public class CountryDAOImpl implements CountryDAO {
 			throw e;
 		}
 
+		con.close();
 		return rowsAffected;
 	}
 
@@ -172,6 +177,7 @@ public class CountryDAOImpl implements CountryDAO {
 			throw e;
 		}
 
+		con.close();
 		return rowsAffected;
 	}
 
@@ -200,6 +206,7 @@ public class CountryDAOImpl implements CountryDAO {
 			countryList.add(new Country(qId, qCountry));
 		}
 
+		con.close();
 		return countryList;
 	}
 
@@ -229,6 +236,7 @@ public class CountryDAOImpl implements CountryDAO {
 			countryList.add(new Country(qId, qCountry));
 		}
 
+		con.close();
 		return countryList;
 	}
 
@@ -253,6 +261,7 @@ public class CountryDAOImpl implements CountryDAO {
 			count = rs.getInt("count");
 		}
 
+		con.close();
 		return count;
 	}
 
@@ -279,6 +288,8 @@ public class CountryDAOImpl implements CountryDAO {
 			countryList.add(new Country(qId, qCountry));
 		}
 
+
+		con.close();
 		return countryList;
 	}
 
@@ -305,6 +316,7 @@ public class CountryDAOImpl implements CountryDAO {
 			countryList.add(new Country(qId, qCountry));
 		}
 
+		con.close();
 		return countryList;
 	}
 }

@@ -44,6 +44,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 
             reviews = new Reviews(qid, value, review, date, publicationId, userId);
         }
+        con.close();
         return reviews;
     }
 
@@ -74,6 +75,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 
             reviews.add(new Reviews(qid, value, review, date, publicationId, userId));
         }
+        con.close();
         return reviews;
     }
 
@@ -100,6 +102,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
                     reviews.getDate().toString(), reviews.getPublicationId(), reviews.getUserId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -126,6 +129,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
                     reviews.getDate().toString(), reviews.getPublicationId(), reviews.getUserId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -147,6 +151,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
                     reviews.getPublicationId(), reviews.getUserId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -180,6 +185,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 
             reviews = new Reviews(qid, value, review, date, qpublicationId, quserId);
         }
+        con.close();
         return reviews;
     }
 
@@ -206,6 +212,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
             rate = rs.getDouble("rate");
         }
 
+        con.close();
         return rate;
     }
 
@@ -231,7 +238,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
         if (rs.next()) {
             userIds.add(rs.getInt("userId"));
         }
-
+        con.close();
         return userIds;
     }
 
@@ -265,6 +272,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 
             reviews.add(new Reviews(qid, value, review, date, qpublicationId, userId));
         }
+        con.close();
         return reviews;
     }
 
@@ -298,6 +306,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 
             reviews.add(new Reviews(qid, value, review, date, qpublicationId, userId));
         }
+        con.close();
         return reviews;
     }
 
@@ -331,6 +340,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 
             reviews.add(new Reviews(qid, qvalue, review, date, qpublicationId, userId));
         }
+        con.close();
         return reviews;
     }
 
@@ -359,7 +369,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("id"));
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -387,7 +397,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("id"));
         }
-
+        con.close();
         return publicationIds;
     }
 }

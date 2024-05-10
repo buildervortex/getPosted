@@ -121,3 +121,4 @@
 [2024/05/05 16:51] GALDilhara		: Fully tested the entier DAO classes in unit testings
 [2024/05/05 23:15] GALDilhara		: Created the FileManager class to manage all storing and retriving of files.
 [2024/05/06 00:58] GALDilhara		: Wrote the tests for the FileManager class and fully tested the class.
+[2024/05/09 11:40] GALDilhara		: Starts to working on the Controller

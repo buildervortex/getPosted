@@ -260,7 +260,9 @@ public class LanguageDAOImpl implements LanguageDAO {
 
 		if (rs.next()) {
 			count = rs.getInt("count");
+		
 		}
+		con.close();
 		return count;
 	}
 

@@ -65,6 +65,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     categoryId, languageId, authorId);
         }
 
+        con.close();
         return publication;
     }
 
@@ -106,6 +107,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -143,6 +145,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     publication.getAuthorId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -180,6 +183,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     publication.getAuthorId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -200,6 +204,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     e.getMessage(), publication.getId()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -242,6 +247,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -286,6 +292,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -329,6 +336,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -373,6 +381,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -416,6 +425,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -460,6 +470,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -503,6 +514,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -547,6 +559,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             publicationList.add(publication);
         }
 
+        con.close();
         return publicationList;
     }
 
@@ -571,6 +584,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 
@@ -597,6 +611,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 
@@ -623,6 +638,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 
@@ -649,6 +665,7 @@ public class PublicationDAOImpl implements PublicationDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 
@@ -689,7 +706,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -730,7 +747,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -774,7 +791,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -819,7 +836,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -862,7 +879,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -907,7 +924,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -953,7 +970,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -997,7 +1014,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -1043,7 +1060,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -1088,7 +1105,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -1131,7 +1148,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -1175,7 +1192,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -1219,7 +1236,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 
@@ -1265,7 +1282,7 @@ public class PublicationDAOImpl implements PublicationDAO {
                     qcategoryId, qlanguageId, qauthorId);
             publicationList.add(publication);
         }
-
+        con.close();
         return publicationList;
     }
 }

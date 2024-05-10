@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore("SkillDAOTest")
+// @Ignore("SkillDAOTest")
 public class SkillDAOImplTest {
     private static SkillDAOImpl skillDAOImpl = new SkillDAOImpl();
 

@@ -52,7 +52,7 @@ public class PublisherDAOImpl implements PublisherDAO {
                     hardCopyPageCommissionForAuthor, salt, password, hardCopyDiscount, pepper, hardCopyPricePerPage,
                     softCopyCommission, hardCopyCommission);
         }
-
+        con.close();
         return publisher;
     }
 
@@ -91,7 +91,7 @@ public class PublisherDAOImpl implements PublisherDAO {
                     hardCopyPageCommissionForAuthor, salt, password, hardCopyDiscount, pepper, hardCopyPricePerPage,
                     softCopyCommission, hardCopyCommission));
         }
-
+        con.close();
         return publisherList;
     }
 
@@ -128,7 +128,7 @@ public class PublisherDAOImpl implements PublisherDAO {
                     publisher.getSoftCopyCommission(), publisher.getHardCopyCommission()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -165,6 +165,7 @@ public class PublisherDAOImpl implements PublisherDAO {
                     publisher.getSoftCopyCommission(), publisher.getHardCopyCommission()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -188,6 +189,7 @@ public class PublisherDAOImpl implements PublisherDAO {
                     publisher.getSoftCopyCommission(), publisher.getHardCopyCommission()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 }

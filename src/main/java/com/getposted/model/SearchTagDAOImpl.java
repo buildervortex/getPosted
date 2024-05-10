@@ -42,7 +42,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
 
             searchTags.add(new SearchTag(tagName, qpublicationId));
         }
-
+        con.close();
         return searchTags;
     }
 
@@ -64,7 +64,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
                     e.getMessage()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -91,7 +91,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
                     e.getMessage()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -120,7 +120,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
 
             searchTags.add(new SearchTag(tagName, qpublicationId));
         }
-
+        con.close();
         return searchTags;
     }
 
@@ -147,7 +147,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("publicationId"));
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -175,7 +175,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("publicationId"));
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -205,7 +205,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
 
             searchTags.add(new SearchTag(tagName, qpublicationId));
         }
-
+        con.close();
         return searchTags;
     }
 
@@ -236,7 +236,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
 
             searchTags.add(new SearchTag(tagName, qpublicationId));
         }
-
+        con.close();
         return searchTags;
     }
 
@@ -266,7 +266,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
 
             searchTags.add(new SearchTag(tagName, qpublicationId));
         }
-
+        con.close();
         return searchTags;
     }
 
@@ -292,7 +292,7 @@ public class SearchTagDAOImpl implements SearchTagDAO {
         if(rs.next()){
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 

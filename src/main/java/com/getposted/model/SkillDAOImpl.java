@@ -51,7 +51,7 @@ public class SkillDAOImpl implements SkillDAO {
 
 			skill = new Skill(qId, qSkill);
 		}
-
+		con.close();
 		return skill;
 	}
 
@@ -77,7 +77,7 @@ public class SkillDAOImpl implements SkillDAO {
 			String qSkill = rs.getString("skill");
 			skillList.add(new Skill(qId, qSkill));
 		}
-
+		con.close();
 		return skillList;
 	}
 
@@ -99,7 +99,7 @@ public class SkillDAOImpl implements SkillDAO {
 					e.getMessage(), skill.getSkill(), skill.getId()));
 			throw e;
 		}
-
+		con.close();
 		return rowsAffected;
 	}
 
@@ -121,7 +121,7 @@ public class SkillDAOImpl implements SkillDAO {
 					e.getMessage(), skill.getSkill(), skill.getId()));
 			throw e;
 		}
-
+		con.close();
 		return rowsAffected;
 	}
 
@@ -142,7 +142,7 @@ public class SkillDAOImpl implements SkillDAO {
 					e.getMessage(), skill.getSkill(), skill.getId()));
 			throw e;
 		}
-
+		con.close();
 		return rowsAffected;
 	}
 
@@ -170,7 +170,7 @@ public class SkillDAOImpl implements SkillDAO {
 			String qSkill = rs.getString("skill");
 			skillList.add(new Skill(qId, qSkill));
 		}
-
+		con.close();
 		return skillList;
 	}
 
@@ -199,7 +199,7 @@ public class SkillDAOImpl implements SkillDAO {
 
 			skillOb = new Skill(qId, qSkill);
 		}
-
+		con.close();
 		return skillOb;
 	}
 }

@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import java.util.logging.Handler;
 import java.util.logging.SimpleFormatter;
 
-@Ignore
+// @Ignore
 public class TestLogging {
 
 	private static Logger logger;

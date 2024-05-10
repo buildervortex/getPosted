@@ -43,6 +43,7 @@ public class HasDAOImpl implements HasDAO {
             has.add(new Has(authorId, skillId));
         }
 
+        con.close();
         return has;
     }
 
@@ -65,6 +66,7 @@ public class HasDAOImpl implements HasDAO {
             throw e;
         }
 
+        con.close();
         return rowsAffected;
     }
 
@@ -93,6 +95,7 @@ public class HasDAOImpl implements HasDAO {
             throw e;
         }
 
+        con.close();
         return rowsAffected;
     }
 
@@ -122,6 +125,7 @@ public class HasDAOImpl implements HasDAO {
             has.add(new Has(qauthorId, skillId));
         }
 
+        con.close();
         return has;
     }
 
@@ -149,6 +153,7 @@ public class HasDAOImpl implements HasDAO {
             listOfSkills.add(skillName);
         }
 
+        con.close();
         return listOfSkills;
     }
 
@@ -177,6 +182,7 @@ public class HasDAOImpl implements HasDAO {
             listOfSkills.add(skillId);
         }
 
+        con.close();
         return listOfSkills;
     }
 
@@ -204,6 +210,7 @@ public class HasDAOImpl implements HasDAO {
             listOfAuthorIds.add(authorId);
         }
 
+        con.close();
         return listOfAuthorIds;
     }
 
@@ -230,6 +237,7 @@ public class HasDAOImpl implements HasDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 
@@ -256,6 +264,7 @@ public class HasDAOImpl implements HasDAO {
             count = rs.getInt("count");
         }
 
+        con.close();
         return count;
     }
 

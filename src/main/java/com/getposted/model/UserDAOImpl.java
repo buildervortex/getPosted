@@ -60,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             user = new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName);
         }
-
+        con.close();
         return user;
     }
 
@@ -94,7 +94,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -125,7 +125,7 @@ public class UserDAOImpl implements UserDAO {
                     user.getPepper(), user.getFirstName(), user.getMiddleName(), user.getLastName()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -156,6 +156,7 @@ public class UserDAOImpl implements UserDAO {
                     user.getPepper(), user.getFirstName(), user.getMiddleName(), user.getLastName()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -177,6 +178,7 @@ public class UserDAOImpl implements UserDAO {
                     user.getPepper(), user.getFirstName(), user.getMiddleName(), user.getLastName()));
             throw e;
         }
+        con.close();
         return rowsAffected;
     }
 
@@ -210,7 +212,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -244,7 +246,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -269,7 +271,7 @@ public class UserDAOImpl implements UserDAO {
         if (rs.next()) {
             fullName = rs.getString("name");
         }
-
+        con.close();
         return fullName;
     }
 
@@ -306,7 +308,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -344,7 +346,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -381,7 +383,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -419,7 +421,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -456,7 +458,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 
@@ -494,7 +496,7 @@ public class UserDAOImpl implements UserDAO {
             String lastName = rs.getString("lastName");
             userList.add(new User(qId, email1, password, userName, dob, salt, pepper, firstName, middleName, lastName));
         }
-
+        con.close();
         return userList;
     }
 

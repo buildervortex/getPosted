@@ -43,6 +43,7 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
             int inquiryId = rs.getInt("inquiryId");
             phoneNumberList.add(new PhoneNumber(qphoneNumber, inquiryId));
         }
+        con.close();
         return phoneNumberList;
     }
 
@@ -64,6 +65,7 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
             throw e;
         }
 
+        con.close();
         return rowsAffected;
     }
 
@@ -92,6 +94,7 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
             throw e;
         }
 
+        con.close();
         return rowsAffected;
     }
 
@@ -119,6 +122,7 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
             int qinquiryId = rs.getInt("inquiryId");
             phoneNumberList.add(new PhoneNumber(phoneNumber, qinquiryId));
         }
+        con.close();
         return phoneNumberList;
     }
 

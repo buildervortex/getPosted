@@ -46,6 +46,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchase = new Purchase(qid, purchasedDate, price, purchasedTime, userId, publisherId, publicationId);
         }
+        con.close();
         return purchase;
     }
 
@@ -77,7 +78,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, publisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -106,7 +107,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
                     purchase.getPublicationId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -135,7 +136,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
                     purchase.getPublicationId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -158,7 +159,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
                     purchase.getPublicationId()));
             throw e;
         }
-
+        con.close();
         return rowsAffected;
     }
 
@@ -184,7 +185,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -210,7 +211,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -236,7 +237,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -270,7 +271,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -306,7 +307,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -341,7 +342,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -377,7 +378,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -414,7 +415,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -451,7 +452,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, userId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -486,7 +487,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, quserId, qpublisherId, publicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -513,7 +514,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -548,7 +549,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
             purchases.add(new Purchase(id, purchasedDate, price, purchasedTime, quserId, qpublisherId, qpublicationId));
         }
-
+        con.close();
         return purchases;
     }
 
@@ -575,7 +576,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             count = rs.getInt("count");
         }
-
+        con.close();
         return count;
     }
 
@@ -602,7 +603,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -629,7 +630,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -656,7 +657,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         while (rs.next()) {
             publicationsIds.add(rs.getInt("publicationId"));
         }
-
+        con.close();
         return publicationsIds;
     }
 
@@ -683,7 +684,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         while (rs.next()) {
             userIds.add(rs.getInt("userId"));
         }
-
+        con.close();
         return userIds;
     }
 
@@ -712,7 +713,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("publicationId"));
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -743,7 +744,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("publicationId"));
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -769,7 +770,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -796,7 +797,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -823,7 +824,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -849,7 +850,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -876,7 +877,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -903,7 +904,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -930,7 +931,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         if (rs.next()) {
             sum = rs.getDouble("sum");
         }
-
+        con.close();
         return sum;
     }
 
@@ -959,7 +960,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("authorId"));
         }
-
+        con.close();
         return publicationIds;
     }
 
@@ -976,7 +977,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         ResultSet rs = null;
 
         ps.setInt(1, publisherId);
-        ps.setInt(2,limit);
+        ps.setInt(2, limit);
 
         try {
             rs = ps.executeQuery();
@@ -990,7 +991,175 @@ public class PurchaseDAOImpl implements PurchaseDAO {
         while (rs.next()) {
             publicationIds.add(rs.getInt("authorId"));
         }
+        con.close();
+        return publicationIds;
+    }
 
+    @Override
+    public List<Integer> getAllCategoryIdsOrderdInSelling(boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Integer> categoryIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format(
+                "SELECT C.id AS id FROM Purchase AS P LEFT JOIN Publication AS PU ON P.publicationId = PU.id RIGHT JOIN Category AS C ON C.id = PU.categoryId GROUP BY C.id ORDER BY COUNT(C.id) %s",
+                order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getAllCategoryIdsOrderdInSelling() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            categoryIds.add(rs.getInt("id"));
+        }
+        con.close();
+        return categoryIds;
+    }
+
+    @Override
+    public List<Integer> getListOfCategoryIdsOrderedInSelling(boolean desc, int limit) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Integer> categoryIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format(
+                "SELECT C.id AS id FROM Purchase AS P LEFT JOIN Publication AS PU ON P.publicationId = PU.id RIGHT JOIN Category AS C ON C.id = PU.categoryId GROUP BY C.id ORDER BY COUNT(C.id) %s LIMIT ?",
+                order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1, limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getListOfCategoryIdsOrderedInSelling() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            categoryIds.add(rs.getInt("id"));
+        }
+        con.close();
+        return categoryIds;
+    }
+
+    @Override
+    public List<Integer> getAllAuthorIdsOrderedInSelling(boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Integer> authorIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format(
+                "SELECT A.id FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId RIGHT JOIN Author AS A ON A.id = PU.authorId GROUP BY A.id ORDER BY COUNT(A.id) %s",
+                order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getAllAuthorIdsOrderedInSelling() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            authorIds.add(rs.getInt("id"));
+        }
+        con.close();
+        return authorIds;
+    }
+
+    @Override
+    public List<Integer> getListOfAuthorIdsOrderedInSelling(boolean desc, int limit) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Integer> authorIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format(
+                "SELECT A.id FROM Purchase AS P LEFT JOIN Publication AS PU ON PU.id = P.publicationId RIGHT JOIN Author AS A ON A.id = PU.authorId GROUP BY A.id ORDER BY COUNT(A.id) %s LIMIT ?",
+                order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1,limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getListOfAuthorIdsOrderedInSelling() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            authorIds.add(rs.getInt("id"));
+        }
+        con.close();
+        return authorIds;
+    }
+
+    @Override
+    public List<Integer> getAllPublicationIdsOrderedInSelling(boolean desc) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Integer> publicationIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format(
+                "SELECT PU.id FROM Purchase AS P RIGHT JOIN Publication AS PU ON P.publicationId = PU.id GROUP BY PU.id ORDER BY COUNT(PU.id) %s",
+                order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getAllPublicationIdsOrderedInSelling() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            publicationIds.add(rs.getInt("id"));
+        }
+        con.close();
+        return publicationIds;
+    }
+
+    @Override
+    public List<Integer> getListOfPublicationIdsOrderedInSelling(boolean desc, int limit) throws SQLException {
+        String order = desc ? "DESC" : "ASC";
+        Connection con = Database.getConnection();
+        List<Integer> publicationIds = new ArrayList<Integer>();
+        String sqlTemplate = String.format(
+                "SELECT PU.id FROM Purchase AS P RIGHT JOIN Publication AS PU ON P.publicationId = PU.id GROUP BY PU.id ORDER BY COUNT(PU.id) %s LIMIT ?",
+                order);
+        PreparedStatement ps = con.prepareStatement(sqlTemplate);
+        ResultSet rs = null;
+
+        ps.setInt(1,limit);
+
+        try {
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            logger.warning(String.format(
+                    "There is SQLException happend in the com.getposted.model.PurchaseDAOImpl class at getListOfPublicationIdsOrderedInSelling() method . The exception message is %s",
+                    e.getMessage()));
+            throw e;
+        }
+
+        while (rs.next()) {
+            publicationIds.add(rs.getInt("id"));
+        }
+        con.close();
         return publicationIds;
     }
 
