@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,5 +21,6 @@
       <h2>Name is ${user.firstName} ${user.middleName} ${user.lastName}</h2>
       <h2>Id is ${user.id}</h2>
     </section>
+    <a href="/getPosted/user/update">User update</a>
   </body>
 </html>

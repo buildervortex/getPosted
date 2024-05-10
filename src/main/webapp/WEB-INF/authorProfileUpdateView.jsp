@@ -18,9 +18,6 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/getPosted/logout/">LogOut</a>
-    </nav>
     <img src="/getPosted/download/authorProfile/${author.id}" alt="">
     <section id="update">
         <form method="post" enctype="multipart/form-data">
