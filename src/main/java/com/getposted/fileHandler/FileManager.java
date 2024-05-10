@@ -55,6 +55,13 @@ public class FileManager {
         return retrivedSize;
     }
 
+    public static boolean deleteFile(String deleteFileName, String storingDirectory) throws IOException{
+        String absoluteFilePath = fileSystemLocation+storingDirectory+deleteFileName;
+        if(! FileManager.isExists(absoluteFilePath)) return true;
+
+        return FileManager.deleteFileOrDirectory(absoluteFilePath);
+    }
+
     public static long retriveFileFromResource(String fileName, OutputStream outputStream) throws IOException{
         long readByteCount = -1;
         ClassLoader loader = Thread.currentThread().getContextClassLoader();

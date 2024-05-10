@@ -30,11 +30,9 @@
             <div>
                 <img src="/getPosted/download/pulicationThumbnail/${item.id}" alt="">
                 <h2>Title is ${item.title}</h2>
-                <h2>Description is ${item.description}</h2>
                 <h2>Price is ${item.softCopyPrice}</h2>
                 <h2>Discount is ${item.softCopyDiscount}</h2>
-                <h2>Publication date is ${item.publishedDate}</h2>
-                <a href="/getPosted/books/?id=${item.id}">View Publication</a>
+                <a href="/getPosted/author/books/?id=${item.id}">View Publication</a>
             </div>
         </c:forEach>
     </section>

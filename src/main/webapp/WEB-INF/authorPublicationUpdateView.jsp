@@ -22,15 +22,16 @@
         <a href="/getPosted/logout/">LogOut</a>
     </nav>
     <section id="create">
-        <form action="/getPosted/author/books/create" method="post" enctype="multipart/form-data">
-            <input type="text" name="pdfTitle" id="title" placeholder="title">
+        <form action="/getPosted/author/books/update" method="post" enctype="multipart/form-data">
+            <img src="/getPosted/download/pulicationThumbnail/${publication.id}" alt="">
             <input type="file" name="thumbnail" id="thumbnail">
-            <input type="text" name="description" id="description" placeholder="description">
-            <input type="text" name="size" id="size" placeholder="size">
-            <input type="text" name="softCopyPrice" id="softCopyPrice" placeholder="softCopyPrice">
-            <input type="number" name="pageCount" id="pageCount" placeholder="pageCount">
-            <input type="text" name="softCopyDiscount" id="softCopyDiscount" placeholder="softCopyDiscount">
-            <input type="date" name="publishedDate" id="publishedDate" placeholder="publishedDate" >
+            <input type="text" name="pdfTitle" id="title" placeholder="title" value="${publication.title}">
+            <input type="text" name="description" id="description" placeholder="description" value="${publication.description}">
+            <input type="text" name="size" id="size" placeholder="size" value="${publication.size}">
+            <input type="text" name="softCopyPrice" id="softCopyPrice" placeholder="softCopyPrice" value="${publication.softCopyPrice}">
+            <input type="number" name="pageCount" id="pageCount" placeholder="pageCount" value="${publication.pageCount}">
+            <input type="text" name="softCopyDiscount" id="softCopyDiscount" placeholder="softCopyDiscount" value="${publication.softCopyDiscount}">
+            <input type="date" name="publishedDate" id="publishedDate" placeholder="publishedDate" value="${publication.publishedDate}">
             <select name="languageId" id="languageId">
                 <c:forEach var="language" items="${languages}">
                     <option value="${language.id}">${language.language}</option>
