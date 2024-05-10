@@ -23,5 +23,6 @@
     </section>
     <a href="/getPosted/user/update">User update</a>
     <a href="/getPosted/user/delete">User delet</a>
+    <a href="/getPosted/user/cart">User Cart</a>
   </body>
 </html>

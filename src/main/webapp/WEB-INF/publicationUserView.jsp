@@ -25,5 +25,9 @@
         <h1>Pdf category is ${category.category}</h1>
         <h1>Pdf language is ${language.language}</h1>
     </section>
+    <form action="/getPosted/books/cart" method="post">
+        <input type="hidden" name="cart" value="add">
+        <button type="submit" >addtoCart</button>
+    </form>
 </body>
 </html>
