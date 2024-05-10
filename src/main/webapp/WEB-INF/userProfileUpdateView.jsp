@@ -19,7 +19,7 @@
 </head>
 <body>
     <section>
-        <form action="/getPosted/user/update" method="post">
+        <form action="/getPosted/user/update" method="post" enctype="multipart/form-data">
             <img src="/getPosted/download/userProfile/${user.id}" alt="" />
             <input type="file" name="file" id="file">
             <input type="email" name="email" id="email" value="${user.email}">

@@ -1,11 +1,15 @@
 package com.getposted.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+import com.getposted.enums.Stored;
+import com.getposted.fileHandler.FileManager;
 import com.getposted.logger.Logging;
+import com.getposted.model.Author;
 import com.getposted.model.User;
 import com.getposted.model.UserDAOImpl;
 import com.getposted.random.RandomString;
@@ -19,6 +23,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 @MultipartConfig
 @WebServlet(name = "userProfileUpdateView", urlPatterns = "/user/update")
@@ -72,7 +77,7 @@ public class UserProfileUpdateView extends HttpServlet{
         handleUserUpdate(req, resp, id);
     }
 
-        private void handleUserUpdate(HttpServletRequest request, HttpServletResponse response, int id) throws IOException{
+        private void handleUserUpdate(HttpServletRequest request, HttpServletResponse response, int id) throws IOException, ServletException{
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String userName = request.getParameter("userName");
@@ -102,6 +107,8 @@ public class UserProfileUpdateView extends HttpServlet{
             logger.warning("There is an exception occoured when trying to update the user. The exception message is "+e.getMessage());
             throw new RuntimeException(e.getMessage());
         };
+
+        fileUploadHandler(request, response, "file", user);
         response.sendRedirect("/getPosted/user");
     }
     private boolean checkForNullabilityOrEmphty(String... vars){
@@ -117,5 +124,16 @@ public class UserProfileUpdateView extends HttpServlet{
 
         return isValid;
     }
-    
+
+    private long fileUploadHandler(HttpServletRequest request, HttpServletResponse response, String fileName, User user) throws IOException, ServletException{
+        long readSize = 0;
+        Part filePart = request.getPart(fileName);
+        if(filePart == null || filePart.getSize() == 0)return readSize;
+
+        String storingFileName = user.getId()+".png";
+
+        InputStream inputStream = filePart.getInputStream();
+        readSize = FileManager.storeFile(storingFileName,inputStream,Stored.USERPROFILEPICTURE);
+        return readSize;
+    }
 }
