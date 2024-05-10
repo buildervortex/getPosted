@@ -22,5 +22,6 @@
       <h2>Id is ${user.id}</h2>
     </section>
     <a href="/getPosted/user/update">User update</a>
+    <a href="/getPosted/user/delete">User delet</a>
   </body>
 </html>
