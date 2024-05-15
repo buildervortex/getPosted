@@ -16,7 +16,7 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque unde nulla, per
 <div class="container">
   <selection class="about">
     <div class="about-image">
-      <image src="">
+      <image src="/src/main/webapp/img/img/aboutus.jpg">
     </div>
     <div class="about-content">
       <h2>Welcome to Get Posted</h2>
