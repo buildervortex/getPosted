@@ -26,7 +26,7 @@ public class Language {
 	}
 
 	public void setLanguage(String value) {
-		this.language = value.length() <= 1 ? this.language : value;
+		this.language = value.length() == 0 ? this.language : value;
 	}
 
 	@Override

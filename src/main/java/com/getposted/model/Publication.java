@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Publication {
 
-    //(id,description, date, size, pdfPath, softCopyPrice, pageCount, softCopyDiscount, title, publishedDate, categoryId, languageId, authorId)
     private int id = 0;
     private String description = null;
     private Date date = null;
@@ -19,7 +18,8 @@ public class Publication {
     private int languageId = 0;
     private int authorId = 0;
 
-    public Publication(){}
+    public Publication() {
+    }
 
     public Publication(int id, String description, Date date, int size, String pdfPath, double softCopyPrice,
             int pageCount, double softCopyDiscount, String title, Date publishedDate, int categoryId, int languageId,
@@ -123,7 +123,7 @@ public class Publication {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(int categoryId) {|
         this.categoryId = categoryId;
     }
 
@@ -150,6 +150,5 @@ public class Publication {
                 + ", softCopyDiscount=" + softCopyDiscount + ", title=" + title + ", publishedDate=" + publishedDate
                 + ", categoryId=" + categoryId + ", languageId=" + languageId + ", authorId=" + authorId + "]";
     }
-
 
 }

@@ -1,97 +1,52 @@
-function validateForm() {
-    var firstName = document.getElementById('first-name').value;
-    var middleName = document.getElementById('middle-name').value;
-    var lastName = document.getElementById('last-name').value;
-    var id = document.getElementById('id').value;
-    var userName = document.getElementById('user-name').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var bio = document.getElementById('bio').value;
-    var phoneNumber = document.getElementById('phone-number').value;
-    var dateOfBirth = document.getElementById('date-of-birth').value;
-    var country = document.getElementById('country').value;
-    var skills = document.getElementById('skills').value;
+// JavaScript for form validation
 
-    
-    if (firstName === '' || middleName === '' || lastName === '' || id === '' || userName === '' ||
-        email === '' || password === '' || bio === '' || phoneNumber === '' ||
-        dateOfBirth === '' || country === '' || skills === '') {
-        alert('Please fill in all fields.');
-        return;
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Validate form fields
+    const firstName = document.querySelector('input[type="text"][placeholder="Enter your first name"]');
+    const middleName = document.querySelector('input[type="text"][placeholder="Enter your middle name"]');
+    const lastName = document.querySelector('input[type="text"][placeholder="Enter your last name"]');
+    const dob = document.querySelector('input[type="date"][placeholder="Enter birth date"]');
+    const email = document.querySelector('input[type="email"][placeholder="Enter your email"]');
+    const mobileNumber = document.querySelector('input[type="number"][placeholder="Enter mobile number"]');
+    const username = document.querySelector('input[type="text"][placeholder="Enter your user name"]');
+    const password = document.querySelector('input[type="password"][placeholder="Enter your password"]');
+    const country = document.getElementById('country');
+    const skills = document.getElementById('skills');
+
+    // Check if any field is empty
+    if (
+      firstName.value === '' ||
+      middleName.value === '' ||
+      lastName.value === '' ||
+      dob.value === '' ||
+      email.value === '' ||
+      mobileNumber.value === '' ||
+      username.value === '' ||
+      password.value === '' ||
+      country.value === '' ||
+      skills.value === ''
+    ) {
+      alert('Please fill in all fields.'); // Alert if any field is empty
+    } else {
+      alert('Registration Successful!'); // Alert for successful registration
+      form.submit(); // Submit the form if all fields are filled
     }
+  });
+});
 
-    
-    var validationMessages = document.getElementsByClassName('validation-message');
-    for (var i = 0; i < validationMessages.length; i++) {
-        validationMessages[i].innerText = '';
-    }
+  
 
-    
-    if (firstName === '') {
-        document.getElementById('first-name-validation').innerText = 'Please enter your first name.';
-        return;
-    }
-
-    if (middleName === '') {
-        document.getElementById('middle-name-validation').innerText = 'Please enter your middle name.';
-        return;
-    }
-
-    if (lastName === '') {
-        document.getElementById('last-name-validation').innerText = 'Please enter your last name.';
-        return;
-    }
-
-    if (id === '') {
-        document.getElementById('id-validation').innerText = 'Please enter your ID.';
-        return;
-    }
-
-    if (userName === '') {
-        document.getElementById('user-name-validation').innerText = 'Please enter your username.';
-        return;
-    }
-
-    if (email === '') {
-        document.getElementById('email-validation').innerText = 'Please enter your email.';
-        return;
-    }
-
-    if (password === '') {
-        document.getElementById('password-validation').innerText = 'Please enter your password.';
-        return;
-    }
-
-    if (bio === '') {
-        document.getElementById('bio-validation').innerText = 'Please enter your bio.';
-        return;
-    }
-
-    if (phoneNumber === '') {
-        document.getElementById('phone-number-validation').innerText = 'Please enter your phone number.';
-        return;
-    } else if (!/^\d{10}$/.test(phoneNumber)) { 
-        document.getElementById('phone-number-validation').innerText = 'Phone number must be 10 digits.';
-        return;
-    }
-
-    if (dateOfBirth === '') {
-        document.getElementById('date-of-birth-validation').innerText = 'Please enter your date of birth.';
-        return;
-    }
-
-    if (country === '') {
-        document.getElementById('country-validation').innerText = 'Please select your country.';
-        return;
-    }
-
-    if (skills === '') {
-        document.getElementById('skills-validation').innerText = 'Please select your skills.';
-        return;
-    }
-
-    
-    alert('Sign up successful!');
-
-    
-}
+function previewImage(event) {
+    var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function(){
+      var img = document.getElementById('thumbnail');
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
